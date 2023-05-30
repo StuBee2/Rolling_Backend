@@ -1,0 +1,22 @@
+package com.stubee.rollingapplication.domain.company.port.spi;
+
+import com.stubee.rollingcore.domain.company.dto.response.CompanyQueryResponse;
+import com.stubee.rollingcore.domain.company.model.Company;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+public interface QueryCompanyPort {
+
+    boolean existsByCompanyId(UUID companyId);
+
+    Optional<CompanyQueryResponse> findById(UUID id);
+
+    List<Company> findByNameContaining(String name);
+
+    List<Company> findByRegistrantId(UUID registrantId);
+
+    List<Company> findAll();
+
+}

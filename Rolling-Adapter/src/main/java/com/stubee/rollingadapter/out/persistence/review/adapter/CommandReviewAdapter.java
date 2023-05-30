@@ -1,0 +1,22 @@
+package com.stubee.rollingadapter.out.persistence.review.adapter;
+
+import com.stubee.rollingadapter.out.persistence.review.mapper.ReviewMapper;
+import com.stubee.rollingadapter.out.persistence.review.repository.ReviewJpaRepository;
+import com.stubee.rollingapplication.domain.review.port.spi.CommandReviewPort;
+import com.stubee.rollingcore.domain.review.model.Review;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+@Component
+@RequiredArgsConstructor
+public class CommandReviewAdapter implements CommandReviewPort {
+
+    private final ReviewJpaRepository reviewJpaRepository;
+    private final ReviewMapper reviewMapper;
+
+    @Override
+    public Review save(Review review) {
+        return reviewMapper.toDomain(reviewJpaRepository.save(reviewMapper.toEntity(review)));
+    }
+
+}
