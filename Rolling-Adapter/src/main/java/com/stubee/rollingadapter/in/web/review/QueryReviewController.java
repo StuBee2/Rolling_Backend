@@ -1,5 +1,6 @@
 package com.stubee.rollingadapter.in.web.review;
 
+import com.stubee.rollingcore.common.dto.PageDto;
 import com.stubee.rollingcore.domain.review.dto.response.ReviewInfoResponse;
 import com.stubee.rollingapplication.domain.review.port.api.QueryReviewUseCase;
 import com.stubee.rollingcore.domain.review.dto.response.ReviewQueryResponse;
@@ -31,15 +32,24 @@ public class QueryReviewController {
     @Operation(description = "내가 쓴 Review List 조회")
     @GetMapping("/my")
     @ResponseStatus(OK)
-    public List<ReviewQueryResponse> getMy() {
-        return queryReviewUseCase.getMy();
+    public List<ReviewQueryResponse> getMy(@ModelAttribute PageDto pageDto) {
+        return queryReviewUseCase.getMy(pageDto);
     }
 
     @Operation(description = "Member Id로 Review List 조회")
-    @GetMapping("/list/{id}")
+    @GetMapping("/list/member/{id}")
     @ResponseStatus(OK)
-    public List<ReviewQueryResponse> getReviewByMember(@PathVariable("id") UUID memberId) {
-        return queryReviewUseCase.getByMemberId(memberId);
+    public List<ReviewQueryResponse> getReviewByMember(final @PathVariable("id") UUID memberId,
+                                                       @ModelAttribute PageDto pageDto) {
+        return queryReviewUseCase.getByMemberId(memberId, pageDto);
+    }
+
+    @Operation(description = "Company Id로 Review List 조회")
+    @GetMapping("/list/company/{id}")
+    @ResponseStatus(OK)
+    public List<ReviewInfoResponse> getReviewByCompany(final @PathVariable("id") UUID companyID,
+                                                       @ModelAttribute PageDto pageDto) {
+        return queryReviewUseCase.getByCompanyId(companyID, pageDto);
     }
 
 }

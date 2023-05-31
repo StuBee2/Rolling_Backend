@@ -1,5 +1,6 @@
 package com.stubee.rollingapplication.domain.review.port.spi;
 
+import com.stubee.rollingcore.common.dto.PageDto;
 import com.stubee.rollingcore.domain.review.dto.response.ReviewInfoResponse;
 import com.stubee.rollingcore.domain.review.dto.response.ReviewQueryResponse;
 
@@ -11,8 +12,8 @@ public interface QueryReviewPort {
 
     Optional<ReviewInfoResponse> findById(UUID id);
 
-    List<ReviewInfoResponse> findByCompanyId(UUID companyId);
+    List<ReviewQueryResponse> findByMemberId(UUID memberId, PageDto pageDto);
 
-    List<ReviewQueryResponse> findByMemberId(UUID memberId);
+    List<ReviewInfoResponse> findByCompanyId(UUID companyId, PageDto pageDto);
 
 }

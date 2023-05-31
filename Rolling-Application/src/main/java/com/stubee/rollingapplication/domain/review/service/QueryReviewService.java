@@ -4,6 +4,7 @@ import com.stubee.rollingapplication.common.annotation.QueryService;
 import com.stubee.rollingapplication.domain.member.port.spi.MemberSecurityPort;
 import com.stubee.rollingapplication.domain.review.port.api.QueryReviewUseCase;
 import com.stubee.rollingapplication.domain.review.port.spi.QueryReviewPort;
+import com.stubee.rollingcore.common.dto.PageDto;
 import com.stubee.rollingcore.domain.review.dto.response.ReviewInfoResponse;
 import com.stubee.rollingcore.domain.review.dto.response.ReviewQueryResponse;
 import com.stubee.rollingcore.domain.review.exceptionn.ReviewNotFoundException;
@@ -26,13 +27,18 @@ public class QueryReviewService implements QueryReviewUseCase {
     }
 
     @Override
-    public List<ReviewQueryResponse> getMy() {
-        return getByMemberId(memberSecurityPort.getCurrentMember().id());
+    public List<ReviewQueryResponse> getMy(PageDto pageDto) {
+        return getByMemberId(memberSecurityPort.getCurrentMember().id(), pageDto);
     }
 
     @Override
-    public List<ReviewQueryResponse> getByMemberId(final UUID memberId) {
-        return queryReviewPort.findByMemberId(memberId);
+    public List<ReviewQueryResponse> getByMemberId(final UUID memberId, PageDto pageDto) {
+        return queryReviewPort.findByMemberId(memberId, pageDto);
+    }
+
+    @Override
+    public List<ReviewInfoResponse> getByCompanyId(final UUID companyId, PageDto pageDto) {
+        return queryReviewPort.findByCompanyId(companyId, pageDto);
     }
 
 }
