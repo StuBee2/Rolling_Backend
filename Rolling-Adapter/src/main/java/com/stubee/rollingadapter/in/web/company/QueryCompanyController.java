@@ -1,8 +1,8 @@
 package com.stubee.rollingadapter.in.web.company;
 
 import com.stubee.rollingcore.common.dto.PageDto;
-import com.stubee.rollingcore.domain.company.dto.response.CompanyInfoResponse;
 import com.stubee.rollingapplication.domain.company.port.api.QueryCompanyUseCase;
+import com.stubee.rollingcore.domain.company.dto.response.CompanyQueryResponse;
 import com.stubee.rollingcore.domain.company.model.Company;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -25,7 +25,7 @@ public class QueryCompanyController {
     @Operation(description = "Company id로 Company 정보 조회")
     @GetMapping("/info/{id}")
     @ResponseStatus(OK)
-    public CompanyInfoResponse getInfo(final @PathVariable("id") UUID companyId) {
+    public CompanyQueryResponse getInfo(final @PathVariable("id") UUID companyId) {
         return queryCompanyUseCase.getInfoById(companyId);
     }
 
@@ -47,15 +47,16 @@ public class QueryCompanyController {
     @Operation(description = "내가 등록한 Company List 조회")
     @GetMapping("/my")
     @ResponseStatus(OK)
-    public List<Company> getMy() {
-        return queryCompanyUseCase.getMy();
+    public List<Company> getMy(@ModelAttribute PageDto pageDto) {
+        return queryCompanyUseCase.getMy(pageDto);
     }
 
     @Operation(description = "Member Id로 Company List 조회")
     @GetMapping("/list/{id}")
     @ResponseStatus(OK)
-    public List<Company> getByMember(final @PathVariable("id") UUID memberId) {
-        return queryCompanyUseCase.getByMemberId(memberId);
+    public List<Company> getByMember(final @PathVariable("id") UUID memberId,
+                                     @ModelAttribute PageDto pageDto) {
+        return queryCompanyUseCase.getByMemberId(memberId, pageDto);
     }
 
     @Operation(description = "회사 TotalGrade Top 10")

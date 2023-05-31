@@ -16,7 +16,7 @@ public interface QueryCompanyPort {
 
     List<Company> findByNameContaining(String name, PageDto pageDto);
 
-    List<Company> findByRegistrantId(UUID registrantId);
+    List<Company> findByRegistrantId(UUID registrantId, PageDto pageDto);
 
     List<Company> findAll();
 

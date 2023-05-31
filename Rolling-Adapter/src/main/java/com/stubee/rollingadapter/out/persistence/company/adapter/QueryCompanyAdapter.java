@@ -57,10 +57,13 @@ public class QueryCompanyAdapter implements QueryCompanyPort {
     }
 
     @Override
-    public List<Company> findByRegistrantId(UUID registrantId) {
+    public List<Company> findByRegistrantId(UUID registrantId, PageDto pageDto) {
         return jpaQueryFactory
                 .selectFrom(companyEntity)
                 .where(companyEntity.registrantId.eq(registrantId))
+                .orderBy(companyEntity.createdAt.desc())
+                .offset(pageDto.page())
+                .limit(pageDto.size())
                 .fetch()
                 .stream().map(companyMapper::toDomain).toList();
     }
