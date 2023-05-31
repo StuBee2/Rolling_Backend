@@ -4,6 +4,7 @@ import com.stubee.rollingcore.common.exception.CustomException;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -34,6 +35,13 @@ public class CustomExceptionHandler {
                 BAD_REQUEST);
     }
 
+    @ExceptionHandler(ServletRequestBindingException.class)
+    protected ResponseEntity<ErrorResponse> handleBindException(ServletRequestBindingException e) {
+        return new ResponseEntity<>(
+                new ErrorResponse(BAD_REQUEST.value(), ErrorMessage.SERVLETBINDINGEXCEPTION),
+                BAD_REQUEST);
+    }
+
     @ExceptionHandler(Exception.class)
     protected ResponseEntity<ErrorResponse> handleException(Exception e) {
         return new ResponseEntity<>(
@@ -45,6 +53,7 @@ public class CustomExceptionHandler {
 
         private static final String IOEXCEPTION = "IOEXCEPTION OCCURRED";
         private static final String DBACCESSEXCEPTION = "DBACCESSEXCEPTION OCCURRED";
+        private static final String SERVLETBINDINGEXCEPTION = "SERVLETREQUESTBINDINGEXCEPTION OCCURRED";
         private static final String INTERNAL_SERVER = "INTERNAL SERVER ERROR OCCURRED";
 
     }
