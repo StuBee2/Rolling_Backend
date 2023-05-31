@@ -53,6 +53,26 @@ public class QueryCompanyService implements QueryCompanyUseCase {
         return queryCompanyPort.findByRegistrantId(memberId);
     }
 
+    @Override
+    public List<Company> getByTotalGrade() {
+        return queryCompanyPort.findByTotalGrade();
+    }
+
+    @Override
+    public List<Company> getBySalaryGrade() {
+        return queryCompanyPort.findBySalaryGrade();
+    }
+
+    @Override
+    public List<Company> getByWelfareGrade() {
+        return queryCompanyPort.findByWelfareGrade();
+    }
+
+    @Override
+    public List<Company> getByBalanceGrade() {
+        return queryCompanyPort.findByBalanceGrade();
+    }
+
     private CompanyInfoResponse toResponse(final CompanyQueryResponse queryResponse,
                                            final List<ReviewInfoResponse> reviewList) {
         return CompanyInfoResponse.builder()

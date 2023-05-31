@@ -69,6 +69,46 @@ public class QueryCompanyAdapter implements QueryCompanyPort {
                 .stream().map(companyMapper::toDomain).toList();
     }
 
+    @Override
+    public List<Company> findByTotalGrade() {
+        return jpaQueryFactory
+                .selectFrom(companyEntity)
+                .orderBy(companyEntity.totalGrade.desc())
+                .limit(10)
+                .fetch()
+                .stream().map(companyMapper::toDomain).toList();
+    }
+
+    @Override
+    public List<Company> findBySalaryGrade() {
+        return jpaQueryFactory
+                .selectFrom(companyEntity)
+                .orderBy(companyEntity.salaryGrade.desc())
+                .limit(10)
+                .fetch()
+                .stream().map(companyMapper::toDomain).toList();
+    }
+
+    @Override
+    public List<Company> findByWelfareGrade() {
+        return jpaQueryFactory
+                .selectFrom(companyEntity)
+                .orderBy(companyEntity.welfareGrade.desc())
+                .limit(10)
+                .fetch()
+                .stream().map(companyMapper::toDomain).toList();
+    }
+
+    @Override
+    public List<Company> findByBalanceGrade() {
+        return jpaQueryFactory
+                .selectFrom(companyEntity)
+                .orderBy(companyEntity.balanceGrade.desc())
+                .limit(10)
+                .fetch()
+                .stream().map(companyMapper::toDomain).toList();
+    }
+
     private ConstructorExpression<CompanyQueryResponse> queryResponseProjection() {
         return Projections.constructor(CompanyQueryResponse.class,
                 companyEntity.id,

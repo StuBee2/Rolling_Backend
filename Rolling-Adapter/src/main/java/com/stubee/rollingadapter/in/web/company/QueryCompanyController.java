@@ -56,4 +56,32 @@ public class QueryCompanyController {
         return queryCompanyUseCase.getByMemberId(memberId);
     }
 
+    @Operation(description = "회사 TotalGrade Top 10")
+    @GetMapping("/rank/total")
+    @ResponseStatus(OK)
+    public List<Company> getByTotalGrade() {
+        return queryCompanyUseCase.getByTotalGrade();
+    }
+
+    @Operation(description = "회사 SalaryGrade Top 10")
+    @GetMapping("/rank/salary")
+    @ResponseStatus(OK)
+    public List<Company> getBySalaryGrade() {
+        return queryCompanyUseCase.getBySalaryGrade();
+    }
+
+    @Operation(description = "회사 WelfareGrade Top 10")
+    @GetMapping("/rank/welfare")
+    @ResponseStatus(OK)
+    public List<Company> getByWelfareGrade() {
+        return queryCompanyUseCase.getByWelfareGrade();
+    }
+
+    @Operation(description = "회사 BalanceGrade Top 10")
+    @GetMapping("/rank/balance")
+    @ResponseStatus(OK)
+    public List<Company> getByBalanceGrade() {
+        return queryCompanyUseCase.getByBalanceGrade();
+    }
+
 }

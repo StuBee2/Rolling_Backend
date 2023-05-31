@@ -18,4 +18,12 @@ public interface QueryCompanyUseCase {
 
     List<Company> getByMemberId(UUID memberId);
 
+    List<Company> getByTotalGrade();
+
+    List<Company> getBySalaryGrade();
+
+    List<Company> getByWelfareGrade();
+
+    List<Company> getByBalanceGrade();
+
 }

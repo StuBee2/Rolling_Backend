@@ -19,4 +19,12 @@ public interface QueryCompanyPort {
 
     List<Company> findAll();
 
+    List<Company> findByTotalGrade();
+
+    List<Company> findBySalaryGrade();
+
+    List<Company> findByWelfareGrade();
+
+    List<Company> findByBalanceGrade();
+
 }
