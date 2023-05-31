@@ -1,5 +1,6 @@
 package com.stubee.rollingadapter.in.web.company;
 
+import com.stubee.rollingcore.common.dto.PageDto;
 import com.stubee.rollingcore.domain.company.dto.response.CompanyInfoResponse;
 import com.stubee.rollingapplication.domain.company.port.api.QueryCompanyUseCase;
 import com.stubee.rollingcore.domain.company.model.Company;
@@ -31,8 +32,9 @@ public class QueryCompanyController {
     @Operation(description = "Company Name으로 Company 검색")
     @GetMapping("/search")
     @ResponseStatus(OK)
-    public List<Company> searchByName(final @RequestParam("name") String companyName) {
-        return queryCompanyUseCase.getListByNameContaining(companyName);
+    public List<Company> searchByName(final @RequestParam(name = "name") String companyName,
+                                      @ModelAttribute PageDto pageDto) {
+        return queryCompanyUseCase.getListByNameContaining(companyName, pageDto);
     }
 
     @Operation(description = "모든 Company List 조회")

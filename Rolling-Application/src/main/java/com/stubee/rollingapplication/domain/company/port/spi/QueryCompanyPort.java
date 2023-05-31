@@ -1,5 +1,6 @@
 package com.stubee.rollingapplication.domain.company.port.spi;
 
+import com.stubee.rollingcore.common.dto.PageDto;
 import com.stubee.rollingcore.domain.company.dto.response.CompanyQueryResponse;
 import com.stubee.rollingcore.domain.company.model.Company;
 
@@ -13,7 +14,7 @@ public interface QueryCompanyPort {
 
     Optional<CompanyQueryResponse> findById(UUID id);
 
-    List<Company> findByNameContaining(String name);
+    List<Company> findByNameContaining(String name, PageDto pageDto);
 
     List<Company> findByRegistrantId(UUID registrantId);
 

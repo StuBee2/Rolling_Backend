@@ -5,6 +5,7 @@ import com.stubee.rollingapplication.domain.company.port.api.QueryCompanyUseCase
 import com.stubee.rollingapplication.domain.company.port.spi.QueryCompanyPort;
 import com.stubee.rollingapplication.domain.member.port.spi.MemberSecurityPort;
 import com.stubee.rollingapplication.domain.review.port.spi.QueryReviewPort;
+import com.stubee.rollingcore.common.dto.PageDto;
 import com.stubee.rollingcore.domain.company.dto.response.CompanyInfoResponse;
 import com.stubee.rollingcore.domain.company.dto.response.CompanyQueryResponse;
 import com.stubee.rollingcore.domain.company.exception.CompanyNotFoundException;
@@ -34,8 +35,8 @@ public class QueryCompanyService implements QueryCompanyUseCase {
     }
 
     @Override
-    public List<Company> getListByNameContaining(final String companyName) {
-        return queryCompanyPort.findByNameContaining(companyName);
+    public List<Company> getListByNameContaining(final String companyName, PageDto pageDto) {
+        return queryCompanyPort.findByNameContaining(companyName, pageDto);
     }
 
     @Override

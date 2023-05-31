@@ -1,5 +1,6 @@
 package com.stubee.rollingapplication.domain.company.port.api;
 
+import com.stubee.rollingcore.common.dto.PageDto;
 import com.stubee.rollingcore.domain.company.dto.response.CompanyInfoResponse;
 import com.stubee.rollingcore.domain.company.model.Company;
 
@@ -10,7 +11,7 @@ public interface QueryCompanyUseCase {
 
     CompanyInfoResponse getInfoById(UUID companyId);
 
-    List<Company> getListByNameContaining(String companyName);
+    List<Company> getListByNameContaining(String companyName, PageDto pageDto);
 
     List<Company>  getList();
 
