@@ -4,6 +4,8 @@ import com.stubee.rollingapplication.domain.auth.port.api.RefreshTokenUseCase;
 import com.stubee.rollingapplication.domain.auth.port.spi.ParseJwtPort;
 import com.stubee.rollingapplication.domain.auth.port.spi.ProvideJwtPort;
 import com.stubee.rollingcore.domain.auth.dto.response.RefreshTokenResponse;
+import com.stubee.rollingcore.domain.auth.enums.JwtType;
+import com.stubee.rollingcore.domain.auth.exception.WrongTokenTypeException;
 import com.stubee.rollingcore.domain.member.enums.MemberRole;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -21,10 +23,14 @@ public class RefreshTokenService implements RefreshTokenUseCase {
 
     @Override
     public RefreshTokenResponse refresh(final String refreshToken) {
-        String accessToken = reissue(parseJwtPort.getClaims(parseJwtPort.extractToken(refreshToken)));
+        final Jws<Claims> claims = parseJwtPort.getClaims(parseJwtPort.extractToken(refreshToken));
+
+        if(parseJwtPort.isEqualType(claims, JwtType.REFRESH)) {
+            throw WrongTokenTypeException.EXCEPTION;
+        }
 
         return RefreshTokenResponse.builder()
-                .accessToken(accessToken)
+                .accessToken(reissue(claims))
                 .build();
     }
 

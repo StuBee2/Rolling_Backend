@@ -1,5 +1,6 @@
 package com.stubee.rollingapplication.domain.auth.port.spi;
 
+import com.stubee.rollingcore.domain.auth.enums.JwtType;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,5 +15,7 @@ public interface ParseJwtPort {
     String extractTokenFromRequest(HttpServletRequest request);
 
     String extractToken(String token);
+
+    boolean isEqualType(Jws<Claims> claims, JwtType jwtType);
 
 }

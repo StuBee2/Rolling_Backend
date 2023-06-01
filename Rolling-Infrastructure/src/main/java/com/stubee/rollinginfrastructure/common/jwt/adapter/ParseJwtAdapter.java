@@ -2,7 +2,8 @@ package com.stubee.rollinginfrastructure.common.jwt.adapter;
 
 import com.stubee.rollingapplication.domain.auth.port.spi.ParseJwtPort;
 import com.stubee.rollingapplication.domain.member.port.spi.QueryMemberPort;
-import com.stubee.rollingcore.domain.auth.exception.AccessTokenRequireException;
+import com.stubee.rollingcore.domain.auth.enums.JwtType;
+import com.stubee.rollingcore.domain.auth.exception.WrongTokenTypeException;
 import com.stubee.rollingcore.domain.member.exception.MemberNotFoundException;
 import com.stubee.rollingcore.domain.member.model.Member;
 import com.stubee.rollinginfrastructure.common.jwt.properties.JwtProperties;
@@ -39,16 +40,16 @@ public class ParseJwtAdapter implements ParseJwtPort {
 
     @Override
     public Authentication getAuthentication(final String token) {
-        Jws<Claims> claims = getClaims(token);
+        final Jws<Claims> claims = getClaims(token);
 
-        if(!claims.getHeader().get(Header.JWT_TYPE).equals("ACCESS")) {
-            throw AccessTokenRequireException.EXCEPTION;
+        if(isEqualType(claims, JwtType.ACCESS)) {
+            throw WrongTokenTypeException.EXCEPTION;
         }
 
         Member member = queryMemberPort.findById(UUID.fromString(claims.getBody().getSubject()))
                 .orElseThrow(() -> MemberNotFoundException.EXCEPTION);
 
-        CustomMemberDetails details = new CustomMemberDetails(member);
+        final CustomMemberDetails details = new CustomMemberDetails(member);
 
         return new UsernamePasswordAuthenticationToken(details, null, details.getAuthorities());
     }
@@ -65,6 +66,11 @@ public class ParseJwtAdapter implements ParseJwtPort {
         }
 
         return token;
+    }
+
+    @Override
+    public boolean isEqualType(final Jws<Claims> claims, final JwtType jwtType) {
+        return !(claims.getHeader().get(Header.JWT_TYPE).equals(jwtType));
     }
 
 }
