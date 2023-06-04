@@ -1,5 +1,6 @@
 package com.stubee.rollingapplication.domain.company.port.api;
 
+import com.stubee.rollingcore.common.dto.PageDataResponse;
 import com.stubee.rollingcore.common.dto.PageDto;
 import com.stubee.rollingcore.domain.company.dto.response.CompanyQueryResponse;
 import com.stubee.rollingcore.domain.company.model.Company;
@@ -11,13 +12,13 @@ public interface QueryCompanyUseCase {
 
     CompanyQueryResponse getInfoById(UUID companyId);
 
-    List<Company> getListByNameContaining(String companyName, PageDto pageDto);
+    PageDataResponse<List<Company>> getListByNameContaining(String companyName, PageDto pageDto);
 
     List<Company>  getList();
 
-    List<Company> getMy(PageDto pageDto);
+    PageDataResponse<List<Company>> getMy(PageDto pageDto);
 
-    List<Company> getByMemberId(UUID memberId, PageDto pageDto);
+    PageDataResponse<List<Company>> getByMemberId(UUID memberId, PageDto pageDto);
 
     List<Company> getByTotalGrade();
 

@@ -18,9 +18,9 @@ public class AuthController {
     private final RefreshTokenUseCase refreshTokenUseCase;
 
     @Operation(description = "Access Token 재발급")
-    @GetMapping("/refresh")
+    @PostMapping("/refresh")
     @ResponseStatus(CREATED)
-    public RefreshTokenResponse refresh(final @RequestHeader("Refresh-Token") String refreshToken) {
+    public RefreshTokenResponse refresh(final @RequestBody String refreshToken) {
         return refreshTokenUseCase.refresh(refreshToken);
     }
 

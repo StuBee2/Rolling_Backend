@@ -1,5 +1,6 @@
 package com.stubee.rollingadapter.in.web.company;
 
+import com.stubee.rollingcore.common.dto.PageDataResponse;
 import com.stubee.rollingcore.common.dto.PageDto;
 import com.stubee.rollingapplication.domain.company.port.api.QueryCompanyUseCase;
 import com.stubee.rollingcore.domain.company.dto.response.CompanyQueryResponse;
@@ -32,8 +33,8 @@ public class QueryCompanyController {
     @Operation(description = "Company Name으로 Company 검색")
     @GetMapping("/search")
     @ResponseStatus(OK)
-    public List<Company> searchByName(final @RequestParam(name = "name") String companyName,
-                                      @ModelAttribute PageDto pageDto) {
+    public PageDataResponse<List<Company>> searchByName(final @RequestParam(name = "name") String companyName,
+                                                        @ModelAttribute PageDto pageDto) {
         return queryCompanyUseCase.getListByNameContaining(companyName, pageDto);
     }
 
@@ -47,14 +48,14 @@ public class QueryCompanyController {
     @Operation(description = "내가 등록한 Company List 조회")
     @GetMapping("/my")
     @ResponseStatus(OK)
-    public List<Company> getMy(@ModelAttribute PageDto pageDto) {
+    public PageDataResponse<List<Company>> getMy(@ModelAttribute PageDto pageDto) {
         return queryCompanyUseCase.getMy(pageDto);
     }
 
     @Operation(description = "Member Id로 Company List 조회")
     @GetMapping("/list/{id}")
     @ResponseStatus(OK)
-    public List<Company> getByMember(final @PathVariable("id") UUID memberId,
+    public PageDataResponse<List<Company>> getByMember(final @PathVariable("id") UUID memberId,
                                      @ModelAttribute PageDto pageDto) {
         return queryCompanyUseCase.getByMemberId(memberId, pageDto);
     }
