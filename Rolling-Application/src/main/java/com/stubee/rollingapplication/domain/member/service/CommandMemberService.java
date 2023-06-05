@@ -23,12 +23,8 @@ public class CommandMemberService implements CommandMemberUseCase {
     private Member toDomain(final Member member, final String nickName) {
         return Member.builder()
                 .id(member.id())
-                .name(member.name())
+                .socialDetails(member.socialDetails())
                 .nickName(nickName)
-                .socialId(member.socialId())
-                .email(member.email())
-                .imageUrl(member.imageUrl())
-                .loginType(member.loginType())
                 .memberRole(member.memberRole())
                 .createdAt(member.createdAt())
                 .build();

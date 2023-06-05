@@ -19,7 +19,7 @@ public class JwtFilter extends OncePerRequestFilter {
     @Override
     public void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                  FilterChain chain) throws IOException, ServletException {
-        String token = parseJwtPort.extractTokenFromRequest(request);
+        final String token = parseJwtPort.extractTokenFromRequest(request);
 
         if(token != null) {
             SecurityContextHolder.getContext().setAuthentication(parseJwtPort.getAuthentication(token));

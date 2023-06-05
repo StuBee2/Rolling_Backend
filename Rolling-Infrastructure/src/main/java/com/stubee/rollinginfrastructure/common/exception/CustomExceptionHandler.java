@@ -31,30 +31,30 @@ public class CustomExceptionHandler {
     @ExceptionHandler(DataAccessException.class)
     protected  ResponseEntity<ErrorResponse> handleDBException(DataAccessException e) {
         return new ResponseEntity<>(
-                new ErrorResponse(BAD_REQUEST.value(), ErrorMessage.DBACCESSEXCEPTION),
+                new ErrorResponse(BAD_REQUEST.value(), ErrorMessage.DBACCESS_EXCEPTION),
                 BAD_REQUEST);
     }
 
     @ExceptionHandler(ServletRequestBindingException.class)
     protected ResponseEntity<ErrorResponse> handleBindException(ServletRequestBindingException e) {
         return new ResponseEntity<>(
-                new ErrorResponse(BAD_REQUEST.value(), ErrorMessage.SERVLETBINDINGEXCEPTION),
+                new ErrorResponse(BAD_REQUEST.value(), ErrorMessage.SERVLET_BINDING_EXCEPTION),
                 BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
     protected ResponseEntity<ErrorResponse> handleException(Exception e) {
         return new ResponseEntity<>(
-                new ErrorResponse(INTERNAL_SERVER_ERROR.value(), ErrorMessage.INTERNAL_SERVER),
+                new ErrorResponse(INTERNAL_SERVER_ERROR.value(), ErrorMessage.INTERNAL_SERVER_EXCEPTION),
                 INTERNAL_SERVER_ERROR);
     }
 
     private static class ErrorMessage {
 
-        private static final String IOEXCEPTION = "IOEXCEPTION OCCURRED";
-        private static final String DBACCESSEXCEPTION = "DBACCESSEXCEPTION OCCURRED";
-        private static final String SERVLETBINDINGEXCEPTION = "SERVLETREQUESTBINDINGEXCEPTION OCCURRED";
-        private static final String INTERNAL_SERVER = "INTERNAL SERVER ERROR OCCURRED";
+        private static final String IOEXCEPTION = "IOException Occurred";
+        private static final String DBACCESS_EXCEPTION = "DBAccessException Occurred";
+        private static final String SERVLET_BINDING_EXCEPTION = "ServletBindingException Occurred";
+        private static final String INTERNAL_SERVER_EXCEPTION = "Internal Server Exception Occurred";
 
     }
 
