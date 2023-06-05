@@ -35,13 +35,13 @@ public class ReviewEntity extends BaseEntity {
     private Double totalGrade;
 
     @NotNull
-    private Short balanceGrade;
+    private Double balanceGrade;
 
     @NotNull
-    private Short salaryGrade;
+    private Double salaryGrade;
 
     @NotNull
-    private Short welfareGrade;
+    private Double welfareGrade;
 
     @NotNull
     @Column(name = "fk_member_id")

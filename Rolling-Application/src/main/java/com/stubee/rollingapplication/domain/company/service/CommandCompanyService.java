@@ -5,7 +5,10 @@ import com.stubee.rollingapplication.domain.company.port.api.CommandCompanyUseCa
 import com.stubee.rollingapplication.domain.company.port.spi.CommandCompanyPort;
 import com.stubee.rollingapplication.domain.member.port.spi.MemberSecurityPort;
 import com.stubee.rollingcore.domain.company.dto.command.RegisterCompanyCommand;
+import com.stubee.rollingcore.domain.company.model.Address;
 import com.stubee.rollingcore.domain.company.model.Company;
+import com.stubee.rollingcore.domain.company.model.CompanyDetails;
+import com.stubee.rollingcore.common.model.Grades;
 import com.stubee.rollingcore.domain.member.model.Member;
 import lombok.RequiredArgsConstructor;
 
@@ -27,14 +30,18 @@ public class CommandCompanyService implements CommandCompanyUseCase {
 
     private Company toDomain(final RegisterCompanyCommand command, final UUID memberId) {
         return Company.builder()
-                .name(command.name())
-                .address(command.address())
-                .description(command.description())
-                .imgUrl(command.imgUrl())
-                .totalGrade(0.0)
-                .balanceGrade(0.0)
-                .salaryGrade(0.0)
-                .welfareGrade(0.0)
+                .companyDetails(CompanyDetails.builder()
+                        .name(command.name())
+                        .address(new Address(command.address()))
+                        .description(command.description())
+                        .imgUrl(command.imgUrl())
+                        .build())
+                .companyGrades(Grades.builder()
+                        .totalGrade(0.0)
+                        .balanceGrade(0.0)
+                        .salaryGrade(0.0)
+                        .welfareGrade(0.0)
+                        .build())
                 .registrantId(memberId)
                 .build();
     }

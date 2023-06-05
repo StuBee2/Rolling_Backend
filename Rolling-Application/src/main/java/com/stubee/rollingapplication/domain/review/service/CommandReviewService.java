@@ -5,10 +5,12 @@ import com.stubee.rollingapplication.domain.company.port.spi.QueryCompanyPort;
 import com.stubee.rollingapplication.domain.member.port.spi.MemberSecurityPort;
 import com.stubee.rollingapplication.domain.review.port.api.CommandReviewUseCase;
 import com.stubee.rollingapplication.domain.review.port.spi.CommandReviewPort;
+import com.stubee.rollingcore.common.model.Grades;
 import com.stubee.rollingcore.domain.company.exception.CompanyNotFoundException;
 import com.stubee.rollingcore.domain.member.model.Member;
 import com.stubee.rollingcore.domain.review.dto.command.WriteReviewCommand;
 import com.stubee.rollingcore.domain.review.model.Review;
+import com.stubee.rollingcore.domain.review.model.ReviewDetails;
 import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;
@@ -41,13 +43,17 @@ public class CommandReviewService implements CommandReviewUseCase {
 
         return Review.builder()
                 .companyId(command.companyId())
-                .content(command.content())
-                .position(command.position())
-                .careerPath(command.careerPath())
-                .balanceGrade(command.balanceGrade())
-                .salaryGrade(command.salaryGrade())
-                .welfareGrade(command.welfareGrade())
-                .totalGrade(totalGrade)
+                .reviewDetails(ReviewDetails.builder()
+                        .content(command.content())
+                        .position(command.position())
+                        .careerPath(command.careerPath())
+                        .build())
+                .reviewGrades(Grades.builder()
+                        .balanceGrade(Double.valueOf(command.balanceGrade()))
+                        .salaryGrade(Double.valueOf(command.salaryGrade()))
+                        .welfareGrade(Double.valueOf(command.welfareGrade()))
+                        .totalGrade(totalGrade)
+                        .build())
                 .memberId(memberId)
                 .build();
     }
