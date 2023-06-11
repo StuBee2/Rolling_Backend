@@ -2,58 +2,48 @@ package com.stubee.rollingadapter.out.persistence.company.mapper;
 
 import com.stubee.rollingadapter.out.common.mapper.GenericMapper;
 import com.stubee.rollingadapter.out.persistence.company.entity.CompanyEntity;
-import com.stubee.rollingcore.domain.company.model.Address;
 import com.stubee.rollingcore.domain.company.model.Company;
 import com.stubee.rollingcore.domain.company.model.CompanyDetails;
 import com.stubee.rollingcore.common.model.Grades;
+import com.stubee.rollingcore.domain.company.model.CompanyId;
+import com.stubee.rollingcore.domain.member.model.MemberId;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CompanyMapper implements GenericMapper<CompanyEntity, Company> {
 
     @Override
-    public CompanyEntity toEntity(final Company domain) {
+    public CompanyEntity toEntity(Company domain) {
         return CompanyEntity.builder()
                 .name(domain.companyDetails().name())
-                .address(domain.companyDetails().address().address())
+                .address(domain.companyDetails().companyAddress().address())
                 .description(domain.companyDetails().description())
                 .imgUrl(domain.companyDetails().imgUrl())
                 .totalGrade(domain.companyGrades().totalGrade())
                 .balanceGrade(domain.companyGrades().balanceGrade())
                 .salaryGrade(domain.companyGrades().salaryGrade())
                 .welfareGrade(domain.companyGrades().welfareGrade())
-                .registrantId(domain.registrantId())
+                .registrantId(domain.registrantId().id())
                 .build();
     }
 
     @Override
     public Company toDomain(final CompanyEntity entity) {
         return Company.builder()
-                .id(entity.getId())
+                .companyId(CompanyId.create(entity.getId()))
                 .companyDetails(companyDetails(entity))
-                .companyGrades(companyGrade(entity))
-                .registrantId(entity.getRegistrantId())
-                .createdAt(entity.getCreatedAt())
-                .modifiedAt(entity.getModifiedAt())
+                .companyGrades(companyGrades(entity))
+                .registrantId(MemberId.create(entity.getRegistrantId()))
                 .build();
     }
 
     private CompanyDetails companyDetails(final CompanyEntity entity) {
-        return CompanyDetails.builder()
-                .name(entity.getName())
-                .address(new Address(entity.getAddress()))
-                .description(entity.getDescription())
-                .imgUrl(entity.getImgUrl())
-                .build();
+        return CompanyDetails.createWithDate(entity.getName(), entity.getAddress(), entity.getDescription(), entity.getImgUrl(),
+                entity.getCreatedAt(), entity.getModifiedAt());
     }
 
-    private Grades companyGrade(final CompanyEntity entity) {
-        return Grades.builder()
-                .totalGrade(entity.getTotalGrade())
-                .balanceGrade(entity.getBalanceGrade())
-                .salaryGrade(entity.getSalaryGrade())
-                .welfareGrade(entity.getWelfareGrade())
-                .build();
+    private Grades companyGrades(final CompanyEntity entity) {
+        return Grades.createWithTotal(entity.getTotalGrade(), entity.getBalanceGrade(), entity.getSalaryGrade(), entity.getWelfareGrade());
     }
 
 }
