@@ -5,7 +5,7 @@ import com.stubee.rollingapplication.domain.member.port.spi.MemberSecurityPort;
 import com.stubee.rollingapplication.domain.review.port.api.QueryReviewUseCase;
 import com.stubee.rollingapplication.domain.review.port.spi.QueryReviewPort;
 import com.stubee.rollingcore.common.dto.PageDataResponse;
-import com.stubee.rollingcore.common.dto.PageDto;
+import com.stubee.rollingcore.common.dto.PageRequest;
 import com.stubee.rollingcore.domain.review.dto.response.ReviewInfoResponse;
 import com.stubee.rollingcore.domain.review.dto.response.ReviewQueryResponse;
 import com.stubee.rollingcore.domain.review.exceptionn.ReviewNotFoundException;
@@ -29,18 +29,18 @@ public class QueryReviewService implements QueryReviewUseCase {
     }
 
     @Override
-    public PageDataResponse<List<ReviewQueryResponse>> getMy(PageDto pageDto) {
-        return getByMemberId(memberSecurityPort.getCurrentMember().id(), pageDto);
+    public PageDataResponse<List<ReviewQueryResponse>> getMy(PageRequest pageRequest) {
+        return getByMemberId(memberSecurityPort.getCurrentMember().memberId().id(), pageRequest);
     }
 
     @Override
-    public PageDataResponse<List<ReviewQueryResponse>> getByMemberId(final UUID memberId, PageDto pageDto) {
-        return PageDataResponse.response(queryReviewPort.findByMemberId(memberId, pageDto));
+    public PageDataResponse<List<ReviewQueryResponse>> getByMemberId(final UUID memberId, PageRequest pageRequest) {
+        return PageDataResponse.create(queryReviewPort.findByMemberId(memberId, pageRequest));
     }
 
     @Override
-    public PageDataResponse<List<ReviewInfoResponse>> getByCompanyId(final UUID companyId, PageDto pageDto) {
-        return PageDataResponse.response(queryReviewPort.findByCompanyId(companyId, pageDto));
+    public PageDataResponse<List<ReviewInfoResponse>> getByCompanyId(final UUID companyId, PageRequest pageRequest) {
+        return PageDataResponse.create(queryReviewPort.findByCompanyId(companyId, pageRequest));
     }
 
     @Override

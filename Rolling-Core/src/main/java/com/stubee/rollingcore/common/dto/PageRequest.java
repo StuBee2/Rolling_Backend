@@ -1,5 +1,5 @@
 package com.stubee.rollingcore.common.dto;
 
-public record PageDto(
+public record PageRequest(
         Long page,
         Long size) {}

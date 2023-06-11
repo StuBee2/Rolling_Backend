@@ -1,7 +1,7 @@
 package com.stubee.rollingadapter.in.web.company;
 
 import com.stubee.rollingcore.common.dto.PageDataResponse;
-import com.stubee.rollingcore.common.dto.PageDto;
+import com.stubee.rollingcore.common.dto.PageRequest;
 import com.stubee.rollingapplication.domain.company.port.api.QueryCompanyUseCase;
 import com.stubee.rollingcore.domain.company.dto.response.CompanyQueryResponse;
 import com.stubee.rollingcore.domain.company.model.Company;
@@ -34,8 +34,8 @@ public class QueryCompanyController {
     @GetMapping("/search")
     @ResponseStatus(OK)
     public PageDataResponse<List<Company>> searchByName(final @RequestParam(name = "name") String companyName,
-                                                        @ModelAttribute PageDto pageDto) {
-        return queryCompanyUseCase.getListByNameContaining(companyName, pageDto);
+                                                        @ModelAttribute PageRequest pageRequest) {
+        return queryCompanyUseCase.getListByNameContaining(companyName, pageRequest);
     }
 
     @Operation(description = "모든 Company List 조회")
@@ -48,40 +48,40 @@ public class QueryCompanyController {
     @Operation(description = "내가 등록한 Company List 조회")
     @GetMapping("/my")
     @ResponseStatus(OK)
-    public PageDataResponse<List<Company>> getMy(@ModelAttribute PageDto pageDto) {
-        return queryCompanyUseCase.getMy(pageDto);
+    public PageDataResponse<List<Company>> getMy(@ModelAttribute PageRequest pageRequest) {
+        return queryCompanyUseCase.getMy(pageRequest);
     }
 
     @Operation(description = "Member Id로 Company List 조회")
     @GetMapping("/list/{id}")
     @ResponseStatus(OK)
     public PageDataResponse<List<Company>> getByMember(final @PathVariable("id") UUID memberId,
-                                     @ModelAttribute PageDto pageDto) {
-        return queryCompanyUseCase.getByMemberId(memberId, pageDto);
+                                     @ModelAttribute PageRequest pageRequest) {
+        return queryCompanyUseCase.getByMemberId(memberId, pageRequest);
     }
 
-    @Operation(description = "회사 TotalGrade Top 10")
+    @Operation(description = "Company TotalGrade Top 10")
     @GetMapping("/rank/total")
     @ResponseStatus(OK)
     public List<Company> getByTotalGrade() {
         return queryCompanyUseCase.getByTotalGrade();
     }
 
-    @Operation(description = "회사 SalaryGrade Top 10")
+    @Operation(description = "Company SalaryGrade Top 10")
     @GetMapping("/rank/salary")
     @ResponseStatus(OK)
     public List<Company> getBySalaryGrade() {
         return queryCompanyUseCase.getBySalaryGrade();
     }
 
-    @Operation(description = "회사 WelfareGrade Top 10")
+    @Operation(description = "Company WelfareGrade Top 10")
     @GetMapping("/rank/welfare")
     @ResponseStatus(OK)
     public List<Company> getByWelfareGrade() {
         return queryCompanyUseCase.getByWelfareGrade();
     }
 
-    @Operation(description = "회사 BalanceGrade Top 10")
+    @Operation(description = "Company BalanceGrade Top 10")
     @GetMapping("/rank/balance")
     @ResponseStatus(OK)
     public List<Company> getByBalanceGrade() {

@@ -5,7 +5,7 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.stubee.rollingadapter.out.persistence.company.mapper.CompanyMapper;
 import com.stubee.rollingapplication.domain.company.port.spi.QueryCompanyPort;
-import com.stubee.rollingcore.common.dto.PageDto;
+import com.stubee.rollingcore.common.dto.PageRequest;
 import com.stubee.rollingcore.domain.company.dto.response.CompanyQueryResponse;
 import com.stubee.rollingcore.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;
@@ -45,25 +45,25 @@ public class QueryCompanyAdapter implements QueryCompanyPort {
     }
 
     @Override
-    public List<Company> findByNameContaining(String companyName, PageDto pageDto) {
+    public List<Company> findByNameContaining(String companyName, PageRequest pageRequest) {
         return jpaQueryFactory
                 .selectFrom(companyEntity)
                 .where(companyEntity.name.contains(companyName))
                 .orderBy(companyEntity.createdAt.desc())
-                .offset(pageDto.page())
-                .limit(pageDto.size())
+                .offset(pageRequest.page())
+                .limit(pageRequest.size())
                 .fetch()
                 .stream().map(companyMapper::toDomain).toList();
     }
 
     @Override
-    public List<Company> findByRegistrantId(UUID registrantId, PageDto pageDto) {
+    public List<Company> findByRegistrantId(UUID registrantId, PageRequest pageRequest) {
         return jpaQueryFactory
                 .selectFrom(companyEntity)
                 .where(companyEntity.registrantId.eq(registrantId))
                 .orderBy(companyEntity.createdAt.desc())
-                .offset(pageDto.page())
-                .limit(pageDto.size())
+                .offset(pageRequest.page())
+                .limit(pageRequest.size())
                 .fetch()
                 .stream().map(companyMapper::toDomain).toList();
     }

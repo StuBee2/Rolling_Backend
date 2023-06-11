@@ -4,7 +4,7 @@ import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.stubee.rollingadapter.out.persistence.review.mapper.ReviewMapper;
-import com.stubee.rollingcore.common.dto.PageDto;
+import com.stubee.rollingcore.common.dto.PageRequest;
 import com.stubee.rollingcore.domain.review.dto.response.ReviewInfoResponse;
 import com.stubee.rollingapplication.domain.review.port.spi.QueryReviewPort;
 import com.stubee.rollingcore.domain.review.dto.response.ReviewQueryResponse;
@@ -39,7 +39,7 @@ public class QueryReviewAdapter implements QueryReviewPort {
     }
 
     @Override
-    public List<ReviewQueryResponse> findByMemberId(final UUID memberId, PageDto pageDto) {
+    public List<ReviewQueryResponse> findByMemberId(final UUID memberId, PageRequest pageRequest) {
         return jpaQueryFactory
                 .select(queryResponseProjection())
                 .from(reviewEntity)
@@ -47,13 +47,13 @@ public class QueryReviewAdapter implements QueryReviewPort {
                 .on(reviewEntity.companyId.eq(companyEntity.id))
                 .where(companyEntity.registrantId.eq(memberId))
                 .orderBy(reviewEntity.createdAt.desc())
-                .offset(pageDto.page())
-                .limit(pageDto.size())
+                .offset(pageRequest.page())
+                .limit(pageRequest.size())
                 .fetch();
     }
 
     @Override
-    public List<ReviewInfoResponse> findByCompanyId(final UUID companyId, PageDto pageDto) {
+    public List<ReviewInfoResponse> findByCompanyId(final UUID companyId, PageRequest pageRequest) {
         return jpaQueryFactory
                 .select(infoResponseProjection())
                 .from(reviewEntity)
@@ -61,8 +61,8 @@ public class QueryReviewAdapter implements QueryReviewPort {
                 .on(reviewEntity.memberId.eq(memberEntity.id))
                 .where(reviewEntity.companyId.eq(companyId))
                 .orderBy(reviewEntity.createdAt.desc())
-                .offset(pageDto.page())
-                .limit(pageDto.size())
+                .offset(pageRequest.page())
+                .limit(pageRequest.size())
                 .fetch();
     }
 
