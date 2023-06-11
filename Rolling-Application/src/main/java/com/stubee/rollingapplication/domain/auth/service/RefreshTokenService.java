@@ -25,7 +25,7 @@ public class RefreshTokenService implements RefreshTokenUseCase {
     public RefreshTokenResponse refresh(final String refreshToken) {
         final Jws<Claims> claims = parseJwtPort.getClaims(parseJwtPort.extractToken(refreshToken));
 
-        if(parseJwtPort.isEqualType(claims, JwtType.REFRESH)) {
+        if(parseJwtPort.isWrongType(claims, JwtType.REFRESH)) {
             throw WrongTokenTypeException.EXCEPTION;
         }
 

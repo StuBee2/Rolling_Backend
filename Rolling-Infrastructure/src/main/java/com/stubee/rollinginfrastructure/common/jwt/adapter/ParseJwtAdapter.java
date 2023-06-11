@@ -42,7 +42,7 @@ public class ParseJwtAdapter implements ParseJwtPort {
     public Authentication getAuthentication(final String token) {
         final Jws<Claims> claims = getClaims(token);
 
-        if(isEqualType(claims, JwtType.ACCESS)) {
+        if(isWrongType(claims, JwtType.ACCESS)) {
             throw WrongTokenTypeException.EXCEPTION;
         }
 
@@ -69,8 +69,8 @@ public class ParseJwtAdapter implements ParseJwtPort {
     }
 
     @Override
-    public boolean isEqualType(final Jws<Claims> claims, final JwtType jwtType) {
-        return !(claims.getHeader().get(Header.JWT_TYPE).equals(jwtType));
+    public boolean isWrongType(final Jws<Claims> claims, final JwtType jwtType) {
+        return !(claims.getHeader().get(Header.JWT_TYPE).equals(jwtType.toString()));
     }
 
 }
