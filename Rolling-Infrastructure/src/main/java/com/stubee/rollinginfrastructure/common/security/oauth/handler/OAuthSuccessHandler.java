@@ -52,8 +52,8 @@ public class OAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         Member member = ((CustomMemberDetails) authentication.getPrincipal()).getMember();
 
         return UriComponentsBuilder.fromUriString("http://localhost:3000/callback")
-                .queryParam("accessToken", provideJwtPort.generateAccessToken(member.id(), member.memberRole()))
-                .queryParam("refreshToken", provideJwtPort.generateRefreshToken(member.id(), member.memberRole()))
+                .queryParam("accessToken", provideJwtPort.generateAccessToken(member.memberId().id(), member.memberDetails().memberRole()))
+                .queryParam("refreshToken", provideJwtPort.generateRefreshToken(member.memberId().id(), member.memberDetails().memberRole()))
                 .build().toUriString();
     }
 

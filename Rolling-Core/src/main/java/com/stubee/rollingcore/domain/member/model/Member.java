@@ -1,16 +1,43 @@
 package com.stubee.rollingcore.domain.member.model;
 
-import com.stubee.rollingcore.domain.member.enums.MemberRole;
 import lombok.Builder;
-
-import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Builder
 public record Member (
-        UUID id,
+        MemberId memberId,
         SocialDetails socialDetails,
-        String nickName,
-        MemberRole memberRole,
-        LocalDateTime createdAt,
-        LocalDateTime modifiedAt) {}
+        MemberDetails memberDetails) {
+    public Member updateSocialDetails(final String name, final String email) {
+        return Member.builder()
+                .memberId(memberId)
+                .socialDetails(updateNameAndEmail(name, email))
+                .memberDetails(memberDetails)
+                .build();
+    }
+
+    public Member updateMemberDetails(final String nickName) {
+        return Member.builder()
+                .memberId(memberId)
+                .socialDetails(socialDetails)
+                .memberDetails(updateNickName(nickName))
+                .build();
+    }
+
+    private SocialDetails updateNameAndEmail(final String name, final String email) {
+        return SocialDetails.builder()
+                .socialId(socialDetails.socialId())
+                .loginType(socialDetails.loginType())
+                .name(name)
+                .email(email)
+                .imageUrl(socialDetails.imageUrl())
+                .build();
+    }
+
+    private MemberDetails updateNickName(final String nickName) {
+        return MemberDetails.builder()
+                .nickName(nickName)
+                .memberRole(memberDetails.memberRole())
+                .createdAt(memberDetails.createdAt())
+                .build();
+    }
+}

@@ -31,7 +31,7 @@ public class CustomMemberDetails implements UserDetails, OAuth2User {
 
     @Override
     public String getName() {
-        return member.id().toString();
+        return member.memberId().id().toString();
     }
 
     @Override
@@ -41,7 +41,7 @@ public class CustomMemberDetails implements UserDetails, OAuth2User {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton((GrantedAuthority) member.memberRole()::getKey);
+        return Collections.singleton((GrantedAuthority) member.memberDetails().memberRole()::getKey);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class CustomMemberDetails implements UserDetails, OAuth2User {
 
     @Override
     public String getUsername() {
-        return member.id().toString();
+        return member.memberId().id().toString();
     }
 
     @Override

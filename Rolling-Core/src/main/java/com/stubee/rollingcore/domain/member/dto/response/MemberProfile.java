@@ -3,6 +3,7 @@ package com.stubee.rollingcore.domain.member.dto.response;
 import com.stubee.rollingcore.domain.member.enums.LoginType;
 import com.stubee.rollingcore.domain.member.enums.MemberRole;
 import com.stubee.rollingcore.domain.member.model.Member;
+import com.stubee.rollingcore.domain.member.model.MemberDetails;
 import com.stubee.rollingcore.domain.member.model.SocialDetails;
 
 public record MemberProfile (
@@ -21,7 +22,9 @@ public record MemberProfile (
                         .email(email)
                         .imageUrl(imageUrl)
                         .build())
-                .memberRole(memberRole)
+                .memberDetails(MemberDetails.builder()
+                        .memberRole(MemberRole.MEMBER)
+                        .build())
                 .build();
     }
 
