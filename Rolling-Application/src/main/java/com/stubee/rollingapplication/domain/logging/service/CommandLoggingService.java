@@ -6,9 +6,8 @@ import com.stubee.rollingapplication.domain.logging.port.spi.CommandLoggingPort;
 import com.stubee.rollingapplication.domain.member.port.spi.MemberSecurityPort;
 import com.stubee.rollingcore.domain.logging.dto.command.CreateLoggingCommand;
 import com.stubee.rollingcore.domain.logging.model.Logging;
+import com.stubee.rollingcore.domain.member.model.MemberId;
 import lombok.RequiredArgsConstructor;
-
-import java.util.UUID;
 
 @CommandService
 @RequiredArgsConstructor
@@ -18,16 +17,12 @@ public class CommandLoggingService implements CommandLoggingUseCase {
     private final CommandLoggingPort commandLoggingPort;
 
     @Override
-    public Logging create(final CreateLoggingCommand command) {
-        return commandLoggingPort.save(toDomain(command, memberSecurityPort.getCurrentMember().id()));
+    public Logging create(CreateLoggingCommand command) {
+        return commandLoggingPort.save(createExceptLoggingId(command, memberSecurityPort.getCurrentMember().memberId()));
     }
 
-    private Logging toDomain(final CreateLoggingCommand command, final UUID memberId) {
-        return Logging.builder()
-                .description(command.description())
-                .module(command.module())
-                .memberId(memberId)
-                .build();
+    private Logging createExceptLoggingId(CreateLoggingCommand command, MemberId memberId) {
+        return Logging.createExceptLoggingId(command, memberId);
     }
 
 }
