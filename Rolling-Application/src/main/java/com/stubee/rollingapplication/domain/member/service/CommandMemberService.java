@@ -16,18 +16,12 @@ public class CommandMemberService implements CommandMemberUseCase {
     private final CommandMemberPort commandMemberPort;
 
     @Override
-    public void updateNickName(final UpdateNickNameCommand command) {
-        commandMemberPort.save(toDomain(securityPort.getCurrentMember(), command.nickName()));
+    public void updateNickName(UpdateNickNameCommand command) {
+        commandMemberPort.saveWithId(update(securityPort.getCurrentMember(), command.nickName()));
     }
 
-    private Member toDomain(final Member member, final String nickName) {
-        return Member.builder()
-                .id(member.id())
-                .socialDetails(member.socialDetails())
-                .nickName(nickName)
-                .memberRole(member.memberRole())
-                .createdAt(member.createdAt())
-                .build();
+    private Member update(Member member, final String nickName) {
+        return member.updateMemberDetails(nickName);
     }
 
 }

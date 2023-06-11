@@ -17,24 +17,30 @@ public class CommandMemberAdapter implements CommandMemberPort {
     private final MemberMapper memberMapper;
 
     @Override
-    public Member save(final Member member) {
-        return memberMapper.toDomain(commandMemberJpaRepository.save(memberMapper.toIdEntity(member)));
+    public Member saveWithId(Member member) {
+        return save(memberMapper.toEntity(member));
+    }
+
+    @Override
+    public Member saveExceptId(Member member) {
+        return save(memberMapper.toEntityExceptId(member));
+    }
+
+    @Override
+    public Member saveOrUpdate(MemberProfile memberProfile) {
+        Member member = commandMemberJpaRepository.findBySocialIdAndLoginType(memberProfile.socialId(), memberProfile.loginType())
+                .map(memberMapper::toDomain)
+                .orElse(null);
+
+        if(member == null) {
+            return saveExceptId(memberProfile.toMember());
+        } else {
+            return saveWithId(member.updateSocialDetails(memberProfile.name(), memberProfile.email()));
+        }
     }
 
     private Member save(final MemberEntity memberEntity) {
         return memberMapper.toDomain(commandMemberJpaRepository.save(memberEntity));
-    }
-
-    @Override
-    public Member saveOrUpdate(final MemberProfile memberProfile) {
-        MemberEntity memberEntity = commandMemberJpaRepository.findBySocialIdAndLoginType(memberProfile.socialId(), memberProfile.loginType())
-                .orElse(null);
-
-        if(memberEntity == null) {
-            return save(memberProfile.toMember());
-        } else {
-            return save(memberEntity.update(memberProfile.name(), memberProfile.email()));
-        }
     }
 
 }
