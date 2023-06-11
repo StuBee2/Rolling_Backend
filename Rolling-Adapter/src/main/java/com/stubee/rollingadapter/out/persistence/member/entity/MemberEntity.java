@@ -38,11 +38,4 @@ public class MemberEntity extends BaseEntity {
     @Enumerated(value = EnumType.STRING)
     private LoginType loginType;
 
-    public MemberEntity update(final String name, final String email) {
-        this.name = name;
-        this.email = email;
-
-        return this;
-    }
-
 }

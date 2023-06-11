@@ -1,17 +1,24 @@
 package com.stubee.rollingcore.domain.review.model;
 
 import com.stubee.rollingcore.common.model.Grades;
+import com.stubee.rollingcore.domain.company.model.CompanyId;
+import com.stubee.rollingcore.domain.member.model.MemberId;
+import com.stubee.rollingcore.domain.review.dto.command.WriteReviewCommand;
 import lombok.Builder;
-
-import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Builder
 public record Review (
-        UUID id,
+        ReviewId reviewId,
         ReviewDetails reviewDetails,
         Grades reviewGrades,
-        UUID memberId,
-        UUID companyId,
-        LocalDateTime createdAt,
-        LocalDateTime modifiedAt) {}
+        MemberId memberId,
+        CompanyId companyId) {
+    public static Review createExceptReviewId(WriteReviewCommand command, MemberId memberId) {
+        return Review.builder()
+                .reviewDetails(ReviewDetails.create(command.content(), command.position(), command.careerPath()))
+                .reviewGrades(Grades.create(command.balanceGrade(), command.salaryGrade(), command.welfareGrade()))
+                .companyId(new CompanyId(command.companyId()))
+                .memberId(memberId)
+                .build();
+    }
+}

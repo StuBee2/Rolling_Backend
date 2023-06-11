@@ -3,15 +3,18 @@ package com.stubee.rollingadapter.out.persistence.review.mapper;
 import com.stubee.rollingadapter.out.common.mapper.GenericMapper;
 import com.stubee.rollingadapter.out.persistence.review.entity.ReviewEntity;
 import com.stubee.rollingcore.common.model.Grades;
+import com.stubee.rollingcore.domain.company.model.CompanyId;
+import com.stubee.rollingcore.domain.member.model.MemberId;
 import com.stubee.rollingcore.domain.review.model.Review;
 import com.stubee.rollingcore.domain.review.model.ReviewDetails;
+import com.stubee.rollingcore.domain.review.model.ReviewId;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ReviewMapper implements GenericMapper<ReviewEntity, Review> {
 
     @Override
-    public ReviewEntity toEntity(final Review domain) {
+    public ReviewEntity toEntity(Review domain) {
         return ReviewEntity.builder()
                 .content(domain.reviewDetails().content())
                 .position(domain.reviewDetails().position())
@@ -20,39 +23,28 @@ public class ReviewMapper implements GenericMapper<ReviewEntity, Review> {
                 .balanceGrade(domain.reviewGrades().balanceGrade())
                 .salaryGrade(domain.reviewGrades().salaryGrade())
                 .welfareGrade(domain.reviewGrades().welfareGrade())
-                .memberId(domain.memberId())
-                .companyId(domain.companyId())
+                .memberId(domain.memberId().id())
+                .companyId(domain.companyId().id())
                 .build();
     }
 
     @Override
     public Review toDomain(final ReviewEntity entity) {
         return Review.builder()
-                .id(entity.getId())
+                .reviewId(ReviewId.create(entity.getId()))
                 .reviewDetails(reviewDetails(entity))
                 .reviewGrades(reviewGrades(entity))
-                .memberId(entity.getMemberId())
-                .companyId(entity.getCompanyId())
-                .createdAt(entity.getCreatedAt())
-                .modifiedAt(entity.getModifiedAt())
+                .memberId(MemberId.create(entity.getMemberId()))
+                .companyId(CompanyId.create(entity.getCompanyId()))
                 .build();
     }
 
     private ReviewDetails reviewDetails(final ReviewEntity entity) {
-        return ReviewDetails.builder()
-                .content(entity.getContent())
-                .position(entity.getPosition())
-                .careerPath(entity.getCareerPath())
-                .build();
+        return ReviewDetails.create(entity.getContent(), entity.getPosition(), entity.getCareerPath());
     }
 
     private Grades reviewGrades(final ReviewEntity entity) {
-        return Grades.builder()
-                .totalGrade(entity.getTotalGrade())
-                .balanceGrade(entity.getBalanceGrade())
-                .salaryGrade(entity.getSalaryGrade())
-                .welfareGrade(entity.getWelfareGrade())
-                .build();
+        return Grades.createWithTotal(entity.getTotalGrade(), entity.getBalanceGrade(), entity.getSalaryGrade(), entity.getWelfareGrade());
     }
 
 }
