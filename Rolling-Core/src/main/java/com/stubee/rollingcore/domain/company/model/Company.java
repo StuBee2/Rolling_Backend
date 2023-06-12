@@ -3,9 +3,10 @@ package com.stubee.rollingcore.domain.company.model;
 import com.stubee.rollingcore.common.model.Grades;
 import com.stubee.rollingcore.domain.company.dto.command.RegisterCompanyCommand;
 import com.stubee.rollingcore.domain.member.model.MemberId;
+import lombok.AccessLevel;
 import lombok.Builder;
 
-@Builder
+@Builder(access = AccessLevel.PRIVATE)
 public record Company (
         CompanyId companyId,
         CompanyDetails companyDetails,
@@ -16,6 +17,15 @@ public record Company (
                 .companyDetails(CompanyDetails.create(command.name(), command.address(), command.description(), command.imgUrl()))
                 .companyGrades(Grades.createWithTotal(0.0, 0.0, 0.0, 0.0))
                 .registrantId(memberId)
+                .build();
+    }
+
+    public static Company create(CompanyId companyId, CompanyDetails companyDetails, Grades companyGrades, MemberId registrantId) {
+        return Company.builder()
+                .companyId(companyId)
+                .companyDetails(companyDetails)
+                .companyGrades(companyGrades)
+                .registrantId(registrantId)
                 .build();
     }
 }

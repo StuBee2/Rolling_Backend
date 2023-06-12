@@ -1,10 +1,11 @@
 package com.stubee.rollingcore.domain.company.model;
 
+import lombok.AccessLevel;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
 
-@Builder
+@Builder(access = AccessLevel.PRIVATE)
 public record CompanyDetails(
         String name,
         Address companyAddress,
@@ -32,5 +33,4 @@ public record CompanyDetails(
                 .modifiedAt(modifiedAt)
                 .build();
     }
-
 }

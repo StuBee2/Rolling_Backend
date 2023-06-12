@@ -1,8 +1,9 @@
 package com.stubee.rollingcore.common.model;
 
+import lombok.AccessLevel;
 import lombok.Builder;
 
-@Builder
+@Builder(access = AccessLevel.PRIVATE)
 public record Grades(
         Double totalGrade,
         Double balanceGrade,
