@@ -24,19 +24,11 @@ public record Member (
     }
 
     public Member updateSocialDetails(final String name, final String email) {
-        return Member.builder()
-                .memberId(memberId)
-                .socialDetails(updateNameAndEmail(name, email))
-                .memberDetails(memberDetails)
-                .build();
+        return create(memberId, updateNameAndEmail(name, email), memberDetails);
     }
 
     public Member updateMemberDetails(final String nickName) {
-        return Member.builder()
-                .memberId(memberId)
-                .socialDetails(socialDetails)
-                .memberDetails(updateNickName(nickName))
-                .build();
+        return create(memberId, socialDetails, updateNickName(nickName));
     }
 
     private SocialDetails updateNameAndEmail(final String name, final String email) {

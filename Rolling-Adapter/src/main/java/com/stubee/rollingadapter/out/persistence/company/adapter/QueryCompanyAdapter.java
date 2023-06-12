@@ -50,7 +50,7 @@ public class QueryCompanyAdapter implements QueryCompanyPort {
                 .selectFrom(companyEntity)
                 .where(companyEntity.name.contains(companyName))
                 .orderBy(companyEntity.createdAt.desc())
-                .offset(pageRequest.page())
+                .offset((pageRequest.page()-1)* pageRequest.size()+1)
                 .limit(pageRequest.size())
                 .fetch()
                 .stream().map(companyMapper::toDomain).toList();
@@ -62,7 +62,7 @@ public class QueryCompanyAdapter implements QueryCompanyPort {
                 .selectFrom(companyEntity)
                 .where(companyEntity.registrantId.eq(registrantId))
                 .orderBy(companyEntity.createdAt.desc())
-                .offset(pageRequest.page())
+                .offset((pageRequest.page()-1)* pageRequest.size()+1)
                 .limit(pageRequest.size())
                 .fetch()
                 .stream().map(companyMapper::toDomain).toList();

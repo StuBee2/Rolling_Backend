@@ -47,7 +47,7 @@ public class QueryReviewAdapter implements QueryReviewPort {
                 .on(reviewEntity.companyId.eq(companyEntity.id))
                 .where(companyEntity.registrantId.eq(memberId))
                 .orderBy(reviewEntity.createdAt.desc())
-                .offset(pageRequest.page())
+                .offset((pageRequest.page()-1)* pageRequest.size()+1)
                 .limit(pageRequest.size())
                 .fetch();
     }
@@ -61,7 +61,7 @@ public class QueryReviewAdapter implements QueryReviewPort {
                 .on(reviewEntity.memberId.eq(memberEntity.id))
                 .where(reviewEntity.companyId.eq(companyId))
                 .orderBy(reviewEntity.createdAt.desc())
-                .offset(pageRequest.page())
+                .offset((pageRequest.page()-1)* pageRequest.size()+1)
                 .limit(pageRequest.size())
                 .fetch();
     }
