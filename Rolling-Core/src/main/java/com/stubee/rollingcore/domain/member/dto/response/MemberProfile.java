@@ -14,18 +14,8 @@ public record MemberProfile (
         /*@NotBlank*/ MemberRole memberRole,
         /*@NotBlank*/ LoginType loginType) {
     public Member toMember() {
-        return Member.builder()
-                .socialDetails(SocialDetails.builder()
-                        .socialId(socialId)
-                        .loginType(loginType)
-                        .name(name)
-                        .email(email)
-                        .imageUrl(imageUrl)
-                        .build())
-                .memberDetails(MemberDetails.builder()
-                        .memberRole(MemberRole.MEMBER)
-                        .build())
-                .build();
+        return Member.createExceptId(SocialDetails.create(socialId, loginType, name, email, imageUrl),
+                MemberDetails.createOnlyMemberRole(memberRole));
     }
 
 }

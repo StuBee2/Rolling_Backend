@@ -1,12 +1,28 @@
 package com.stubee.rollingcore.domain.member.model;
 
+import lombok.AccessLevel;
 import lombok.Builder;
 
-@Builder
+@Builder(access = AccessLevel.PRIVATE)
 public record Member (
         MemberId memberId,
         SocialDetails socialDetails,
         MemberDetails memberDetails) {
+    public static Member create(MemberId memberId, SocialDetails socialDetails, MemberDetails memberDetails) {
+        return Member.builder()
+                .memberId(memberId)
+                .socialDetails(socialDetails)
+                .memberDetails(memberDetails)
+                .build();
+    }
+
+    public static Member createExceptId(SocialDetails socialDetails, MemberDetails memberDetails) {
+        return Member.builder()
+                .socialDetails(socialDetails)
+                .memberDetails(memberDetails)
+                .build();
+    }
+
     public Member updateSocialDetails(final String name, final String email) {
         return Member.builder()
                 .memberId(memberId)
@@ -24,20 +40,10 @@ public record Member (
     }
 
     private SocialDetails updateNameAndEmail(final String name, final String email) {
-        return SocialDetails.builder()
-                .socialId(socialDetails.socialId())
-                .loginType(socialDetails.loginType())
-                .name(name)
-                .email(email)
-                .imageUrl(socialDetails.imageUrl())
-                .build();
+        return socialDetails.updateNameAndEmail(name, email);
     }
 
     private MemberDetails updateNickName(final String nickName) {
-        return MemberDetails.builder()
-                .nickName(nickName)
-                .memberRole(memberDetails.memberRole())
-                .createdAt(memberDetails.createdAt())
-                .build();
+        return memberDetails.updateNickName(nickName);
     }
 }

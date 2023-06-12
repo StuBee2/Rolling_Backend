@@ -40,30 +40,15 @@ public class MemberMapper implements GenericMapper<MemberEntity, Member> {
 
     @Override
     public Member toDomain(final MemberEntity entity) {
-        return Member.builder()
-                .memberId(MemberId.create(entity.getId()))
-                .socialDetails(socialDetails(entity))
-                .memberDetails(memberDetails(entity))
-                .build();
+        return Member.create(MemberId.create(entity.getId()), socialDetails(entity), memberDetails(entity));
     }
 
     private SocialDetails socialDetails(final MemberEntity entity) {
-        return SocialDetails.builder()
-                .socialId(entity.getSocialId())
-                .loginType(entity.getLoginType())
-                .name(entity.getName())
-                .email(entity.getEmail())
-                .imageUrl(entity.getImageUrl())
-                .build();
+        return SocialDetails.create(entity.getSocialId(), entity.getLoginType(), entity.getName(), entity.getEmail(), entity.getImageUrl());
     }
 
     private MemberDetails memberDetails(final MemberEntity entity) {
-        return MemberDetails.builder()
-                .nickName(entity.getNickName())
-                .memberRole(entity.getMemberRole())
-                .createdAt(entity.getCreatedAt())
-                .modifiedAt(entity.getModifiedAt())
-                .build();
+        return MemberDetails.create(entity.getNickName(), entity.getMemberRole(), entity.getCreatedAt(), entity.getModifiedAt());
     }
 
 }
