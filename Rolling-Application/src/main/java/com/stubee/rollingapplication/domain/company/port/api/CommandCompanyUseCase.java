@@ -2,8 +2,7 @@ package com.stubee.rollingapplication.domain.company.port.api;
 
 import com.stubee.rollingcore.domain.company.dto.command.RegisterCompanyCommand;
 import com.stubee.rollingcore.domain.company.model.Company;
-
-import java.util.UUID;
+import com.stubee.rollingcore.domain.company.model.CompanyId;
 
 public interface CommandCompanyUseCase {
 
@@ -11,6 +10,6 @@ public interface CommandCompanyUseCase {
 
     void update(Company company);
 
-    void delete(UUID memberId);
+    void delete(CompanyId companyId);
 
 }
