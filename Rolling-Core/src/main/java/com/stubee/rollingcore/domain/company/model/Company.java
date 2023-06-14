@@ -28,4 +28,12 @@ public record Company (
                 .registrantId(registrantId)
                 .build();
     }
+
+    public Company updateGrades(final double totalAvg, final double balanceAvg, final double salaryAvg, final double welfareAvg) {
+        return create(companyId, companyDetails, updateAverages(totalAvg, balanceAvg, salaryAvg, welfareAvg), registrantId);
+    }
+
+    private Grades updateAverages(final double totalAvg, final double balanceAvg, final double salaryAvg, final double welfareAvg) {
+        return Grades.createWithTotal(totalAvg, balanceAvg, salaryAvg, welfareAvg);
+    }
 }
