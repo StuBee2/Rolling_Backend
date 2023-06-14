@@ -9,9 +9,9 @@ public record ReviewInfoResponse (
         String reviewPosition,
         String reviewCareerPath,
         Double totalGrade,
-        Short balanceGrade,
-        Short salaryGrade,
-        Short welfareGrade,
+        Double balanceGrade,
+        Double salaryGrade,
+        Double welfareGrade,
         LocalDateTime reviewCreatedAt,
         LocalDateTime reviewModifiedAt,
 

@@ -18,7 +18,7 @@ public interface QueryCompanyPort {
 
     List<Company> findByRegistrantId(UUID registrantId, PageRequest pageRequest);
 
-    List<Company> findAll();
+    List<Company> findAll(PageRequest pageRequest);
 
     List<Company> findByTotalGrade();
 

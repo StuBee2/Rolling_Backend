@@ -14,7 +14,6 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 import java.util.UUID;
 
-
 @QueryService
 @RequiredArgsConstructor
 public class QueryCompanyService implements QueryCompanyUseCase {
@@ -34,8 +33,8 @@ public class QueryCompanyService implements QueryCompanyUseCase {
     }
 
     @Override
-    public List<Company> getList() {
-        return queryCompanyPort.findAll();
+    public List<Company> getList(PageRequest pageRequest) {
+        return queryCompanyPort.findAll(pageRequest);
     }
 
     @Override

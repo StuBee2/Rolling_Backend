@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 import static org.springframework.http.HttpStatus.*;
 
 @Tag(name = "Command Company", description = "Command Company API")
@@ -24,6 +26,13 @@ public class CommandCompanyController {
     @ResponseStatus(CREATED)
     public Company register(final @RequestBody @Validated RegisterCompanyRequest request) {
         return commandCompanyUseCase.register(request.toCommand());
+    }
+
+    @Operation(description = "Company 삭제")
+    @DeleteMapping("/{id}")
+    @ResponseStatus(NO_CONTENT)
+    public void delete(final @PathVariable("id") UUID companyId) {
+        commandCompanyUseCase.delete(companyId);
     }
 
 }

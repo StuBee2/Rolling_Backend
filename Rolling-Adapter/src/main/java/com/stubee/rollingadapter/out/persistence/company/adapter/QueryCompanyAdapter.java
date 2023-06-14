@@ -69,9 +69,11 @@ public class QueryCompanyAdapter implements QueryCompanyPort {
     }
 
     @Override
-    public List<Company> findAll() {
+    public List<Company> findAll(PageRequest pageRequest) {
         return jpaQueryFactory
                 .selectFrom(companyEntity)
+                .offset((pageRequest.page()-1)*pageRequest.size())
+                .limit(pageRequest.size())
                 .fetch()
                 .stream().map(companyMapper::toDomain).toList();
     }

@@ -14,7 +14,7 @@ public interface QueryCompanyUseCase {
 
     PageDataResponse<List<Company>> getListByNameContaining(String companyName, PageRequest pageRequest);
 
-    List<Company>  getList();
+    List<Company> getList(PageRequest pageRequest);
 
     PageDataResponse<List<Company>> getMy(PageRequest pageRequest);
 

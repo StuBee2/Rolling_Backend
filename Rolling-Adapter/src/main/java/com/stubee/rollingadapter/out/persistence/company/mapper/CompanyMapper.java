@@ -27,6 +27,22 @@ public class CompanyMapper implements GenericMapper<CompanyEntity, Company> {
                 .build();
     }
 
+    public CompanyEntity toEntityWithId(Company domain) {
+        return CompanyEntity.builder()
+                .id(domain.companyId().id())
+                .name(domain.companyDetails().name())
+                .address(domain.companyDetails().companyAddress().address())
+                .description(domain.companyDetails().description())
+                .imgUrl(domain.companyDetails().imgUrl())
+                .totalGrade(domain.companyGrades().totalGrade())
+                .balanceGrade(domain.companyGrades().balanceGrade())
+                .salaryGrade(domain.companyGrades().salaryGrade())
+                .welfareGrade(domain.companyGrades().welfareGrade())
+                .registrantId(domain.registrantId().id())
+                .createdAt(domain.companyDetails().createdAt())
+                .build();
+    }
+
     @Override
     public Company toDomain(final CompanyEntity entity) {
         return Company.create(CompanyId.create(entity.getId()), companyDetails(entity),
