@@ -20,18 +20,17 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CompanyAvgScheduler {
 
-    private static long companyPage = 1;
-    private static final long SIZE = 10;
+    private static final long PAGE_SIZE = 10;
 
     private final QueryCompanyUseCase queryCompanyUseCase;
     private final CommandCompanyUseCase commandCompanyUseCase;
-
     private final QueryReviewUseCase queryReviewUseCase;
 
-    //리펙 필요
     /** 매일 3 am */
     @Scheduled(cron = "0 0 3 * * ?", zone = "Asia/Seoul")
     public void calculateAverage() {
+        long companyPage = 1;
+
         while(true) {
             List<Company> companyList = queryCompanyUseCase.getList(pageRequest(companyPage));
 
@@ -43,14 +42,14 @@ public class CompanyAvgScheduler {
 
             /** 각 Company별 Grades 통계 */
             for (Company company : companyList) {
-                log.info("<<<<<CompanyId : " + company.companyId().id() + ", START" + " >>>>>");
+                log.info("<<<CompanyId : {}, START>>>", company.companyId().id());
                 long reviewPage = 1, reviewCnt = 0;
                 double totalSum = 0, balanceSum = 0, salarySum = 0, welfareSum = 0;
 
                 /** Review Paging */
                 while(true) {
-                    List<ReviewInfoResponse> reviewList = queryReviewUseCase.getByCompanyId(company.companyId().id(),
-                                    new PageRequest(reviewPage, SIZE)).data();
+                    List<ReviewInfoResponse> reviewList = queryReviewUseCase.getByCompanyId(
+                            company.companyId().id(), new PageRequest(reviewPage, PAGE_SIZE)).data();
 
                     for(ReviewInfoResponse response : reviewList) {
                         totalSum += response.totalGrade();
@@ -60,34 +59,34 @@ public class CompanyAvgScheduler {
                     }
 
                     reviewCnt += reviewList.size();
-
                     reviewPage++;
-                    if(reviewList.size()<SIZE) {
+
+                    if(reviewList.size()<PAGE_SIZE) {
                         break;
                     }
                 }
 
-                log.info("==> reviewCnt : " + reviewCnt);
-                final double totalAvg = totalSum/reviewCnt;
-                final double balanceAvg = balanceSum/reviewCnt;
-                final double salaryAvg = salarySum/reviewCnt;
-                final double welfareAvg = welfareSum/reviewCnt;
-                log.info("==> totalAvg : " + totalAvg);
-                log.info("==> balanceAvg : " + balanceAvg);
-                log.info("==> salaryAvg : " + salaryAvg);
-                log.info("==> welfareAvg : " + welfareAvg);
+                log.info("<<<reviewCnt : {}>>>", reviewCnt);
 
-                if(reviewCnt==0) {
-                    continue;
+                final double totalAvg = calculateAvg(totalSum, reviewCnt);
+                final double balanceAvg = calculateAvg(balanceSum, reviewCnt);
+                final double salaryAvg = calculateAvg(salarySum, reviewCnt);
+                final double welfareAvg = calculateAvg(welfareSum, reviewCnt);
+                log.info("<<<totalAvg : {}>>>", totalAvg);
+                log.info("<<<balanceAvg : {}>>>", balanceAvg);
+                log.info("<<<salaryAvg : {}>>>", salaryAvg);
+                log.info("<<<welfareAvg : {}>>>", welfareAvg);
+
+                /** 리뷰개수 1개 이상일 때만 update */
+                if(reviewCnt>0) {
+                    Company updatedCompany = company.updateGrades(totalAvg, balanceAvg, salaryAvg, welfareAvg);
+                    log.debug("<<<CompanyId : {}>>>", updatedCompany.companyId().id());
+
+                    commandCompanyUseCase.update(updatedCompany);
                 }
-
-                Company updatedCompany = company.updateGrades(totalAvg, balanceAvg, salaryAvg, welfareAvg);
-                log.debug("==> CompanyId : " + updatedCompany.companyId().id());
-
-                commandCompanyUseCase.update(updatedCompany);
             }
 
-            if(companyList.size()<SIZE) {
+            if(companyList.size()<PAGE_SIZE) {
                 log.info("<<<Company Paging End>>>");
                 break;
             }
@@ -97,7 +96,11 @@ public class CompanyAvgScheduler {
     }
 
     private PageRequest pageRequest(final long page) {
-        return new PageRequest(page, CompanyAvgScheduler.SIZE);
+        return new PageRequest(page, PAGE_SIZE);
+    }
+
+    private double calculateAvg(final double sum, final long reviewCnt) {
+        return reviewCnt==0 ? 0 : Math.round(sum/reviewCnt*10)/10.0;
     }
 
 }
