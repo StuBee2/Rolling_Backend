@@ -2,7 +2,7 @@ package com.stubee.rollingapplication.domain.company.port.api;
 
 import com.stubee.rollingcore.common.dto.PageDataResponse;
 import com.stubee.rollingcore.common.dto.PageRequest;
-import com.stubee.rollingapplication.domain.company.dto.response.CompanyQueryResponse;
+import com.stubee.rollingcore.domain.company.dto.response.CompanyQueryResponse;
 import com.stubee.rollingcore.domain.company.model.Company;
 
 import java.util.List;

@@ -4,7 +4,7 @@ import com.stubee.rollingapplication.common.annotation.CommandService;
 import com.stubee.rollingapplication.domain.company.port.api.CommandCompanyUseCase;
 import com.stubee.rollingapplication.domain.company.port.spi.CommandCompanyPort;
 import com.stubee.rollingapplication.domain.member.port.spi.MemberSecurityPort;
- import com.stubee.rollingapplication.domain.company.command.RegisterCompanyCommand;
+ import com.stubee.rollingcore.domain.company.command.RegisterCompanyCommand;
 import com.stubee.rollingcore.domain.company.model.Company;
 import com.stubee.rollingcore.domain.company.model.CompanyId;
 import com.stubee.rollingcore.domain.member.model.Member;

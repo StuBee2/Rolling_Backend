@@ -1,4 +1,4 @@
-package com.stubee.rollingapplication.domain.auth.dto.response;
+package com.stubee.rollingcore.domain.auth.dto.response;
 
 import lombok.Builder;
 

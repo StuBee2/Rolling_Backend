@@ -4,7 +4,7 @@ import com.stubee.rollingapplication.domain.member.port.spi.CommandMemberPort;
 import com.stubee.rollingcore.domain.member.enums.LoginType;
 import com.stubee.rollingcore.domain.member.model.Member;
 import com.stubee.rollinginfrastructure.common.security.oauth.principle.CustomMemberDetails;
-import com.stubee.rollingapplication.domain.member.dto.response.OAuthAttributes;
+import com.stubee.rollingcore.domain.member.enums.OAuthAttributes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;

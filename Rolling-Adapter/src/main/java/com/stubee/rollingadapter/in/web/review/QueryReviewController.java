@@ -2,9 +2,9 @@ package com.stubee.rollingadapter.in.web.review;
 
 import com.stubee.rollingcore.common.dto.PageDataResponse;
 import com.stubee.rollingcore.common.dto.PageRequest;
-import com.stubee.rollingapplication.domain.review.dto.response.ReviewInfoResponse;
+import com.stubee.rollingcore.domain.review.dto.response.ReviewInfoResponse;
 import com.stubee.rollingapplication.domain.review.port.api.QueryReviewUseCase;
-import com.stubee.rollingapplication.domain.review.dto.response.ReviewQueryResponse;
+import com.stubee.rollingcore.domain.review.dto.response.ReviewQueryResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

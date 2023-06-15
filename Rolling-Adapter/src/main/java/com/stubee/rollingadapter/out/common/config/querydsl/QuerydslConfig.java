@@ -1,4 +1,4 @@
-package com.stubee.rollingadapter.out.common.config;
+package com.stubee.rollingadapter.out.common.config.querydsl;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;

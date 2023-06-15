@@ -5,7 +5,7 @@ import com.stubee.rollingapplication.domain.company.port.api.QueryCompanyUseCase
 import com.stubee.rollingapplication.domain.review.port.api.QueryReviewUseCase;
 import com.stubee.rollingcore.common.dto.PageRequest;
 import com.stubee.rollingcore.domain.company.model.Company;
-import com.stubee.rollingapplication.domain.review.dto.response.ReviewInfoResponse;
+import com.stubee.rollingcore.domain.review.dto.response.ReviewInfoResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;

@@ -6,7 +6,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.stubee.rollingadapter.out.persistence.company.mapper.CompanyMapper;
 import com.stubee.rollingapplication.domain.company.port.spi.QueryCompanyPort;
 import com.stubee.rollingcore.common.dto.PageRequest;
-import com.stubee.rollingapplication.domain.company.dto.response.CompanyQueryResponse;
+import com.stubee.rollingcore.domain.company.dto.response.CompanyQueryResponse;
 import com.stubee.rollingcore.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

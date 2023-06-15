@@ -1,6 +1,6 @@
 package com.stubee.rollingadapter.in.web.review.request;
 
-import com.stubee.rollingapplication.domain.review.command.WriteReviewCommand;
+import com.stubee.rollingcore.domain.review.command.WriteReviewCommand;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 

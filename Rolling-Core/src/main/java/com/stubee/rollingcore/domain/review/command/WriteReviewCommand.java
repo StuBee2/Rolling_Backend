@@ -1,4 +1,4 @@
-package com.stubee.rollingapplication.domain.review.command;
+package com.stubee.rollingcore.domain.review.command;
 
 import lombok.Builder;
 

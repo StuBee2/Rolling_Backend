@@ -1,4 +1,4 @@
-package com.stubee.rollingapplication.domain.member.command;
+package com.stubee.rollingcore.domain.member.command;
 
 import lombok.Builder;
 

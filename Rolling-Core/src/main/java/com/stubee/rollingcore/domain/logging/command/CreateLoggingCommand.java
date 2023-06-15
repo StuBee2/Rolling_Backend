@@ -1,4 +1,4 @@
-package com.stubee.rollingapplication.domain.logging.command;
+package com.stubee.rollingcore.domain.logging.command;
 
 import lombok.Builder;
 

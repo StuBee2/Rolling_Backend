@@ -1,6 +1,6 @@
 package com.stubee.rollingapplication.domain.company.port.api;
 
-import com.stubee.rollingapplication.domain.company.command.RegisterCompanyCommand;
+import com.stubee.rollingcore.domain.company.command.RegisterCompanyCommand;
 import com.stubee.rollingcore.domain.company.model.Company;
 import com.stubee.rollingcore.domain.company.model.CompanyId;
 

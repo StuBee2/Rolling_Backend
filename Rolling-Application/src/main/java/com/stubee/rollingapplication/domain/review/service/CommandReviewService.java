@@ -8,7 +8,7 @@ import com.stubee.rollingapplication.domain.review.port.spi.CommandReviewPort;
 import com.stubee.rollingcore.domain.company.exception.CompanyNotFoundException;
 import com.stubee.rollingcore.domain.member.model.Member;
 import com.stubee.rollingcore.domain.member.model.MemberId;
-import com.stubee.rollingapplication.domain.review.command.WriteReviewCommand;
+import com.stubee.rollingcore.domain.review.command.WriteReviewCommand;
 import com.stubee.rollingcore.domain.review.model.Review;
 import lombok.RequiredArgsConstructor;
 
