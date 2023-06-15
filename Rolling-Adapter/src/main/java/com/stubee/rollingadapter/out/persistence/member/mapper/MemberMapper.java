@@ -11,7 +11,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class MemberMapper implements GenericMapper<MemberEntity, Member> {
 
-    public MemberEntity toEntityExceptId(final Member domain) {
+    /** Member Entity Except Id */
+    @Override
+    public MemberEntity toEntity(Member domain) {
         return MemberEntity.builder()
                 .nickName(domain.memberDetails().nickName())
                 .socialId(domain.socialDetails().socialId())
@@ -23,8 +25,8 @@ public class MemberMapper implements GenericMapper<MemberEntity, Member> {
                 .build();
     }
 
-    @Override
-    public MemberEntity toEntity(final Member domain) {
+    /** Member Entity With Id */
+    public MemberEntity toEntityWithId(Member domain) {
         return MemberEntity.builder()
                 .id(domain.memberId().id())
                 .nickName(domain.memberDetails().nickName())

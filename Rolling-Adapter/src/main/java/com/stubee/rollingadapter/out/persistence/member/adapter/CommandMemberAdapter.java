@@ -23,7 +23,7 @@ public class CommandMemberAdapter implements CommandMemberPort {
 
     @Override
     public Member saveExceptId(Member member) {
-        return save(memberMapper.toEntityExceptId(member));
+        return save(memberMapper.toEntity(member));
     }
 
     @Override

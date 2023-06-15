@@ -14,7 +14,7 @@ public record Review (
         Grades reviewGrades,
         MemberId memberId,
         CompanyId companyId) {
-    public static Review createExceptReviewId(WriteReviewCommand command, MemberId memberId) {
+    public static Review create(WriteReviewCommand command, MemberId memberId) {
         return Review.builder()
                 .reviewDetails(ReviewDetails.create(command.content(), command.position(), command.careerPath()))
                 .reviewGrades(Grades.create(command.balanceGrade(), command.salaryGrade(), command.welfareGrade()))
@@ -23,7 +23,7 @@ public record Review (
                 .build();
     }
 
-    public static Review create(ReviewId reviewId, ReviewDetails reviewDetails, Grades reviewGrades, MemberId memberId, CompanyId companyId) {
+    public static Review createWithId(ReviewId reviewId, ReviewDetails reviewDetails, Grades reviewGrades, MemberId memberId, CompanyId companyId) {
         return Review.builder()
                 .reviewId(reviewId)
                 .reviewDetails(reviewDetails)

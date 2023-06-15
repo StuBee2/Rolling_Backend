@@ -12,20 +12,20 @@ public record Company (
         CompanyDetails companyDetails,
         Grades companyGrades,
         MemberId registrantId) {
-    public static Company createExceptCompanyId(RegisterCompanyCommand command, MemberId memberId) {
-        return Company.builder()
-                .companyDetails(CompanyDetails.create(command.name(), command.address(), command.description(), command.imgUrl()))
-                .companyGrades(Grades.createWithTotal(0.0, 0.0, 0.0, 0.0))
-                .registrantId(memberId)
-                .build();
-    }
-
     public static Company create(CompanyId companyId, CompanyDetails companyDetails, Grades companyGrades, MemberId registrantId) {
         return Company.builder()
                 .companyId(companyId)
                 .companyDetails(companyDetails)
                 .companyGrades(companyGrades)
                 .registrantId(registrantId)
+                .build();
+    }
+
+    public static Company createExceptCompanyId(RegisterCompanyCommand command, MemberId memberId) {
+        return Company.builder()
+                .companyDetails(CompanyDetails.create(command.name(), command.address(), command.description(), command.imgUrl()))
+                .companyGrades(Grades.createWithTotal(0.0, 0.0, 0.0, 0.0))
+                .registrantId(memberId)
                 .build();
     }
 

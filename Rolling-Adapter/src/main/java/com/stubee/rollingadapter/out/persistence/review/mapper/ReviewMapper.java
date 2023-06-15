@@ -30,7 +30,7 @@ public class ReviewMapper implements GenericMapper<ReviewEntity, Review> {
 
     @Override
     public Review toDomain(final ReviewEntity entity) {
-        return Review.create(ReviewId.create(entity.getId()), reviewDetails(entity), reviewGrades(entity),
+        return Review.createWithId(ReviewId.create(entity.getId()), reviewDetails(entity), reviewGrades(entity),
                 MemberId.create(entity.getMemberId()), CompanyId.create(entity.getCompanyId()));
     }
 

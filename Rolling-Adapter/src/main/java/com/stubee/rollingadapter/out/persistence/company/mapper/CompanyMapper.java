@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CompanyMapper implements GenericMapper<CompanyEntity, Company> {
 
+    /** Company Entity Except Id */
     @Override
     public CompanyEntity toEntity(Company domain) {
         return CompanyEntity.builder()
@@ -27,6 +28,7 @@ public class CompanyMapper implements GenericMapper<CompanyEntity, Company> {
                 .build();
     }
 
+    /** Company Entity With Id */
     public CompanyEntity toEntityWithId(Company domain) {
         return CompanyEntity.builder()
                 .id(domain.companyId().id())

@@ -38,7 +38,7 @@ public class CommandReviewService implements CommandReviewUseCase {
     }
 
     private Review createExceptReviewId(WriteReviewCommand command, MemberId memberId) {
-        return Review.createExceptReviewId(command, memberId);
+        return Review.create(command, memberId);
     }
 
 }
