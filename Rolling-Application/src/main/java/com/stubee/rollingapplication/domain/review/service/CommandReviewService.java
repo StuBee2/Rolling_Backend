@@ -8,7 +8,7 @@ import com.stubee.rollingapplication.domain.review.port.spi.CommandReviewPort;
 import com.stubee.rollingcore.domain.company.exception.CompanyNotFoundException;
 import com.stubee.rollingcore.domain.member.model.Member;
 import com.stubee.rollingcore.domain.member.model.MemberId;
-import com.stubee.rollingcore.domain.review.dto.command.WriteReviewCommand;
+import com.stubee.rollingapplication.domain.review.command.WriteReviewCommand;
 import com.stubee.rollingcore.domain.review.model.Review;
 import lombok.RequiredArgsConstructor;
 
@@ -38,7 +38,9 @@ public class CommandReviewService implements CommandReviewUseCase {
     }
 
     private Review createExceptReviewId(WriteReviewCommand command, MemberId memberId) {
-        return Review.create(command, memberId);
+        return Review.create(command.content(), command.position(), command.careerPath(),
+                command.balanceGrade(), command.salaryGrade(), command.welfareGrade(),
+                command.companyId(), memberId);
     }
 
 }

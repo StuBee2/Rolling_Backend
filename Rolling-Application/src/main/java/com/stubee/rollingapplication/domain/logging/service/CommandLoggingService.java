@@ -3,8 +3,8 @@ package com.stubee.rollingapplication.domain.logging.service;
 import com.stubee.rollingapplication.common.annotation.CommandService;
 import com.stubee.rollingapplication.domain.logging.port.api.CommandLoggingUseCase;
 import com.stubee.rollingapplication.domain.logging.port.spi.CommandLoggingPort;
+import com.stubee.rollingapplication.domain.logging.command.CreateLoggingCommand;
 import com.stubee.rollingapplication.domain.member.port.spi.MemberSecurityPort;
-import com.stubee.rollingcore.domain.logging.dto.command.CreateLoggingCommand;
 import com.stubee.rollingcore.domain.logging.model.Logging;
 import com.stubee.rollingcore.domain.member.model.MemberId;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ public class CommandLoggingService implements CommandLoggingUseCase {
     }
 
     private Logging createExceptLoggingId(CreateLoggingCommand command, MemberId memberId) {
-        return Logging.createExceptLoggingId(command, memberId);
+        return Logging.createExceptLoggingId(command.description(), command.module(), memberId);
     }
 
 }

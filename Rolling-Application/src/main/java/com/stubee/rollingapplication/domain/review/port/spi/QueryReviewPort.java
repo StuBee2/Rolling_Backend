@@ -1,8 +1,8 @@
 package com.stubee.rollingapplication.domain.review.port.spi;
 
 import com.stubee.rollingcore.common.dto.PageRequest;
-import com.stubee.rollingcore.domain.review.dto.response.ReviewInfoResponse;
-import com.stubee.rollingcore.domain.review.dto.response.ReviewQueryResponse;
+import com.stubee.rollingapplication.domain.review.dto.response.ReviewInfoResponse;
+import com.stubee.rollingapplication.domain.review.dto.response.ReviewQueryResponse;
 import com.stubee.rollingcore.domain.review.model.Review;
 
 import java.util.List;

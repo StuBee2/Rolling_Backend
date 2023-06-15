@@ -1,6 +1,6 @@
 package com.stubee.rollingadapter.in.web.auth;
 
-import com.stubee.rollingcore.domain.auth.dto.response.RefreshTokenResponse;
+import com.stubee.rollingapplication.domain.auth.dto.response.RefreshTokenResponse;
 import com.stubee.rollingapplication.domain.auth.port.api.RefreshTokenUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

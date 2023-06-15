@@ -6,7 +6,7 @@ import com.stubee.rollingapplication.domain.company.port.spi.QueryCompanyPort;
 import com.stubee.rollingapplication.domain.member.port.spi.MemberSecurityPort;
 import com.stubee.rollingcore.common.dto.PageDataResponse;
 import com.stubee.rollingcore.common.dto.PageRequest;
-import com.stubee.rollingcore.domain.company.dto.response.CompanyQueryResponse;
+import com.stubee.rollingapplication.domain.company.dto.response.CompanyQueryResponse;
 import com.stubee.rollingcore.domain.company.exception.CompanyNotFoundException;
 import com.stubee.rollingcore.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;

@@ -3,7 +3,7 @@ package com.stubee.rollingadapter.in.web.company;
 import com.stubee.rollingcore.common.dto.PageDataResponse;
 import com.stubee.rollingcore.common.dto.PageRequest;
 import com.stubee.rollingapplication.domain.company.port.api.QueryCompanyUseCase;
-import com.stubee.rollingcore.domain.company.dto.response.CompanyQueryResponse;
+import com.stubee.rollingapplication.domain.company.dto.response.CompanyQueryResponse;
 import com.stubee.rollingcore.domain.company.model.Company;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

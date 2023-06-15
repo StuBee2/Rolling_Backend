@@ -4,7 +4,7 @@ import com.stubee.rollingapplication.common.annotation.CommandService;
 import com.stubee.rollingapplication.domain.company.port.api.CommandCompanyUseCase;
 import com.stubee.rollingapplication.domain.company.port.spi.CommandCompanyPort;
 import com.stubee.rollingapplication.domain.member.port.spi.MemberSecurityPort;
-import com.stubee.rollingcore.domain.company.dto.command.RegisterCompanyCommand;
+ import com.stubee.rollingapplication.domain.company.command.RegisterCompanyCommand;
 import com.stubee.rollingcore.domain.company.model.Company;
 import com.stubee.rollingcore.domain.company.model.CompanyId;
 import com.stubee.rollingcore.domain.member.model.Member;
@@ -36,7 +36,8 @@ public class CommandCompanyService implements CommandCompanyUseCase {
     }
 
     private Company createExceptCompanyId(RegisterCompanyCommand command, MemberId memberId) {
-        return Company.createExceptCompanyId(command, memberId);
+        return Company.createExceptCompanyId(
+                command.name(), command.address(), command.description(), command.imgUrl(), memberId);
     }
 
 }

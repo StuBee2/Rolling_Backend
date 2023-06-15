@@ -1,8 +1,8 @@
-package com.stubee.rollingcore.domain.member.dto.response;
+package com.stubee.rollingapplication.domain.member.dto.response;
 
+import com.stubee.rollingapplication.domain.review.dto.response.ReviewQueryResponse;
 import com.stubee.rollingcore.domain.company.model.Company;
 import com.stubee.rollingcore.domain.member.model.Member;
-import com.stubee.rollingcore.domain.review.dto.response.ReviewQueryResponse;
 import lombok.Builder;
 
 import java.util.List;

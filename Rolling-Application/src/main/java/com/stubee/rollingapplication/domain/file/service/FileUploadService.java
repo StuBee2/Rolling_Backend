@@ -1,7 +1,7 @@
 package com.stubee.rollingapplication.domain.file.service;
 
-import com.stubee.rollingapplication.domain.file.port.api.FileUploadUseCase;
 import com.stubee.rollingapplication.domain.file.port.spi.S3Port;
+import com.stubee.rollingapplication.domain.file.port.api.FileUploadUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
