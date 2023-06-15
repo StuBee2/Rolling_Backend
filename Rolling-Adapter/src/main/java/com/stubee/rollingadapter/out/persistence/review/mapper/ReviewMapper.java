@@ -35,7 +35,7 @@ public class ReviewMapper implements GenericMapper<ReviewEntity, Review> {
     }
 
     private ReviewDetails reviewDetails(final ReviewEntity entity) {
-        return ReviewDetails.create(entity.getContent(), entity.getPosition(), entity.getCareerPath());
+        return ReviewDetails.createWithDate(entity.getContent(), entity.getPosition(), entity.getCareerPath(), entity.getCreatedAt(), entity.getModifiedAt());
     }
 
     private Grades reviewGrades(final ReviewEntity entity) {

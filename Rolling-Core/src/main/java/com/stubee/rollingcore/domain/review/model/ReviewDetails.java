@@ -19,4 +19,16 @@ public record ReviewDetails(
                 .careerPath(careerPath)
                 .build();
     }
+
+    public static ReviewDetails createWithDate(final String content, final String position, final String careerPath,
+                                               final LocalDateTime createdAt, final LocalDateTime modifiedAt) {
+        return ReviewDetails.builder()
+                .content(content)
+                .position(position)
+                .careerPath(careerPath)
+                .createdAt(createdAt)
+                .modifiedAt(modifiedAt)
+                .build();
+    }
+
 }
