@@ -3,9 +3,10 @@ package com.stubee.rollingcore.domain.review.model;
 import com.stubee.rollingcore.common.model.Grades;
 import com.stubee.rollingcore.domain.company.model.CompanyId;
 import com.stubee.rollingcore.domain.member.model.MemberId;
-import com.stubee.rollingcore.domain.review.dto.command.WriteReviewCommand;
 import lombok.AccessLevel;
 import lombok.Builder;
+
+import java.util.UUID;
 
 @Builder(access = AccessLevel.PRIVATE)
 public record Review (
@@ -14,16 +15,19 @@ public record Review (
         Grades reviewGrades,
         MemberId memberId,
         CompanyId companyId) {
-    public static Review create(WriteReviewCommand command, MemberId memberId) {
+    public static Review create(final String content, final String position, final String careerPath,
+                                final double balanceGrade, final double salaryGrade, final double welfareGrade,
+                                final UUID companyId, MemberId memberId) {
         return Review.builder()
-                .reviewDetails(ReviewDetails.create(command.content(), command.position(), command.careerPath()))
-                .reviewGrades(Grades.create(command.balanceGrade(), command.salaryGrade(), command.welfareGrade()))
-                .companyId(new CompanyId(command.companyId()))
+                .reviewDetails(ReviewDetails.create(content, position, careerPath))
+                .reviewGrades(Grades.create(balanceGrade, salaryGrade, welfareGrade))
+                .companyId(CompanyId.create(companyId))
                 .memberId(memberId)
                 .build();
     }
 
-    public static Review createWithId(ReviewId reviewId, ReviewDetails reviewDetails, Grades reviewGrades, MemberId memberId, CompanyId companyId) {
+    public static Review createWithId(ReviewId reviewId, ReviewDetails reviewDetails, Grades reviewGrades,
+                                      MemberId memberId, CompanyId companyId) {
         return Review.builder()
                 .reviewId(reviewId)
                 .reviewDetails(reviewDetails)

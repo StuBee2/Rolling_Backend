@@ -1,4 +1,4 @@
-package com.stubee.rollingcore.domain.company.dto.response;
+package com.stubee.rollingapplication.domain.company.dto.response;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
