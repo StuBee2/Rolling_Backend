@@ -3,12 +3,10 @@ package com.stubee.rollingadapter.out.persistence.review.adapter;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.stubee.rollingadapter.out.persistence.review.mapper.ReviewMapper;
 import com.stubee.rollingcore.common.dto.PageRequest;
 import com.stubee.rollingcore.domain.review.dto.response.ReviewInfoResponse;
 import com.stubee.rollingapplication.domain.review.port.spi.QueryReviewPort;
 import com.stubee.rollingcore.domain.review.dto.response.ReviewQueryResponse;
-import com.stubee.rollingcore.domain.review.model.Review;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -25,7 +23,6 @@ import static com.stubee.rollingadapter.out.persistence.review.entity.QReviewEnt
 public class QueryReviewAdapter implements QueryReviewPort {
 
     private final JPAQueryFactory jpaQueryFactory;
-    private final ReviewMapper reviewMapper;
 
     @Override
     public Optional<ReviewInfoResponse> findById(final UUID reviewId) {
@@ -64,14 +61,6 @@ public class QueryReviewAdapter implements QueryReviewPort {
                 .offset((pageRequest.page()-1)*pageRequest.size())
                 .limit(pageRequest.size())
                 .fetch();
-    }
-
-    @Override
-    public List<Review> findAll() {
-        return jpaQueryFactory
-                .selectFrom(reviewEntity)
-                .fetch()
-                .stream().map(reviewMapper::toDomain).toList();
     }
 
     private ConstructorExpression<ReviewInfoResponse> infoResponseProjection() {

@@ -9,7 +9,6 @@ import com.stubee.rollingcore.common.dto.PageRequest;
 import com.stubee.rollingcore.domain.review.dto.response.ReviewInfoResponse;
 import com.stubee.rollingcore.domain.review.dto.response.ReviewQueryResponse;
 import com.stubee.rollingcore.domain.review.exceptionn.ReviewNotFoundException;
-import com.stubee.rollingcore.domain.review.model.Review;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -41,11 +40,6 @@ public class QueryReviewService implements QueryReviewUseCase {
     @Override
     public PageDataResponse<List<ReviewInfoResponse>> getByCompanyId(final UUID companyId, PageRequest pageRequest) {
         return PageDataResponse.create(queryReviewPort.findByCompanyId(companyId, pageRequest));
-    }
-
-    @Override
-    public List<Review> getAll() {
-        return queryReviewPort.findAll();
     }
 
 }
