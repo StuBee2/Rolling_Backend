@@ -8,5 +8,6 @@ rootProject.name = 'Rolling_BackEnd'
 
 include 'Rolling-Adapter'
 include 'Rolling-Application'
+include 'Rolling-Batch'
 include 'Rolling-Core'
 include 'Rolling-Infrastructure'
