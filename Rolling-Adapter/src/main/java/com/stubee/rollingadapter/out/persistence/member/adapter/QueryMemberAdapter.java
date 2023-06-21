@@ -5,14 +5,14 @@ import com.stubee.rollingadapter.out.persistence.member.mapper.MemberMapper;
 import com.stubee.rollingapplication.domain.member.port.spi.QueryMemberPort;
 import com.stubee.rollingcore.domain.member.model.Member;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 import java.util.UUID;
 
 import static com.stubee.rollingadapter.out.persistence.member.entity.QMemberEntity.memberEntity;
 
-@Repository
+@Component
 @RequiredArgsConstructor
 public class QueryMemberAdapter implements QueryMemberPort {
 

@@ -9,7 +9,7 @@ import com.stubee.rollingcore.common.dto.PageRequest;
 import com.stubee.rollingcore.domain.company.dto.response.CompanyQueryResponse;
 import com.stubee.rollingcore.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +18,7 @@ import java.util.UUID;
 import static com.stubee.rollingadapter.out.persistence.company.entity.QCompanyEntity.*;
 import static com.stubee.rollingadapter.out.persistence.member.entity.QMemberEntity.*;
 
-@Repository
+@Component
 @RequiredArgsConstructor
 public class QueryCompanyAdapter implements QueryCompanyPort {
 

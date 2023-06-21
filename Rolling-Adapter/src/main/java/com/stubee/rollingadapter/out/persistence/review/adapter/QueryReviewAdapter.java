@@ -8,7 +8,7 @@ import com.stubee.rollingcore.domain.review.dto.response.ReviewInfoResponse;
 import com.stubee.rollingapplication.domain.review.port.spi.QueryReviewPort;
 import com.stubee.rollingcore.domain.review.dto.response.ReviewQueryResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +18,7 @@ import static com.stubee.rollingadapter.out.persistence.company.entity.QCompanyE
 import static com.stubee.rollingadapter.out.persistence.member.entity.QMemberEntity.*;
 import static com.stubee.rollingadapter.out.persistence.review.entity.QReviewEntity.*;
 
-@Repository
+@Component
 @RequiredArgsConstructor
 public class QueryReviewAdapter implements QueryReviewPort {
 
