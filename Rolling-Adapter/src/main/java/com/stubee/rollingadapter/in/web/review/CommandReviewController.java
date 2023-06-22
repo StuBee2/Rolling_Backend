@@ -22,7 +22,7 @@ public class CommandReviewController {
     @Operation(description = "Review 등록")
     @PostMapping
     @ResponseStatus(CREATED)
-    public Review write(final @RequestBody @Validated WriteReviewRequest request) {
+    public Review write(@RequestBody @Validated WriteReviewRequest request) {
         return commandReviewUseCase.write(request.toCommand());
     }
 

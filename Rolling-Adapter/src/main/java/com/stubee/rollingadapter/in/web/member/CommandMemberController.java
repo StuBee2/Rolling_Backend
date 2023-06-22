@@ -21,7 +21,7 @@ public class CommandMemberController {
     @Operation(description = "Member NickName 수정")
     @PatchMapping("/nickName")
     @ResponseStatus(NO_CONTENT)
-    public void updateNickName(final @RequestBody @Validated UpdateNickNameRequest request) {
+    public void updateNickName(@RequestBody @Validated UpdateNickNameRequest request) {
         commandMemberUseCase.updateNickName(request.toCommand());
     }
 

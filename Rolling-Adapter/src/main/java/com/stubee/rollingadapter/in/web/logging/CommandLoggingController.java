@@ -22,7 +22,7 @@ public class CommandLoggingController {
     @Operation(description = "logging 생성")
     @PostMapping
     @ResponseStatus(CREATED)
-    public Logging create(final @RequestBody @Validated CreateLoggingRequest request) {
+    public Logging create(@RequestBody @Validated CreateLoggingRequest request) {
         return commandLoggingUseCase.create(request.toCommand());
     }
 
