@@ -18,7 +18,7 @@ public class CommandMemberAdapter implements CommandMemberPort {
 
     @Override
     public Member saveWithId(Member member) {
-        return save(memberMapper.toEntity(member));
+        return save(memberMapper.toEntityWithId(member));
     }
 
     @Override
