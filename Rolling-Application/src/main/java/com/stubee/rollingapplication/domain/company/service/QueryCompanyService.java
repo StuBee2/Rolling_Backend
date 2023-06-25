@@ -53,18 +53,23 @@ public class QueryCompanyService implements QueryCompanyUseCase {
     }
 
     @Override
-    public List<Company> getBySalaryGrade() {
-        return queryCompanyPort.findBySalaryGrade();
+    public List<Company> getBySalaryAndBenefits() {
+        return queryCompanyPort.findBySalaryAndBenefits();
     }
 
     @Override
-    public List<Company> getByWelfareGrade() {
-        return queryCompanyPort.findByWelfareGrade();
+    public List<Company> getByWorkLifeBalance() {
+        return queryCompanyPort.findByWorkLifeBalance();
     }
 
     @Override
-    public List<Company> getByBalanceGrade() {
-        return queryCompanyPort.findByBalanceGrade();
+    public List<Company> getByOrganizationalCulture() {
+        return queryCompanyPort.findByOrganizationalCulture();
+    }
+
+    @Override
+    public List<Company> getByCareerAdvancement() {
+        return queryCompanyPort.findByCareerAdvancement();
     }
 
 }

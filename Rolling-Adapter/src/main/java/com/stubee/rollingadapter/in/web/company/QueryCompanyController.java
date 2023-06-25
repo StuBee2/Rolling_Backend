@@ -67,25 +67,32 @@ public class QueryCompanyController {
         return queryCompanyUseCase.getByTotalGrade();
     }
 
-    @Operation(description = "Company SalaryGrade Top 10")
-    @GetMapping("/rank/salary")
+    @Operation(description = "Company Salary And Benefits Top 10")
+    @GetMapping("/rank/salary-benefits")
     @ResponseStatus(OK)
-    public List<Company> getBySalaryGrade() {
-        return queryCompanyUseCase.getBySalaryGrade();
+    public List<Company> getBySalaryAndBenefits() {
+        return queryCompanyUseCase.getBySalaryAndBenefits();
     }
 
-    @Operation(description = "Company WelfareGrade Top 10")
-    @GetMapping("/rank/welfare")
-    @ResponseStatus(OK)
-    public List<Company> getByWelfareGrade() {
-        return queryCompanyUseCase.getByWelfareGrade();
-    }
-
-    @Operation(description = "Company BalanceGrade Top 10")
+    @Operation(description = "Company Work-Life Balance Top 10")
     @GetMapping("/rank/balance")
     @ResponseStatus(OK)
-    public List<Company> getByBalanceGrade() {
-        return queryCompanyUseCase.getByBalanceGrade();
+    public List<Company> getByWorkLifeBalance() {
+        return queryCompanyUseCase.getByWorkLifeBalance();
+    }
+
+    @Operation(description = "Company Organizational Culture Top 10")
+    @GetMapping("/rank/culture")
+    @ResponseStatus(OK)
+    public List<Company> getByOrganizationalCulture() {
+        return queryCompanyUseCase.getByOrganizationalCulture();
+    }
+
+    @Operation(description = "Company Career Advancement Top 10")
+    @GetMapping("/rank/career")
+    @ResponseStatus(OK)
+    public List<Company> getByCareerAdvancement() {
+        return queryCompanyUseCase.getByCareerAdvancement();
     }
 
 }

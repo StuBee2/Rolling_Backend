@@ -89,30 +89,40 @@ public class QueryCompanyAdapter implements QueryCompanyPort {
     }
 
     @Override
-    public List<Company> findBySalaryGrade() {
+    public List<Company> findBySalaryAndBenefits() {
         return jpaQueryFactory
                 .selectFrom(companyEntity)
-                .orderBy(companyEntity.salaryGrade.desc())
+                .orderBy(companyEntity.salaryAndBenefits.desc())
                 .limit(10)
                 .fetch()
                 .stream().map(companyMapper::toDomain).toList();
     }
 
     @Override
-    public List<Company> findByWelfareGrade() {
+    public List<Company> findByWorkLifeBalance() {
         return jpaQueryFactory
                 .selectFrom(companyEntity)
-                .orderBy(companyEntity.welfareGrade.desc())
+                .orderBy(companyEntity.workLifeBalance.desc())
                 .limit(10)
                 .fetch()
                 .stream().map(companyMapper::toDomain).toList();
     }
 
     @Override
-    public List<Company> findByBalanceGrade() {
+    public List<Company> findByOrganizationalCulture() {
         return jpaQueryFactory
                 .selectFrom(companyEntity)
-                .orderBy(companyEntity.balanceGrade.desc())
+                .orderBy(companyEntity.organizationalCulture.desc())
+                .limit(10)
+                .fetch()
+                .stream().map(companyMapper::toDomain).toList();
+    }
+
+    @Override
+    public List<Company> findByCareerAdvancement() {
+        return jpaQueryFactory
+                .selectFrom(companyEntity)
+                .orderBy(companyEntity.careerAdvancement.desc())
                 .limit(10)
                 .fetch()
                 .stream().map(companyMapper::toDomain).toList();
@@ -126,9 +136,10 @@ public class QueryCompanyAdapter implements QueryCompanyPort {
                 companyEntity.description,
                 companyEntity.imgUrl,
                 companyEntity.totalGrade,
-                companyEntity.balanceGrade,
-                companyEntity.salaryGrade,
-                companyEntity.welfareGrade,
+                companyEntity.salaryAndBenefits,
+                companyEntity.workLifeBalance,
+                companyEntity.organizationalCulture,
+                companyEntity.careerAdvancement,
                 companyEntity.createdAt,
                 companyEntity.modifiedAt,
 

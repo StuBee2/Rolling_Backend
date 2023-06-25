@@ -20,9 +20,10 @@ public class CompanyItemProcessor implements ItemProcessor<List<Company>, List<C
     private final QueryReviewUseCase queryReviewUseCase;
 
     private double totalSum;
-    private double balanceSum;
-    private double salarySum;
-    private double welfareSum;
+    private double salaryAndBenefitsSum;
+    private double workLifeBalanceSum;
+    private double organizationalCultureSum;
+    private double careerAdvancementSum;
 
     @Override
     public List<Company> process(final List<Company> readCompanyList) {
@@ -33,7 +34,7 @@ public class CompanyItemProcessor implements ItemProcessor<List<Company>, List<C
 
         for (Company company : readCompanyList) {
             long reviewPage = 1, reviewCnt = 0;
-            totalSum = balanceSum = salarySum = welfareSum = 0.0;
+            totalSum = salaryAndBenefitsSum = workLifeBalanceSum = organizationalCultureSum = careerAdvancementSum = 0.0;
 
             while (true) {
                 final List<ReviewInfoResponse> reviewList = queryReviewUseCase.getByCompanyId(
@@ -50,16 +51,19 @@ public class CompanyItemProcessor implements ItemProcessor<List<Company>, List<C
             }
 
             final double totalAvg = calculateAvg(totalSum, reviewCnt);
-            final double balanceAvg = calculateAvg(balanceSum, reviewCnt);
-            final double salaryAvg = calculateAvg(salarySum, reviewCnt);
-            final double welfareAvg = calculateAvg(welfareSum, reviewCnt);
+            final double salaryAndBenefitsAvg = calculateAvg(salaryAndBenefitsSum, reviewCnt);
+            final double workLifeBalanceAvg = calculateAvg(workLifeBalanceSum, reviewCnt);
+            final double organizationalCultureAvg = calculateAvg(organizationalCultureSum, reviewCnt);
+            final double careerAdvancementAvg = calculateAvg(careerAdvancementSum, reviewCnt);
 
-            Company updatedCompany = company.updateGrades(totalAvg, balanceAvg, salaryAvg, welfareAvg);
+            Company updatedCompany = company.updateGrades(totalAvg, salaryAndBenefitsAvg, workLifeBalanceAvg,
+                    organizationalCultureAvg, careerAdvancementAvg);
 
             log.info("totalAvg : {}", totalAvg);
-            log.info("balanceAvg : {}", balanceAvg);
-            log.info("salaryAvg : {}", salaryAvg);
-            log.info("welfareAvg : {}", welfareAvg);
+            log.info("salaryAndBenefitsAvg : {}", salaryAndBenefitsAvg);
+            log.info("workLifeBalanceAvg : {}", workLifeBalanceAvg);
+            log.info("organizationalCultureAvg : {}", organizationalCultureAvg);
+            log.info("careerAdvancementAvg : {}", careerAdvancementAvg);
             log.info("Company Name : {}", updatedCompany.companyDetails().name());
 
             processedCompanyList.add(updatedCompany);
@@ -77,9 +81,10 @@ public class CompanyItemProcessor implements ItemProcessor<List<Company>, List<C
     private void calculateSum(final List<ReviewInfoResponse> reviewList) {
         for (ReviewInfoResponse response : reviewList) {
             totalSum += response.totalGrade();
-            balanceSum += response.balanceGrade();
-            salarySum += response.salaryGrade();
-            welfareSum += response.welfareGrade();
+            salaryAndBenefitsSum += response.salaryAndBenefits();
+            workLifeBalanceSum += response.workLifeBalance();
+            organizationalCultureSum += response.organizationalCulture();
+            careerAdvancementSum += response.careerAdvancement();
         }
     }
 

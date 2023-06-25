@@ -21,9 +21,10 @@ public class CompanyMapper implements GenericMapper<CompanyEntity, Company> {
                 .description(domain.companyDetails().description())
                 .imgUrl(domain.companyDetails().imgUrl())
                 .totalGrade(domain.companyGrades().totalGrade())
-                .balanceGrade(domain.companyGrades().balanceGrade())
-                .salaryGrade(domain.companyGrades().salaryGrade())
-                .welfareGrade(domain.companyGrades().welfareGrade())
+                .salaryAndBenefits(domain.companyGrades().salaryAndBenefits())
+                .workLifeBalance(domain.companyGrades().workLifeBalance())
+                .organizationalCulture(domain.companyGrades().organizationalCulture())
+                .careerAdvancement(domain.companyGrades().careerAdvancement())
                 .registrantId(domain.registrantId().id())
                 .build();
     }
@@ -37,9 +38,10 @@ public class CompanyMapper implements GenericMapper<CompanyEntity, Company> {
                 .description(domain.companyDetails().description())
                 .imgUrl(domain.companyDetails().imgUrl())
                 .totalGrade(domain.companyGrades().totalGrade())
-                .balanceGrade(domain.companyGrades().balanceGrade())
-                .salaryGrade(domain.companyGrades().salaryGrade())
-                .welfareGrade(domain.companyGrades().welfareGrade())
+                .salaryAndBenefits(domain.companyGrades().salaryAndBenefits())
+                .workLifeBalance(domain.companyGrades().workLifeBalance())
+                .organizationalCulture(domain.companyGrades().organizationalCulture())
+                .careerAdvancement(domain.companyGrades().careerAdvancement())
                 .registrantId(domain.registrantId().id())
                 .createdAt(domain.companyDetails().createdAt())
                 .build();
@@ -47,7 +49,7 @@ public class CompanyMapper implements GenericMapper<CompanyEntity, Company> {
 
     @Override
     public Company toDomain(final CompanyEntity entity) {
-        return Company.create(CompanyId.create(entity.getId()), companyDetails(entity),
+        return Company.createWithId(CompanyId.create(entity.getId()), companyDetails(entity),
                 companyGrades(entity), MemberId.create(entity.getRegistrantId()));
     }
 
@@ -57,7 +59,8 @@ public class CompanyMapper implements GenericMapper<CompanyEntity, Company> {
     }
 
     private Grades companyGrades(final CompanyEntity entity) {
-        return Grades.createWithTotal(entity.getTotalGrade(), entity.getBalanceGrade(), entity.getSalaryGrade(), entity.getWelfareGrade());
+        return Grades.createWithTotal(entity.getTotalGrade(), entity.getSalaryAndBenefits(), entity.getWorkLifeBalance(),
+                entity.getOrganizationalCulture(), entity.getCareerAdvancement());
     }
 
 }

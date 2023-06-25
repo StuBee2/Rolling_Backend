@@ -22,10 +22,12 @@ public interface QueryCompanyUseCase {
 
     List<Company> getByTotalGrade();
 
-    List<Company> getBySalaryGrade();
+    List<Company> getBySalaryAndBenefits();
 
-    List<Company> getByWelfareGrade();
+    List<Company> getByWorkLifeBalance();
 
-    List<Company> getByBalanceGrade();
+    List<Company> getByOrganizationalCulture();
+
+    List<Company> getByCareerAdvancement();
 
 }

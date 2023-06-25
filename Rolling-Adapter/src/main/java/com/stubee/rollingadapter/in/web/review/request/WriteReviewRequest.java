@@ -11,18 +11,20 @@ public record WriteReviewRequest (
         String content,
         @NotBlank String position,
         @NotBlank String careerPath,
-        @NotNull Short balanceGrade,
-        @NotNull Short salaryGrade,
-        @NotNull Short welfareGrade) {
+        @NotNull Short salaryAndBenefits,
+        @NotNull Short workLifeBalance,
+        @NotNull Short organizationalCulture,
+        @NotNull Short careerAdvancement) {
     public WriteReviewCommand toCommand() {
         return WriteReviewCommand.builder()
                 .companyId(companyId)
                 .content(content)
                 .position(position)
                 .careerPath(careerPath)
-                .balanceGrade(balanceGrade)
-                .salaryGrade(salaryGrade)
-                .welfareGrade(welfareGrade)
+                .salaryAndBenefits(salaryAndBenefits)
+                .workLifeBalance(workLifeBalance)
+                .organizationalCulture(organizationalCulture)
+                .careerAdvancement(careerAdvancement)
                 .build();
     }
 }

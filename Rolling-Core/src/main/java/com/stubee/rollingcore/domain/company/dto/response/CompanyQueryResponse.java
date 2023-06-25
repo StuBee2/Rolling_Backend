@@ -10,9 +10,10 @@ public record CompanyQueryResponse(
         String companyDescription,
         String companyImgUrl,
         Double totalGrade,
-        Double balanceGrade,
-        Double salaryGrade,
-        Double welfareGrade,
+        Double salaryAndBenefits,
+        Double workLifeBalance,
+        Double organizationalCulture,
+        Double careerAdvancement,
         LocalDateTime companyCreatedAt,
         LocalDateTime companyModifiedAt,
 

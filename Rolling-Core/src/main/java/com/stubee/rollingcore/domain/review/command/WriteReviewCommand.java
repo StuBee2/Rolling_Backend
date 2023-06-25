@@ -10,6 +10,7 @@ public record WriteReviewCommand(
         String content,
         String position,
         String careerPath,
-        Short balanceGrade,
-        Short salaryGrade,
-        Short welfareGrade) {}
+        Short salaryAndBenefits,
+        Short workLifeBalance,
+        Short organizationalCulture,
+        Short careerAdvancement) {}

@@ -20,9 +20,10 @@ public class ReviewMapper implements GenericMapper<ReviewEntity, Review> {
                 .position(domain.reviewDetails().position())
                 .careerPath(domain.reviewDetails().careerPath())
                 .totalGrade(domain.reviewGrades().totalGrade())
-                .balanceGrade(domain.reviewGrades().balanceGrade())
-                .salaryGrade(domain.reviewGrades().salaryGrade())
-                .welfareGrade(domain.reviewGrades().welfareGrade())
+                .salaryAndBenefits(domain.reviewGrades().salaryAndBenefits())
+                .workLifeBalance(domain.reviewGrades().workLifeBalance())
+                .organizationalCulture(domain.reviewGrades().organizationalCulture())
+                .careerAdvancement(domain.reviewGrades().careerAdvancement())
                 .memberId(domain.memberId().id())
                 .companyId(domain.companyId().id())
                 .build();
@@ -35,11 +36,13 @@ public class ReviewMapper implements GenericMapper<ReviewEntity, Review> {
     }
 
     private ReviewDetails reviewDetails(final ReviewEntity entity) {
-        return ReviewDetails.createWithDate(entity.getContent(), entity.getPosition(), entity.getCareerPath(), entity.getCreatedAt(), entity.getModifiedAt());
+        return ReviewDetails.createWithDate(entity.getContent(), entity.getPosition(),
+                entity.getCareerPath(), entity.getCreatedAt(), entity.getModifiedAt());
     }
 
     private Grades reviewGrades(final ReviewEntity entity) {
-        return Grades.createWithTotal(entity.getTotalGrade(), entity.getBalanceGrade(), entity.getSalaryGrade(), entity.getWelfareGrade());
+        return Grades.createWithTotal(entity.getTotalGrade(), entity.getSalaryAndBenefits(), entity.getWorkLifeBalance(),
+                entity.getOrganizationalCulture(), entity.getCareerAdvancement());
     }
 
 }

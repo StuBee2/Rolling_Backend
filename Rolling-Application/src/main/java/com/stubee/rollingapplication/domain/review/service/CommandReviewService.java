@@ -38,8 +38,8 @@ public class CommandReviewService implements CommandReviewUseCase {
     }
 
     private Review createExceptReviewId(WriteReviewCommand command, MemberId memberId) {
-        return Review.create(command.content(), command.position(), command.careerPath(),
-                command.balanceGrade(), command.salaryGrade(), command.welfareGrade(),
+        return Review.create(command.content(), command.position(), command.careerPath(), command.salaryAndBenefits(),
+                command.workLifeBalance(), command.organizationalCulture(), command.careerAdvancement(),
                 command.companyId(), memberId);
     }
 

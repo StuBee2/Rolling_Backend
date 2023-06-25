@@ -22,10 +22,12 @@ public interface QueryCompanyPort {
 
     List<Company> findByTotalGrade();
 
-    List<Company> findBySalaryGrade();
+    List<Company> findBySalaryAndBenefits();
 
-    List<Company> findByWelfareGrade();
+    List<Company> findByWorkLifeBalance();
 
-    List<Company> findByBalanceGrade();
+    List<Company> findByOrganizationalCulture();
+
+    List<Company> findByCareerAdvancement();
 
 }
