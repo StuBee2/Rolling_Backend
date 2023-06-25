@@ -22,7 +22,7 @@ public class CommandCompanyService implements CommandCompanyUseCase {
     public Company register(RegisterCompanyCommand command) {
         Member member = memberSecurityPort.getCurrentMember();
 
-        return commandCompanyPort.save(createExceptCompanyId(command, member.memberId()));
+        return commandCompanyPort.create(createExceptCompanyId(command, member.memberId()));
     }
 
     @Override
@@ -36,7 +36,7 @@ public class CommandCompanyService implements CommandCompanyUseCase {
     }
 
     private Company createExceptCompanyId(RegisterCompanyCommand command, MemberId memberId) {
-        return Company.createExceptCompanyId(
+        return Company.create(
                 command.name(), command.address(), command.description(), command.imgUrl(), memberId);
     }
 

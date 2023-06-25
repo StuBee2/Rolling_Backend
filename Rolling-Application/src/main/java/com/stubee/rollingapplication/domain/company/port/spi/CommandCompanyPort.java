@@ -5,7 +5,7 @@ import com.stubee.rollingcore.domain.company.model.CompanyId;
 
 public interface CommandCompanyPort {
 
-    Company save(Company company);
+    Company create(Company company);
 
     void update(Company company);
 

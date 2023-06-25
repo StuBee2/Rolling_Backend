@@ -17,7 +17,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -46,7 +45,7 @@ public class S3Adapter implements S3Port {
 
     @Override
     public List<String> uploadFileList(final List<MultipartFile> multipartFileList) {
-        return multipartFileList.stream().map(this::uploadFile).collect(Collectors.toList());
+        return multipartFileList.stream().map(this::uploadFile).toList();
     }
 
     @Override

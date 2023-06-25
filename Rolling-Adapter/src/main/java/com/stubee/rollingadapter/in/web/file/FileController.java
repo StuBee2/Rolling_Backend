@@ -19,7 +19,7 @@ public class FileController {
     @Operation(description = "file 업로드")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public String upload(final @RequestPart("file") MultipartFile file) {
+    public String upload(@RequestPart("file") MultipartFile file) {
         return fileUploadUseCase.uploadFile(file);
     }
 

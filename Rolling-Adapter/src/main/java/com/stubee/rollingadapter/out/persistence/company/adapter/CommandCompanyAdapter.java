@@ -1,5 +1,6 @@
 package com.stubee.rollingadapter.out.persistence.company.adapter;
 
+import com.stubee.rollingadapter.out.persistence.company.entity.CompanyEntity;
 import com.stubee.rollingadapter.out.persistence.company.mapper.CompanyMapper;
 import com.stubee.rollingadapter.out.persistence.company.repository.CommandCompanyJpaRepository;
 import com.stubee.rollingapplication.domain.company.port.spi.CommandCompanyPort;
@@ -16,18 +17,22 @@ public class CommandCompanyAdapter implements CommandCompanyPort {
     private final CompanyMapper companyMapper;
 
     @Override
-    public Company save(Company company) {
-        return companyMapper.toDomain(commandCompanyJpaRepository.save(companyMapper.toEntity(company)));
+    public Company create(Company company) {
+        return companyMapper.toDomain(save(companyMapper.toEntity(company)));
     }
 
     @Override
     public void update(Company company) {
-        commandCompanyJpaRepository.save(companyMapper.toEntityWithId(company));
+        save(companyMapper.toEntityWithId(company));
     }
 
     @Override
     public void deleteById(CompanyId companyId) {
         commandCompanyJpaRepository.deleteById(companyId.id());
+    }
+
+    private CompanyEntity save(final CompanyEntity entity) {
+        return commandCompanyJpaRepository.save(entity);
     }
 
 }

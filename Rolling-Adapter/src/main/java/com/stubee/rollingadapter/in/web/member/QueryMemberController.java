@@ -28,6 +28,7 @@ public class QueryMemberController {
 
     @Operation(description = "MemberId로 Member 정보 조회")
     @GetMapping("/{id}")
+    @ResponseStatus(OK)
     public Member getMember(@PathVariable("id") UUID memberId) {
         return queryMemberUseCase.getMemberById(memberId);
     }
