@@ -16,11 +16,11 @@ public record Review (
         MemberId memberId,
         CompanyId companyId) {
     public static Review create(final String content, final String position, final String careerPath,
-                                final double balanceGrade, final double salaryGrade, final double welfareGrade,
-                                final UUID companyId, MemberId memberId) {
+                                final double salaryAndBenefits, final double workLifeBalance, final double organizationalCulture,
+                                final double careerAdvancement, final UUID companyId, MemberId memberId) {
         return Review.builder()
                 .reviewDetails(ReviewDetails.create(content, position, careerPath))
-                .reviewGrades(Grades.create(balanceGrade, salaryGrade, welfareGrade))
+                .reviewGrades(Grades.create(salaryAndBenefits, workLifeBalance, organizationalCulture, careerAdvancement))
                 .companyId(CompanyId.create(companyId))
                 .memberId(memberId)
                 .build();

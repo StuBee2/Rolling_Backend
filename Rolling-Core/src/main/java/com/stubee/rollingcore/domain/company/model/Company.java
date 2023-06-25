@@ -11,7 +11,7 @@ public record Company (
         CompanyDetails companyDetails,
         Grades companyGrades,
         MemberId registrantId) {
-    public static Company create(CompanyId companyId, CompanyDetails companyDetails, Grades companyGrades, MemberId registrantId) {
+    public static Company createWithId(CompanyId companyId, CompanyDetails companyDetails, Grades companyGrades, MemberId registrantId) {
         return Company.builder()
                 .companyId(companyId)
                 .companyDetails(companyDetails)
@@ -20,20 +20,18 @@ public record Company (
                 .build();
     }
 
-    public static Company createExceptCompanyId(final String name, final String address, final String description,
+    public static Company create(final String name, final String address, final String description,
                                                  final String imgUrl, MemberId memberId) {
         return Company.builder()
                 .companyDetails(CompanyDetails.create(name, address, description, imgUrl))
-                .companyGrades(Grades.createWithTotal(0.0, 0.0, 0.0, 0.0))
+                .companyGrades(Grades.createWithTotal(0.0, 0.0, 0.0, 0.0, 0.0))
                 .registrantId(memberId)
                 .build();
     }
 
-    public Company updateGrades(final double totalAvg, final double balanceAvg, final double salaryAvg, final double welfareAvg) {
-        return create(companyId, companyDetails, updateAverages(totalAvg, balanceAvg, salaryAvg, welfareAvg), registrantId);
-    }
-
-    private Grades updateAverages(final double totalAvg, final double balanceAvg, final double salaryAvg, final double welfareAvg) {
-        return Grades.createWithTotal(totalAvg, balanceAvg, salaryAvg, welfareAvg);
+    public Company updateGrades(final double totalAvg, final double salaryAndBenefits, final double workLifeBalance,
+                                 final double organizationalCulture, final double careerAdvancement) {
+        return createWithId(companyId, companyDetails, Grades.createWithTotal(totalAvg, salaryAndBenefits, workLifeBalance,
+                organizationalCulture, careerAdvancement), registrantId);
     }
 }
