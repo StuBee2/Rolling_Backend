@@ -44,6 +44,7 @@ public class SecurityConfig {
                 .requestMatchers("/review/**").hasRole("MEMBER")
                 .requestMatchers("/logging/**").hasRole("MEMBER")
                 .requestMatchers("/file/**").hasRole("MEMBER")
+                .requestMatchers("/news/**").hasRole("MEMBER")
                 .anyRequest().authenticated()
 
                 .and()
