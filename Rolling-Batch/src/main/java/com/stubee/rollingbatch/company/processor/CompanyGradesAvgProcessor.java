@@ -13,7 +13,7 @@ import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
-public class CompanyItemProcessor implements ItemProcessor<List<Company>, List<Company>> {
+public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, List<Company>> {
 
     private static final long PAGE_SIZE = 100;
 

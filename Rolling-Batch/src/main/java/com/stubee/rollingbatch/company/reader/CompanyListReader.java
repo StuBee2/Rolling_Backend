@@ -11,7 +11,7 @@ import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
-public class CompanyItemReader implements ItemReader<List<Company>> {
+public class CompanyListReader implements ItemReader<List<Company>> {
 
     private static final long SIZE = 100;
 

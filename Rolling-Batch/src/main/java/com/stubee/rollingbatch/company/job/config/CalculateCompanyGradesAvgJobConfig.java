@@ -3,9 +3,9 @@ package com.stubee.rollingbatch.company.job.config;
 import com.stubee.rollingapplication.domain.company.port.api.CommandCompanyUseCase;
 import com.stubee.rollingapplication.domain.company.port.api.QueryCompanyUseCase;
 import com.stubee.rollingapplication.domain.review.port.api.QueryReviewUseCase;
-import com.stubee.rollingbatch.company.processor.CompanyItemProcessor;
-import com.stubee.rollingbatch.company.reader.CompanyItemReader;
-import com.stubee.rollingbatch.company.writer.CompanyItemWriter;
+import com.stubee.rollingbatch.company.processor.CompanyGradesAvgProcessor;
+import com.stubee.rollingbatch.company.reader.CompanyListReader;
+import com.stubee.rollingbatch.company.writer.CompanyListWriter;
 import com.stubee.rollingcore.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +26,7 @@ import java.util.List;
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
-public class AvgJobConfig {
+public class CalculateCompanyGradesAvgJobConfig {
 
     private static final int CHUNK_SIZE = 1;
 
@@ -54,17 +54,17 @@ public class AvgJobConfig {
 
     @Bean
     public ItemReader<List<Company>> companyReader() {
-        return new CompanyItemReader(queryCompanyUseCase);
+        return new CompanyListReader(queryCompanyUseCase);
     }
 
     @Bean
     public ItemProcessor<List<Company>, List<Company>> companyProcessor() {
-        return new CompanyItemProcessor(queryReviewUseCase);
+        return new CompanyGradesAvgProcessor(queryReviewUseCase);
     }
 
     @Bean
     public ItemWriter<List<Company>> companyWriter() {
-        return new CompanyItemWriter(commandCompanyUseCase);
+        return new CompanyListWriter(commandCompanyUseCase);
     }
 
 }

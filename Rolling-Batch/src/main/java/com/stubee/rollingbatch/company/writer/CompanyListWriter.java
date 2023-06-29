@@ -11,7 +11,7 @@ import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
-public class CompanyItemWriter implements ItemWriter<List<Company>> {
+public class CompanyListWriter implements ItemWriter<List<Company>> {
 
     private final CommandCompanyUseCase commandCompanyUseCase;
 
