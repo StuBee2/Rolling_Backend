@@ -7,7 +7,6 @@ import com.stubee.rollingapplication.domain.member.port.spi.MemberSecurityPort;
  import com.stubee.rollingcore.domain.company.command.RegisterCompanyCommand;
 import com.stubee.rollingcore.domain.company.model.Company;
 import com.stubee.rollingcore.domain.company.model.CompanyId;
-import com.stubee.rollingcore.domain.member.model.Member;
 import com.stubee.rollingcore.domain.member.model.MemberId;
 import lombok.RequiredArgsConstructor;
 
@@ -20,9 +19,7 @@ public class CommandCompanyService implements CommandCompanyUseCase {
 
     @Override
     public Company register(RegisterCompanyCommand command) {
-        Member member = memberSecurityPort.getCurrentMember();
-
-        return commandCompanyPort.create(createExceptCompanyId(command, member.memberId()));
+        return commandCompanyPort.create(createExceptCompanyId(command, memberSecurityPort.getCurrentMemberId()));
     }
 
     @Override

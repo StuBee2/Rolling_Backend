@@ -1,6 +1,7 @@
 package com.stubee.rollinginfrastructure.common.security.oauth.principle;
 
 import com.stubee.rollingcore.domain.member.model.Member;
+import com.stubee.rollingcore.domain.member.model.MemberId;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,6 +28,10 @@ public class CustomMemberDetails implements UserDetails, OAuth2User {
 
     public static CustomMemberDetails create(Member member, Map<String, Object> attributes) {
         return new CustomMemberDetails(member, attributes);
+    }
+
+    public MemberId getMemberId() {
+        return member.memberId();
     }
 
     @Override
