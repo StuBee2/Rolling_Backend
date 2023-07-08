@@ -1,15 +1,15 @@
-package com.stubee.rollingadapter.out.persistence.member.adapter;
+package com.stubee.rollingadapter.persistence.member.adapter;
 
-import com.stubee.rollingadapter.out.persistence.member.entity.MemberEntity;
-import com.stubee.rollingadapter.out.persistence.member.mapper.MemberMapper;
-import com.stubee.rollingadapter.out.persistence.member.repository.CommandMemberJpaRepository;
+import com.stubee.rollingadapter.common.annotation.Adapter;
+import com.stubee.rollingadapter.persistence.member.entity.MemberEntity;
+import com.stubee.rollingadapter.persistence.member.mapper.MemberMapper;
+import com.stubee.rollingadapter.persistence.member.repository.CommandMemberJpaRepository;
 import com.stubee.rollingapplication.domain.member.port.spi.CommandMemberPort;
 import com.stubee.rollingcore.domain.member.dto.response.MemberProfile;
 import com.stubee.rollingcore.domain.member.model.Member;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@Component
+@Adapter
 @RequiredArgsConstructor
 public class CommandMemberAdapter implements CommandMemberPort {
 

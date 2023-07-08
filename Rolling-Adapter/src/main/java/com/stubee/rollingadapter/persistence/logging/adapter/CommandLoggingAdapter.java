@@ -1,16 +1,16 @@
-package com.stubee.rollingadapter.out.persistence.logging.adapter;
+package com.stubee.rollingadapter.persistence.logging.adapter;
 
-import com.stubee.rollingadapter.out.persistence.logging.mapper.LoggingMapper;
-import com.stubee.rollingadapter.out.persistence.logging.repository.LoggingJpaRepository;
+import com.stubee.rollingadapter.common.annotation.Adapter;
+import com.stubee.rollingadapter.persistence.logging.mapper.LoggingMapper;
+import com.stubee.rollingadapter.persistence.logging.repository.LoggingJpaRepository;
 import com.stubee.rollingapplication.domain.logging.port.spi.CommandLoggingPort;
 import com.stubee.rollingcore.domain.logging.model.Logging;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.UUID;
 
-@Component
+@Adapter
 @RequiredArgsConstructor
 public class CommandLoggingAdapter implements CommandLoggingPort {
 

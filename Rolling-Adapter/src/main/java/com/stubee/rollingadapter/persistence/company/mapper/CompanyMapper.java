@@ -1,15 +1,15 @@
-package com.stubee.rollingadapter.out.persistence.company.mapper;
+package com.stubee.rollingadapter.persistence.company.mapper;
 
-import com.stubee.rollingadapter.out.common.mapper.GenericMapper;
-import com.stubee.rollingadapter.out.persistence.company.entity.CompanyEntity;
+import com.stubee.rollingadapter.common.annotation.Mapper;
+import com.stubee.rollingadapter.common.mapper.GenericMapper;
+import com.stubee.rollingadapter.persistence.company.entity.CompanyEntity;
 import com.stubee.rollingcore.domain.company.model.Company;
 import com.stubee.rollingcore.domain.company.model.CompanyDetails;
 import com.stubee.rollingcore.common.model.Grades;
 import com.stubee.rollingcore.domain.company.model.CompanyId;
 import com.stubee.rollingcore.domain.member.model.MemberId;
-import org.springframework.stereotype.Component;
 
-@Component
+@Mapper
 public class CompanyMapper implements GenericMapper<CompanyEntity, Company> {
 
     /** Company Entity Except Id */

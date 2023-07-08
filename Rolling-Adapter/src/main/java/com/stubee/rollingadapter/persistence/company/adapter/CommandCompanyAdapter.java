@@ -1,15 +1,15 @@
-package com.stubee.rollingadapter.out.persistence.company.adapter;
+package com.stubee.rollingadapter.persistence.company.adapter;
 
-import com.stubee.rollingadapter.out.persistence.company.entity.CompanyEntity;
-import com.stubee.rollingadapter.out.persistence.company.mapper.CompanyMapper;
-import com.stubee.rollingadapter.out.persistence.company.repository.CommandCompanyJpaRepository;
+import com.stubee.rollingadapter.common.annotation.Adapter;
+import com.stubee.rollingadapter.persistence.company.entity.CompanyEntity;
+import com.stubee.rollingadapter.persistence.company.mapper.CompanyMapper;
+import com.stubee.rollingadapter.persistence.company.repository.CommandCompanyJpaRepository;
 import com.stubee.rollingapplication.domain.company.port.spi.CommandCompanyPort;
 import com.stubee.rollingcore.domain.company.model.Company;
 import com.stubee.rollingcore.domain.company.model.CompanyId;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@Component
+@Adapter
 @RequiredArgsConstructor
 public class CommandCompanyAdapter implements CommandCompanyPort {
 

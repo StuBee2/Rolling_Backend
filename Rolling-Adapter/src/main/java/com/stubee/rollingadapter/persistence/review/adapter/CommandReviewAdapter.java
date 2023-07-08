@@ -1,13 +1,13 @@
-package com.stubee.rollingadapter.out.persistence.review.adapter;
+package com.stubee.rollingadapter.persistence.review.adapter;
 
-import com.stubee.rollingadapter.out.persistence.review.mapper.ReviewMapper;
-import com.stubee.rollingadapter.out.persistence.review.repository.ReviewJpaRepository;
+import com.stubee.rollingadapter.common.annotation.Adapter;
+import com.stubee.rollingadapter.persistence.review.mapper.ReviewMapper;
+import com.stubee.rollingadapter.persistence.review.repository.ReviewJpaRepository;
 import com.stubee.rollingapplication.domain.review.port.spi.CommandReviewPort;
 import com.stubee.rollingcore.domain.review.model.Review;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@Component
+@Adapter
 @RequiredArgsConstructor
 public class CommandReviewAdapter implements CommandReviewPort {
 

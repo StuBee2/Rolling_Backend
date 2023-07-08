@@ -1,15 +1,17 @@
-package com.stubee.rollingadapter.out.persistence.company.adapter;
+package com.stubee.rollingadapter.persistence.company.adapter;
 
 import com.querydsl.core.types.ConstructorExpression;
+import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.Projections;
+import com.querydsl.core.types.dsl.NumberPath;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.stubee.rollingadapter.out.persistence.company.mapper.CompanyMapper;
+import com.stubee.rollingadapter.common.annotation.Adapter;
+import com.stubee.rollingadapter.persistence.company.mapper.CompanyMapper;
 import com.stubee.rollingapplication.domain.company.port.spi.QueryCompanyPort;
-import com.stubee.rollingcore.common.dto.PageRequest;
+import com.stubee.rollingcore.common.dto.request.PageRequest;
 import com.stubee.rollingcore.domain.company.dto.response.CompanyQueryResponse;
 import com.stubee.rollingcore.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,9 +20,11 @@ import java.util.UUID;
 import static com.stubee.rollingadapter.out.persistence.company.entity.QCompanyEntity.*;
 import static com.stubee.rollingadapter.out.persistence.member.entity.QMemberEntity.*;
 
-@Component
+@Adapter
 @RequiredArgsConstructor
 public class QueryCompanyAdapter implements QueryCompanyPort {
+
+    private static final int RANK_LIMIT = 10;
 
     private final JPAQueryFactory jpaQueryFactory;
     private final CompanyMapper companyMapper;
@@ -30,13 +34,13 @@ public class QueryCompanyAdapter implements QueryCompanyPort {
         return jpaQueryFactory.selectFrom(companyEntity)
                 .where(companyEntity.id.eq(companyId))
                 .select(companyEntity.id)
-                .fetchFirst() == null;
+                .fetchFirst()==null;
     }
 
     @Override
     public Optional<CompanyQueryResponse> findById(UUID companyId) {
         return Optional.ofNullable(jpaQueryFactory
-                .select(queryResponseProjection())
+                .select(responseProjection())
                 .from(companyEntity)
                 .innerJoin(memberEntity)
                 .on(companyEntity.registrantId.eq(memberEntity.id))
@@ -46,26 +50,12 @@ public class QueryCompanyAdapter implements QueryCompanyPort {
 
     @Override
     public List<Company> findByNameContaining(String companyName, PageRequest pageRequest) {
-        return jpaQueryFactory
-                .selectFrom(companyEntity)
-                .where(companyEntity.name.contains(companyName))
-                .orderBy(companyEntity.createdAt.desc())
-                .offset((pageRequest.page()-1)*pageRequest.size())
-                .limit(pageRequest.size())
-                .fetch()
-                .stream().map(companyMapper::toDomain).toList();
+        return findByOptionWithPaging(companyEntity.name.contains(companyName), pageRequest);
     }
 
     @Override
     public List<Company> findByRegistrantId(UUID registrantId, PageRequest pageRequest) {
-        return jpaQueryFactory
-                .selectFrom(companyEntity)
-                .where(companyEntity.registrantId.eq(registrantId))
-                .orderBy(companyEntity.createdAt.desc())
-                .offset((pageRequest.page()-1)*pageRequest.size())
-                .limit(pageRequest.size())
-                .fetch()
-                .stream().map(companyMapper::toDomain).toList();
+        return findByOptionWithPaging(companyEntity.registrantId.eq(registrantId), pageRequest);
     }
 
     @Override
@@ -80,55 +70,50 @@ public class QueryCompanyAdapter implements QueryCompanyPort {
 
     @Override
     public List<Company> findByTotalGrade() {
-        return jpaQueryFactory
-                .selectFrom(companyEntity)
-                .orderBy(companyEntity.totalGrade.desc())
-                .limit(10)
-                .fetch()
-                .stream().map(companyMapper::toDomain).toList();
+        return queryTop10orderByGrades(companyEntity.totalGrade);
     }
 
     @Override
     public List<Company> findBySalaryAndBenefits() {
-        return jpaQueryFactory
-                .selectFrom(companyEntity)
-                .orderBy(companyEntity.salaryAndBenefits.desc())
-                .limit(10)
-                .fetch()
-                .stream().map(companyMapper::toDomain).toList();
+        return queryTop10orderByGrades(companyEntity.salaryAndBenefits);
     }
 
     @Override
     public List<Company> findByWorkLifeBalance() {
-        return jpaQueryFactory
-                .selectFrom(companyEntity)
-                .orderBy(companyEntity.workLifeBalance.desc())
-                .limit(10)
-                .fetch()
-                .stream().map(companyMapper::toDomain).toList();
+        return queryTop10orderByGrades(companyEntity.workLifeBalance);
     }
 
     @Override
     public List<Company> findByOrganizationalCulture() {
-        return jpaQueryFactory
-                .selectFrom(companyEntity)
-                .orderBy(companyEntity.organizationalCulture.desc())
-                .limit(10)
-                .fetch()
-                .stream().map(companyMapper::toDomain).toList();
+        return queryTop10orderByGrades(companyEntity.organizationalCulture);
     }
 
     @Override
     public List<Company> findByCareerAdvancement() {
+        return queryTop10orderByGrades(companyEntity.careerAdvancement);
+    }
+
+    private List<Company> findByOptionWithPaging(Predicate option, PageRequest pageRequest) {
         return jpaQueryFactory
                 .selectFrom(companyEntity)
-                .orderBy(companyEntity.careerAdvancement.desc())
-                .limit(10)
+                .where(option)
+                .orderBy(companyEntity.createdAt.desc())
+                .offset((pageRequest.page()-1)*pageRequest.size())
+                .limit(pageRequest.size())
                 .fetch()
                 .stream().map(companyMapper::toDomain).toList();
     }
 
-    private ConstructorExpression<CompanyQueryResponse> queryResponseProjection() {
+    private List<Company> queryTop10orderByGrades(NumberPath<Double> order) {
+        return jpaQueryFactory
+                .selectFrom(companyEntity)
+                .orderBy(order.desc())
+                .limit(RANK_LIMIT)
+                .fetch()
+                .stream().map(companyMapper::toDomain).toList();
+    }
+
+    private ConstructorExpression<CompanyQueryResponse> responseProjection() {
         return Projections.constructor(CompanyQueryResponse.class,
                 companyEntity.id,
                 companyEntity.name,
