@@ -3,7 +3,7 @@ package com.stubee.rollingadapter.persistence.review.adapter;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.stubee.rollingadapter.common.annotation.Adapter;
+import com.stubee.rollingapplication.common.annotation.Adapter;
 import com.stubee.rollingcore.common.dto.request.PageRequest;
 import com.stubee.rollingcore.domain.review.dto.response.ReviewInfoResponse;
 import com.stubee.rollingapplication.domain.review.port.spi.QueryReviewPort;

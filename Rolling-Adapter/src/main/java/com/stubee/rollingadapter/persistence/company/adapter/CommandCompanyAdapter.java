@@ -1,6 +1,6 @@
 package com.stubee.rollingadapter.persistence.company.adapter;
 
-import com.stubee.rollingadapter.common.annotation.Adapter;
+import com.stubee.rollingapplication.common.annotation.Adapter;
 import com.stubee.rollingadapter.persistence.company.entity.CompanyEntity;
 import com.stubee.rollingadapter.persistence.company.mapper.CompanyMapper;
 import com.stubee.rollingadapter.persistence.company.repository.CommandCompanyJpaRepository;

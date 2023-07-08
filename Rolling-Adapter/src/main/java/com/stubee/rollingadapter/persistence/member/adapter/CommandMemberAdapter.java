@@ -1,6 +1,6 @@
 package com.stubee.rollingadapter.persistence.member.adapter;
 
-import com.stubee.rollingadapter.common.annotation.Adapter;
+import com.stubee.rollingapplication.common.annotation.Adapter;
 import com.stubee.rollingadapter.persistence.member.entity.MemberEntity;
 import com.stubee.rollingadapter.persistence.member.mapper.MemberMapper;
 import com.stubee.rollingadapter.persistence.member.repository.CommandMemberJpaRepository;

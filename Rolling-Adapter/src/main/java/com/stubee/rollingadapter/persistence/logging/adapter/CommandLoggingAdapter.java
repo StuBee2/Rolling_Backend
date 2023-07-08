@@ -1,6 +1,6 @@
 package com.stubee.rollingadapter.persistence.logging.adapter;
 
-import com.stubee.rollingadapter.common.annotation.Adapter;
+import com.stubee.rollingapplication.common.annotation.Adapter;
 import com.stubee.rollingadapter.persistence.logging.mapper.LoggingMapper;
 import com.stubee.rollingadapter.persistence.logging.repository.LoggingJpaRepository;
 import com.stubee.rollingapplication.domain.logging.port.spi.CommandLoggingPort;
