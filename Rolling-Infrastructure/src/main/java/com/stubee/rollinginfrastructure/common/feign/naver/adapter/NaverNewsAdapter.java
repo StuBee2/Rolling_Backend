@@ -1,15 +1,15 @@
 package com.stubee.rollinginfrastructure.common.feign.naver.adapter;
 
+import com.stubee.rollingapplication.common.annotation.Adapter;
 import com.stubee.rollingapplication.domain.news.port.spi.NewsPort;
 import com.stubee.rollingcore.domain.news.dto.response.NewsResponse;
 import com.stubee.rollinginfrastructure.common.feign.naver.client.NaverNewsClient;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
-@Component
+@Adapter
 @RequiredArgsConstructor
 public class NaverNewsAdapter implements NewsPort {
 

@@ -1,5 +1,6 @@
 package com.stubee.rollinginfrastructure.common.jwt.adapter;
 
+import com.stubee.rollingapplication.common.annotation.Adapter;
 import com.stubee.rollingapplication.domain.auth.port.spi.ParseJwtPort;
 import com.stubee.rollingapplication.domain.member.port.spi.QueryMemberPort;
 import com.stubee.rollingcore.domain.auth.enums.JwtType;
@@ -13,12 +14,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.util.UUID;
 
-@Component
+@Adapter
 @RequiredArgsConstructor
 public class ParseJwtAdapter implements ParseJwtPort {
 

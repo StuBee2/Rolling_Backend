@@ -3,12 +3,12 @@ package com.stubee.rollinginfrastructure.thirdparty.s3.adapter;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.stubee.rollingapplication.common.annotation.Adapter;
 import com.stubee.rollingapplication.domain.file.port.spi.S3Port;
 import com.stubee.rollingcore.common.exception.CustomException;
 import com.stubee.rollingcore.domain.file.exception.FileConvertException;
 import com.stubee.rollinginfrastructure.thirdparty.s3.properties.S3Properties;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Component
+@Adapter
 @RequiredArgsConstructor
 public class S3Adapter implements S3Port {
 

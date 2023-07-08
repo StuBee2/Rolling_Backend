@@ -1,5 +1,6 @@
 package com.stubee.rollinginfrastructure.common.jwt.adapter;
 
+import com.stubee.rollingapplication.common.annotation.Adapter;
 import com.stubee.rollingapplication.domain.auth.port.spi.ProvideJwtPort;
 import com.stubee.rollingcore.domain.auth.enums.JwtType;
 import com.stubee.rollingcore.domain.member.enums.MemberRole;
@@ -8,12 +9,11 @@ import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.UUID;
 
-@Component
+@Adapter
 @RequiredArgsConstructor
 public class ProvideJwtAdapter implements ProvideJwtPort {
 
