@@ -1,6 +1,6 @@
 package com.stubee.rollingapplication.domain.company.port.spi;
 
-import com.stubee.rollingcore.common.dto.PageRequest;
+import com.stubee.rollingcore.common.dto.request.PageRequest;
 import com.stubee.rollingcore.domain.company.dto.response.CompanyQueryResponse;
 import com.stubee.rollingcore.domain.company.model.Company;
 

@@ -1,7 +1,7 @@
 package com.stubee.rollingapplication.domain.company.port.api;
 
-import com.stubee.rollingcore.common.dto.PageDataResponse;
-import com.stubee.rollingcore.common.dto.PageRequest;
+import com.stubee.rollingcore.common.dto.response.PageDataResponse;
+import com.stubee.rollingcore.common.dto.request.PageRequest;
 import com.stubee.rollingcore.domain.company.dto.response.CompanyQueryResponse;
 import com.stubee.rollingcore.domain.company.model.Company;
 

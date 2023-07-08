@@ -2,7 +2,7 @@ package com.stubee.rollingapplication.domain.news.service;
 
 import com.stubee.rollingapplication.domain.news.port.api.NewsUseCase;
 import com.stubee.rollingapplication.domain.news.port.spi.NewsPort;
-import com.stubee.rollingcore.common.dto.PageRequest;
+import com.stubee.rollingcore.common.dto.request.PageRequest;
 import com.stubee.rollingcore.domain.news.dto.response.NewsResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

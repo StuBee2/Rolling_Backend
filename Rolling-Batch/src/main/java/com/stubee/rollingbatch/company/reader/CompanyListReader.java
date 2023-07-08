@@ -1,7 +1,7 @@
 package com.stubee.rollingbatch.company.reader;
 
 import com.stubee.rollingapplication.domain.company.port.api.QueryCompanyUseCase;
-import com.stubee.rollingcore.common.dto.PageRequest;
+import com.stubee.rollingcore.common.dto.request.PageRequest;
 import com.stubee.rollingcore.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
