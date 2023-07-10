@@ -3,7 +3,7 @@ package com.stubee.rollingapplication.domain.news.service;
 import com.stubee.rollingapplication.domain.news.port.api.NewsUseCase;
 import com.stubee.rollingapplication.domain.news.port.spi.NewsPort;
 import com.stubee.rollingcore.common.dto.request.PageRequest;
-import com.stubee.rollingcore.domain.news.dto.response.NewsResponse;
+import com.stubee.rollingcore.common.dto.response.PageDataResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class NewsService implements NewsUseCase {
     private final NewsPort newsPort;
 
     @Override
-    public NewsResponse getNewsByCompanyName(final String companyName, PageRequest pageRequest) {
+    public PageDataResponse getNewsByCompanyName(final String companyName, PageRequest pageRequest) {
         return newsPort.getByCompanyName(companyName, longToInt(pageRequest.size()), longToInt(pageRequest.page()));
     }
 

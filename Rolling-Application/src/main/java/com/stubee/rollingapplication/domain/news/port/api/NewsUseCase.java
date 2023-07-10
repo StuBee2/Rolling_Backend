@@ -1,10 +1,10 @@
 package com.stubee.rollingapplication.domain.news.port.api;
 
 import com.stubee.rollingcore.common.dto.request.PageRequest;
-import com.stubee.rollingcore.domain.news.dto.response.NewsResponse;
+import com.stubee.rollingcore.common.dto.response.PageDataResponse;
 
 public interface NewsUseCase {
 
-    NewsResponse getNewsByCompanyName(String companyName, PageRequest pageRequest);
+    PageDataResponse getNewsByCompanyName(String companyName, PageRequest pageRequest);
 
 }
