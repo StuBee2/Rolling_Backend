@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static com.stubee.rollingadapter.out.persistence.company.entity.QCompanyEntity.*;
-import static com.stubee.rollingadapter.out.persistence.member.entity.QMemberEntity.*;
-import static com.stubee.rollingadapter.out.persistence.review.entity.QReviewEntity.*;
+import static com.stubee.rollingadapter.persistence.company.entity.QCompanyEntity.companyEntity;
+import static com.stubee.rollingadapter.persistence.member.entity.QMemberEntity.memberEntity;
+import static com.stubee.rollingadapter.persistence.review.entity.QReviewEntity.reviewEntity;
 
 @Adapter
 @RequiredArgsConstructor

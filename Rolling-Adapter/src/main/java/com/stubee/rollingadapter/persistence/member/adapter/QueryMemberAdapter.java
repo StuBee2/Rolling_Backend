@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.Optional;
 import java.util.UUID;
 
-import static com.stubee.rollingadapter.out.persistence.member.entity.QMemberEntity.memberEntity;
+import static com.stubee.rollingadapter.persistence.member.entity.QMemberEntity.memberEntity;
 
 @Adapter
 @RequiredArgsConstructor
