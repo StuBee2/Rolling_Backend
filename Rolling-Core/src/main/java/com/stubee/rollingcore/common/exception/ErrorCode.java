@@ -12,6 +12,7 @@ public enum ErrorCode {
     SERVLET_BINDING_ERROR(500, "ServletBindingException occurred"),
     INTERNAL_SERVER_ERROR(500, "InternalServerException occurred"),
     FILE_CONVERT_ERROR(500, "FileConvertException occurred"),
+    FILE_UPLOAD_ERROR(500, "FileUploadException occurred"),
 
     MEMBER_NOT_FOUND(404, "Member not found"),
     COMPANY_NOT_FOUND(404, "Company not found"),

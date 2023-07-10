@@ -5,8 +5,8 @@ import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.stubee.rollingapplication.common.annotation.Adapter;
 import com.stubee.rollingapplication.domain.file.port.spi.S3Port;
-import com.stubee.rollingcore.common.exception.CustomException;
 import com.stubee.rollingcore.domain.file.exception.FileConvertException;
+import com.stubee.rollingcore.domain.file.exception.FileUploadException;
 import com.stubee.rollinginfrastructure.thirdparty.s3.properties.S3Properties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
@@ -39,7 +39,7 @@ public class S3Adapter implements S3Port {
 
             return getUrl(fileName);
         } catch (IOException e) {
-            throw new CustomException(400, "file upload error");
+            throw FileUploadException.EXCEPTION;
         }
     }
 
