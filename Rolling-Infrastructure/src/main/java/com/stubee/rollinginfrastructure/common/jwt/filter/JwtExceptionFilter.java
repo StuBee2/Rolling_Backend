@@ -1,7 +1,7 @@
 package com.stubee.rollinginfrastructure.common.jwt.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.stubee.rollinginfrastructure.common.exception.ErrorCode;
+import com.stubee.rollingcore.common.exception.ErrorCode;
 import com.stubee.rollinginfrastructure.common.exception.ErrorResponse;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
@@ -29,13 +29,13 @@ public class JwtExceptionFilter extends OncePerRequestFilter {
         try {
             filterChain.doFilter(request, response);
         } catch (ExpiredJwtException e) {
-            setErrorResponse(response, ErrorCode.EXPIRED_JWT_EXCEPTION);
+            setErrorResponse(response, ErrorCode.EXPIRED_JWT);
         } catch (MalformedJwtException e) {
-            setErrorResponse(response, ErrorCode.MALFORMED_JWT_EXCEPTION);
+            setErrorResponse(response, ErrorCode.MALFORMED_JWT);
         } catch (UnsupportedJwtException e) {
-            setErrorResponse(response, ErrorCode.UNSUPPORTED_JWT_EXCEPTION);
+            setErrorResponse(response, ErrorCode.UNSUPPORTED_JWT);
         } catch (IllegalArgumentException e) {
-            setErrorResponse(response, ErrorCode.ILLEGAL_ARGUMENT_EXCEPTION);
+            setErrorResponse(response, ErrorCode.ILLEGAL_ARGUMENT_ERROR);
         }
     }
 
