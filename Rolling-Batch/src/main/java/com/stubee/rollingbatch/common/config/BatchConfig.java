@@ -8,15 +8,21 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EnableBatchProcessing
-@ComponentScan(basePackages = {"com.stubee.rollingapplication.common",
-        "com.stubee.rollingapplication.domain.company",
+@ComponentScan(basePackages = {
+        "com.stubee.rollingadapter.common.annotation",
+        "com.stubee.rollingadapter.common.config",
+        "com.stubee.rollingadapter.common.entity",
+        "com.stubee.rollingadapter.persistence",
+
+        "com.stubee.rollingapplication.common",
         "com.stubee.rollingapplication.domain.member",
+        "com.stubee.rollingapplication.domain.company",
         "com.stubee.rollingapplication.domain.review",
 
-        "com.stubee.rollinginfrastructure.common.security.adapter",
-
-        "com.stubee.rollingadapter.out"})
-@EntityScan(basePackages = {"com.stubee.rollingadapter.out"})
-@EnableJpaRepositories(basePackages = {"com.stubee.rollingadapter"})
+        "com.stubee.rollinginfrastructure.common.exception",
+        "com.stubee.rollinginfrastructure.common.security.adapter"
+})
+@EntityScan(basePackages = {"com.stubee.rollingadapter.persistence"})
+@EnableJpaRepositories(basePackages = {"com.stubee.rollingadapter.persistence"})
 public class BatchConfig {
 }
