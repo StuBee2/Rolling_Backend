@@ -27,15 +27,7 @@ public class ParseJwtAdapter implements ParseJwtPort {
 
     @Override
     public Jws<Claims> getClaims(final String token) {
-        try {
-            return Jwts.parser().setSigningKey(jwtProperties.getAccessKey()).parseClaimsJws(token);
-        } catch (ExpiredJwtException e) {
-            throw new IllegalArgumentException("만료된 토큰입니다.");
-        } catch (UnsupportedJwtException e) {
-            throw new IllegalArgumentException("지원되지 않는 토큰입니다.");
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("잘못된 토큰입니다.");
-        }
+        return Jwts.parser().setSigningKey(jwtProperties.getAccessKey()).parseClaimsJws(token);
     }
 
     @Override

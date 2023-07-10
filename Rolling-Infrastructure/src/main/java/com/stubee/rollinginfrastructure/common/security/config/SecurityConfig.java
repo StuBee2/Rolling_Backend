@@ -1,6 +1,8 @@
 package com.stubee.rollinginfrastructure.common.security.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stubee.rollingapplication.domain.auth.port.spi.ParseJwtPort;
+import com.stubee.rollinginfrastructure.common.jwt.filter.JwtExceptionFilter;
 import com.stubee.rollinginfrastructure.common.jwt.filter.JwtFilter;
 import com.stubee.rollinginfrastructure.common.security.oauth.handler.OAuthFailureHandler;
 import com.stubee.rollinginfrastructure.common.security.oauth.handler.OAuthSuccessHandler;
@@ -34,6 +36,7 @@ public class SecurityConfig {
                 .and()
                 .csrf().disable()
                 .addFilterAfter(new JwtFilter(parseJwtPort), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new JwtExceptionFilter(new ObjectMapper()), JwtFilter.class)
 
                 .authorizeHttpRequests()
                 .requestMatchers("/login/**").permitAll()

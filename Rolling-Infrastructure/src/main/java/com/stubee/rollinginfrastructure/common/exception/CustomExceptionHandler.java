@@ -21,41 +21,29 @@ public class CustomExceptionHandler {
                 new ErrorResponse(e.getStatus(), e.getMsg()), HttpStatusCode.valueOf(e.getStatus()));
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    protected ResponseEntity<ErrorResponse> handleIllegalArgumentException() {
+        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.ILLEGAL_ARGUMENT_EXCEPTION), BAD_REQUEST);
+    }
+
     @ExceptionHandler(IOException.class)
-    protected ResponseEntity<ErrorResponse> handleIOException(IOException e) {
-        return new ResponseEntity<>(
-                new ErrorResponse(INTERNAL_SERVER_ERROR.value(), ErrorMessage.IOEXCEPTION),
-                INTERNAL_SERVER_ERROR);
+    protected ResponseEntity<ErrorResponse> handleIOException() {
+        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.IO_EXCEPTION), INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(DataAccessException.class)
-    protected  ResponseEntity<ErrorResponse> handleDBException(DataAccessException e) {
-        return new ResponseEntity<>(
-                new ErrorResponse(BAD_REQUEST.value(), ErrorMessage.DBACCESS_EXCEPTION),
-                BAD_REQUEST);
+    protected  ResponseEntity<ErrorResponse> handleDBException() {
+        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.DBACCESS_EXCEPTION), INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(ServletRequestBindingException.class)
-    protected ResponseEntity<ErrorResponse> handleBindException(ServletRequestBindingException e) {
-        return new ResponseEntity<>(
-                new ErrorResponse(BAD_REQUEST.value(), ErrorMessage.SERVLET_BINDING_EXCEPTION),
-                BAD_REQUEST);
+    protected ResponseEntity<ErrorResponse> handleBindException() {
+        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.SERVLET_BINDING_EXCEPTION), INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(Exception.class)
-    protected ResponseEntity<ErrorResponse> handleException(Exception e) {
-        return new ResponseEntity<>(
-                new ErrorResponse(INTERNAL_SERVER_ERROR.value(), ErrorMessage.INTERNAL_SERVER_EXCEPTION),
-                INTERNAL_SERVER_ERROR);
-    }
-
-    private static class ErrorMessage {
-
-        private static final String IOEXCEPTION = "IOException Occurred";
-        private static final String DBACCESS_EXCEPTION = "DBAccessException Occurred";
-        private static final String SERVLET_BINDING_EXCEPTION = "ServletBindingException Occurred";
-        private static final String INTERNAL_SERVER_EXCEPTION = "Internal Server Exception Occurred";
-
+    protected ResponseEntity<ErrorResponse> handleException() {
+        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.INTERNAL_SERVER_EXCEPTION), INTERNAL_SERVER_ERROR);
     }
 
 }
