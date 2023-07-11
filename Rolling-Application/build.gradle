@@ -6,7 +6,7 @@ plugins {
 apply plugin: 'io.spring.dependency-management'
 
 dependencies {
-    implementation project(':Rolling-Core')
+    compileOnly project(':Rolling-Core')
 
     implementation 'org.springframework:spring-tx:6.0.6'
 

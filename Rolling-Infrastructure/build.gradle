@@ -6,8 +6,8 @@ plugins {
 apply plugin: 'io.spring.dependency-management'
 
 dependencies {
-    implementation project(':Rolling-Core')
-    implementation project(':Rolling-Application')
+    compileOnly project(':Rolling-Core')
+    compileOnly project(':Rolling-Application')
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
