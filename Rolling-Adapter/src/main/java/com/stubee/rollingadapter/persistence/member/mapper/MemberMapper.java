@@ -37,6 +37,7 @@ public class MemberMapper implements GenericMapper<MemberEntity, Member> {
                 .memberRole(domain.memberDetails().memberRole())
                 .loginType(domain.socialDetails().loginType())
                 .createdAt(domain.memberDetails().createdAt())
+                .modifiedAt(domain.memberDetails().modifiedAt())
                 .build();
     }
 
