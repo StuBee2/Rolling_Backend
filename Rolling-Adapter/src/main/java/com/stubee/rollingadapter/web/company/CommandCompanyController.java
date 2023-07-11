@@ -3,6 +3,7 @@ package com.stubee.rollingadapter.web.company;
 import com.stubee.rollingadapter.web.company.request.DeleteCompanyRequest;
 import com.stubee.rollingadapter.web.company.request.RegisterCompanyRequest;
 import com.stubee.rollingapplication.domain.company.port.api.CommandCompanyUseCase;
+import com.stubee.rollingapplication.domain.company.port.api.RegisterCompanyUseCase;
 import com.stubee.rollingcore.domain.company.model.Company;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -19,12 +20,13 @@ import static org.springframework.http.HttpStatus.*;
 public class CommandCompanyController {
 
     private final CommandCompanyUseCase commandCompanyUseCase;
+    private final RegisterCompanyUseCase registerCompanyUseCase;
 
     @Operation(description = "Company 등록")
     @PostMapping
     @ResponseStatus(CREATED)
     public Company register(@RequestBody @Validated RegisterCompanyRequest request) {
-        return commandCompanyUseCase.register(request.toCommand());
+        return registerCompanyUseCase.register(request.toCommand());
     }
 
     @Operation(description = "Company 삭제")

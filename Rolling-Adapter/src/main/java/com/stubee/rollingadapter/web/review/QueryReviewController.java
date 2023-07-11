@@ -1,5 +1,6 @@
 package com.stubee.rollingadapter.web.review;
 
+import com.stubee.rollingapplication.domain.review.port.api.QueryReviewByMemberUseCase;
 import com.stubee.rollingcore.common.dto.response.PageDataResponse;
 import com.stubee.rollingcore.common.dto.request.PageRequest;
 import com.stubee.rollingcore.domain.review.dto.response.ReviewInfoResponse;
@@ -22,6 +23,7 @@ import static org.springframework.http.HttpStatus.OK;
 public class QueryReviewController {
 
     private final QueryReviewUseCase queryReviewUseCase;
+    private final QueryReviewByMemberUseCase queryReviewByMemberUseCase;
 
     @Operation(description = "id로 Review 단건 조회")
     @GetMapping("/info/{id}")
@@ -34,7 +36,7 @@ public class QueryReviewController {
     @GetMapping("/my")
     @ResponseStatus(OK)
     public PageDataResponse<List<ReviewQueryResponse>> getMy(@ModelAttribute PageRequest pageDto) {
-        return queryReviewUseCase.getMy(pageDto);
+        return queryReviewByMemberUseCase.getMy(pageDto);
     }
 
     @Operation(description = "Member Id로 Review List 조회")
@@ -42,7 +44,7 @@ public class QueryReviewController {
     @ResponseStatus(OK)
     public PageDataResponse<List<ReviewQueryResponse>> getReviewByMember(final @PathVariable("id") UUID memberId,
                                                        @ModelAttribute PageRequest pageRequest) {
-        return queryReviewUseCase.getByMemberId(memberId, pageRequest);
+        return queryReviewByMemberUseCase.getByMemberId(memberId, pageRequest);
     }
 
     @Operation(description = "Company Id로 Review List 조회")

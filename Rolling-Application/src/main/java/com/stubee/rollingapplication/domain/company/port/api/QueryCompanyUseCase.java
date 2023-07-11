@@ -16,10 +16,6 @@ public interface QueryCompanyUseCase {
 
     List<Company> getList(PageRequest pageRequest);
 
-    PageDataResponse<List<Company>> getMy(PageRequest pageRequest);
-
-    PageDataResponse<List<Company>> getByMemberId(UUID memberId, PageRequest pageRequest);
-
     List<Company> getByTotalGrade();
 
     List<Company> getBySalaryAndBenefits();

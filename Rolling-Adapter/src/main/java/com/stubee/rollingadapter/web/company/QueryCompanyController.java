@@ -1,5 +1,6 @@
 package com.stubee.rollingadapter.web.company;
 
+import com.stubee.rollingapplication.domain.company.port.api.QueryCompanyByMemberUseCase;
 import com.stubee.rollingcore.common.dto.response.PageDataResponse;
 import com.stubee.rollingcore.common.dto.request.PageRequest;
 import com.stubee.rollingapplication.domain.company.port.api.QueryCompanyUseCase;
@@ -22,6 +23,7 @@ import static org.springframework.http.HttpStatus.*;
 public class QueryCompanyController {
 
     private final QueryCompanyUseCase queryCompanyUseCase;
+    private final QueryCompanyByMemberUseCase queryCompanyByMemberUseCase;
 
     @Operation(description = "Company id로 Company 정보 조회")
     @GetMapping("/info/{id}")
@@ -49,7 +51,7 @@ public class QueryCompanyController {
     @GetMapping("/my")
     @ResponseStatus(OK)
     public PageDataResponse<List<Company>> getMy(@ModelAttribute PageRequest pageRequest) {
-        return queryCompanyUseCase.getMy(pageRequest);
+        return queryCompanyByMemberUseCase.getMy(pageRequest);
     }
 
     @Operation(description = "Member Id로 Company List 조회")
@@ -57,7 +59,7 @@ public class QueryCompanyController {
     @ResponseStatus(OK)
     public PageDataResponse<List<Company>> getByMember(final @PathVariable("id") UUID memberId,
                                      @ModelAttribute PageRequest pageRequest) {
-        return queryCompanyUseCase.getByMemberId(memberId, pageRequest);
+        return queryCompanyByMemberUseCase.getByMemberId(memberId, pageRequest);
     }
 
     @Operation(description = "Company TotalGrade Top 10")

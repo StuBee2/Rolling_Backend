@@ -1,9 +1,8 @@
-package com.stubee.rollingapplication.domain.company.service;
+package com.stubee.rollingapplication.domain.company.service.query;
 
 import com.stubee.rollingapplication.common.annotation.QueryService;
 import com.stubee.rollingapplication.domain.company.port.api.QueryCompanyUseCase;
 import com.stubee.rollingapplication.domain.company.port.spi.QueryCompanyPort;
-import com.stubee.rollingapplication.domain.member.port.spi.MemberSecurityPort;
 import com.stubee.rollingcore.common.dto.response.PageDataResponse;
 import com.stubee.rollingcore.common.dto.request.PageRequest;
 import com.stubee.rollingcore.domain.company.dto.response.CompanyQueryResponse;
@@ -18,7 +17,6 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class QueryCompanyService implements QueryCompanyUseCase {
 
-    private final MemberSecurityPort memberSecurityPort;
     private final QueryCompanyPort queryCompanyPort;
 
     @Override
@@ -35,16 +33,6 @@ public class QueryCompanyService implements QueryCompanyUseCase {
     @Override
     public List<Company> getList(PageRequest pageRequest) {
         return queryCompanyPort.findAll(pageRequest);
-    }
-
-    @Override
-    public PageDataResponse<List<Company>> getMy(PageRequest pageRequest) {
-        return getByMemberId(memberSecurityPort.getCurrentMember().memberId().id(), pageRequest);
-    }
-
-    @Override
-    public PageDataResponse<List<Company>> getByMemberId(final UUID memberId, PageRequest pageRequest) {
-        return PageDataResponse.create(queryCompanyPort.findByRegistrantId(memberId, pageRequest));
     }
 
     @Override

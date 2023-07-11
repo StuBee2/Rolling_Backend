@@ -1,4 +1,4 @@
-package com.stubee.rollingapplication.domain.review.service;
+package com.stubee.rollingapplication.domain.review.service.command;
 
 import com.stubee.rollingapplication.common.annotation.CommandService;
 import com.stubee.rollingapplication.domain.company.port.spi.QueryCompanyPort;

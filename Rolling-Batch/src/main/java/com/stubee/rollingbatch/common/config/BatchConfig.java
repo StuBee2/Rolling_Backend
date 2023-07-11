@@ -15,12 +15,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         "com.stubee.rollingadapter.persistence",
 
         "com.stubee.rollingapplication.common",
-        "com.stubee.rollingapplication.domain.member",
-        "com.stubee.rollingapplication.domain.company",
-        "com.stubee.rollingapplication.domain.review",
+        "com.stubee.rollingapplication.domain.company.service.query",
+        "com.stubee.rollingapplication.domain.company.service.command",
+        "com.stubee.rollingapplication.domain.review.service.query",
 
         "com.stubee.rollinginfrastructure.common.exception",
-        "com.stubee.rollinginfrastructure.common.security.adapter"
 })
 @EntityScan(basePackages = {"com.stubee.rollingadapter.persistence"})
 @EnableJpaRepositories(basePackages = {"com.stubee.rollingadapter.persistence"})
