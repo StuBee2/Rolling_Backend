@@ -5,7 +5,7 @@ import com.stubee.rollingadapter.persistence.member.entity.MemberEntity;
 import com.stubee.rollingadapter.persistence.member.mapper.MemberMapper;
 import com.stubee.rollingadapter.persistence.member.repository.CommandMemberJpaRepository;
 import com.stubee.rollingapplication.domain.member.port.spi.CommandMemberPort;
-import com.stubee.rollingcore.domain.member.dto.response.MemberProfile;
+import com.stubee.rollingcore.domain.member.response.MemberProfile;
 import com.stubee.rollingcore.domain.member.model.Member;
 import lombok.RequiredArgsConstructor;
 

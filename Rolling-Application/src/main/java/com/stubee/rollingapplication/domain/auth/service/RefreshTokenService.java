@@ -3,7 +3,7 @@ package com.stubee.rollingapplication.domain.auth.service;
 import com.stubee.rollingapplication.domain.auth.port.api.RefreshTokenUseCase;
 import com.stubee.rollingapplication.domain.auth.port.spi.ParseJwtPort;
 import com.stubee.rollingapplication.domain.auth.port.spi.ProvideJwtPort;
-import com.stubee.rollingcore.domain.auth.dto.response.RefreshTokenResponse;
+import com.stubee.rollingcore.domain.auth.response.RefreshTokenResponse;
 import com.stubee.rollingcore.domain.auth.enums.JwtType;
 import com.stubee.rollingcore.domain.auth.exception.WrongTokenTypeException;
 import com.stubee.rollingcore.domain.member.enums.MemberRole;

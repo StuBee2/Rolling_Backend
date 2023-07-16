@@ -19,7 +19,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         "com.stubee.rollingapplication.domain.company.service.command",
         "com.stubee.rollingapplication.domain.review.service.query",
 
-        "com.stubee.rollinginfrastructure.common.exception",
+        "com.stubee.rollinginfrastructure.global.exception",
 })
 @EntityScan(basePackages = {"com.stubee.rollingadapter.persistence"})
 @EnableJpaRepositories(basePackages = {"com.stubee.rollingadapter.persistence"})

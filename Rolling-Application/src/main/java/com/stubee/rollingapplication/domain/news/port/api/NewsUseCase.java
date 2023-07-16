@@ -5,6 +5,6 @@ import com.stubee.rollingcore.common.dto.response.PageDataResponse;
 
 public interface NewsUseCase {
 
-    PageDataResponse getNewsByCompanyName(String companyName, PageRequest pageRequest);
+    PageDataResponse<?> getNewsByCompanyName(String companyName, PageRequest pageRequest);
 
 }

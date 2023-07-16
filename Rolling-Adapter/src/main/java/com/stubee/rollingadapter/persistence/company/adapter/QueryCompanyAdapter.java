@@ -9,7 +9,7 @@ import com.stubee.rollingapplication.common.annotation.Adapter;
 import com.stubee.rollingadapter.persistence.company.mapper.CompanyMapper;
 import com.stubee.rollingapplication.domain.company.port.spi.QueryCompanyPort;
 import com.stubee.rollingcore.common.dto.request.PageRequest;
-import com.stubee.rollingcore.domain.company.dto.response.CompanyQueryResponse;
+import com.stubee.rollingcore.domain.company.response.CompanyQueryResponse;
 import com.stubee.rollingcore.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;
 

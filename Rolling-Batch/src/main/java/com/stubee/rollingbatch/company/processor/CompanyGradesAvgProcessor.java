@@ -3,7 +3,7 @@ package com.stubee.rollingbatch.company.processor;
 import com.stubee.rollingapplication.domain.review.port.api.QueryReviewUseCase;
 import com.stubee.rollingcore.common.dto.request.PageRequest;
 import com.stubee.rollingcore.domain.company.model.Company;
-import com.stubee.rollingcore.domain.review.dto.response.ReviewInfoResponse;
+import com.stubee.rollingcore.domain.review.response.ReviewInfoResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemProcessor;

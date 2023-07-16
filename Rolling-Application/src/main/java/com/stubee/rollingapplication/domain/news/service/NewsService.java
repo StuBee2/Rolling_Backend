@@ -14,7 +14,7 @@ public class NewsService implements NewsUseCase {
     private final NewsPort newsPort;
 
     @Override
-    public PageDataResponse getNewsByCompanyName(final String companyName, PageRequest pageRequest) {
+    public PageDataResponse<?> getNewsByCompanyName(final String companyName, PageRequest pageRequest) {
         return newsPort.getByCompanyName(companyName, longToInt(pageRequest.size()), longToInt(pageRequest.page()));
     }
 

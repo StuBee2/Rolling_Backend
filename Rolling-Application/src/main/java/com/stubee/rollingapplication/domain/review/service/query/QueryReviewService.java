@@ -5,7 +5,7 @@ import com.stubee.rollingapplication.domain.review.port.api.QueryReviewUseCase;
 import com.stubee.rollingapplication.domain.review.port.spi.QueryReviewPort;
 import com.stubee.rollingcore.common.dto.response.PageDataResponse;
 import com.stubee.rollingcore.common.dto.request.PageRequest;
-import com.stubee.rollingcore.domain.review.dto.response.ReviewInfoResponse;
+import com.stubee.rollingcore.domain.review.response.ReviewInfoResponse;
 import com.stubee.rollingcore.domain.review.exceptionn.ReviewNotFoundException;
 import lombok.RequiredArgsConstructor;
 
