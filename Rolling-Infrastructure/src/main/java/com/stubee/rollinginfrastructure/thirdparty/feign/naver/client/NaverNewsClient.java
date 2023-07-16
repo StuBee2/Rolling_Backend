@@ -1,7 +1,7 @@
-package com.stubee.rollinginfrastructure.global.feign.naver.client;
+package com.stubee.rollinginfrastructure.thirdparty.feign.naver.client;
 
-import com.stubee.rollinginfrastructure.global.feign.naver.config.NaverFeignClientConfig;
-import com.stubee.rollinginfrastructure.global.feign.naver.dto.NaverNewsResponse;
+import com.stubee.rollinginfrastructure.thirdparty.feign.naver.config.NaverFeignClientConfig;
+import com.stubee.rollinginfrastructure.thirdparty.feign.naver.dto.NaverNewsResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

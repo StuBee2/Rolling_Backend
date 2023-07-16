@@ -1,4 +1,4 @@
-package com.stubee.rollinginfrastructure.global.feign.naver.dto;
+package com.stubee.rollinginfrastructure.thirdparty.feign.naver.dto;
 
 import java.util.List;
 
