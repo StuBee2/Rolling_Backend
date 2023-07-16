@@ -8,7 +8,7 @@ apply plugin: 'io.spring.dependency-management'
 dependencies {
     compileOnly project(':Rolling-Core')
     implementation project(':Rolling-Application')
-    runtimeOnly project(':Rolling-Infrastructure')
+    implementation project(':Rolling-Infrastructure')
 
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4'
 
