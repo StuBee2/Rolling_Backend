@@ -13,7 +13,7 @@ public record Review (
         ReviewId reviewId,
         ReviewDetails reviewDetails,
         Grades reviewGrades,
-        MemberId memberId,
+        MemberId authorId,
         CompanyId companyId) {
     public static Review create(final String content, final String position, final String careerPath,
                                 final double salaryAndBenefits, final double workLifeBalance, final double organizationalCulture,
@@ -22,7 +22,7 @@ public record Review (
                 .reviewDetails(ReviewDetails.create(content, position, careerPath))
                 .reviewGrades(Grades.create(salaryAndBenefits, workLifeBalance, organizationalCulture, careerAdvancement))
                 .companyId(CompanyId.create(companyId))
-                .memberId(memberId)
+                .authorId(memberId)
                 .build();
     }
 
@@ -32,7 +32,7 @@ public record Review (
                 .reviewId(reviewId)
                 .reviewDetails(reviewDetails)
                 .reviewGrades(reviewGrades)
-                .memberId(memberId)
+                .authorId(memberId)
                 .companyId(companyId)
                 .build();
     }

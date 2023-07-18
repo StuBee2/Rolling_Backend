@@ -1,4 +1,4 @@
-package com.stubee.rollingcore.domain.review.exceptionn;
+package com.stubee.rollingcore.domain.review.exception;
 
 import com.stubee.rollingcore.common.exception.CustomException;
 import com.stubee.rollingcore.common.exception.ErrorCode;

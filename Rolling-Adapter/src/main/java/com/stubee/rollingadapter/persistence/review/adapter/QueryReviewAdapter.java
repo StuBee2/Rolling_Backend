@@ -25,7 +25,7 @@ public class QueryReviewAdapter implements QueryReviewPort {
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public Optional<ReviewInfoResponse> findById(final UUID reviewId) {
+    public Optional<ReviewInfoResponse> findInfoById(final UUID reviewId) {
         return Optional.ofNullable(jpaQueryFactory
                 .select(infoResponseProjection())
                 .from(reviewEntity)

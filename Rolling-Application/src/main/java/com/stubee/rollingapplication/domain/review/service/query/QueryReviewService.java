@@ -6,7 +6,7 @@ import com.stubee.rollingapplication.domain.review.port.spi.QueryReviewPort;
 import com.stubee.rollingcore.common.dto.response.PageDataResponse;
 import com.stubee.rollingcore.common.dto.request.PageRequest;
 import com.stubee.rollingcore.domain.review.response.ReviewInfoResponse;
-import com.stubee.rollingcore.domain.review.exceptionn.ReviewNotFoundException;
+import com.stubee.rollingcore.domain.review.exception.ReviewNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class QueryReviewService implements QueryReviewUseCase {
 
     @Override
     public ReviewInfoResponse getInfo(final UUID reviewId) {
-        return queryReviewPort.findById(reviewId)
+        return queryReviewPort.findInfoById(reviewId)
                 .orElseThrow(() -> ReviewNotFoundException.EXCEPTION);
     }
 

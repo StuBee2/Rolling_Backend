@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public interface QueryReviewPort {
 
-    Optional<ReviewInfoResponse> findById(UUID id);
+    Optional<ReviewInfoResponse> findInfoById(UUID id);
 
     List<ReviewQueryResponse> findByMemberId(UUID memberId, PageRequest pageRequest);
 
