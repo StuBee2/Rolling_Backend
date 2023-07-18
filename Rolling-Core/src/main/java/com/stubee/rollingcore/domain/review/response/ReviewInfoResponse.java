@@ -24,7 +24,7 @@ public record ReviewInfoResponse (
         String memberSocialId,
         String memberImageUrl) {
     public void isAuthor(MemberId writerId) {
-        if(!writerId.equals(writerId.id())) {
+        if(!this.writerId.equals(writerId.id())) {
             throw NotMatchedMemberException.EXCEPTION;
         }
     }

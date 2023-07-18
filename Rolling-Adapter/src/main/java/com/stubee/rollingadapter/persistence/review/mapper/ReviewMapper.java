@@ -24,7 +24,7 @@ public class ReviewMapper implements GenericMapper<ReviewEntity, Review> {
                 .workLifeBalance(domain.reviewGrades().workLifeBalance())
                 .organizationalCulture(domain.reviewGrades().organizationalCulture())
                 .careerAdvancement(domain.reviewGrades().careerAdvancement())
-                .memberId(domain.memberId().id())
+                .memberId(domain.authorId().id())
                 .companyId(domain.companyId().id())
                 .build();
     }

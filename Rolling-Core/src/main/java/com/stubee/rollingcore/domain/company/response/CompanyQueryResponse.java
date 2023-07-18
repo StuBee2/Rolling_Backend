@@ -25,7 +25,7 @@ public record CompanyQueryResponse(
         String memberSocialId,
         String memberImageUrl) {
     public void isRegistrant(MemberId memberId) {
-        if(!companyId.equals(memberId.id())) {
+        if(!registrantId.equals(memberId.id())) {
             throw NotMatchedMemberException.EXCEPTION;
         }
     }
