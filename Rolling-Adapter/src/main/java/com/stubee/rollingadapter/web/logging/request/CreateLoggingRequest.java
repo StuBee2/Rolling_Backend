@@ -7,9 +7,6 @@ public record CreateLoggingRequest(
         @NotBlank String description,
         @NotBlank String module) {
     public CreateLoggingCommand toCommand() {
-        return CreateLoggingCommand.builder()
-                .description(description)
-                .module(module)
-                .build();
+        return CreateLoggingCommand.create(description, module);
     }
 }

@@ -9,11 +9,6 @@ public record RegisterCompanyRequest(
         @NotBlank String description,
         String imgUrl) {
     public RegisterCompanyCommand toCommand() {
-        return RegisterCompanyCommand.builder()
-                .name(name)
-                .address(address)
-                .description(description)
-                .imgUrl(imgUrl)
-                .build();
+        return RegisterCompanyCommand.create(name, address, description, imgUrl);
     }
 }

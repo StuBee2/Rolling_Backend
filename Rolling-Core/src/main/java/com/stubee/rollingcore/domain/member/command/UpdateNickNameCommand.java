@@ -1,7 +1,8 @@
 package com.stubee.rollingcore.domain.member.command;
 
-import lombok.Builder;
-
-@Builder
 public record UpdateNickNameCommand(
-        String nickName) {}
+        String nickName) {
+    public static UpdateNickNameCommand create(final String nickName) {
+        return new UpdateNickNameCommand(nickName);
+    }
+}

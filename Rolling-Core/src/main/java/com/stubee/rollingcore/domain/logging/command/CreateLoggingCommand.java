@@ -1,8 +1,9 @@
 package com.stubee.rollingcore.domain.logging.command;
 
-import lombok.Builder;
-
-@Builder
 public record CreateLoggingCommand(
         String description,
-        String module) {}
+        String module) {
+    public static CreateLoggingCommand create(final String description, final String module) {
+        return new CreateLoggingCommand(description, module);
+    }
+}

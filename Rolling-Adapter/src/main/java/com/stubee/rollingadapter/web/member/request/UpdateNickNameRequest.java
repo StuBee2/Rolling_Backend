@@ -6,8 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 public record UpdateNickNameRequest(
         @NotBlank String nickName) {
     public UpdateNickNameCommand toCommand() {
-        return UpdateNickNameCommand.builder()
-                .nickName(nickName)
-                .build();
+        return UpdateNickNameCommand.create(nickName);
     }
 }

@@ -16,15 +16,14 @@ public record WriteReviewRequest (
         @NotNull Short organizationalCulture,
         @NotNull Short careerAdvancement) {
     public WriteReviewCommand toCommand() {
-        return WriteReviewCommand.builder()
-                .companyId(companyId)
-                .content(content)
-                .position(position)
-                .careerPath(careerPath)
-                .salaryAndBenefits(salaryAndBenefits)
-                .workLifeBalance(workLifeBalance)
-                .organizationalCulture(organizationalCulture)
-                .careerAdvancement(careerAdvancement)
-                .build();
+        return WriteReviewCommand.create(
+                companyId,
+                content,
+                position,
+                careerPath,
+                salaryAndBenefits,
+                workLifeBalance,
+                organizationalCulture,
+                careerAdvancement);
     }
 }
