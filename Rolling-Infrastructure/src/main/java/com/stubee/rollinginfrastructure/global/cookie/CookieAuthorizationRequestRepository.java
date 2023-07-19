@@ -1,4 +1,4 @@
-package com.stubee.rollinginfrastructure.global.util.cookie;
+package com.stubee.rollinginfrastructure.global.cookie;
 
 import com.nimbusds.oauth2.sdk.util.StringUtils;
 import jakarta.servlet.http.HttpServletRequest;

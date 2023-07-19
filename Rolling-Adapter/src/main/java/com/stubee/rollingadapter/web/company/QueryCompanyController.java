@@ -41,7 +41,7 @@ public class QueryCompanyController {
     }
 
     @Operation(description = "모든 Company List 조회")
-    @GetMapping("/list")
+    @GetMapping("/list/all")
     @ResponseStatus(OK)
     public List<Company> getAll(@ModelAttribute PageRequest pageRequest) {
         return queryCompanyUseCase.getList(pageRequest);
@@ -55,7 +55,7 @@ public class QueryCompanyController {
     }
 
     @Operation(description = "Member Id로 Company List 조회")
-    @GetMapping("/list/{id}")
+    @GetMapping("/list/member/{id}")
     @ResponseStatus(OK)
     public PageDataResponse<List<Company>> getByMember(final @PathVariable("id") UUID memberId,
                                      @ModelAttribute PageRequest pageRequest) {

@@ -2,9 +2,9 @@ package com.stubee.rollinginfrastructure.global.security.oauth.handler;
 
 import com.stubee.rollingapplication.domain.auth.port.spi.ProvideJwtPort;
 import com.stubee.rollingcore.domain.member.model.Member;
-import com.stubee.rollinginfrastructure.global.security.oauth.principle.CustomMemberDetails;
-import com.stubee.rollinginfrastructure.global.util.cookie.CookieAuthorizationRequestRepository;
-import com.stubee.rollinginfrastructure.global.util.cookie.CookieManager;
+import com.stubee.rollinginfrastructure.global.security.model.CustomMemberDetails;
+import com.stubee.rollinginfrastructure.global.cookie.CookieAuthorizationRequestRepository;
+import com.stubee.rollinginfrastructure.global.cookie.CookieManager;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

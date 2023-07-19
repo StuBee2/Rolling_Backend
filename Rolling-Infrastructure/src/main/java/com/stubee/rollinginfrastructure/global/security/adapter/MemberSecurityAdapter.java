@@ -4,7 +4,7 @@ import com.stubee.rollingapplication.common.annotation.Adapter;
 import com.stubee.rollingapplication.domain.member.port.spi.MemberSecurityPort;
 import com.stubee.rollingcore.domain.member.model.Member;
 import com.stubee.rollingcore.domain.member.model.MemberId;
-import com.stubee.rollinginfrastructure.global.security.oauth.principle.CustomMemberDetails;
+import com.stubee.rollinginfrastructure.global.security.model.CustomMemberDetails;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 @Adapter

@@ -20,7 +20,7 @@ public class QueryMemberController {
     private final QueryMemberUseCase queryMemberUseCase;
 
     @Operation(description = "내 정보 조회")
-    @GetMapping
+    @GetMapping("/my")
     @ResponseStatus(OK)
     public Member getMy() {
         return queryMemberUseCase.getMy();

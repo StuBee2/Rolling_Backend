@@ -19,7 +19,7 @@ public class AuthController {
 
     @Operation(description = "Access Token 재발급")
     @PostMapping("/refresh")
-    @ResponseStatus(CREATED)
+    @ResponseStatus(OK)
     public RefreshTokenResponse refresh(final @RequestBody String refreshToken) {
         return refreshTokenUseCase.refresh(refreshToken);
     }

@@ -1,4 +1,4 @@
-package com.stubee.rollinginfrastructure.global.util.cookie;
+package com.stubee.rollinginfrastructure.global.cookie;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,14 +11,14 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class CookieUtil implements CookieManager {
+public class CookieManageAdapter implements CookieManager {
 
     private final CookieSerializer cookieSerializer;
     private final HttpServletRequest request;
     private final HttpServletResponse response;
 
     @Override
-    public Optional<Cookie> getCookie(String name) {
+    public Optional<Cookie> getCookie(final String name) {
         return Optional.ofNullable(request.getCookies())
                 .flatMap(cookies ->
                         Arrays.stream(cookies)
@@ -28,14 +28,14 @@ public class CookieUtil implements CookieManager {
     }
 
     @Override
-    public void addCookie(Cookie cookie) {
+    public void addCookie(final Cookie cookie) {
         cookie.setPath("/");
         cookie.setHttpOnly(true);
         response.addCookie(cookie);
     }
 
     @Override
-    public void deleteCookie(String name) {
+    public void deleteCookie(final String name) {
         Arrays.stream(Optional.ofNullable(request.getCookies()).orElse(new Cookie[]{}))
                 .filter(cookie -> cookie.getName().equals(name))
                 .forEach(cookie -> {
@@ -47,7 +47,7 @@ public class CookieUtil implements CookieManager {
     }
 
     @Override
-    public <T> void addSerializedCookie(String name, T object, int expire) {
+    public <T> void addSerializedCookie(final String name, final T object, final int expire) {
         String cookieValue = cookieSerializer.serialize(object);
         Cookie cookie = new Cookie(name, cookieValue);
         cookie.setMaxAge(expire);
@@ -55,7 +55,7 @@ public class CookieUtil implements CookieManager {
     }
 
     @Override
-    public <T> Optional<T> getDeserializedCookie(String name, Class<T> cls) {
+    public <T> Optional<T> getDeserializedCookie(final String name, final Class<T> cls) {
         return getCookie(name)
                 .map(Cookie::getValue)
                 .map(cookieValue -> cookieSerializer.deserialize(cookieValue, cls));

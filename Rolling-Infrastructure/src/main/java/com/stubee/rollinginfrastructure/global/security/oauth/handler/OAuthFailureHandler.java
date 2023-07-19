@@ -1,6 +1,6 @@
 package com.stubee.rollinginfrastructure.global.security.oauth.handler;
 
-import com.stubee.rollinginfrastructure.global.util.cookie.CookieAuthorizationRequestRepository;
+import com.stubee.rollinginfrastructure.global.cookie.CookieAuthorizationRequestRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

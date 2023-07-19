@@ -1,4 +1,4 @@
-package com.stubee.rollinginfrastructure.global.security.oauth.principle;
+package com.stubee.rollinginfrastructure.global.security.model;
 
 import com.stubee.rollingcore.domain.member.model.Member;
 import com.stubee.rollingcore.domain.member.model.MemberId;

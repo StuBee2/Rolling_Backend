@@ -1,4 +1,4 @@
-package com.stubee.rollinginfrastructure.global.util.cookie;
+package com.stubee.rollinginfrastructure.global.cookie;
 
 import jakarta.servlet.http.Cookie;
 

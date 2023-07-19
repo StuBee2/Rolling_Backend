@@ -1,4 +1,4 @@
-package com.stubee.rollinginfrastructure.global.util.cookie;
+package com.stubee.rollinginfrastructure.global.cookie;
 
 import org.springframework.stereotype.Component;
 import org.springframework.util.SerializationUtils;
@@ -11,11 +11,11 @@ import java.util.Base64;
 @Component
 public class CookieSerializer {
 
-    public String serialize(Object object) {
+    public String serialize(final Object object) {
         return Base64.getUrlEncoder().encodeToString(SerializationUtils.serialize(object));
     }
 
-    public <T> T deserialize(String cookieValue, Class<T> cls) {
+    public <T> T deserialize(final String cookieValue, final Class<T> cls) {
         try (ObjectInputStream objectInputStream = new ObjectInputStream(
                 new ByteArrayInputStream(Base64.getUrlDecoder().decode(cookieValue)))) {
             return cls.cast(objectInputStream.readObject());

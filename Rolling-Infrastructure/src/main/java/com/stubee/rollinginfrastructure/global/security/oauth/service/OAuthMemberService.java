@@ -3,7 +3,7 @@ package com.stubee.rollinginfrastructure.global.security.oauth.service;
 import com.stubee.rollingapplication.domain.member.port.spi.CommandMemberPort;
 import com.stubee.rollingcore.domain.member.enums.LoginType;
 import com.stubee.rollingcore.domain.member.model.Member;
-import com.stubee.rollinginfrastructure.global.security.oauth.principle.CustomMemberDetails;
+import com.stubee.rollinginfrastructure.global.security.model.CustomMemberDetails;
 import com.stubee.rollingcore.domain.member.enums.OAuthAttributes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;

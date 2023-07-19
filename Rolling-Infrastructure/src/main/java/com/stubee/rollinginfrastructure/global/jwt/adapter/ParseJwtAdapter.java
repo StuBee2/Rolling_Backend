@@ -8,7 +8,7 @@ import com.stubee.rollingcore.domain.auth.exception.WrongTokenTypeException;
 import com.stubee.rollingcore.domain.member.exception.MemberNotFoundException;
 import com.stubee.rollingcore.domain.member.model.Member;
 import com.stubee.rollinginfrastructure.global.jwt.properties.JwtProperties;
-import com.stubee.rollinginfrastructure.global.security.oauth.principle.CustomMemberDetails;
+import com.stubee.rollinginfrastructure.global.security.model.CustomMemberDetails;
 import io.jsonwebtoken.*;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
