@@ -1,6 +1,7 @@
 package com.stubee.rollingbatch.company.writer;
 
 import com.stubee.rollingapplication.domain.company.port.api.CommandCompanyUseCase;
+import com.stubee.rollingbatch.common.annotation.Writer;
 import com.stubee.rollingcore.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +10,7 @@ import org.springframework.batch.item.ItemWriter;
 
 import java.util.List;
 
+@Writer
 @Slf4j
 @RequiredArgsConstructor
 public class CompanyListWriter implements ItemWriter<List<Company>> {

@@ -1,6 +1,7 @@
 package com.stubee.rollingbatch.company.processor;
 
 import com.stubee.rollingapplication.domain.review.port.api.QueryReviewUseCase;
+import com.stubee.rollingbatch.common.annotation.Processor;
 import com.stubee.rollingcore.common.dto.request.PageRequest;
 import com.stubee.rollingcore.domain.company.model.Company;
 import com.stubee.rollingcore.domain.review.response.ReviewInfoResponse;
@@ -11,6 +12,7 @@ import org.springframework.batch.item.ItemProcessor;
 import java.util.ArrayList;
 import java.util.List;
 
+@Processor
 @Slf4j
 @RequiredArgsConstructor
 public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, List<Company>> {
