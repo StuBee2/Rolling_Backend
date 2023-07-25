@@ -29,14 +29,15 @@ public class OAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException {
-        String targetUrl = determineTargetUrl(request, authentication);
+        final String targetUrl = determineTargetUrl(request, authentication);
 
         if (response.isCommitted()) {
             return;
         }
 
         clearAuthenticationAttributes(request, response);
-        getRedirectStrategy().sendRedirect(request, response, targetUrl);
+
+        super.getRedirectStrategy().sendRedirect(request, response, targetUrl);
     }
 
     protected String determineTargetUrl(HttpServletRequest request, Authentication authentication) {
@@ -51,18 +52,22 @@ public class OAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
         Member member = ((CustomMemberDetails) authentication.getPrincipal()).getMember();
 
+        final String accessToken = provideJwtPort.generateAccessToken(member.memberId().id(), member.memberDetails().memberRole());
+        final String refreshToken = provideJwtPort.generateRefreshToken(member.memberId().id(), member.memberDetails().memberRole());
+
         return UriComponentsBuilder.fromUriString("http://localhost:3000/callback")
-                .queryParam("accessToken", provideJwtPort.generateAccessToken(member.memberId().id(), member.memberDetails().memberRole()))
-                .queryParam("refreshToken", provideJwtPort.generateRefreshToken(member.memberId().id(), member.memberDetails().memberRole()))
+                .queryParam("accessToken", accessToken)
+                .queryParam("refreshToken", refreshToken)
                 .build().toUriString();
     }
 
     private void clearAuthenticationAttributes(HttpServletRequest request, HttpServletResponse response) {
         super.clearAuthenticationAttributes(request);
+
         cookieAuthorizationRequestRepository.removeAuthorizationRequestCookies();
     }
 
-    private boolean isAuthorizedRedirectUri(String uri) {
+    private boolean isAuthorizedRedirectUri(final String uri) {
         URI clientRedirectUri = URI.create(uri);
         //URI authorizedUri = URI.create(redirectUri);
         URI authorizedUri = URI.create("/login/success");

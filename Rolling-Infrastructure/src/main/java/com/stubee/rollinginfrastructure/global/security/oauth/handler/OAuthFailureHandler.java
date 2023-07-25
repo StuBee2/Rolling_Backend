@@ -21,13 +21,12 @@ public class OAuthFailureHandler extends SimpleUrlAuthenticationFailureHandler {
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
                                         AuthenticationException exception) throws IOException {
         cookieAuthorizationRequestRepository.removeAuthorizationRequestCookies();
-        getRedirectStrategy().sendRedirect(request, response,
-                UriComponentsBuilder.fromUriString("http://localhost:3000/callback")
-                        .queryParam("error", exception.getLocalizedMessage()).build().toUriString());
 
-        /*cookieManager.getCookie(REDIRECT_URI_PARAM_COOKIE_NAME)
-                                .map(Cookie::getValue)
-                                .orElse("/")*/
+        final String url = UriComponentsBuilder.fromUriString("http://localhost:3000/callback")
+                .queryParam("error", exception.getLocalizedMessage()).build().toUriString();
+
+        super.getRedirectStrategy()
+                .sendRedirect(request, response, url);
     }
 
 }
