@@ -49,6 +49,10 @@ public class CompanyMapper implements GenericMapper<CompanyEntity, Company> {
 
     @Override
     public Company toDomain(final CompanyEntity entity) {
+        if(entity==null) {
+            return null;
+        }
+
         return Company.createWithId(CompanyId.create(entity.getId()), companyDetails(entity),
                 companyGrades(entity), MemberId.create(entity.getRegistrantId()));
     }

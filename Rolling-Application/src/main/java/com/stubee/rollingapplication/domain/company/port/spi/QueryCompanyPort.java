@@ -12,7 +12,9 @@ public interface QueryCompanyPort {
 
     boolean existsByCompanyId(UUID companyId);
 
-    Optional<CompanyQueryResponse> findById(UUID id);
+    Optional<Company> findById(UUID id);
+
+    Optional<CompanyQueryResponse> findInfoById(UUID id);
 
     List<Company> findByNameContaining(String name, PageRequest pageRequest);
 

@@ -1,5 +1,6 @@
 package com.stubee.rollingcore.domain.company.model;
 
+import com.stubee.rollingcore.common.exception.NotMatchedMemberException;
 import com.stubee.rollingcore.common.model.Grades;
 import com.stubee.rollingcore.domain.member.model.MemberId;
 import lombok.AccessLevel;
@@ -33,5 +34,11 @@ public record Company (
                                  final double organizationalCulture, final double careerAdvancement) {
         return createWithId(companyId, companyDetails, Grades.createWithTotal(totalAvg, salaryAndBenefits, workLifeBalance,
                 organizationalCulture, careerAdvancement), registrantId);
+    }
+
+    public void isRightRegistrant(MemberId memberId) {
+        if(registrantId.equals(memberId)) {
+            throw NotMatchedMemberException.EXCEPTION;
+        }
     }
 }

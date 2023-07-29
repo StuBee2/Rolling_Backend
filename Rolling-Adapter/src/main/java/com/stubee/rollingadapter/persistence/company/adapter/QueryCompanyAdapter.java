@@ -31,14 +31,23 @@ public class QueryCompanyAdapter implements QueryCompanyPort {
 
     @Override
     public boolean existsByCompanyId(UUID companyId) {
-        return jpaQueryFactory.selectFrom(companyEntity)
+        return jpaQueryFactory
+                .selectFrom(companyEntity)
                 .where(companyEntity.id.eq(companyId))
                 .select(companyEntity.id)
                 .fetchFirst()==null;
     }
 
     @Override
-    public Optional<CompanyQueryResponse> findById(UUID companyId) {
+    public Optional<Company> findById(UUID id) {
+        return Optional.ofNullable(companyMapper.toDomain(jpaQueryFactory
+                .selectFrom(companyEntity)
+                .where(companyEntity.id.eq(id))
+                .fetchOne()));
+    }
+
+    @Override
+    public Optional<CompanyQueryResponse> findInfoById(UUID companyId) {
         return Optional.ofNullable(jpaQueryFactory
                 .select(responseProjection())
                 .from(companyEntity)

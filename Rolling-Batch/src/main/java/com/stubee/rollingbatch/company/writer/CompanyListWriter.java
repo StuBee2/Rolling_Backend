@@ -1,6 +1,6 @@
 package com.stubee.rollingbatch.company.writer;
 
-import com.stubee.rollingapplication.domain.company.port.api.CommandCompanyUseCase;
+import com.stubee.rollingapplication.domain.company.port.api.command.UpdateCompanyUseCase;
 import com.stubee.rollingbatch.common.annotation.Writer;
 import com.stubee.rollingcore.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CompanyListWriter implements ItemWriter<List<Company>> {
 
-    private final CommandCompanyUseCase commandCompanyUseCase;
+    private final UpdateCompanyUseCase commandCompanyUseCase;
 
     @Override
     public void write(Chunk<? extends List<Company>> chunk) {

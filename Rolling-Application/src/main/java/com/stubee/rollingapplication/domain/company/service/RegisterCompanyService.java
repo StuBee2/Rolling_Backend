@@ -1,7 +1,7 @@
 package com.stubee.rollingapplication.domain.company.service;
 
 import com.stubee.rollingapplication.common.annotation.CommandService;
-import com.stubee.rollingapplication.domain.company.port.api.RegisterCompanyUseCase;
+import com.stubee.rollingapplication.domain.company.port.api.command.RegisterCompanyUseCase;
 import com.stubee.rollingapplication.domain.company.port.spi.CommandCompanyPort;
 import com.stubee.rollingapplication.domain.member.port.spi.MemberSecurityPort;
 import com.stubee.rollingcore.domain.company.command.RegisterCompanyCommand;

@@ -1,8 +1,8 @@
 package com.stubee.rollingadapter.web.company;
 
 import com.stubee.rollingadapter.web.company.request.RegisterCompanyRequest;
-import com.stubee.rollingapplication.domain.company.port.api.DeleteCompanyUseCase;
-import com.stubee.rollingapplication.domain.company.port.api.RegisterCompanyUseCase;
+import com.stubee.rollingapplication.domain.company.port.api.command.DeleteCompanyUseCase;
+import com.stubee.rollingapplication.domain.company.port.api.command.RegisterCompanyUseCase;
 import com.stubee.rollingcore.domain.company.command.DeleteCompanyCommand;
 import com.stubee.rollingcore.domain.company.model.Company;
 import io.swagger.v3.oas.annotations.Operation;

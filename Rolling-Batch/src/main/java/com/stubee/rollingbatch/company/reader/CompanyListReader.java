@@ -1,6 +1,6 @@
 package com.stubee.rollingbatch.company.reader;
 
-import com.stubee.rollingapplication.domain.company.port.api.QueryCompanyUseCase;
+import com.stubee.rollingapplication.domain.company.port.api.query.QueryAllCompanyListUseCase;
 import com.stubee.rollingbatch.common.annotation.Reader;
 import com.stubee.rollingcore.common.dto.request.PageRequest;
 import com.stubee.rollingcore.domain.company.model.Company;
@@ -17,7 +17,7 @@ public class CompanyListReader implements ItemReader<List<Company>> {
 
     private static final long SIZE = 100;
 
-    private final QueryCompanyUseCase queryCompanyUseCase;
+    private final QueryAllCompanyListUseCase queryCompanyUseCase;
 
     private long currentPage = 1;
 
