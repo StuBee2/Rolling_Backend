@@ -2,8 +2,8 @@ package com.stubee.rollingapplication.domain.member.port.api;
 
 import com.stubee.rollingcore.domain.member.command.UpdateNickNameCommand;
 
-public interface CommandMemberUseCase {
+public interface UpdateNicknameUseCase {
 
-    void updateNickName(UpdateNickNameCommand command);
+    void update(UpdateNickNameCommand command);
 
 }

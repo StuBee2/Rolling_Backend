@@ -1,7 +1,7 @@
 package com.stubee.rollingapplication.domain.logging.service;
 
 import com.stubee.rollingapplication.common.annotation.CommandService;
-import com.stubee.rollingapplication.domain.logging.port.api.CommandLoggingUseCase;
+import com.stubee.rollingapplication.domain.logging.port.api.PileUpLoggingUseCase;
 import com.stubee.rollingapplication.domain.logging.port.spi.CommandLoggingPort;
 import com.stubee.rollingcore.domain.logging.command.CreateLoggingCommand;
 import com.stubee.rollingapplication.domain.member.port.spi.MemberSecurityPort;
@@ -11,13 +11,13 @@ import lombok.RequiredArgsConstructor;
 
 @CommandService
 @RequiredArgsConstructor
-public class CommandLoggingService implements CommandLoggingUseCase {
+public class PileUpLoggingService implements PileUpLoggingUseCase {
 
     private final MemberSecurityPort memberSecurityPort;
     private final CommandLoggingPort commandLoggingPort;
 
     @Override
-    public Logging create(CreateLoggingCommand command) {
+    public Logging pileUp(CreateLoggingCommand command) {
         return commandLoggingPort.save(createExceptLoggingId(command, memberSecurityPort.getCurrentMember().memberId()));
     }
 

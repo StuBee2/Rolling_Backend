@@ -1,7 +1,7 @@
 package com.stubee.rollingadapter.web.logging;
 
 import com.stubee.rollingadapter.web.logging.request.CreateLoggingRequest;
-import com.stubee.rollingapplication.domain.logging.port.api.CommandLoggingUseCase;
+import com.stubee.rollingapplication.domain.logging.port.api.PileUpLoggingUseCase;
 import com.stubee.rollingcore.domain.logging.model.Logging;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -17,13 +17,13 @@ import static org.springframework.http.HttpStatus.*;
 @RequiredArgsConstructor
 public class CommandLoggingController {
 
-    private final CommandLoggingUseCase commandLoggingUseCase;
+    private final PileUpLoggingUseCase pileUpLoggingUseCase;
 
     @Operation(description = "logging 생성")
     @PostMapping
     @ResponseStatus(CREATED)
     public Logging create(@RequestBody @Validated CreateLoggingRequest request) {
-        return commandLoggingUseCase.create(request.toCommand());
+        return pileUpLoggingUseCase.pileUp(request.toCommand());
     }
 
 }

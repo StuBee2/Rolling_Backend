@@ -1,11 +1,13 @@
 package com.stubee.rollingcore.domain.logging.model;
 
 import com.stubee.rollingcore.domain.member.model.MemberId;
+import lombok.AccessLevel;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
-@Builder
+@Builder(access = AccessLevel.PRIVATE)
 public record Logging (
         Long id,
         String description,
@@ -17,6 +19,17 @@ public record Logging (
                 .description(description)
                 .module(module)
                 .memberId(memberId)
+                .build();
+    }
+
+    public static Logging createWithLoggingId(final Long loggingId, final String description,
+                                              final String module, UUID memberId, LocalDateTime createdAt) {
+        return Logging.builder()
+                .id(loggingId)
+                .description(description)
+                .module(module)
+                .memberId(MemberId.create(memberId))
+                .createdAt(createdAt)
                 .build();
     }
 }
