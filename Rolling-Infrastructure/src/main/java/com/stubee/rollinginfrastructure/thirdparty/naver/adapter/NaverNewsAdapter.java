@@ -1,10 +1,10 @@
-package com.stubee.rollinginfrastructure.thirdparty.feign.naver.adapter;
+package com.stubee.rollinginfrastructure.thirdparty.naver.adapter;
 
 import com.stubee.rollingapplication.common.annotation.Adapter;
 import com.stubee.rollingapplication.domain.news.port.spi.NewsPort;
 import com.stubee.rollingcore.common.dto.response.PageDataResponse;
-import com.stubee.rollinginfrastructure.thirdparty.feign.naver.client.NaverNewsClient;
-import com.stubee.rollinginfrastructure.thirdparty.feign.naver.dto.NaverNewsResponse;
+import com.stubee.rollinginfrastructure.thirdparty.naver.client.NaverNewsClient;
+import com.stubee.rollinginfrastructure.thirdparty.naver.dto.NaverNewsResponse;
 import lombok.RequiredArgsConstructor;
 
 import java.net.URLEncoder;

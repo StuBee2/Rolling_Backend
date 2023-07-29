@@ -1,7 +1,7 @@
 package com.stubee.rollingcore.domain.member.enums;
 
 import com.stubee.rollingcore.domain.auth.exception.WrongLoginTypeException;
-import com.stubee.rollingcore.domain.member.response.MemberProfile;
+import com.stubee.rollingcore.domain.member.model.MemberProfile;
 import lombok.AllArgsConstructor;
 
 import java.util.Arrays;

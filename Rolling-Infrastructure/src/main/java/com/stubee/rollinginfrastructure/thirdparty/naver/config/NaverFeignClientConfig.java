@@ -1,6 +1,6 @@
-package com.stubee.rollinginfrastructure.thirdparty.feign.naver.config;
+package com.stubee.rollinginfrastructure.thirdparty.naver.config;
 
-import com.stubee.rollinginfrastructure.thirdparty.feign.naver.properties.NaverProperties;
+import com.stubee.rollinginfrastructure.thirdparty.naver.properties.NaverProperties;
 import feign.RequestInterceptor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

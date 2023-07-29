@@ -1,4 +1,4 @@
-package com.stubee.rollinginfrastructure.thirdparty.feign.naver.properties;
+package com.stubee.rollinginfrastructure.thirdparty.naver.properties;
 
 import lombok.Getter;
 import lombok.Setter;
