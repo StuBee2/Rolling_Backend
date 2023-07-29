@@ -1,7 +1,7 @@
 package com.stubee.rollingadapter.web.member;
 
 import com.stubee.rollingadapter.web.member.request.UpdateNickNameRequest;
-import com.stubee.rollingapplication.domain.member.port.api.CommandMemberUseCase;
+import com.stubee.rollingapplication.domain.member.port.api.UpdateNicknameUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -16,13 +16,13 @@ import static org.springframework.http.HttpStatus.*;
 @RequiredArgsConstructor
 public class CommandMemberController {
 
-    private final CommandMemberUseCase commandMemberUseCase;
+    private final UpdateNicknameUseCase updateNicknameUseCase;
 
     @Operation(description = "Member NickName 수정")
     @PatchMapping("/nickName")
     @ResponseStatus(NO_CONTENT)
     public void updateNickName(@RequestBody @Validated UpdateNickNameRequest request) {
-        commandMemberUseCase.updateNickName(request.toCommand());
+        updateNicknameUseCase.update(request.toCommand());
     }
 
 }

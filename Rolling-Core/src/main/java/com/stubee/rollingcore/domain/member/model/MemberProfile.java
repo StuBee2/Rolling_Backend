@@ -1,10 +1,7 @@
-package com.stubee.rollingcore.domain.member.response;
+package com.stubee.rollingcore.domain.member.model;
 
 import com.stubee.rollingcore.domain.member.enums.LoginType;
 import com.stubee.rollingcore.domain.member.enums.MemberRole;
-import com.stubee.rollingcore.domain.member.model.Member;
-import com.stubee.rollingcore.domain.member.model.MemberDetails;
-import com.stubee.rollingcore.domain.member.model.SocialDetails;
 
 public record MemberProfile (
         String socialId,

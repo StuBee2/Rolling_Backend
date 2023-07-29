@@ -27,15 +27,11 @@ public record Member (
         return create(memberId, updateNameAndEmail(name, email), memberDetails);
     }
 
-    public Member updateMemberDetails(final String nickName) {
-        return create(memberId, socialDetails, updateNickName(nickName));
+    public Member updateNickname(final String nickname) {
+        return create(memberId, socialDetails, memberDetails.updateNickName(nickname));
     }
 
     private SocialDetails updateNameAndEmail(final String name, final String email) {
         return socialDetails.updateNameAndEmail(name, email);
-    }
-
-    private MemberDetails updateNickName(final String nickName) {
-        return memberDetails.updateNickName(nickName);
     }
 }
