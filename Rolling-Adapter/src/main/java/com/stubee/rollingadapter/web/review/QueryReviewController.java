@@ -1,10 +1,12 @@
 package com.stubee.rollingadapter.web.review;
 
-import com.stubee.rollingapplication.domain.review.port.api.QueryReviewByMemberUseCase;
+import com.stubee.rollingapplication.domain.review.port.api.query.QueryMyReviewListUseCase;
+import com.stubee.rollingapplication.domain.review.port.api.query.QueryReviewInfoListByCompanyUseCase;
+import com.stubee.rollingapplication.domain.review.port.api.query.QueryReviewListByMemberUseCase;
 import com.stubee.rollingcore.common.dto.response.PageDataResponse;
 import com.stubee.rollingcore.common.dto.request.PageRequest;
 import com.stubee.rollingcore.domain.review.response.ReviewInfoResponse;
-import com.stubee.rollingapplication.domain.review.port.api.QueryReviewUseCase;
+import com.stubee.rollingapplication.domain.review.port.api.query.QueryReviewInfoByIdUseCase;
 import com.stubee.rollingcore.domain.review.response.ReviewQueryResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -22,37 +24,39 @@ import static org.springframework.http.HttpStatus.OK;
 @RequiredArgsConstructor
 public class QueryReviewController {
 
-    private final QueryReviewUseCase queryReviewUseCase;
-    private final QueryReviewByMemberUseCase queryReviewByMemberUseCase;
+    private final QueryReviewInfoByIdUseCase queryReviewInfoByIdUseCase;
+    private final QueryMyReviewListUseCase queryMyReviewListUseCase;
+    private final QueryReviewListByMemberUseCase queryReviewListByMemberUseCase;
+    private final QueryReviewInfoListByCompanyUseCase queryReviewInfoListByCompanyUseCase;
 
     @Operation(description = "id로 Review 단건 조회")
     @GetMapping("/info/{id}")
     @ResponseStatus(OK)
-    public ReviewInfoResponse getInfo(final @PathVariable("id") UUID reviewId) {
-        return queryReviewUseCase.getInfo(reviewId);
+    public ReviewInfoResponse getInfo(@PathVariable("id") UUID reviewId) {
+        return queryReviewInfoByIdUseCase.get(reviewId);
     }
 
     @Operation(description = "내가 쓴 Review List 조회")
     @GetMapping("/my")
     @ResponseStatus(OK)
-    public PageDataResponse<List<ReviewQueryResponse>> getMy(@ModelAttribute PageRequest pageDto) {
-        return queryReviewByMemberUseCase.getMy(pageDto);
+    public PageDataResponse<List<ReviewQueryResponse>> getMy(@ModelAttribute PageRequest pageRequest) {
+        return queryMyReviewListUseCase.get(pageRequest);
     }
 
     @Operation(description = "Member Id로 Review List 조회")
     @GetMapping("/list/member/{id}")
     @ResponseStatus(OK)
-    public PageDataResponse<List<ReviewQueryResponse>> getReviewByMember(final @PathVariable("id") UUID memberId,
+    public PageDataResponse<List<ReviewQueryResponse>> getReviewByMember(@PathVariable("id") UUID memberId,
                                                        @ModelAttribute PageRequest pageRequest) {
-        return queryReviewByMemberUseCase.getByMemberId(memberId, pageRequest);
+        return queryReviewListByMemberUseCase.get(memberId, pageRequest);
     }
 
     @Operation(description = "Company Id로 Review List 조회")
     @GetMapping("/list/company/{id}")
     @ResponseStatus(OK)
-    public PageDataResponse<List<ReviewInfoResponse>> getReviewByCompany(final @PathVariable("id") UUID companyID,
+    public PageDataResponse<List<ReviewInfoResponse>> getReviewByCompany(@PathVariable("id") UUID companyID,
                                                                         @ModelAttribute PageRequest pageRequest) {
-        return queryReviewUseCase.getByCompanyId(companyID, pageRequest);
+        return queryReviewInfoListByCompanyUseCase.get(companyID, pageRequest);
     }
 
 }

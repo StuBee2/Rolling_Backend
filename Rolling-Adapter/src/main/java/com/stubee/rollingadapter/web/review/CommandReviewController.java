@@ -1,7 +1,8 @@
 package com.stubee.rollingadapter.web.review;
 
 import com.stubee.rollingadapter.web.review.request.WriteReviewRequest;
-import com.stubee.rollingapplication.domain.review.port.api.CommandReviewUseCase;
+import com.stubee.rollingapplication.domain.review.port.api.command.DeleteReviewUseCase;
+import com.stubee.rollingapplication.domain.review.port.api.command.WriteReviewUseCase;
 import com.stubee.rollingcore.domain.review.command.DeleteReviewCommand;
 import com.stubee.rollingcore.domain.review.model.Review;
 import io.swagger.v3.oas.annotations.Operation;
@@ -20,13 +21,14 @@ import static org.springframework.http.HttpStatus.*;
 @RequiredArgsConstructor
 public class CommandReviewController {
 
-    private final CommandReviewUseCase commandReviewUseCase;
+    private final DeleteReviewUseCase commandReviewUseCase;
+    private final WriteReviewUseCase writeReviewUseCase;
 
     @Operation(description = "Review 등록")
     @PostMapping
     @ResponseStatus(CREATED)
     public Review write(@RequestBody @Validated WriteReviewRequest request) {
-        return commandReviewUseCase.write(request.toCommand());
+        return writeReviewUseCase.write(request.toCommand());
     }
 
     @Operation(description = "Review 삭제")

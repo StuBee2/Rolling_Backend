@@ -1,6 +1,6 @@
 package com.stubee.rollingbatch.company.processor;
 
-import com.stubee.rollingapplication.domain.review.port.api.QueryReviewUseCase;
+import com.stubee.rollingapplication.domain.review.port.api.query.QueryReviewInfoListByCompanyUseCase;
 import com.stubee.rollingbatch.common.annotation.Processor;
 import com.stubee.rollingcore.common.dto.request.PageRequest;
 import com.stubee.rollingcore.domain.company.model.Company;
@@ -19,7 +19,7 @@ public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, L
 
     private static final long PAGE_SIZE = 100;
 
-    private final QueryReviewUseCase queryReviewUseCase;
+    private final QueryReviewInfoListByCompanyUseCase queryReviewInfoListByCompanyUseCase;
 
     private double totalSum;
     private double salaryAndBenefitsSum;
@@ -36,10 +36,10 @@ public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, L
 
         for (Company company : readCompanyList) {
             long reviewPage = 1, reviewCnt = 0;
-            totalSum = salaryAndBenefitsSum = workLifeBalanceSum = organizationalCultureSum = careerAdvancementSum = 0.0;
+            this.initSums();
 
             while (true) {
-                final List<ReviewInfoResponse> reviewList = queryReviewUseCase.getByCompanyId(
+                final List<ReviewInfoResponse> reviewList = queryReviewInfoListByCompanyUseCase.get(
                         company.companyId().id(), pageRequest(reviewPage)).data();
 
                 calculateSum(reviewList);
@@ -74,6 +74,10 @@ public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, L
         log.info("<<<<<Processor End>>>>>");
 
         return processedCompanyList;
+    }
+
+    private void initSums() {
+        totalSum = salaryAndBenefitsSum = workLifeBalanceSum = organizationalCultureSum = careerAdvancementSum = 0.0;
     }
 
     private PageRequest pageRequest(final long page) {

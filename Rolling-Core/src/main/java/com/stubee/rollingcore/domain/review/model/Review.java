@@ -1,5 +1,6 @@
 package com.stubee.rollingcore.domain.review.model;
 
+import com.stubee.rollingcore.common.exception.NotMatchedMemberException;
 import com.stubee.rollingcore.common.model.Grades;
 import com.stubee.rollingcore.domain.company.model.CompanyId;
 import com.stubee.rollingcore.domain.member.model.MemberId;
@@ -35,5 +36,11 @@ public record Review (
                 .authorId(memberId)
                 .companyId(companyId)
                 .build();
+    }
+
+    public void isAuthor(MemberId memberId) {
+        if(authorId.equals(memberId)) {
+            throw NotMatchedMemberException.EXCEPTION;
+        }
     }
 }

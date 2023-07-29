@@ -3,8 +3,10 @@ package com.stubee.rollingadapter.persistence.review.adapter;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.stubee.rollingadapter.persistence.review.mapper.ReviewMapper;
 import com.stubee.rollingapplication.common.annotation.Adapter;
 import com.stubee.rollingcore.common.dto.request.PageRequest;
+import com.stubee.rollingcore.domain.review.model.Review;
 import com.stubee.rollingcore.domain.review.response.ReviewInfoResponse;
 import com.stubee.rollingapplication.domain.review.port.spi.QueryReviewPort;
 import com.stubee.rollingcore.domain.review.response.ReviewQueryResponse;
@@ -23,6 +25,15 @@ import static com.stubee.rollingadapter.persistence.review.entity.QReviewEntity.
 public class QueryReviewAdapter implements QueryReviewPort {
 
     private final JPAQueryFactory jpaQueryFactory;
+    private final ReviewMapper reviewMapper;
+
+    @Override
+    public Optional<Review> findById(UUID id) {
+        return Optional.ofNullable(reviewMapper.toDomain(jpaQueryFactory
+                .selectFrom(reviewEntity)
+                .where(reviewEntity.id.eq(id))
+                .fetchOne()));
+    }
 
     @Override
     public Optional<ReviewInfoResponse> findInfoById(final UUID reviewId) {
