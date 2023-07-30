@@ -1,4 +1,4 @@
-package com.stubee.rollingapplication.common.annotation;
+package com.stubee.rollinginfrastructure.global.annotation;
 
 import org.springframework.stereotype.Component;
 

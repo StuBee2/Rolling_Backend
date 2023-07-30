@@ -1,6 +1,6 @@
 package com.stubee.rollinginfrastructure.global.security.adapter;
 
-import com.stubee.rollingapplication.common.annotation.Adapter;
+import com.stubee.rollinginfrastructure.global.annotation.Adapter;
 import com.stubee.rollingapplication.domain.member.port.spi.MemberSecurityPort;
 import com.stubee.rollingcore.domain.member.model.Member;
 import com.stubee.rollingcore.domain.member.model.MemberId;

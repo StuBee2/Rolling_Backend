@@ -3,7 +3,7 @@ package com.stubee.rollinginfrastructure.thirdparty.s3.adapter;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.stubee.rollingapplication.common.annotation.Adapter;
+import com.stubee.rollinginfrastructure.global.annotation.Adapter;
 import com.stubee.rollingapplication.domain.file.port.spi.S3Port;
 import com.stubee.rollingcore.domain.file.exception.FileConvertException;
 import com.stubee.rollingcore.domain.file.exception.FileUploadException;

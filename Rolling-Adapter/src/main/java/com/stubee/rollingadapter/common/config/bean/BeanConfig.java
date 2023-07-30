@@ -1,4 +1,4 @@
-package com.stubee.rollingadapter.common.bean;
+package com.stubee.rollingadapter.common.config.bean;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

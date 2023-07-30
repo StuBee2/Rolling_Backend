@@ -1,6 +1,6 @@
 package com.stubee.rollingadapter.persistence.review.adapter;
 
-import com.stubee.rollingapplication.common.annotation.Adapter;
+import com.stubee.rollinginfrastructure.global.annotation.Adapter;
 import com.stubee.rollingadapter.persistence.review.mapper.ReviewMapper;
 import com.stubee.rollingadapter.persistence.review.repository.ReviewJpaRepository;
 import com.stubee.rollingapplication.domain.review.port.spi.CommandReviewPort;

@@ -4,7 +4,7 @@ import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.stubee.rollingadapter.persistence.review.mapper.ReviewMapper;
-import com.stubee.rollingapplication.common.annotation.Adapter;
+import com.stubee.rollinginfrastructure.global.annotation.Adapter;
 import com.stubee.rollingcore.common.dto.request.PageRequest;
 import com.stubee.rollingcore.domain.review.model.Review;
 import com.stubee.rollingcore.domain.review.response.ReviewInfoResponse;

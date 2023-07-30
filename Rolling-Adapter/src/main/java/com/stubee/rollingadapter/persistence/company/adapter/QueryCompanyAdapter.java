@@ -5,7 +5,7 @@ import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.NumberPath;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.stubee.rollingapplication.common.annotation.Adapter;
+import com.stubee.rollinginfrastructure.global.annotation.Adapter;
 import com.stubee.rollingadapter.persistence.company.mapper.CompanyMapper;
 import com.stubee.rollingapplication.domain.company.port.spi.QueryCompanyPort;
 import com.stubee.rollingcore.common.dto.request.PageRequest;

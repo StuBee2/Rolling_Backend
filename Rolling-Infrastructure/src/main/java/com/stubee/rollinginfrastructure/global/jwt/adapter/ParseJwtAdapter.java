@@ -1,6 +1,6 @@
 package com.stubee.rollinginfrastructure.global.jwt.adapter;
 
-import com.stubee.rollingapplication.common.annotation.Adapter;
+import com.stubee.rollinginfrastructure.global.annotation.Adapter;
 import com.stubee.rollingapplication.domain.auth.port.spi.ParseJwtPort;
 import com.stubee.rollingapplication.domain.member.port.spi.QueryMemberPort;
 import com.stubee.rollingcore.domain.auth.enums.JwtType;

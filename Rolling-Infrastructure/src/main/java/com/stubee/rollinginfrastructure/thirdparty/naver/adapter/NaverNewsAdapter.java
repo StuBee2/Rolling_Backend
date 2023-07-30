@@ -1,6 +1,6 @@
 package com.stubee.rollinginfrastructure.thirdparty.naver.adapter;
 
-import com.stubee.rollingapplication.common.annotation.Adapter;
+import com.stubee.rollinginfrastructure.global.annotation.Adapter;
 import com.stubee.rollingapplication.domain.news.port.spi.NewsPort;
 import com.stubee.rollingcore.common.dto.response.PageDataResponse;
 import com.stubee.rollinginfrastructure.thirdparty.naver.client.NaverNewsClient;
