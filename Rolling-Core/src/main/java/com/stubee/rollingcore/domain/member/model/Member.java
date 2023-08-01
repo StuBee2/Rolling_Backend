@@ -8,7 +8,7 @@ public record Member (
         MemberId memberId,
         SocialDetails socialDetails,
         MemberDetails memberDetails) {
-    public static Member create(MemberId memberId, SocialDetails socialDetails, MemberDetails memberDetails) {
+    public static Member create(final MemberId memberId, final SocialDetails socialDetails, final MemberDetails memberDetails) {
         return Member.builder()
                 .memberId(memberId)
                 .socialDetails(socialDetails)
@@ -16,7 +16,7 @@ public record Member (
                 .build();
     }
 
-    public static Member createExceptId(SocialDetails socialDetails, MemberDetails memberDetails) {
+    public static Member createExceptId(final SocialDetails socialDetails, final MemberDetails memberDetails) {
         return Member.builder()
                 .socialDetails(socialDetails)
                 .memberDetails(memberDetails)

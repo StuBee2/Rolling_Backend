@@ -29,24 +29,20 @@ public class OAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException {
-        final String targetUrl = determineTargetUrl(request, authentication);
+        final String targetUrl = determineTargetUrl(authentication);
 
         if (response.isCommitted()) {
             return;
         }
 
-        clearAuthenticationAttributes(request, response);
+        clearAuthenticationAttributesAndCookies(request);
 
         super.getRedirectStrategy().sendRedirect(request, response, targetUrl);
     }
 
-    protected String determineTargetUrl(HttpServletRequest request, Authentication authentication) {
-        Optional<String> redirectUri = cookieManager.getCookie(CookieAuthorizationRequestRepository.REDIRECT_URI_PARAM_COOKIE_NAME)
-                .map(Cookie::getValue);
-
-        if (redirectUri.isPresent() && !isAuthorizedRedirectUri(redirectUri.get())) {
-            throw new IllegalArgumentException("redirect URIs are not matched");
-        }
+    private String determineTargetUrl(Authentication authentication) {
+        this.isNotMatchedUri(cookieManager.getCookie(CookieAuthorizationRequestRepository.REDIRECT_URI_PARAM_COOKIE_NAME)
+                .map(Cookie::getValue));
 
         //String targetUrl = redirectUri.orElse("/login/success");
 
@@ -61,7 +57,13 @@ public class OAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
                 .build().toUriString();
     }
 
-    private void clearAuthenticationAttributes(HttpServletRequest request, HttpServletResponse response) {
+    private void isNotMatchedUri(final Optional<String> redirectUri) {
+        if (redirectUri.isPresent() && !isAuthorizedRedirectUri(redirectUri.get())) {
+            throw new IllegalArgumentException("redirect URIs are not matched");
+        }
+    }
+
+    private void clearAuthenticationAttributesAndCookies(HttpServletRequest request) {
         super.clearAuthenticationAttributes(request);
 
         cookieAuthorizationRequestRepository.removeAuthorizationRequestCookies();

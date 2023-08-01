@@ -20,18 +20,18 @@ public class CommandMemberAdapter implements CommandMemberPort {
     private final ApplicationEventPublisher applicationEventPublisher;
 
     @Override
-    public Member saveWithId(Member member) {
+    public Member saveWithId(final Member member) {
         return save(memberMapper.toEntityWithId(member));
     }
 
     @Override
-    public Member saveExceptId(Member member) {
+    public Member saveExceptId(final Member member) {
         return save(memberMapper.toEntity(member));
     }
 
     @Override
-    public Member saveOrUpdate(MemberProfile memberProfile) {
-        Member member = commandMemberJpaRepository.findBySocialIdAndLoginType(memberProfile.socialId(), memberProfile.loginType())
+    public Member saveOrUpdate(final MemberProfile memberProfile) {
+        final Member member = commandMemberJpaRepository.findBySocialIdAndLoginType(memberProfile.socialId(), memberProfile.loginType())
                 .map(memberMapper::toDomain)
                 .orElse(null);
 

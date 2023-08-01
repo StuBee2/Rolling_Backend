@@ -14,7 +14,7 @@ import com.stubee.rollingcore.domain.review.model.ReviewId;
 public class ReviewMapper implements GenericMapper<ReviewEntity, Review> {
 
     @Override
-    public ReviewEntity toEntity(Review domain) {
+    public ReviewEntity toEntity(final Review domain) {
         return ReviewEntity.builder()
                 .content(domain.reviewDetails().content())
                 .position(domain.reviewDetails().position())

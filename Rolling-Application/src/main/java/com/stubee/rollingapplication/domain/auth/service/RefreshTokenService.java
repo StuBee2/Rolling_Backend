@@ -5,7 +5,6 @@ import com.stubee.rollingapplication.domain.auth.port.spi.ParseJwtPort;
 import com.stubee.rollingapplication.domain.auth.port.spi.ProvideJwtPort;
 import com.stubee.rollingcore.domain.auth.response.RefreshTokenResponse;
 import com.stubee.rollingcore.domain.auth.enums.JwtType;
-import com.stubee.rollingcore.domain.auth.exception.WrongTokenTypeException;
 import com.stubee.rollingcore.domain.member.enums.MemberRole;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -25,18 +24,18 @@ public class RefreshTokenService implements RefreshTokenUseCase {
     public RefreshTokenResponse refresh(final String refreshToken) {
         final Jws<Claims> claims = parseJwtPort.getClaims(parseJwtPort.extractToken(refreshToken));
 
-        if(parseJwtPort.isWrongType(claims, JwtType.REFRESH)) {
-            throw WrongTokenTypeException.EXCEPTION;
-        }
+        parseJwtPort.isWrongType(claims, JwtType.REFRESH);
 
-        return RefreshTokenResponse.builder()
-                .accessToken(reissue(claims))
-                .build();
+        return reissueAccessToken(claims);
     }
 
-    private String reissue(final Jws<Claims> claims) {
-        return provideJwtPort.generateAccessToken(UUID.fromString(claims.getBody().getSubject()),
+    private RefreshTokenResponse reissueAccessToken(final Jws<Claims> claims) {
+        final String accessToken = provideJwtPort.generateAccessToken(UUID.fromString(claims.getBody().getSubject()),
                 (MemberRole) claims.getHeader().get("authority"));
+
+        return RefreshTokenResponse.builder()
+                .accessToken(accessToken)
+                .build();
     }
 
 }

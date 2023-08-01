@@ -18,7 +18,7 @@ public class CompanyListWriter implements ItemWriter<List<Company>> {
     private final UpdateCompanyUseCase commandCompanyUseCase;
 
     @Override
-    public void write(Chunk<? extends List<Company>> chunk) {
+    public void write(final Chunk<? extends List<Company>> chunk) {
         log.info("<<<<<Writer Write>>>>>");
         log.info("chunk size : {}", chunk.size());
 

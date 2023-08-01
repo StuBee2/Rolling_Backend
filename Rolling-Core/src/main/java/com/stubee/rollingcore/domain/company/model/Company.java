@@ -12,7 +12,8 @@ public record Company (
         CompanyDetails companyDetails,
         Grades companyGrades,
         MemberId registrantId) {
-    public static Company createWithId(CompanyId companyId, CompanyDetails companyDetails, Grades companyGrades, MemberId registrantId) {
+    public static Company createWithId(final CompanyId companyId, final CompanyDetails companyDetails,
+                                       final Grades companyGrades, final MemberId registrantId) {
         return Company.builder()
                 .companyId(companyId)
                 .companyDetails(companyDetails)
@@ -36,7 +37,7 @@ public record Company (
                 organizationalCulture, careerAdvancement), registrantId);
     }
 
-    public void isRightRegistrant(MemberId memberId) {
+    public void isRightRegistrant(final MemberId memberId) {
         if(registrantId.equals(memberId)) {
             throw NotMatchedMemberException.EXCEPTION;
         }

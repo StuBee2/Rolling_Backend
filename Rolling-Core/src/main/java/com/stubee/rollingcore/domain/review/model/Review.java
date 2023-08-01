@@ -27,8 +27,8 @@ public record Review (
                 .build();
     }
 
-    public static Review createWithId(ReviewId reviewId, ReviewDetails reviewDetails, Grades reviewGrades,
-                                      MemberId memberId, CompanyId companyId) {
+    public static Review createWithId(final ReviewId reviewId, final ReviewDetails reviewDetails, final Grades reviewGrades,
+                                      final MemberId memberId, final CompanyId companyId) {
         return Review.builder()
                 .reviewId(reviewId)
                 .reviewDetails(reviewDetails)
@@ -38,7 +38,7 @@ public record Review (
                 .build();
     }
 
-    public void isAuthor(MemberId memberId) {
+    public void isAuthor(final MemberId memberId) {
         if(authorId.equals(memberId)) {
             throw NotMatchedMemberException.EXCEPTION;
         }

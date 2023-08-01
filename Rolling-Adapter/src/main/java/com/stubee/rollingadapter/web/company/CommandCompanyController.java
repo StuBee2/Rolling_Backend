@@ -27,14 +27,14 @@ public class CommandCompanyController {
     @Operation(description = "Company 등록")
     @PostMapping
     @ResponseStatus(CREATED)
-    public Company register(@RequestBody @Validated RegisterCompanyRequest request) {
+    public Company register(final @RequestBody @Validated RegisterCompanyRequest request) {
         return registerCompanyUseCase.register(request.toCommand());
     }
 
     @Operation(description = "Company 삭제")
     @DeleteMapping("/{companyId}")
     @ResponseStatus(NO_CONTENT)
-    public void delete(@PathVariable UUID companyId) {
+    public void delete(final @PathVariable UUID companyId) {
         deleteCompanyUseCase.delete(DeleteCompanyCommand.toCommand(companyId));
     }
 

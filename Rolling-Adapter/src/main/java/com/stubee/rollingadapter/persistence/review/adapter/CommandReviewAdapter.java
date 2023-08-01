@@ -16,12 +16,12 @@ public class CommandReviewAdapter implements CommandReviewPort {
     private final ReviewMapper reviewMapper;
 
     @Override
-    public Review save(Review review) {
+    public Review save(final Review review) {
         return reviewMapper.toDomain(reviewJpaRepository.save(reviewMapper.toEntity(review)));
     }
 
     @Override
-    public void deleteById(ReviewId reviewId) {
+    public void deleteById(final ReviewId reviewId) {
         reviewJpaRepository.deleteById(reviewId.id());
     }
 

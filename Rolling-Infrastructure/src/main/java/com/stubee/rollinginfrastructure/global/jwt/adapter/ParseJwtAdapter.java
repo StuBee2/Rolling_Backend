@@ -36,14 +36,12 @@ public class ParseJwtAdapter implements ParseJwtPort {
     public Authentication getAuthentication(final String token) {
         final Jws<Claims> claims = getClaims(token);
 
-        if(isWrongType(claims, JwtType.ACCESS)) {
-            throw WrongTokenTypeException.EXCEPTION;
-        }
+        this.isWrongType(claims, JwtType.ACCESS);
 
-        Member member = queryMemberPort.findById(UUID.fromString(claims.getBody().getSubject()))
+        final Member member = queryMemberPort.findById(UUID.fromString(claims.getBody().getSubject()))
                 .orElseThrow(() -> MemberNotFoundException.EXCEPTION);
 
-        log.info("memberNickName : {}", member.memberDetails().nickName());
+        log.info("memberSocialId : {}", member.socialDetails().socialId());
 
         final CustomMemberDetails details = new CustomMemberDetails(member);
 
@@ -65,8 +63,10 @@ public class ParseJwtAdapter implements ParseJwtPort {
     }
 
     @Override
-    public boolean isWrongType(final Jws<Claims> claims, final JwtType jwtType) {
-        return !(claims.getHeader().get(Header.JWT_TYPE).equals(jwtType.toString()));
+    public void isWrongType(final Jws<Claims> claims, final JwtType jwtType) {
+        if(!(claims.getHeader().get(Header.JWT_TYPE).equals(jwtType.toString()))) {
+            throw WrongTokenTypeException.EXCEPTION;
+        }
     }
 
 }

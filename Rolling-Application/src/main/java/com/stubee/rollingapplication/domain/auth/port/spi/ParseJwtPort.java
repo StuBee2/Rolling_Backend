@@ -16,6 +16,6 @@ public interface ParseJwtPort {
 
     String extractToken(String token);
 
-    boolean isWrongType(Jws<Claims> claims, JwtType jwtType);
+    void isWrongType(Jws<Claims> claims, JwtType jwtType);
 
 }

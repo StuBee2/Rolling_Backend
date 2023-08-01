@@ -26,7 +26,7 @@ public class CookieAuthorizationRequestRepository implements AuthorizationReques
     @Override
     public void saveAuthorizationRequest(OAuth2AuthorizationRequest authorizationRequest,
                                          HttpServletRequest request, HttpServletResponse response) {
-        if (authorizationRequest == null) {
+        if (authorizationRequest==null) {
             cookieManager.deleteCookie(OAUTH2_AUTHORIZATION_REQUEST_COOKIE_NAME);
             cookieManager.deleteCookie(REDIRECT_URI_PARAM_COOKIE_NAME);
 
@@ -34,11 +34,8 @@ public class CookieAuthorizationRequestRepository implements AuthorizationReques
         }
 
         cookieManager.addSerializedCookie(OAUTH2_AUTHORIZATION_REQUEST_COOKIE_NAME, authorizationRequest, COOKIE_EXPIRE_SECONDS);
-        String redirectUriAfterLogin = request.getParameter(REDIRECT_URI_PARAM_COOKIE_NAME);
 
-        if (StringUtils.isNotBlank(redirectUriAfterLogin)) {
-            cookieManager.addSerializedCookie(REDIRECT_URI_PARAM_COOKIE_NAME, redirectUriAfterLogin, COOKIE_EXPIRE_SECONDS);
-        }
+        addRedirectUriAfterLogin(request.getParameter(REDIRECT_URI_PARAM_COOKIE_NAME));
     }
 
     @Override
@@ -49,6 +46,12 @@ public class CookieAuthorizationRequestRepository implements AuthorizationReques
     public void removeAuthorizationRequestCookies() {
         cookieManager.deleteCookie(OAUTH2_AUTHORIZATION_REQUEST_COOKIE_NAME);
         cookieManager.deleteCookie(REDIRECT_URI_PARAM_COOKIE_NAME);
+    }
+
+    private void addRedirectUriAfterLogin(final String redirectUriAfterLogin) {
+        if (StringUtils.isNotBlank(redirectUriAfterLogin)) {
+            cookieManager.addSerializedCookie(REDIRECT_URI_PARAM_COOKIE_NAME, redirectUriAfterLogin, COOKIE_EXPIRE_SECONDS);
+        }
     }
 
 }
