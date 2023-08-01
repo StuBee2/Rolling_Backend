@@ -38,21 +38,21 @@ public class QueryCompanyController {
     @GetMapping("/search")
     @ResponseStatus(OK)
     public PageDataResponse<List<Company>> searchByName(final @RequestParam(name = "name") String companyName,
-                                                        @ModelAttribute PageRequest pageRequest) {
+                                                        final @ModelAttribute PageRequest pageRequest) {
         return searchCompanyListByNameUseCase.get(companyName, pageRequest);
     }
 
     @Operation(description = "모든 Company List 조회")
     @GetMapping("/list/all")
     @ResponseStatus(OK)
-    public List<Company> getAll(@ModelAttribute PageRequest pageRequest) {
+    public List<Company> getAll(final @ModelAttribute PageRequest pageRequest) {
         return queryAllCompanyListUseCase.getList(pageRequest);
     }
 
     @Operation(description = "내가 등록한 Company List 조회")
     @GetMapping("/list/my")
     @ResponseStatus(OK)
-    public PageDataResponse<List<Company>> getMy(@ModelAttribute PageRequest pageRequest) {
+    public PageDataResponse<List<Company>> getMy(final @ModelAttribute PageRequest pageRequest) {
         return queryCompanyListByMemberUseCase.getMy(pageRequest);
     }
 
@@ -60,7 +60,7 @@ public class QueryCompanyController {
     @GetMapping("/list/member/{id}")
     @ResponseStatus(OK)
     public PageDataResponse<List<Company>> getByMember(final @PathVariable("id") UUID memberId,
-                                     @ModelAttribute PageRequest pageRequest) {
+                                     final @ModelAttribute PageRequest pageRequest) {
         return queryCompanyListByMemberUseCase.getByMemberId(memberId, pageRequest);
     }
 

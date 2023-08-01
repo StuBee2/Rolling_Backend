@@ -27,14 +27,14 @@ public class CommandReviewController {
     @Operation(description = "Review 등록")
     @PostMapping
     @ResponseStatus(CREATED)
-    public Review write(@RequestBody @Validated WriteReviewRequest request) {
+    public Review write(final @RequestBody @Validated WriteReviewRequest request) {
         return writeReviewUseCase.write(request.toCommand());
     }
 
     @Operation(description = "Review 삭제")
     @DeleteMapping("/{reviewId}")
     @ResponseStatus(NO_CONTENT)
-    public void delete(@PathVariable UUID reviewId) {
+    public void delete(final @PathVariable UUID reviewId) {
         commandReviewUseCase.delete(DeleteReviewCommand.toCommand(reviewId));
     }
 

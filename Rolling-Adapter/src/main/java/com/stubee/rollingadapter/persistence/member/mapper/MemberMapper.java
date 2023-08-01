@@ -13,7 +13,7 @@ public class MemberMapper implements GenericMapper<MemberEntity, Member> {
 
     /** Member Entity Except Id */
     @Override
-    public MemberEntity toEntity(Member domain) {
+    public MemberEntity toEntity(final Member domain) {
         return MemberEntity.builder()
                 .nickName(domain.memberDetails().nickName())
                 .socialId(domain.socialDetails().socialId())
@@ -26,7 +26,7 @@ public class MemberMapper implements GenericMapper<MemberEntity, Member> {
     }
 
     /** Member Entity With Id */
-    public MemberEntity toEntityWithId(Member domain) {
+    public MemberEntity toEntityWithId(final Member domain) {
         return MemberEntity.builder()
                 .id(domain.memberId().id())
                 .nickName(domain.memberDetails().nickName())

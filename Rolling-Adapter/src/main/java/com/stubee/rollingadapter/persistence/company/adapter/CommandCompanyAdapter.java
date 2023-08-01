@@ -17,17 +17,17 @@ public class CommandCompanyAdapter implements CommandCompanyPort {
     private final CompanyMapper companyMapper;
 
     @Override
-    public Company create(Company company) {
+    public Company create(final Company company) {
         return companyMapper.toDomain(save(companyMapper.toEntity(company)));
     }
 
     @Override
-    public void update(Company company) {
+    public void update(final Company company) {
         save(companyMapper.toEntityWithId(company));
     }
 
     @Override
-    public void deleteById(CompanyId companyId) {
+    public void deleteById(final CompanyId companyId) {
         commandCompanyJpaRepository.deleteById(companyId.id());
     }
 

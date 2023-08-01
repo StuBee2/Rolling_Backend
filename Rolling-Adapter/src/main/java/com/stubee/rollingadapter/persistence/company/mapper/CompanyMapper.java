@@ -14,7 +14,7 @@ public class CompanyMapper implements GenericMapper<CompanyEntity, Company> {
 
     /** Company Entity Except Id */
     @Override
-    public CompanyEntity toEntity(Company domain) {
+    public CompanyEntity toEntity(final Company domain) {
         return CompanyEntity.builder()
                 .name(domain.companyDetails().name())
                 .address(domain.companyDetails().companyAddress().address())
@@ -30,7 +30,7 @@ public class CompanyMapper implements GenericMapper<CompanyEntity, Company> {
     }
 
     /** Company Entity With Id */
-    public CompanyEntity toEntityWithId(Company domain) {
+    public CompanyEntity toEntityWithId(final Company domain) {
         return CompanyEntity.builder()
                 .id(domain.companyId().id())
                 .name(domain.companyDetails().name())

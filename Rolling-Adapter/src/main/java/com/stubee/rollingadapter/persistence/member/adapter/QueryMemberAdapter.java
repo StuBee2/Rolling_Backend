@@ -20,7 +20,7 @@ public class QueryMemberAdapter implements QueryMemberPort {
     private final MemberMapper memberMapper;
 
     @Override
-    public Optional<Member> findById(UUID memberId) {
+    public Optional<Member> findById(final UUID memberId) {
         return Optional.ofNullable(jpaQueryFactory
                 .selectFrom(memberEntity)
                 .where(memberEntity.id.eq(memberId))

@@ -21,8 +21,8 @@ public class NewsController {
     @Operation(description = "companyName으로 최신 뉴스 기사 조회")
     @GetMapping("/{companyName}")
     @ResponseStatus(OK)
-    public PageDataResponse<?> getNewsByCompanyName(
-            final @PathVariable String companyName, @ModelAttribute PageRequest pageRequest) {
+    public PageDataResponse<?> getNewsByCompanyName(final @PathVariable String companyName,
+                                                    final @ModelAttribute PageRequest pageRequest) {
         return newsUseCase.getNewsByCompanyName(companyName, pageRequest);
     }
 

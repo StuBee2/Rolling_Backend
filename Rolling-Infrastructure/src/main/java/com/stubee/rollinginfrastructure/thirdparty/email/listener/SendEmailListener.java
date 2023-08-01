@@ -19,7 +19,7 @@ public class SendEmailListener {
     private final JavaMailSender javaMailSender;
     private final EmailProperties emailProperties;
 
-    @Async("commonThreadPoolTaskExecutor")
+    @Async
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT, classes = {SendWelcomeEmailEvent.class})
     public void sendWelcomeEmail(final SendWelcomeEmailEvent event) {
         log.info("Send Welcome Email to {}", event.receiverEmail());
