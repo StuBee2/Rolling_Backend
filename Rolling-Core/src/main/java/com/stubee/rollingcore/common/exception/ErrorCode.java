@@ -22,10 +22,11 @@ public enum ErrorCode {
     WRONG_LOGIN_TYPE(403, "Check your login type"),
 
     WRONG_TOKEN_TYPE(400, "Check your token type"),
-    EXPIRED_JWT(400, "Jwt is expired"),
     MALFORMED_JWT(400, "Jwt is malformed"),
     UNSUPPORTED_JWT(400, "Jwt is unsupported"),
-    ILLEGAL_ARGUMENT_ERROR(400, "IllegalArgumentException occurred");
+    ILLEGAL_ARGUMENT_ERROR(400, "IllegalArgumentException occurred"),
+
+    EXPIRED_JWT(401, "Jwt is expired");
 
     private final int statusValue;
     private final String message;
