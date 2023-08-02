@@ -31,10 +31,8 @@ public record Company (
                 .build();
     }
 
-    public Company updateGrades(final double totalAvg, final double salaryAndBenefits, final double workLifeBalance,
-                                 final double organizationalCulture, final double careerAdvancement) {
-        return createWithId(companyId, companyDetails, Grades.createWithTotal(totalAvg, salaryAndBenefits, workLifeBalance,
-                organizationalCulture, careerAdvancement), registrantId);
+    public Company updateGrades(final Grades companyGrades) {
+        return createWithId(companyId, companyDetails, companyGrades, registrantId);
     }
 
     public void isRightRegistrant(final MemberId memberId) {
