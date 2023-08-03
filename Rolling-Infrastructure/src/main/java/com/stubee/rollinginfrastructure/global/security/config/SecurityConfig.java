@@ -19,6 +19,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import static org.springframework.http.HttpMethod.*;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -43,12 +45,27 @@ public class SecurityConfig {
                 .requestMatchers("/login/**").permitAll()
                 .requestMatchers("/auth/**").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/**").permitAll()
-                .requestMatchers("/member/**").hasRole(MEMBER())
-                .requestMatchers("/company/**").hasRole(MEMBER())
-                .requestMatchers("/review/**").hasRole(MEMBER())
-                .requestMatchers("/logging/**").hasRole(MEMBER())
-                .requestMatchers("/file/**").hasRole(MEMBER())
-                .requestMatchers("/news/**").hasRole(MEMBER())
+
+                .requestMatchers(PATCH, "/member/**").hasRole(MEMBER())
+                .requestMatchers(GET, "/member/**").hasRole(MEMBER())
+
+                .requestMatchers(POST, "/company").hasRole(MEMBER())
+                .requestMatchers(DELETE, "/company/**").hasRole(MEMBER())
+                .requestMatchers(GET, "/company/info/**").hasRole(MEMBER())
+                .requestMatchers(GET, "/company/search/**").hasRole(MEMBER())
+                .requestMatchers(GET, "/company/list/**").hasRole(MEMBER())
+                .requestMatchers(GET, "/company/rank/**").permitAll()
+
+                .requestMatchers(POST, "/review").hasRole(MEMBER())
+                .requestMatchers(DELETE, "/review/**").hasRole(MEMBER())
+                .requestMatchers(GET, "/review/**").hasRole(MEMBER())
+
+                .requestMatchers(POST, "/logging").hasRole(MEMBER())
+
+                .requestMatchers(POST, "/file").hasRole(MEMBER())
+
+                .requestMatchers(GET, "/news/**").permitAll()
+
                 .anyRequest().authenticated()
 
                 .and()
