@@ -1,5 +1,6 @@
 package com.stubee.rollinginfrastructure.global.security.oauth.service;
 
+import com.stubee.rollingapplication.common.annotation.CommandService;
 import com.stubee.rollingapplication.domain.member.port.spi.CommandMemberPort;
 import com.stubee.rollingcore.domain.member.enums.LoginType;
 import com.stubee.rollingcore.domain.member.model.Member;
@@ -10,20 +11,17 @@ import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserServ
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Locale;
 import java.util.Map;
 
-@Component
+@CommandService
 @RequiredArgsConstructor
 public class OAuthMemberService extends DefaultOAuth2UserService {
 
     private final CommandMemberPort commandMemberPort;
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
     public OAuth2User loadUser(final OAuth2UserRequest oAuth2UserRequest) throws OAuth2AuthenticationException {
         Map<String, Object> attributes = super.loadUser(oAuth2UserRequest).getAttributes();
 
