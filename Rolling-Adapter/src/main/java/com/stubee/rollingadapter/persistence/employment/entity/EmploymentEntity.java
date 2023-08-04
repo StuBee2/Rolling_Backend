@@ -15,7 +15,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class EmploymentJpaEntity {
+public class EmploymentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
