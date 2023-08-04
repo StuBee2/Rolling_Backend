@@ -6,6 +6,7 @@ import com.stubee.rollingcore.domain.employment.model.Employment;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.http.HttpStatus.*;
@@ -21,7 +22,7 @@ public class CommandEmploymentController {
     @Operation(description = "Employment 추가 (내 회사 추가)")
     @PostMapping
     @ResponseStatus(CREATED)
-    public Employment register(final @RequestBody RegisterEmploymentRequest request) {
+    public Employment register(final @RequestBody @Validated RegisterEmploymentRequest request) {
         return registerEmploymentUseCase.register(request.toCommand());
     }
 
