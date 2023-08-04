@@ -11,11 +11,13 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+@Slf4j
 @RequiredArgsConstructor
 public class JwtExceptionFilter extends OncePerRequestFilter {
 
@@ -39,9 +41,9 @@ public class JwtExceptionFilter extends OncePerRequestFilter {
 
     private void setErrorResponse(HttpServletResponse response, ErrorCode error) {
         try {
-            responseToClient(response, getErrorResponse(error));
+            responseToClient(response, ErrorResponse.create(error));
         } catch (IOException e) {
-            e.printStackTrace();
+            log.info("IOException : {}", e.getMessage());
         }
     }
 
@@ -50,10 +52,6 @@ public class JwtExceptionFilter extends OncePerRequestFilter {
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(objectMapper.writeValueAsString(errorResponse));
-    }
-
-    private ErrorResponse getErrorResponse(ErrorCode error) {
-        return ErrorResponse.create(error);
     }
 
 }
