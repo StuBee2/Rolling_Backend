@@ -2,7 +2,6 @@ package com.stubee.rollinginfrastructure.global.security.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stubee.rollingapplication.domain.auth.port.spi.ParseJwtPort;
-import com.stubee.rollingcore.domain.member.enums.MemberRole;
 import com.stubee.rollinginfrastructure.global.jwt.filter.JwtExceptionFilter;
 import com.stubee.rollinginfrastructure.global.jwt.filter.JwtFilter;
 import com.stubee.rollinginfrastructure.global.security.oauth.handler.OAuthFailureHandler;
@@ -46,25 +45,27 @@ public class SecurityConfig {
                 .requestMatchers("/auth/**").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/**").permitAll()
 
-                .requestMatchers(PATCH, "/member/**").hasRole(MEMBER())
-                .requestMatchers(GET, "/member/**").hasRole(MEMBER())
+                .requestMatchers(PATCH, "/member/**").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(GET, "/member/**").hasAnyRole("MEMBER", "ADMIN")
 
-                .requestMatchers(POST, "/company").hasRole(MEMBER())
-                .requestMatchers(DELETE, "/company/**").hasRole(MEMBER())
-                .requestMatchers(GET, "/company/info/**").hasRole(MEMBER())
-                .requestMatchers(GET, "/company/search/**").hasRole(MEMBER())
-                .requestMatchers(GET, "/company/list/**").hasRole(MEMBER())
+                .requestMatchers(POST, "/company").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(POST, "/company").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(DELETE, "/company/**").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(GET, "/company/info/**").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(GET, "/company/search/**").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(GET, "/company/list/**").hasAnyRole("MEMBER", "ADMIN")
                 .requestMatchers(GET, "/company/rank/**").permitAll()
 
-                .requestMatchers(POST, "/employment").hasRole(MEMBER())
+                .requestMatchers(POST, "/employment").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(GET, "/employment/**").hasAnyRole("MEMBER", "ADMIN")
 
-                .requestMatchers(POST, "/review").hasRole(MEMBER())
-                .requestMatchers(DELETE, "/review/**").hasRole(MEMBER())
-                .requestMatchers(GET, "/review/**").hasRole(MEMBER())
+                .requestMatchers(POST, "/review").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(DELETE, "/review/**").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(GET, "/review/**").hasAnyRole("MEMBER", "ADMIN")
 
-                .requestMatchers(POST, "/logging").hasRole(MEMBER())
+                .requestMatchers(POST, "/logging").hasAnyRole("MEMBER", "ADMIN")
 
-                .requestMatchers(POST, "/file").hasRole(MEMBER())
+                .requestMatchers(POST, "/file").hasAnyRole("MEMBER", "ADMIN")
 
                 .requestMatchers(GET, "/news/**").permitAll()
 
@@ -94,10 +95,6 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration);
 
         return source;
-    }
-
-    public static String MEMBER() {
-        return MemberRole.MEMBER.toString();
     }
 
 }
