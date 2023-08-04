@@ -9,8 +9,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface CommandMemberJpaRepository extends JpaRepository<MemberEntity, UUID> {
+public interface MemberJpaRepository extends JpaRepository<MemberEntity, UUID> {
 
-    Optional<MemberEntity> findBySocialIdAndLoginType(String socialId, LoginType loginType);
+    Optional<MemberEntity> findBySocialIdAndLoginType(Integer socialId, LoginType loginType);
 
 }

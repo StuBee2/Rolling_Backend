@@ -4,15 +4,15 @@ import com.stubee.rollingcore.domain.member.enums.LoginType;
 import com.stubee.rollingcore.domain.member.enums.MemberRole;
 
 public record MemberProfile (
-        String socialId,
+        Integer socialId,
+        String socialLoginId,
         String name,
         String email,
         String imageUrl,
         MemberRole memberRole,
         LoginType loginType) {
     public Member toMember() {
-        return Member.createExceptId(SocialDetails.create(socialId, loginType, name, email, imageUrl),
+        return Member.createExceptId(SocialDetails.create(socialId, socialLoginId, loginType, name, email, imageUrl),
                 MemberDetails.createOnlyMemberRole(memberRole));
     }
-
 }
