@@ -33,7 +33,7 @@ public class CustomExceptionHandler {
     }
 
     @ExceptionHandler(DataAccessException.class)
-    protected  ResponseEntity<ErrorResponse> handleDBException() {
+    protected ResponseEntity<ErrorResponse> handleDBException() {
         return new ResponseEntity<>(ErrorResponse.create(ErrorCode.DBACCESS_ERROR), INTERNAL_SERVER_ERROR);
     }
 
