@@ -23,15 +23,19 @@ public record Member (
                 .build();
     }
 
-    public Member updateSocialDetails(final String name, final String email) {
-        return create(memberId, updateNameAndEmail(name, email), memberDetails);
+    public Member updateLoginId(final String socialLoginId) {
+        return create(memberId, socialDetails.updateLoginId(socialLoginId), memberDetails);
+    }
+
+    public Member updateEmail(final String email) {
+        return create(memberId, socialDetails.updateEmail(email), memberDetails);
     }
 
     public Member updateNickname(final String nickname) {
         return create(memberId, socialDetails, memberDetails.updateNickName(nickname));
     }
 
-    private SocialDetails updateNameAndEmail(final String name, final String email) {
-        return socialDetails.updateNameAndEmail(name, email);
+    public Member elevateToMember() {
+        return create(memberId, socialDetails, memberDetails.elevateToMember());
     }
 }

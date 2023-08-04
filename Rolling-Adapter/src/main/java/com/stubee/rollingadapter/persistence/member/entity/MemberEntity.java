@@ -23,11 +23,14 @@ public class MemberEntity extends BaseEntity {
     private String nickName;
 
     @NotNull
-    @Column(unique = true)
-    private String socialId;
+    private Integer socialId;
+
+    @NotNull
+    private String socialLoginId;
 
     private String name;
 
+    @Column(unique = true)
     private String email;
 
     private String imageUrl;

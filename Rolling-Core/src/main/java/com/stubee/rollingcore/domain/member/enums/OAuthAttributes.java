@@ -2,17 +2,18 @@ package com.stubee.rollingcore.domain.member.enums;
 
 import com.stubee.rollingcore.domain.auth.exception.WrongLoginTypeException;
 import com.stubee.rollingcore.domain.member.model.MemberProfile;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.Arrays;
 import java.util.Map;
 import java.util.function.Function;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public enum OAuthAttributes {
 
     GITHUB(LoginType.GITHUB, (attributes) ->
             new MemberProfile(
+                    (Integer) attributes.get("id"),
                     (String) attributes.get("login"),
                     (String) attributes.get("name"),
                     (String) attributes.get("email"),

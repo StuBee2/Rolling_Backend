@@ -17,6 +17,7 @@ public class MemberMapper implements GenericMapper<MemberEntity, Member> {
         return MemberEntity.builder()
                 .nickName(domain.memberDetails().nickName())
                 .socialId(domain.socialDetails().socialId())
+                .socialLoginId(domain.socialDetails().socialLoginId())
                 .name(domain.socialDetails().name())
                 .email(domain.socialDetails().email())
                 .imageUrl(domain.socialDetails().imageUrl())
@@ -31,6 +32,7 @@ public class MemberMapper implements GenericMapper<MemberEntity, Member> {
                 .id(domain.memberId().id())
                 .nickName(domain.memberDetails().nickName())
                 .socialId(domain.socialDetails().socialId())
+                .socialLoginId(domain.socialDetails().socialLoginId())
                 .name(domain.socialDetails().name())
                 .email(domain.socialDetails().email())
                 .imageUrl(domain.socialDetails().imageUrl())
@@ -47,7 +49,8 @@ public class MemberMapper implements GenericMapper<MemberEntity, Member> {
     }
 
     private SocialDetails socialDetails(final MemberEntity entity) {
-        return SocialDetails.create(entity.getSocialId(), entity.getLoginType(), entity.getName(), entity.getEmail(), entity.getImageUrl());
+        return SocialDetails.create(entity.getSocialId(), entity.getSocialLoginId(), entity.getLoginType(),
+                entity.getName(), entity.getEmail(), entity.getImageUrl());
     }
 
     private MemberDetails memberDetails(final MemberEntity entity) {

@@ -4,7 +4,7 @@ import com.stubee.rollingcore.domain.email.model.SendWelcomeEmailEvent;
 import com.stubee.rollinginfrastructure.global.annotation.Adapter;
 import com.stubee.rollingadapter.persistence.member.entity.MemberEntity;
 import com.stubee.rollingadapter.persistence.member.mapper.MemberMapper;
-import com.stubee.rollingadapter.persistence.member.repository.CommandMemberJpaRepository;
+import com.stubee.rollingadapter.persistence.member.repository.MemberJpaRepository;
 import com.stubee.rollingapplication.domain.member.port.spi.CommandMemberPort;
 import com.stubee.rollingcore.domain.member.model.MemberProfile;
 import com.stubee.rollingcore.domain.member.model.Member;
@@ -15,7 +15,7 @@ import org.springframework.context.ApplicationEventPublisher;
 @RequiredArgsConstructor
 public class CommandMemberAdapter implements CommandMemberPort {
 
-    private final CommandMemberJpaRepository commandMemberJpaRepository;
+    private final MemberJpaRepository memberJpaRepository;
     private final MemberMapper memberMapper;
     private final ApplicationEventPublisher applicationEventPublisher;
 
@@ -31,7 +31,7 @@ public class CommandMemberAdapter implements CommandMemberPort {
 
     @Override
     public Member saveOrUpdate(final MemberProfile memberProfile) {
-        final Member member = commandMemberJpaRepository.findBySocialIdAndLoginType(memberProfile.socialId(), memberProfile.loginType())
+        final Member member = memberJpaRepository.findBySocialIdAndLoginType(memberProfile.socialId(), memberProfile.loginType())
                 .map(memberMapper::toDomain)
                 .orElse(null);
 
@@ -40,12 +40,12 @@ public class CommandMemberAdapter implements CommandMemberPort {
 
             return saveExceptId(memberProfile.toMember());
         } else {
-            return saveWithId(member.updateSocialDetails(memberProfile.name(), memberProfile.email()));
+            return saveWithId(member.updateLoginId(memberProfile.socialLoginId()));
         }
     }
 
     private Member save(final MemberEntity memberEntity) {
-        return memberMapper.toDomain(commandMemberJpaRepository.save(memberEntity));
+        return memberMapper.toDomain(memberJpaRepository.save(memberEntity));
     }
 
     private void publishSendWelcomeEmailEvent(final String memberEmail) {

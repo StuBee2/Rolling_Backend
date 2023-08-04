@@ -35,4 +35,12 @@ public record MemberDetails(
                 .createdAt(createdAt)
                 .build();
     }
+
+    public MemberDetails elevateToMember() {
+        return MemberDetails.builder()
+                .nickName(nickName)
+                .memberRole(MemberRole.MEMBER)
+                .createdAt(createdAt)
+                .build();
+    }
 }
