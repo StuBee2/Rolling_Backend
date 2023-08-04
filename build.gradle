@@ -21,13 +21,13 @@ repositories {
 dependencies {
 }
 
-allprojects{
-    bootJar{
+allprojects {
+    bootJar {
         enabled = false
     }
 }
 
-subprojects{
+subprojects {
     group 'com.stubee'
     version '1.0'
     sourceCompatibility = 17
