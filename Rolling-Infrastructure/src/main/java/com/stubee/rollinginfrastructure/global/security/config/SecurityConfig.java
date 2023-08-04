@@ -56,6 +56,8 @@ public class SecurityConfig {
                 .requestMatchers(GET, "/company/list/**").hasRole(MEMBER())
                 .requestMatchers(GET, "/company/rank/**").permitAll()
 
+                .requestMatchers(POST, "/employment").hasRole(MEMBER())
+
                 .requestMatchers(POST, "/review").hasRole(MEMBER())
                 .requestMatchers(DELETE, "/review/**").hasRole(MEMBER())
                 .requestMatchers(GET, "/review/**").hasRole(MEMBER())
