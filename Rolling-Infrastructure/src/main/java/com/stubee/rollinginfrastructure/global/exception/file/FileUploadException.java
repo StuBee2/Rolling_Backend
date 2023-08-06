@@ -1,4 +1,4 @@
-package com.stubee.rollingcore.domain.file.exception;
+package com.stubee.rollinginfrastructure.global.exception.file;
 
 import com.stubee.rollingcore.common.exception.CustomException;
 import com.stubee.rollingcore.common.exception.ErrorCode;

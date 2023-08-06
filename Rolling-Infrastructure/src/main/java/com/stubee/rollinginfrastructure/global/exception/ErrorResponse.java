@@ -5,7 +5,7 @@ import com.stubee.rollingcore.common.exception.ErrorCode;
 public record ErrorResponse(
         int status,
         String message) {
-    public static ErrorResponse create(ErrorCode error) {
+    public static ErrorResponse create(final ErrorCode error) {
         return new ErrorResponse(error.getStatusValue(), error.getMessage());
     }
 }

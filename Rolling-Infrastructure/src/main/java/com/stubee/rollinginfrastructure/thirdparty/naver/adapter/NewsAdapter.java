@@ -2,12 +2,15 @@ package com.stubee.rollinginfrastructure.thirdparty.naver.adapter;
 
 import com.stubee.rollingapplication.domain.news.port.spi.NewsPort;
 import com.stubee.rollingcore.common.dto.request.PageRequest;
+import com.stubee.rollinginfrastructure.global.exception.news.NewsClientException;
 import com.stubee.rollinginfrastructure.thirdparty.naver.response.NaverNewsResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -29,14 +32,15 @@ public class NewsAdapter implements NewsPort {
         final int start = (Math.toIntExact(pageRequest.page())-1)*display+1;
 
         return newsWebClient.get()
-                        .uri(uriBuilder -> uriBuilder
-                                .queryParam("query", encodedName)
-                                .queryParam("display", display)
-                                .queryParam("start", start)
-                                .queryParam("sort", sort)
-                                .build())
-                        .retrieve()
-                        .bodyToMono(NaverNewsResponse.class)
+                .uri(uriBuilder -> uriBuilder
+                        .queryParam("query", encodedName)
+                        .queryParam("display", display)
+                        .queryParam("start", start)
+                        .queryParam("sort", sort)
+                        .build())
+                .retrieve()
+                .onStatus(HttpStatusCode::is4xxClientError, error -> Mono.error(NewsClientException.EXCEPTION))
+                .bodyToMono(NaverNewsResponse.class)
                 .toFuture();
     }
 
