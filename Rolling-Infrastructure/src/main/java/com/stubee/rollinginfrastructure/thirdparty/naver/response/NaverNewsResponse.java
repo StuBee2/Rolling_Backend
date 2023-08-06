@@ -1,4 +1,4 @@
-package com.stubee.rollinginfrastructure.thirdparty.naver.dto;
+package com.stubee.rollinginfrastructure.thirdparty.naver.response;
 
 import java.util.List;
 
