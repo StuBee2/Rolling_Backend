@@ -35,7 +35,7 @@ public class JwtExceptionFilter extends OncePerRequestFilter {
         } catch (UnsupportedJwtException e) {
             setErrorResponse(response, ErrorCode.UNSUPPORTED_JWT);
         } catch (IllegalArgumentException e) {
-            setErrorResponse(response, ErrorCode.ILLEGAL_ARGUMENT_ERROR);
+            setErrorResponse(response, ErrorCode.ILLEGAL_ARGUMENT);
         }
     }
 

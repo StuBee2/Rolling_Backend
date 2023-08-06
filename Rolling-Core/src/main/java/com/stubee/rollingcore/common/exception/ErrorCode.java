@@ -1,10 +1,10 @@
 package com.stubee.rollingcore.common.exception;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 @Getter
-@AllArgsConstructor
+@RequiredArgsConstructor
 public enum ErrorCode {
 
     IO_ERROR(500, "IOException occurred"),
@@ -24,7 +24,8 @@ public enum ErrorCode {
     WRONG_TOKEN_TYPE(400, "Check your token type"),
     MALFORMED_JWT(400, "Jwt is malformed"),
     UNSUPPORTED_JWT(400, "Jwt is unsupported"),
-    ILLEGAL_ARGUMENT_ERROR(400, "IllegalArgumentException occurred"),
+    NEWS_CLIENT(400, "Page or Size is too big"),
+    ILLEGAL_ARGUMENT(400, "IllegalArgumentException occurred"),
 
     EXPIRED_JWT(401, "Jwt is expired");
 

@@ -2,6 +2,7 @@ package com.stubee.rollinginfrastructure.global.exception;
 
 import com.stubee.rollingcore.common.exception.CustomException;
 import com.stubee.rollingcore.common.exception.ErrorCode;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import static org.springframework.http.HttpStatus.*;
 
 @RestControllerAdvice
+@Slf4j
 public class CustomExceptionHandler {
 
     @ExceptionHandler(CustomException.class)
@@ -24,7 +26,7 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     protected ResponseEntity<ErrorResponse> handleIllegalArgumentException() {
-        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.ILLEGAL_ARGUMENT_ERROR), BAD_REQUEST);
+        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.ILLEGAL_ARGUMENT), BAD_REQUEST);
     }
 
     @ExceptionHandler(IOException.class)
@@ -43,7 +45,9 @@ public class CustomExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    protected ResponseEntity<ErrorResponse> handleException() {
+    protected ResponseEntity<ErrorResponse> handleException(Exception e) {
+        log.info("Exception message : {}", e.getMessage());
+
         return new ResponseEntity<>(ErrorResponse.create(ErrorCode.INTERNAL_SERVER_ERROR), INTERNAL_SERVER_ERROR);
     }
 
