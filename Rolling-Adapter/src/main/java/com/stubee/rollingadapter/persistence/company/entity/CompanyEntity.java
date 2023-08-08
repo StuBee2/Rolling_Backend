@@ -1,9 +1,8 @@
 package com.stubee.rollingadapter.persistence.company.entity;
 
 import com.stubee.rollingadapter.common.entity.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import com.stubee.rollingcore.domain.company.enums.CompanyStatus;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
@@ -33,6 +32,10 @@ public class CompanyEntity extends BaseEntity {
 
     @Size(max = 1000)
     private String imgUrl;
+
+    @NotNull
+    @Enumerated(value = EnumType.STRING)
+    private CompanyStatus companyStatus;
 
     @NotNull
     private Double totalGrade;
