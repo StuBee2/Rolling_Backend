@@ -2,13 +2,13 @@ package com.stubee.rollinginfrastructure.thirdparty.naver.adapter;
 
 import com.stubee.rollingapplication.domain.news.port.spi.NewsPort;
 import com.stubee.rollingcore.common.dto.request.PageRequest;
+import com.stubee.rollinginfrastructure.global.annotation.Adapter;
 import com.stubee.rollinginfrastructure.global.exception.news.NewsClientException;
 import com.stubee.rollinginfrastructure.thirdparty.naver.response.NaverNewsResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
@@ -16,7 +16,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
 
-@Component
+@Adapter
 @Slf4j
 @RequiredArgsConstructor
 public class NewsAdapter implements NewsPort {

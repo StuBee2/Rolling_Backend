@@ -1,17 +1,17 @@
 package com.stubee.rollinginfrastructure.thirdparty.email.listener;
 
 import com.stubee.rollingcore.domain.email.model.SendWelcomeEmailEvent;
-import com.stubee.rollinginfrastructure.global.annotation.Adapter;
 import com.stubee.rollinginfrastructure.thirdparty.email.properties.EmailProperties;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
 
-@Adapter
+@Component
 @Slf4j
 @RequiredArgsConstructor
 public class SendEmailListener {

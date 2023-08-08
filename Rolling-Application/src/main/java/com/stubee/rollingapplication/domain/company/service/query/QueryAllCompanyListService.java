@@ -16,7 +16,7 @@ public class QueryAllCompanyListService implements QueryAllCompanyListUseCase {
     private final QueryCompanyPort queryCompanyPort;
 
     @Override
-    public List<Company> getList(PageRequest pageRequest) {
+    public List<Company> get(PageRequest pageRequest) {
         return queryCompanyPort.findAll(pageRequest);
     }
 

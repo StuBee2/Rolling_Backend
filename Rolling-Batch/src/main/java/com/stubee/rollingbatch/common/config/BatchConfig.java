@@ -12,7 +12,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         "com.stubee.rollingadapter.common.annotation",
         "com.stubee.rollingadapter.common.config.querydsl",
         "com.stubee.rollingadapter.common.config.jpa",
-        "com.stubee.rollingadapter.common.entity",
 
         "com.stubee.rollingadapter.persistence",
 

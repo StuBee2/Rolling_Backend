@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface QueryAllCompanyListUseCase {
 
-    List<Company> getList(PageRequest pageRequest);
+    List<Company> get(PageRequest pageRequest);
 
 }
