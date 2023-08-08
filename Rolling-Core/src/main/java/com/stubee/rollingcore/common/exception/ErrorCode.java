@@ -21,13 +21,14 @@ public enum ErrorCode {
     NOT_MATCHED_MEMBER(403, "You are not the author/registrant"),
     WRONG_LOGIN_TYPE(403, "Check your login type"),
 
+    EXPIRED_JWT(401, "Jwt is expired"),
+    OAUTH_FAIL(401, "OAuth failed"),
+
     WRONG_TOKEN_TYPE(400, "Check your token type"),
     MALFORMED_JWT(400, "Jwt is malformed"),
     UNSUPPORTED_JWT(400, "Jwt is unsupported"),
     NEWS_CLIENT(400, "Page or Size is too big"),
-    ILLEGAL_ARGUMENT(400, "IllegalArgumentException occurred"),
-
-    EXPIRED_JWT(401, "Jwt is expired");
+    ILLEGAL_ARGUMENT(400, "IllegalArgumentException occurred");
 
     private final int statusValue;
     private final String message;
