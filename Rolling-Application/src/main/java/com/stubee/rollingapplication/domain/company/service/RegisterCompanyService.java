@@ -22,8 +22,7 @@ public class RegisterCompanyService implements RegisterCompanyUseCase {
     }
 
     private Company createExceptCompanyId(RegisterCompanyCommand command, MemberId memberId) {
-        return Company.create(
-                command.name(), command.address(), command.description(), command.imgUrl(), memberId);
+        return Company.create(command.name(), command.address(), command.description(), command.imgUrl(), memberId);
     }
 
 }

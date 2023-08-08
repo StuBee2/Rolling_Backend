@@ -20,6 +20,7 @@ public class CompanyMapper implements GenericMapper<CompanyEntity, Company> {
                 .address(domain.companyDetails().companyAddress().address())
                 .description(domain.companyDetails().description())
                 .imgUrl(domain.companyDetails().imgUrl())
+                .companyStatus(domain.companyDetails().companyStatus())
                 .totalGrade(domain.companyGrades().totalGrade())
                 .salaryAndBenefits(domain.companyGrades().salaryAndBenefits())
                 .workLifeBalance(domain.companyGrades().workLifeBalance())
@@ -37,6 +38,7 @@ public class CompanyMapper implements GenericMapper<CompanyEntity, Company> {
                 .address(domain.companyDetails().companyAddress().address())
                 .description(domain.companyDetails().description())
                 .imgUrl(domain.companyDetails().imgUrl())
+                .companyStatus(domain.companyDetails().companyStatus())
                 .totalGrade(domain.companyGrades().totalGrade())
                 .salaryAndBenefits(domain.companyGrades().salaryAndBenefits())
                 .workLifeBalance(domain.companyGrades().workLifeBalance())
@@ -59,7 +61,7 @@ public class CompanyMapper implements GenericMapper<CompanyEntity, Company> {
 
     private CompanyDetails companyDetails(final CompanyEntity entity) {
         return CompanyDetails.createWithDate(entity.getName(), entity.getAddress(), entity.getDescription(), entity.getImgUrl(),
-                entity.getCreatedAt(), entity.getModifiedAt());
+                entity.getCompanyStatus(), entity.getCreatedAt(), entity.getModifiedAt());
     }
 
     private Grades companyGrades(final CompanyEntity entity) {

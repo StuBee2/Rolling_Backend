@@ -26,7 +26,7 @@ public class SwaggerConfig {
     private Info info() {
         return new Info()
                 .title("Rolling")
-                .description("Rolling Api Docs")
+                .description("Rolling API Docs")
                 .version("V2");
     }
 

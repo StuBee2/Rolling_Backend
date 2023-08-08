@@ -1,4 +1,4 @@
-package com.stubee.rollinginfrastructure.global.async.config;
+package com.stubee.rollinginfrastructure.global.config.async;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
