@@ -1,4 +1,4 @@
-package com.stubee.rollinginfrastructure.thirdparty.s3.properties;
+package com.stubee.rollingexternal.thirdparty.file.properties;
 
 import lombok.Getter;
 import lombok.Setter;

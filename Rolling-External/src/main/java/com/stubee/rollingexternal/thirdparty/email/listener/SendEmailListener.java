@@ -1,7 +1,7 @@
-package com.stubee.rollinginfrastructure.thirdparty.email.listener;
+package com.stubee.rollingexternal.thirdparty.email.listener;
 
-import com.stubee.rollingcore.domain.email.model.SendWelcomeEmailEvent;
-import com.stubee.rollinginfrastructure.thirdparty.email.properties.EmailProperties;
+import com.stubee.rollingexternal.thirdparty.email.properties.EmailProperties;
+import com.stubee.rollingdomains.domain.email.model.SendWelcomeEmailEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.SimpleMailMessage;
@@ -27,7 +27,7 @@ public class SendEmailListener {
             Thread.sleep(10);
             javaMailSender.send(getWelcomeMessage(event));
         } catch (InterruptedException e) {
-            log.info("SendEmailAdapter Exception : {}", e.getMessage());
+            log.warn("SendEmailAdapter Exception : {}", e.getMessage());
         }
     }
 

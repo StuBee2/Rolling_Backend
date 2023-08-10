@@ -1,37 +1,37 @@
-package com.stubee.rollinginfrastructure.thirdparty.naver.adapter;
+package com.stubee.rollingexternal.thirdparty.news.client;
 
-import com.stubee.rollingapplication.domain.news.port.spi.NewsPort;
-import com.stubee.rollingcore.common.dto.request.PageRequest;
-import com.stubee.rollinginfrastructure.global.annotation.Adapter;
-import com.stubee.rollinginfrastructure.global.exception.news.NewsClientException;
-import com.stubee.rollinginfrastructure.thirdparty.naver.response.NaverNewsResponse;
+import com.stubee.rollingdomains.common.dto.request.PageRequest;
+import com.stubee.rollingexternal.global.exception.news.NewsClientException;
+import com.stubee.rollingdomains.domain.news.response.NaverNewsResponse;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatusCode;
-import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.concurrent.CompletableFuture;
 
-@Adapter
-@Slf4j
+@Component
 @RequiredArgsConstructor
-public class NewsAdapter implements NewsPort {
+public class NewsClientImpl implements NewsClient {
 
-    private final WebClient newsWebClient;
+    private final WebClient newsClient;
 
-    @Async
     @Override
-    public CompletableFuture<?> getByCompanyName(final String companyName, final PageRequest pageRequest) {
+    public Mono<NaverNewsResponse> getByCompanyName(final String companyName, final PageRequest pageRequest) {
         final String encodedName = encodeCompanyName(companyName);
         final String sort = "date";
         final int display = Math.toIntExact(pageRequest.size());
         final int start = (Math.toIntExact(pageRequest.page())-1)*display+1;
 
-        return newsWebClient.get()
+        return fetchNewsByCompanyName(encodedName, display, start, sort)
+                .subscribeOn(Schedulers.boundedElastic());
+    }
+
+    private Mono<NaverNewsResponse> fetchNewsByCompanyName(final String encodedName, int display, int start, final String sort) {
+        return newsClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .queryParam("query", encodedName)
                         .queryParam("display", display)
@@ -40,8 +40,7 @@ public class NewsAdapter implements NewsPort {
                         .build())
                 .retrieve()
                 .onStatus(HttpStatusCode::is4xxClientError, error -> Mono.error(NewsClientException.EXCEPTION))
-                .bodyToMono(NaverNewsResponse.class)
-                .toFuture();
+                .bodyToMono(NaverNewsResponse.class);
     }
 
     private String encodeCompanyName(final String companyName) {

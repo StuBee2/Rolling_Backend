@@ -1,14 +1,13 @@
-package com.stubee.rollinginfrastructure.thirdparty.s3.adapter;
+package com.stubee.rollingexternal.thirdparty.file.client;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.stubee.rollinginfrastructure.global.annotation.Adapter;
-import com.stubee.rollingapplication.domain.file.port.spi.S3Port;
-import com.stubee.rollinginfrastructure.global.exception.file.FileConvertException;
-import com.stubee.rollinginfrastructure.global.exception.file.FileUploadException;
-import com.stubee.rollinginfrastructure.thirdparty.s3.properties.S3Properties;
+import com.stubee.rollingexternal.global.exception.file.FileConvertException;
+import com.stubee.rollingexternal.global.exception.file.FileUploadException;
+import com.stubee.rollingexternal.thirdparty.file.properties.S3Properties;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -18,9 +17,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Adapter
+@Component
 @RequiredArgsConstructor
-public class S3Adapter implements S3Port {
+public class S3ClientImpl implements S3Client {
 
     private final AmazonS3 amazonS3;
     private final S3Properties s3Properties;
@@ -28,10 +27,10 @@ public class S3Adapter implements S3Port {
     @Override
     public String uploadFile(final MultipartFile multipartFile) {
         try {
-            File convertFile = convert(multipartFile)
+            final File convertFile = convert(multipartFile)
                     .orElseThrow(() -> FileConvertException.EXCEPTION);
 
-            String fileName = makefileName(convertFile.getName());
+            final String fileName = getFileName(convertFile.getName());
 
             amazonS3.putObject(putRequest(fileName, convertFile));
 
@@ -54,7 +53,7 @@ public class S3Adapter implements S3Port {
     }
 
     private Optional<File> convert(final MultipartFile file) throws IOException {
-        File convertFile = new File(System.getProperty("user.home") + file.getOriginalFilename());
+        final File convertFile = new File(System.getProperty("user.home") + file.getOriginalFilename());
         if (convertFile.createNewFile()) {
             try (FileOutputStream fos = new FileOutputStream(convertFile)) {
                 fos.write(file.getBytes());
@@ -64,7 +63,7 @@ public class S3Adapter implements S3Port {
         return Optional.empty();
     }
 
-    private String makefileName(final String convertFileName) {
+    private String getFileName(final String convertFileName) {
         return s3Properties.getBucket() + "/" + UUID.randomUUID() + convertFileName;
     }
 

@@ -1,4 +1,4 @@
-package com.stubee.rollinginfrastructure.thirdparty.email.properties;
+package com.stubee.rollingexternal.thirdparty.news.properties;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,9 +8,10 @@ import org.springframework.context.annotation.Configuration;
 @Getter
 @Setter
 @Configuration
-@ConfigurationProperties(prefix = "spring.mail.username")
-public class EmailProperties {
+@ConfigurationProperties(prefix = "naver")
+public class NaverProperties {
 
-    private String username;
+    private String clientId;
+    private String clientSecret;
 
 }
