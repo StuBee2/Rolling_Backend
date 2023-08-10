@@ -1,12 +1,12 @@
-package com.stubee.rollingadapter.persistence.company.adapter;
+package com.stubee.rollingadapters.domain.company.adapters;
 
-import com.stubee.rollinginfrastructure.global.annotation.Adapter;
-import com.stubee.rollingadapter.persistence.company.entity.CompanyEntity;
-import com.stubee.rollingadapter.persistence.company.mapper.CompanyMapper;
-import com.stubee.rollingadapter.persistence.company.repository.CommandCompanyJpaRepository;
-import com.stubee.rollingapplication.domain.company.port.spi.CommandCompanyPort;
-import com.stubee.rollingcore.domain.company.model.Company;
-import com.stubee.rollingcore.domain.company.model.CompanyId;
+import com.stubee.rollingcommons.commons.annotations.Adapter;
+import com.stubee.rollingdomains.domain.company.model.Company;
+import com.stubee.rollingdomains.domain.company.model.CompanyId;
+import com.stubee.rollingexternal.persistence.domain.company.entity.CompanyEntity;
+import com.stubee.rollingexternal.persistence.domain.company.mapper.CompanyMapper;
+import com.stubee.rollingexternal.persistence.domain.company.repository.CommandCompanyJpaRepository;
+import com.stubee.rollingports.domain.company.ports.CommandCompanyPort;
 import lombok.RequiredArgsConstructor;
 
 @Adapter

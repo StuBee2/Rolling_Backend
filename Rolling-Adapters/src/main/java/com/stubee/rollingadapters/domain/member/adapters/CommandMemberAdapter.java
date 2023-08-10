@@ -1,13 +1,13 @@
-package com.stubee.rollingadapter.persistence.member.adapter;
+package com.stubee.rollingadapters.domain.member.adapters;
 
-import com.stubee.rollingcore.domain.email.model.SendWelcomeEmailEvent;
-import com.stubee.rollinginfrastructure.global.annotation.Adapter;
-import com.stubee.rollingadapter.persistence.member.entity.MemberEntity;
-import com.stubee.rollingadapter.persistence.member.mapper.MemberMapper;
-import com.stubee.rollingadapter.persistence.member.repository.MemberJpaRepository;
-import com.stubee.rollingapplication.domain.member.port.spi.CommandMemberPort;
-import com.stubee.rollingcore.domain.member.model.MemberProfile;
-import com.stubee.rollingcore.domain.member.model.Member;
+import com.stubee.rollingcommons.commons.annotations.Adapter;
+import com.stubee.rollingdomains.domain.email.model.SendWelcomeEmailEvent;
+import com.stubee.rollingdomains.domain.member.model.Member;
+import com.stubee.rollingdomains.domain.member.model.MemberProfile;
+import com.stubee.rollingexternal.persistence.domain.member.entity.MemberEntity;
+import com.stubee.rollingexternal.persistence.domain.member.mapper.MemberMapper;
+import com.stubee.rollingexternal.persistence.domain.member.repository.MemberJpaRepository;
+import com.stubee.rollingports.domain.member.ports.CommandMemberPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 
