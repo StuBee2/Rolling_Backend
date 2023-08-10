@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.4'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+dependencies {
+    compileOnly project(':Rolling-Domains')
+
+    //Mono
+    compileOnly 'io.projectreactor:reactor-core:3.5.3'
+
+    //Multipart
+    compileOnly 'org.springframework:spring-web:6.0.6'
+
+    //Authentication
+    compileOnly 'org.springframework.security:spring-security-core'
+
+    //HttpServletRequest
+    compileOnly 'org.apache.tomcat.embed:tomcat-embed-core:10.1.5'
+
+    //Jwt
+    compileOnly 'io.jsonwebtoken:jjwt:0.9.1'
+    compileOnly 'javax.xml.bind:jaxb-api:2.3.0'
+}

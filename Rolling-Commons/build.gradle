@@ -1,0 +1,11 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.4'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+dependencies {
+    implementation 'org.springframework:spring-tx:6.0.6'
+    implementation 'org.springframework:spring-context:6.0.6'
+}

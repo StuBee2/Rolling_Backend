@@ -6,9 +6,12 @@ plugins {
 apply plugin: 'io.spring.dependency-management'
 
 dependencies {
-    compileOnly project(':Rolling-Core')
-    compileOnly project(':Rolling-Application')
-    runtimeOnly project(':Rolling-Adapter')
+    compileOnly project(':Rolling-Domains')
+    compileOnly project(':Rolling-Commons')
+    compileOnly project(':Rolling-UseCases')
+    compileOnly project(':Rolling-Services')
+    compileOnly project(':Rolling-Ports')
+    compileOnly project(':Rolling-Adapters')
 
     implementation 'org.springframework.boot:spring-boot-starter-batch'
 
