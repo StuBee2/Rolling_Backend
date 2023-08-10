@@ -1,11 +1,11 @@
 package com.stubee.rollingbatch.company.processor;
 
-import com.stubee.rollingapplication.domain.review.port.api.query.QueryReviewInfoListByCompanyUseCase;
 import com.stubee.rollingbatch.common.annotation.Processor;
-import com.stubee.rollingcore.common.dto.request.PageRequest;
-import com.stubee.rollingcore.common.model.Grades;
-import com.stubee.rollingcore.domain.company.model.Company;
-import com.stubee.rollingcore.domain.review.response.ReviewInfoResponse;
+import com.stubee.rollingdomains.common.dto.request.PageRequest;
+import com.stubee.rollingdomains.common.model.Grades;
+import com.stubee.rollingdomains.domain.company.model.Company;
+import com.stubee.rollingdomains.domain.review.response.ReviewInfoResponse;
+import com.stubee.rollingusecases.domain.review.usecases.query.QueryReviewInfoListByCompanyUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemProcessor;

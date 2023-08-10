@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.4'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+dependencies {
+    compileOnly project(':Rolling-Domains')
+    compileOnly project(':Rolling-Commons')
+    compileOnly project(':Rolling-UseCases')
+    compileOnly project(':Rolling-Services')
+    compileOnly project(':Rolling-Ports')
+    compileOnly project(':Rolling-Adapters')
+    runtimeOnly project(':Rolling-External')
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'io.projectreactor:reactor-core:3.5.3'
+
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    implementation 'io.swagger.core.v3:swagger-annotations-jakarta:2.2.10'
+}

@@ -1,9 +1,9 @@
 package com.stubee.rollingbatch.company.reader;
 
-import com.stubee.rollingapplication.domain.company.port.api.query.QueryAllCompanyListUseCase;
 import com.stubee.rollingbatch.common.annotation.Reader;
-import com.stubee.rollingcore.common.dto.request.PageRequest;
-import com.stubee.rollingcore.domain.company.model.Company;
+import com.stubee.rollingdomains.common.dto.request.PageRequest;
+import com.stubee.rollingdomains.domain.company.model.Company;
+import com.stubee.rollingusecases.domain.company.usecases.query.QueryAllCompanyListUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemReader;

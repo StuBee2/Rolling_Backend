@@ -1,0 +1,19 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.4'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+dependencies {
+	compileOnly project(':Rolling-Domains')
+	implementation project(':Rolling-Commons')
+	compileOnly project(':Rolling-Ports')
+	implementation project(':Rolling-External')
+
+	implementation 'org.springframework:spring-web:6.0.6'
+
+	implementation 'io.projectreactor:reactor-core:3.5.3'
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+}

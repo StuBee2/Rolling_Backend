@@ -6,8 +6,14 @@ pluginManagement {
 
 rootProject.name = 'Rolling_BackEnd'
 
-include 'Rolling-Adapter'
-include 'Rolling-Application'
+include 'Rolling-Api'
 include 'Rolling-Batch'
-include 'Rolling-Core'
-include 'Rolling-Infrastructure'
+
+include 'Rolling-Domains'
+include 'Rolling-Commons'
+include 'Rolling-UseCases'
+include 'Rolling-Services'
+include 'Rolling-Ports'
+include 'Rolling-Adapters'
+
+include 'Rolling-External'
