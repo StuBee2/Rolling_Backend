@@ -1,13 +1,12 @@
-package com.stubee.rollingadapter.web.news;
+package com.stubee.rollingapi.domain.news;
 
-import com.stubee.rollingapplication.domain.news.port.api.NewsUseCase;
-import com.stubee.rollingcore.common.dto.request.PageRequest;
+import com.stubee.rollingdomains.common.dto.request.PageRequest;
+import com.stubee.rollingusecases.domain.news.usecases.NewsUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.concurrent.CompletableFuture;
+import reactor.core.publisher.Mono;
 
 import static org.springframework.http.HttpStatus.*;
 
@@ -22,8 +21,8 @@ public class NewsController {
     @Operation(description = "companyName으로 최신 뉴스 기사 조회")
     @GetMapping("/{companyName}")
     @ResponseStatus(OK)
-    public CompletableFuture<?> getNewsByCompanyName(final @PathVariable String companyName,
-                                                     final @ModelAttribute PageRequest pageRequest) {
+    public Mono<?> getNewsByCompanyName(final @PathVariable String companyName,
+                                        final @ModelAttribute PageRequest pageRequest) {
         return newsUseCase.getNewsByCompanyName(companyName, pageRequest);
     }
 

@@ -1,10 +1,10 @@
-package com.stubee.rollingadapter.web.company;
+package com.stubee.rollingapi.domain.company;
 
-import com.stubee.rollingadapter.web.company.request.RegisterCompanyRequest;
-import com.stubee.rollingapplication.domain.company.port.api.command.DeleteCompanyUseCase;
-import com.stubee.rollingapplication.domain.company.port.api.command.RegisterCompanyUseCase;
-import com.stubee.rollingcore.domain.company.command.DeleteCompanyCommand;
-import com.stubee.rollingcore.domain.company.model.Company;
+import com.stubee.rollingapi.domain.company.request.RegisterCompanyRequest;
+import com.stubee.rollingdomains.domain.company.model.Company;
+import com.stubee.rollingusecases.domain.company.commands.DeleteCompanyCommand;
+import com.stubee.rollingusecases.domain.company.usecases.command.DeleteCompanyUseCase;
+import com.stubee.rollingusecases.domain.company.usecases.command.RegisterCompanyUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

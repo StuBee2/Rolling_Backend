@@ -1,8 +1,8 @@
-package com.stubee.rollingadapter.web.employment;
+package com.stubee.rollingapi.domain.employment;
 
-import com.stubee.rollingadapter.web.employment.request.RegisterEmploymentRequest;
-import com.stubee.rollingapplication.domain.employment.port.api.command.RegisterEmploymentUseCase;
-import com.stubee.rollingcore.domain.employment.model.Employment;
+import com.stubee.rollingapi.domain.employment.request.RegisterEmploymentRequest;
+import com.stubee.rollingdomains.domain.employment.model.Employment;
+import com.stubee.rollingusecases.domain.employment.usecases.command.RegisterEmploymentUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

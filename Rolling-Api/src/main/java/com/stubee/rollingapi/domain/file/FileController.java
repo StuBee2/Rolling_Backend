@@ -1,6 +1,6 @@
-package com.stubee.rollingadapter.web.file;
+package com.stubee.rollingapi.domain.file;
 
-import com.stubee.rollingapplication.domain.file.port.api.FileUploadUseCase;
+import com.stubee.rollingusecases.domain.file.usecases.FileUploadUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

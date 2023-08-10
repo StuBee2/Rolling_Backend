@@ -1,7 +1,7 @@
-package com.stubee.rollingadapter.web.auth;
+package com.stubee.rollingapi.domain.auth;
 
-import com.stubee.rollingcore.domain.auth.response.RefreshTokenResponse;
-import com.stubee.rollingapplication.domain.auth.port.api.RefreshTokenUseCase;
+import com.stubee.rollingdomains.domain.auth.response.RefreshTokenResponse;
+import com.stubee.rollingusecases.domain.auth.usecases.RefreshTokenUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

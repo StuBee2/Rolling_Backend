@@ -1,10 +1,10 @@
-package com.stubee.rollingadapter.web.company;
+package com.stubee.rollingapi.domain.company;
 
-import com.stubee.rollingapplication.domain.company.port.api.query.*;
-import com.stubee.rollingcore.common.dto.response.PageDataResponse;
-import com.stubee.rollingcore.common.dto.request.PageRequest;
-import com.stubee.rollingcore.domain.company.response.CompanyQueryResponse;
-import com.stubee.rollingcore.domain.company.model.Company;
+import com.stubee.rollingdomains.common.dto.request.PageRequest;
+import com.stubee.rollingdomains.common.dto.response.PageDataResponse;
+import com.stubee.rollingdomains.domain.company.model.Company;
+import com.stubee.rollingdomains.domain.company.response.CompanyQueryResponse;
+import com.stubee.rollingusecases.domain.company.usecases.query.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -46,7 +46,7 @@ public class QueryCompanyController {
     @GetMapping("/list/all")
     @ResponseStatus(OK)
     public List<Company> getAll(final @ModelAttribute PageRequest pageRequest) {
-        return queryAllCompanyListUseCase.getList(pageRequest);
+        return queryAllCompanyListUseCase.get(pageRequest);
     }
 
     @Operation(description = "내가 등록한 Company List 조회")
