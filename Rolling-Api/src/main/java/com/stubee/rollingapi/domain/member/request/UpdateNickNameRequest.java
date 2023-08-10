@@ -1,6 +1,6 @@
-package com.stubee.rollingadapter.web.member.request;
+package com.stubee.rollingapi.domain.member.request;
 
-import com.stubee.rollingcore.domain.member.command.UpdateNickNameCommand;
+import com.stubee.rollingusecases.domain.member.commands.UpdateNickNameCommand;
 import jakarta.validation.constraints.NotBlank;
 
 public record UpdateNickNameRequest(

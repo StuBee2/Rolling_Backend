@@ -1,6 +1,6 @@
-package com.stubee.rollingadapter.web.logging.request;
+package com.stubee.rollingapi.domain.logging.request;
 
-import com.stubee.rollingcore.domain.logging.command.CreateLoggingCommand;
+import com.stubee.rollingusecases.domain.logging.commands.CreateLoggingCommand;
 import jakarta.validation.constraints.NotBlank;
 
 public record CreateLoggingRequest(

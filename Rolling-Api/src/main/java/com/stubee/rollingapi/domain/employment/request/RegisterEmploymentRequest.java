@@ -1,7 +1,7 @@
-package com.stubee.rollingadapter.web.employment.request;
+package com.stubee.rollingapi.domain.employment.request;
 
-import com.stubee.rollingcore.domain.employment.command.RegisterEmploymentCommand;
-import com.stubee.rollingcore.domain.employment.enums.EmploymentStatus;
+import com.stubee.rollingdomains.domain.employment.consts.EmploymentStatus;
+import com.stubee.rollingusecases.domain.employment.commands.RegisterEmploymentCommand;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
