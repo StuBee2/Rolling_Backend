@@ -1,4 +1,4 @@
-package com.stubee.rollingadapter.common.annotation;
+package com.stubee.rollingcommons.commons.annotations;
 
 import org.springframework.stereotype.Component;
 

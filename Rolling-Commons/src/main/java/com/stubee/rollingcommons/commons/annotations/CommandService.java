@@ -1,4 +1,4 @@
-package com.stubee.rollingapplication.common.annotation;
+package com.stubee.rollingcommons.commons.annotations;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
