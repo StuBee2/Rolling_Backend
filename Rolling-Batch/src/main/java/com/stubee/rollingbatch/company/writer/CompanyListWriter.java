@@ -1,8 +1,8 @@
 package com.stubee.rollingbatch.company.writer;
 
-import com.stubee.rollingapplication.domain.company.port.api.command.UpdateCompanyUseCase;
 import com.stubee.rollingbatch.common.annotation.Writer;
-import com.stubee.rollingcore.domain.company.model.Company;
+import com.stubee.rollingdomains.domain.company.model.Company;
+import com.stubee.rollingusecases.domain.company.usecases.command.UpdateCompanyUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.Chunk;

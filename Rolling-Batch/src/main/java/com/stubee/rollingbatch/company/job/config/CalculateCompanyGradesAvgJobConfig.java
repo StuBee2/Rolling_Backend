@@ -3,7 +3,7 @@ package com.stubee.rollingbatch.company.job.config;
 import com.stubee.rollingbatch.company.processor.CompanyGradesAvgProcessor;
 import com.stubee.rollingbatch.company.reader.CompanyListReader;
 import com.stubee.rollingbatch.company.writer.CompanyListWriter;
-import com.stubee.rollingcore.domain.company.model.Company;
+import com.stubee.rollingdomains.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
