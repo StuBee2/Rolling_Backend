@@ -27,11 +27,11 @@ public record Member (
         return create(memberId, socialDetails.updateLoginId(socialLoginId), memberDetails);
     }
 
-    public Member updateEmail(final String email) {
+    public Member changeEmail(final String email) {
         return create(memberId, socialDetails.updateEmail(email), memberDetails);
     }
 
-    public Member updateNickname(final String nickname) {
+    public Member changeNickname(final String nickname) {
         return create(memberId, socialDetails, memberDetails.updateNickName(nickname));
     }
 
