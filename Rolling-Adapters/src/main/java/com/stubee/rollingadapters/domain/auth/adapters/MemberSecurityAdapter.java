@@ -1,4 +1,4 @@
-package com.stubee.rollingexternal.global.security.adapter;
+package com.stubee.rollingadapters.domain.auth.adapters;
 
 import com.stubee.rollingcommons.commons.annotations.Adapter;
 import com.stubee.rollingdomains.domain.member.model.Member;
