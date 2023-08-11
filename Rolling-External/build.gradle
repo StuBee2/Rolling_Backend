@@ -7,7 +7,7 @@ apply plugin: 'io.spring.dependency-management'
 
 dependencies {
     compileOnly project(':Rolling-Domains')
-    compileOnly project(':Rolling-Commons')
+    implementation project(':Rolling-Commons')
     compileOnly project(':Rolling-Ports')
 
     //HttpServlet

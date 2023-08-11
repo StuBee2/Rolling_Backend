@@ -14,7 +14,8 @@ import org.springframework.context.annotation.Configuration;
         "com.stubee.rollingadapters.domain.review",
         "com.stubee.rollingadapters.global",
         "com.stubee.rollingexternal.persistence",
-        "com.stubee.rollingexternal.global.config"
+        "com.stubee.rollingexternal.global.config.jpa",
+        "com.stubee.rollingexternal.global.config.querydsl"
 })
 public class BatchConfig {
 }
