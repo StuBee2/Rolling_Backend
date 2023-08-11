@@ -26,7 +26,7 @@ public class CompanyListReader implements ItemReader<List<Company>> {
         log.info("<<<<<Reader Read>>>>>");
         log.info("CurrentPage : {}", currentPage);
 
-        final List<Company> companyList = queryCompanyUseCase.get(pageRequest(currentPage));
+        final List<Company> companyList = queryCompanyUseCase.get(pageRequest(currentPage)).data();
 
         log.info("CompanyList : {}", companyList.size());
 
