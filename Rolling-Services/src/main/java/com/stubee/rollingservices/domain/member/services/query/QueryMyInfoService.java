@@ -1,6 +1,6 @@
 package com.stubee.rollingservices.domain.member.services.query;
 
-import com.stubee.rollingcommons.commons.annotations.QueryService;
+import com.stubee.rollingservices.common.annotations.QueryService;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.rollingports.domain.member.ports.MemberSecurityPort;
 import com.stubee.rollingusecases.domain.member.usecases.QueryMyInfoUseCase;

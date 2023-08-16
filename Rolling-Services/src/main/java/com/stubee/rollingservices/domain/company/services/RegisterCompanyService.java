@@ -1,6 +1,7 @@
 package com.stubee.rollingservices.domain.company.services;
 
-import com.stubee.rollingcommons.commons.annotations.CommandService;
+import com.stubee.rollingdomains.domain.company.model.RegistrantId;
+import com.stubee.rollingservices.common.annotations.CommandService;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 import com.stubee.rollingports.domain.company.ports.CommandCompanyPort;
@@ -18,11 +19,11 @@ public class RegisterCompanyService implements RegisterCompanyUseCase {
 
     @Override
     public Company register(RegisterCompanyCommand command) {
-        return commandCompanyPort.create(createExceptCompanyId(command, memberSecurityPort.getCurrentMemberId()));
+        return commandCompanyPort.create(createExceptCompanyId(command, RegistrantId.create(memberSecurityPort.getCurrentMemberId().getId())));
     }
 
-    private Company createExceptCompanyId(RegisterCompanyCommand command, MemberId memberId) {
-        return Company.create(command.name(), command.address(), command.description(), command.imgUrl(), memberId);
+    private Company createExceptCompanyId(RegisterCompanyCommand command, RegistrantId registrantId) {
+        return Company.create(command.name(), command.address(), command.description(), command.imgUrl(), registrantId);
     }
 
 }

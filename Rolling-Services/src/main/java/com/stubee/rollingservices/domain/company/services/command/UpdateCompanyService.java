@@ -1,6 +1,6 @@
 package com.stubee.rollingservices.domain.company.services.command;
 
-import com.stubee.rollingcommons.commons.annotations.CommandService;
+import com.stubee.rollingservices.common.annotations.CommandService;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import com.stubee.rollingports.domain.company.ports.CommandCompanyPort;
 import com.stubee.rollingusecases.domain.company.usecases.command.UpdateCompanyUseCase;

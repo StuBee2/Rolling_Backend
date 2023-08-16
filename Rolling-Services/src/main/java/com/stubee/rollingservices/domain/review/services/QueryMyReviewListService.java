@@ -1,6 +1,6 @@
 package com.stubee.rollingservices.domain.review.services;
 
-import com.stubee.rollingcommons.commons.annotations.QueryService;
+import com.stubee.rollingservices.common.annotations.QueryService;
 import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import com.stubee.rollingdomains.common.dto.response.PageDataResponse;
 import com.stubee.rollingdomains.domain.review.response.ReviewQueryResponse;
@@ -21,7 +21,7 @@ public class QueryMyReviewListService implements QueryMyReviewListUseCase {
     @Override
     public PageDataResponse<List<ReviewQueryResponse>> get(PageRequest pageRequest) {
         return PageDataResponse.create(queryReviewPort.findByMemberId(
-                memberSecurityPort.getCurrentMemberId().id(), pageRequest));
+                memberSecurityPort.getCurrentMemberId().getId(), pageRequest));
     }
 
 }

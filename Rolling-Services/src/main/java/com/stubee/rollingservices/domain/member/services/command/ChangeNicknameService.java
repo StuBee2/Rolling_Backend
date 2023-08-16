@@ -1,6 +1,6 @@
 package com.stubee.rollingservices.domain.member.services.command;
 
-import com.stubee.rollingcommons.commons.annotations.CommandService;
+import com.stubee.rollingservices.common.annotations.CommandService;
 import com.stubee.rollingports.domain.member.ports.CommandMemberPort;
 import com.stubee.rollingports.domain.member.ports.MemberSecurityPort;
 import com.stubee.rollingusecases.domain.member.commands.ChangeNicknameCommand;
