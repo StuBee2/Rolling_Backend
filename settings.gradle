@@ -10,10 +10,10 @@ include 'Rolling-Api'
 include 'Rolling-Batch'
 
 include 'Rolling-Domains'
-include 'Rolling-Commons'
 include 'Rolling-UseCases'
 include 'Rolling-Services'
 include 'Rolling-Ports'
-include 'Rolling-Adapters'
 
-include 'Rolling-External'
+include 'Rolling-Adapters'
+include 'Rolling-Adapters:Persistence'
+include 'Rolling-Adapters:ThirdParty'

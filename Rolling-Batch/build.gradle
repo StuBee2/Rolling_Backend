@@ -7,12 +7,9 @@ apply plugin: 'io.spring.dependency-management'
 
 dependencies {
     implementation project(':Rolling-Domains')
-    runtimeOnly project(':Rolling-Commons')
     implementation project(':Rolling-UseCases')
     runtimeOnly project(':Rolling-Services')
     implementation project(':Rolling-Ports')
-    runtimeOnly project(':Rolling-Adapters')
-    runtimeOnly project(':Rolling-External')
 
     implementation 'org.springframework.boot:spring-boot-starter-batch'
 
