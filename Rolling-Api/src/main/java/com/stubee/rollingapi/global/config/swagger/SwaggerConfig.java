@@ -1,4 +1,4 @@
-package com.stubee.rollingexternal.global.config.swagger;
+package com.stubee.rollingapi.global.config.swagger;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;

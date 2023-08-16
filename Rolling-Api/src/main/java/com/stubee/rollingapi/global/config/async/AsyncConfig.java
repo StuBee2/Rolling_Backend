@@ -1,4 +1,4 @@
-package com.stubee.rollingexternal.global.config.async;
+package com.stubee.rollingapi.global.config.async;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
