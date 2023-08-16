@@ -1,4 +1,7 @@
-package com.stubee.rollingdomains.common.exception;
+package com.stubee.rollingdomains.domain.member.exception;
+
+import com.stubee.rollingdomains.common.exception.CustomException;
+import com.stubee.rollingdomains.common.exception.ErrorCode;
 
 public class NotMatchedMemberException extends CustomException {
 

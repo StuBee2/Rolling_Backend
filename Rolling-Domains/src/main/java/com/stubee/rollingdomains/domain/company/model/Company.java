@@ -1,8 +1,8 @@
 package com.stubee.rollingdomains.domain.company.model;
 
-import com.stubee.rollingdomains.common.exception.NotMatchedMemberException;
+import com.stubee.rollingdomains.common.model.BaseId;
 import com.stubee.rollingdomains.common.model.Grades;
-import com.stubee.rollingdomains.domain.member.model.MemberId;
+import com.stubee.rollingdomains.domain.member.exception.NotMatchedMemberException;
 import lombok.AccessLevel;
 import lombok.Builder;
 
@@ -11,9 +11,9 @@ public record Company (
         CompanyId companyId,
         CompanyDetails companyDetails,
         Grades companyGrades,
-        MemberId registrantId) {
+        RegistrantId registrantId) {
     public static Company createWithId(final CompanyId companyId, final CompanyDetails companyDetails,
-                                       final Grades companyGrades, final MemberId registrantId) {
+                                       final Grades companyGrades, final RegistrantId registrantId) {
         return Company.builder()
                 .companyId(companyId)
                 .companyDetails(companyDetails)
@@ -23,11 +23,11 @@ public record Company (
     }
 
     public static Company create(final String name, final String address, final String description,
-                                                 final String imgUrl, MemberId memberId) {
+                                                 final String imgUrl, final RegistrantId registrantId) {
         return Company.builder()
                 .companyDetails(CompanyDetails.create(name, address, description, imgUrl))
                 .companyGrades(Grades.createWithTotal(0.0, 0.0, 0.0, 0.0, 0.0))
-                .registrantId(memberId)
+                .registrantId(registrantId)
                 .build();
     }
 
@@ -35,7 +35,7 @@ public record Company (
         return createWithId(companyId, companyDetails, companyGrades, registrantId);
     }
 
-    public void isRightRegistrant(final MemberId memberId) {
+    public void isRightRegistrant(final BaseId memberId) {
         if(!registrantId.equals(memberId)) {
             throw NotMatchedMemberException.EXCEPTION;
         }

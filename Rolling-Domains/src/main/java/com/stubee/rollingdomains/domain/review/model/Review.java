@@ -1,8 +1,8 @@
 package com.stubee.rollingdomains.domain.review.model;
 
-import com.stubee.rollingdomains.common.exception.NotMatchedMemberException;
 import com.stubee.rollingdomains.common.model.Grades;
 import com.stubee.rollingdomains.domain.company.model.CompanyId;
+import com.stubee.rollingdomains.domain.member.exception.NotMatchedMemberException;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 import lombok.AccessLevel;
 import lombok.Builder;

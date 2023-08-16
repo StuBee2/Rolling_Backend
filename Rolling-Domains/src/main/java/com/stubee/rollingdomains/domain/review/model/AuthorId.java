@@ -4,14 +4,14 @@ import com.stubee.rollingdomains.common.model.BaseId;
 
 import java.util.UUID;
 
-public class ReviewId extends BaseId {
+public class AuthorId extends BaseId {
 
-    private ReviewId(UUID id) {
+    private AuthorId(UUID id) {
         super(id);
     }
 
-    public static ReviewId create(final UUID id) {
-        return new ReviewId(id);
+    public static AuthorId create(UUID id) {
+        return new AuthorId(id);
     }
 
 }

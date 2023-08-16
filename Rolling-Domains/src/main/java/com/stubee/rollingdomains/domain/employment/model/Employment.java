@@ -1,18 +1,16 @@
 package com.stubee.rollingdomains.domain.employment.model;
 
-import com.stubee.rollingdomains.domain.company.model.CompanyId;
-import com.stubee.rollingdomains.domain.member.model.MemberId;
 import lombok.AccessLevel;
 import lombok.Builder;
 
 @Builder(access = AccessLevel.PRIVATE)
 public record Employment(
         EmploymentId employmentId,
-        MemberId employeeId,
-        CompanyId employerId,
+        EmployeeId employeeId,
+        EmployerId employerId,
         EmploymentDetails employmentDetails) {
-    public static Employment createWithEmploymentId(final EmploymentId employmentId, final MemberId employeeId,
-                                                    final CompanyId employerId, final EmploymentDetails employmentDetails) {
+    public static Employment createWithEmploymentId(final EmploymentId employmentId, final EmployeeId employeeId,
+                                                    final EmployerId employerId, final EmploymentDetails employmentDetails) {
         return Employment.builder()
                 .employmentId(employmentId)
                 .employeeId(employeeId)
@@ -21,7 +19,7 @@ public record Employment(
                 .build();
     }
 
-    public static Employment createExceptEmploymentId(final MemberId employeeId, final CompanyId employerId,
+    public static Employment createExceptEmploymentId(final EmployeeId employeeId, final EmployerId employerId,
                                                       final EmploymentDetails employmentDetails) {
         return Employment.builder()
                 .employeeId(employeeId)
