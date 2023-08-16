@@ -1,6 +1,6 @@
 package com.stubee.rollingservices.domain.company.services.query;
 
-import com.stubee.rollingcommons.commons.annotations.QueryService;
+import com.stubee.rollingservices.common.annotations.QueryService;
 import com.stubee.rollingdomains.domain.company.exception.CompanyNotFoundException;
 import com.stubee.rollingdomains.domain.company.response.CompanyQueryResponse;
 import com.stubee.rollingports.domain.company.ports.QueryCompanyPort;

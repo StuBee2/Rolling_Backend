@@ -1,6 +1,6 @@
 package com.stubee.rollingservices.domain.employment.services.query;
 
-import com.stubee.rollingcommons.commons.annotations.QueryService;
+import com.stubee.rollingservices.common.annotations.QueryService;
 import com.stubee.rollingdomains.domain.employment.response.EmploymentQueryResponse;
 import com.stubee.rollingports.domain.employment.ports.QueryEmploymentPort;
 import com.stubee.rollingports.domain.member.ports.MemberSecurityPort;
@@ -18,7 +18,7 @@ public class QueryMyEmploymentInfoListService implements QueryMyEmploymentInfoLi
 
     @Override
     public List<EmploymentQueryResponse> get() {
-        return queryEmploymentPort.findInfoByEmployeeId(memberSecurityPort.getCurrentMemberId().id());
+        return queryEmploymentPort.findInfoByEmployeeId(memberSecurityPort.getCurrentMemberId().getId());
     }
 
 }

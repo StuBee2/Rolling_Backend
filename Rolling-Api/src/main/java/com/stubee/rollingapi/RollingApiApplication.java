@@ -6,11 +6,10 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {
-        "com.stubee.rollingcommons",
-        "com.stubee.rollingexternal",
+        "com.stubee.rollingapi",
         "com.stubee.rollingservices",
-        "com.stubee.rollingadapters",
-        "com.stubee.rollingapi"})
+        "com.stubee.persistence",
+        "com.stubee.thirdparty"})
 public class RollingApiApplication {
 
     public static void main(String[] args) {

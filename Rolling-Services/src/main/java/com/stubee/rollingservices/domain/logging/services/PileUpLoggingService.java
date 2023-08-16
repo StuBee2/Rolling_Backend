@@ -1,6 +1,6 @@
 package com.stubee.rollingservices.domain.logging.services;
 
-import com.stubee.rollingcommons.commons.annotations.CommandService;
+import com.stubee.rollingservices.common.annotations.CommandService;
 import com.stubee.rollingdomains.domain.logging.model.Logging;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 import com.stubee.rollingports.domain.logging.ports.CommandLoggingPort;

@@ -1,6 +1,6 @@
 package com.stubee.rollingservices.domain.review.services.command;
 
-import com.stubee.rollingcommons.commons.annotations.CommandService;
+import com.stubee.rollingservices.common.annotations.CommandService;
 import com.stubee.rollingdomains.domain.review.exception.ReviewNotFoundException;
 import com.stubee.rollingdomains.domain.review.model.Review;
 import com.stubee.rollingports.domain.member.ports.MemberSecurityPort;
@@ -20,7 +20,7 @@ public class DeleteReviewService implements DeleteReviewUseCase {
 
     @Override
     public void delete(DeleteReviewCommand command) {
-        Review review = queryReviewPort.findById(command.reviewId().id())
+        Review review = queryReviewPort.findById(command.reviewId().getId())
                 .orElseThrow(() -> ReviewNotFoundException.EXCEPTION);
 
         review.isAuthor(memberSecurityPort.getCurrentMemberId());

@@ -1,6 +1,6 @@
 package com.stubee.rollingservices.domain.company.services.query;
 
-import com.stubee.rollingcommons.commons.annotations.QueryService;
+import com.stubee.rollingservices.common.annotations.QueryService;
 import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import com.stubee.rollingdomains.common.dto.response.PageDataResponse;
 import com.stubee.rollingdomains.domain.company.model.Company;

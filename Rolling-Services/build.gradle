@@ -7,10 +7,10 @@ apply plugin: 'io.spring.dependency-management'
 
 dependencies {
     compileOnly project(':Rolling-Domains')
-    implementation project(':Rolling-Commons')
     compileOnly project(':Rolling-UseCases')
     compileOnly project(':Rolling-Ports')
 
+    implementation 'org.springframework:spring-tx:6.0.6'
     implementation 'org.springframework:spring-context:6.0.6'
     implementation 'org.springframework:spring-web:6.0.6'
 

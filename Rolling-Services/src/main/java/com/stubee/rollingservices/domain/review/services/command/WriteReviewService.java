@@ -1,6 +1,6 @@
 package com.stubee.rollingservices.domain.review.services.command;
 
-import com.stubee.rollingcommons.commons.annotations.CommandService;
+import com.stubee.rollingservices.common.annotations.CommandService;
 import com.stubee.rollingdomains.domain.company.exception.CompanyNotFoundException;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 import com.stubee.rollingdomains.domain.review.model.Review;

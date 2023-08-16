@@ -1,6 +1,6 @@
 package com.stubee.rollingservices.domain.review.services.query;
 
-import com.stubee.rollingcommons.commons.annotations.QueryService;
+import com.stubee.rollingservices.common.annotations.QueryService;
 import com.stubee.rollingdomains.domain.review.exception.ReviewNotFoundException;
 import com.stubee.rollingdomains.domain.review.response.ReviewInfoResponse;
 import com.stubee.rollingports.domain.review.ports.QueryReviewPort;

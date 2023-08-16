@@ -1,6 +1,6 @@
 package com.stubee.rollingservices.domain.company.services;
 
-import com.stubee.rollingcommons.commons.annotations.CommandService;
+import com.stubee.rollingservices.common.annotations.CommandService;
 import com.stubee.rollingdomains.domain.company.exception.CompanyNotFoundException;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import com.stubee.rollingdomains.domain.member.model.Member;
@@ -23,7 +23,7 @@ public class DeleteCompanyService implements DeleteCompanyUseCase {
     public void delete(DeleteCompanyCommand command) {
         Member member = memberSecurityPort.getCurrentMember();
 
-        Company company = queryCompanyPort.findById(command.companyId().id())
+        Company company = queryCompanyPort.findById(command.companyId().getId())
                 .orElseThrow(() -> CompanyNotFoundException.EXCEPTION);
 
         company.isRightRegistrant(member.memberId());

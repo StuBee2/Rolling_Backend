@@ -1,11 +1,11 @@
 package com.stubee.rollingservices.domain.employment.services.command;
 
-import com.stubee.rollingcommons.commons.annotations.CommandService;
+import com.stubee.rollingdomains.domain.employment.model.EmployeeId;
+import com.stubee.rollingdomains.domain.employment.model.EmployerId;
+import com.stubee.rollingservices.common.annotations.CommandService;
 import com.stubee.rollingdomains.domain.company.exception.CompanyNotFoundException;
-import com.stubee.rollingdomains.domain.company.model.CompanyId;
 import com.stubee.rollingdomains.domain.employment.model.Employment;
 import com.stubee.rollingdomains.domain.employment.model.EmploymentDetails;
-import com.stubee.rollingdomains.domain.member.model.MemberId;
 import com.stubee.rollingports.domain.company.ports.QueryCompanyPort;
 import com.stubee.rollingports.domain.employment.ports.CommandEmploymentPort;
 import com.stubee.rollingports.domain.member.ports.MemberSecurityPort;
@@ -27,7 +27,7 @@ public class RegisterEmploymentService implements RegisterEmploymentUseCase {
     public Employment register(final RegisterEmploymentCommand command) {
         doesCompanyExists(command.employerId());
 
-        return commandEmploymentPort.register(createExceptEmploymentId(command, memberSecurityPort.getCurrentMemberId()));
+        return commandEmploymentPort.register(createExceptEmploymentId(command, memberSecurityPort.getCurrentMemberId().getId()));
     }
 
     private void doesCompanyExists(final UUID employerId) {
@@ -36,8 +36,8 @@ public class RegisterEmploymentService implements RegisterEmploymentUseCase {
         }
     }
 
-    private Employment createExceptEmploymentId(final RegisterEmploymentCommand command, final MemberId employeeId) {
-        return Employment.createExceptEmploymentId(employeeId, CompanyId.create(command.employerId()),
+    private Employment createExceptEmploymentId(final RegisterEmploymentCommand command, final UUID employeeId) {
+        return Employment.createExceptEmploymentId(EmployeeId.create(employeeId), EmployerId.create(command.employerId()),
                 EmploymentDetails.create(command.employmentStatus()));
     }
 

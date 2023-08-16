@@ -1,27 +1,18 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.0.4'
+    id 'java'
+    id 'org.springframework.boot' version '3.0.4'
 }
 
 apply plugin: 'io.spring.dependency-management'
 
 dependencies {
-	compileOnly project(':Rolling-Domains')
-	implementation project(':Rolling-Commons')
-	compileOnly project(':Rolling-Ports')
-	compileOnly project(':Rolling-External')
+}
 
-	implementation 'org.springframework:spring-web:6.0.6'
+subprojects {
 
-	implementation 'io.projectreactor:reactor-core:3.5.3'
+    dependencies {
+        compileOnly project(':Rolling-Domains')
+        compileOnly project(':Rolling-Ports')
+    }
 
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-
-	implementation 'io.jsonwebtoken:jjwt:0.9.1'
-	implementation 'javax.xml.bind:jaxb-api:2.3.1'
-
-	implementation 'org.apache.tomcat.embed:tomcat-embed-core:10.1.5'
-
-	implementation 'org.springframework.security:spring-security-core'
-	implementation 'org.springframework.security:spring-security-oauth2-core'
 }
