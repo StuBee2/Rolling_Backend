@@ -1,8 +1,8 @@
 package com.stubee.thirdparty.news.adapters;
 
+import com.stubee.newsapplication.outports.NewsPort;
 import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import com.stubee.rollingdomains.domain.news.response.NaverNewsResponse;
-import com.stubee.rollingports.domain.news.ports.NewsPort;
 import com.stubee.thirdparty.common.annotations.Adapter;
 import com.stubee.thirdparty.news.exception.NewsClientException;
 import lombok.RequiredArgsConstructor;

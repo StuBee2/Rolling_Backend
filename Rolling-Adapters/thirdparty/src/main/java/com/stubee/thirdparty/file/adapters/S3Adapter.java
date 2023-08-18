@@ -3,7 +3,7 @@ package com.stubee.thirdparty.file.adapters;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.stubee.rollingports.domain.file.ports.S3Port;
+import com.stubee.fileapplication.outports.S3Port;
 import com.stubee.thirdparty.common.annotations.Adapter;
 import com.stubee.thirdparty.common.properties.s3.S3Properties;
 import com.stubee.thirdparty.file.exception.FileConvertException;
