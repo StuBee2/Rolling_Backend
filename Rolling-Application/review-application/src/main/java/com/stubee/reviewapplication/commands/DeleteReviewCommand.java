@@ -1,4 +1,4 @@
-package com.stubee.rollingusecases.domain.review.commands;
+package com.stubee.reviewapplication.commands;
 
 import com.stubee.rollingdomains.domain.review.model.ReviewId;
 import lombok.Builder;

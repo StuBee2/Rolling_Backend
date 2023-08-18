@@ -1,4 +1,4 @@
-package com.stubee.rollingusecases.domain.review.commands;
+package com.stubee.reviewapplication.commands;
 
 import java.util.UUID;
 

@@ -1,10 +1,10 @@
-package com.stubee.rollingservices.domain.review.services.query;
+package com.stubee.reviewapplication.services.query;
 
-import com.stubee.rollingservices.common.annotations.QueryService;
+import com.stubee.applicationcommons.annotations.QueryService;
+import com.stubee.reviewapplication.outports.QueryReviewPort;
+import com.stubee.reviewapplication.usecases.query.QueryReviewInfoByIdUseCase;
 import com.stubee.rollingdomains.domain.review.exception.ReviewNotFoundException;
 import com.stubee.rollingdomains.domain.review.response.ReviewInfoResponse;
-import com.stubee.rollingports.domain.review.ports.QueryReviewPort;
-import com.stubee.rollingusecases.domain.review.usecases.query.QueryReviewInfoByIdUseCase;
 import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;

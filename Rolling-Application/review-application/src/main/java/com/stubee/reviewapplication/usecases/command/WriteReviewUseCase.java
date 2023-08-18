@@ -1,7 +1,7 @@
-package com.stubee.rollingusecases.domain.review.usecases.command;
+package com.stubee.reviewapplication.usecases.command;
 
+import com.stubee.reviewapplication.commands.WriteReviewCommand;
 import com.stubee.rollingdomains.domain.review.model.Review;
-import com.stubee.rollingusecases.domain.review.commands.WriteReviewCommand;
 
 public interface WriteReviewUseCase {
 

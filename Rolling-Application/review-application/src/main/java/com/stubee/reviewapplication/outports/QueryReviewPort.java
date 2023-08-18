@@ -1,4 +1,4 @@
-package com.stubee.rollingports.domain.review.ports;
+package com.stubee.reviewapplication.outports;
 
 import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import com.stubee.rollingdomains.domain.review.model.Review;

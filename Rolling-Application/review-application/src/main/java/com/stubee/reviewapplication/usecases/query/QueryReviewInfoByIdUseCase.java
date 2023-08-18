@@ -1,4 +1,4 @@
-package com.stubee.rollingusecases.domain.review.usecases.query;
+package com.stubee.reviewapplication.usecases.query;
 
 import com.stubee.rollingdomains.domain.review.response.ReviewInfoResponse;
 

@@ -1,13 +1,13 @@
-package com.stubee.rollingservices.domain.review.services.command;
+package com.stubee.reviewapplication.services.command;
 
-import com.stubee.rollingservices.common.annotations.CommandService;
+import com.stubee.applicationcommons.annotations.CommandService;
+import com.stubee.applicationcommons.ports.member.MemberSecurityPort;
+import com.stubee.reviewapplication.commands.DeleteReviewCommand;
+import com.stubee.reviewapplication.outports.CommandReviewPort;
+import com.stubee.reviewapplication.outports.QueryReviewPort;
+import com.stubee.reviewapplication.usecases.command.DeleteReviewUseCase;
 import com.stubee.rollingdomains.domain.review.exception.ReviewNotFoundException;
 import com.stubee.rollingdomains.domain.review.model.Review;
-import com.stubee.rollingports.domain.member.ports.MemberSecurityPort;
-import com.stubee.rollingports.domain.review.ports.CommandReviewPort;
-import com.stubee.rollingports.domain.review.ports.QueryReviewPort;
-import com.stubee.rollingusecases.domain.review.commands.DeleteReviewCommand;
-import com.stubee.rollingusecases.domain.review.usecases.command.DeleteReviewUseCase;
 import lombok.RequiredArgsConstructor;
 
 @CommandService
