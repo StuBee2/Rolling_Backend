@@ -1,4 +1,4 @@
-package com.stubee.rollingapi.global.exception;
+package com.stubee.rollingdomains.common.dto.response;
 
 import com.stubee.rollingdomains.common.exception.ErrorCode;
 

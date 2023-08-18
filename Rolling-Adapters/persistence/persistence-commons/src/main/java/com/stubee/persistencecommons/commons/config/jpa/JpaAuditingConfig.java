@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EnableJpaAuditing
-@EntityScan("com.stubee")
+@EntityScan("com.stubee.persistencecommons.commons.entity")
 @EnableJpaRepositories("com.stubee")
 public class JpaAuditingConfig {
 }
