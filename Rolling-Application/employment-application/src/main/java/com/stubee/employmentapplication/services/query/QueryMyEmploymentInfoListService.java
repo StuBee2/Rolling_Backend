@@ -1,10 +1,10 @@
-package com.stubee.rollingservices.domain.employment.services.query;
+package com.stubee.employmentapplication.services.query;
 
-import com.stubee.rollingservices.common.annotations.QueryService;
+import com.stubee.applicationcommons.annotations.QueryService;
+import com.stubee.applicationcommons.ports.member.MemberSecurityPort;
+import com.stubee.employmentapplication.outports.QueryEmploymentPort;
+import com.stubee.employmentapplication.usecases.query.QueryMyEmploymentInfoListUseCase;
 import com.stubee.rollingdomains.domain.employment.response.EmploymentQueryResponse;
-import com.stubee.rollingports.domain.employment.ports.QueryEmploymentPort;
-import com.stubee.rollingports.domain.member.ports.MemberSecurityPort;
-import com.stubee.rollingusecases.domain.employment.usecases.query.QueryMyEmploymentInfoListUseCase;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

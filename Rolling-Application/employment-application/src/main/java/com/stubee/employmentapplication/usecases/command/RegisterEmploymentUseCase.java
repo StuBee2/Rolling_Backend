@@ -1,7 +1,7 @@
-package com.stubee.rollingusecases.domain.employment.usecases.command;
+package com.stubee.employmentapplication.usecases.command;
 
+import com.stubee.employmentapplication.commands.RegisterEmploymentCommand;
 import com.stubee.rollingdomains.domain.employment.model.Employment;
-import com.stubee.rollingusecases.domain.employment.commands.RegisterEmploymentCommand;
 
 public interface RegisterEmploymentUseCase {
 

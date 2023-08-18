@@ -1,4 +1,4 @@
-package com.stubee.rollingusecases.domain.employment.commands;
+package com.stubee.employmentapplication.commands;
 
 import com.stubee.rollingdomains.domain.employment.consts.EmploymentStatus;
 

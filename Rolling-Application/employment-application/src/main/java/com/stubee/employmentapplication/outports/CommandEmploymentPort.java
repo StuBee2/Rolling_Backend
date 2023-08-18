@@ -1,4 +1,4 @@
-package com.stubee.rollingports.domain.employment.ports;
+package com.stubee.employmentapplication.outports;
 
 import com.stubee.rollingdomains.domain.employment.model.Employment;
 
