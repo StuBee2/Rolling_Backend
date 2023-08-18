@@ -1,6 +1,5 @@
-package com.stubee.persistence.domain.review.entity;
+package com.stubee.persistencecommons.commons.entity;
 
-import com.stubee.persistence.common.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

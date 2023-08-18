@@ -1,8 +1,8 @@
-package com.stubee.persistence.domain.review.mapper;
+package com.stubee.reviewpersistence.mapper;
 
-import com.stubee.persistence.common.mapper.DomainEntityMapper;
-import com.stubee.persistence.common.annotations.Mapper;
-import com.stubee.persistence.domain.review.entity.ReviewEntity;
+import com.stubee.persistencecommons.commons.annotations.Mapper;
+import com.stubee.persistencecommons.commons.entity.ReviewEntity;
+import com.stubee.persistencecommons.commons.mapper.DomainObjectMapper;
 import com.stubee.rollingdomains.common.model.Grades;
 import com.stubee.rollingdomains.domain.company.model.CompanyId;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
@@ -11,7 +11,7 @@ import com.stubee.rollingdomains.domain.review.model.ReviewDetails;
 import com.stubee.rollingdomains.domain.review.model.ReviewId;
 
 @Mapper
-public class ReviewMapper implements DomainEntityMapper<ReviewEntity, Review> {
+public class ReviewMapper implements DomainObjectMapper<ReviewEntity, Review> {
 
     @Override
     public ReviewEntity toEntity(final Review domain) {

@@ -1,9 +1,9 @@
-package com.stubee.persistence.domain.review.repository;
+package com.stubee.reviewpersistence.repository;
 
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.stubee.persistence.domain.review.entity.ReviewEntity;
+import com.stubee.persistencecommons.commons.entity.ReviewEntity;
 import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import com.stubee.rollingdomains.domain.review.response.ReviewInfoResponse;
 import com.stubee.rollingdomains.domain.review.response.ReviewQueryResponse;
@@ -13,9 +13,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.UUID;
 
-import static com.stubee.persistence.domain.company.entity.QCompanyEntity.companyEntity;
-import static com.stubee.persistence.domain.member.entity.QMemberEntity.memberEntity;
-import static com.stubee.persistence.domain.review.entity.QReviewEntity.reviewEntity;
+import static com.stubee.persistencecommons.commons.entity.QCompanyEntity.companyEntity;
+import static com.stubee.persistencecommons.commons.entity.QMemberEntity.memberEntity;
+import static com.stubee.persistencecommons.commons.entity.QReviewEntity.reviewEntity;
 
 @Repository
 @RequiredArgsConstructor

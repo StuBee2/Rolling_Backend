@@ -1,9 +1,9 @@
-package com.stubee.persistence.domain.review.repository;
+package com.stubee.reviewpersistence.repository;
 
+import com.stubee.persistencecommons.commons.entity.ReviewEntity;
 import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import com.stubee.rollingdomains.domain.review.response.ReviewInfoResponse;
 import com.stubee.rollingdomains.domain.review.response.ReviewQueryResponse;
-import com.stubee.persistence.domain.review.entity.ReviewEntity;
 
 import java.util.List;
 import java.util.UUID;
