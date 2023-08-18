@@ -1,9 +1,9 @@
-package com.stubee.persistence.domain.employment.adapters;
+package com.stubee.employmentpersistence.adapters;
 
+import com.stubee.employmentapplication.outports.QueryEmploymentPort;
+import com.stubee.employmentpersistence.repository.QueryEmploymentRepository;
+import com.stubee.persistencecommons.commons.annotations.Adapter;
 import com.stubee.rollingdomains.domain.employment.response.EmploymentQueryResponse;
-import com.stubee.persistence.common.annotations.Adapter;
-import com.stubee.persistence.domain.employment.repository.QueryEmploymentRepository;
-import com.stubee.rollingports.domain.employment.ports.QueryEmploymentPort;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

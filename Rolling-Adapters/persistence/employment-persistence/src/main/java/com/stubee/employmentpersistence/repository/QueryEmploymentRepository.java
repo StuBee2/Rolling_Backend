@@ -1,4 +1,4 @@
-package com.stubee.persistence.domain.employment.repository;
+package com.stubee.employmentpersistence.repository;
 
 import com.stubee.rollingdomains.domain.employment.response.EmploymentQueryResponse;
 

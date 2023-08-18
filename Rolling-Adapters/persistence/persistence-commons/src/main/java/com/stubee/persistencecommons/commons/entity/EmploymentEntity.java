@@ -1,4 +1,4 @@
-package com.stubee.persistence.domain.employment.entity;
+package com.stubee.persistencecommons.commons.entity;
 
 import com.stubee.rollingdomains.domain.employment.consts.EmploymentStatus;
 import jakarta.persistence.*;

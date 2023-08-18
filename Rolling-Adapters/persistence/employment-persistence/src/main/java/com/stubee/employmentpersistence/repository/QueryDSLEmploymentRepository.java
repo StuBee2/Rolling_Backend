@@ -1,4 +1,4 @@
-package com.stubee.persistence.domain.employment.repository;
+package com.stubee.employmentpersistence.repository;
 
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
@@ -10,8 +10,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.UUID;
 
-import static com.stubee.persistence.domain.company.entity.QCompanyEntity.*;
-import static com.stubee.persistence.domain.employment.entity.QEmploymentEntity.*;
+import static com.stubee.persistencecommons.commons.entity.QCompanyEntity.companyEntity;
+import static com.stubee.persistencecommons.commons.entity.QEmploymentEntity.employmentEntity;
 
 @Repository
 @RequiredArgsConstructor

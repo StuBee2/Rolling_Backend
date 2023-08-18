@@ -1,10 +1,10 @@
-package com.stubee.persistence.domain.employment.adapters;
+package com.stubee.employmentpersistence.adapters;
 
-import com.stubee.persistence.domain.employment.mapper.EmploymentMapper;
-import com.stubee.persistence.domain.employment.repository.CommandEmploymentJpaRepository;
-import com.stubee.persistence.common.annotations.Adapter;
+import com.stubee.employmentapplication.outports.CommandEmploymentPort;
+import com.stubee.employmentpersistence.mapper.EmploymentMapper;
+import com.stubee.employmentpersistence.repository.CommandEmploymentJpaRepository;
+import com.stubee.persistencecommons.commons.annotations.Adapter;
 import com.stubee.rollingdomains.domain.employment.model.Employment;
-import com.stubee.rollingports.domain.employment.ports.CommandEmploymentPort;
 import lombok.RequiredArgsConstructor;
 
 @Adapter
