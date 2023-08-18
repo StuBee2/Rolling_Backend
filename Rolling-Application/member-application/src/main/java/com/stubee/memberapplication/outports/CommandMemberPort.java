@@ -1,4 +1,4 @@
-package com.stubee.rollingports.domain.member.ports;
+package com.stubee.memberapplication.outports;
 
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.rollingdomains.domain.member.model.MemberProfile;

@@ -1,10 +1,10 @@
-package com.stubee.rollingservices.domain.member.services.query;
+package com.stubee.memberapplication.services.query;
 
-import com.stubee.rollingservices.common.annotations.QueryService;
+import com.stubee.applicationcommons.annotations.QueryService;
+import com.stubee.memberapplication.outports.QueryMemberPort;
+import com.stubee.memberapplication.usecases.QueryMemberByIdUseCase;
 import com.stubee.rollingdomains.domain.member.exception.MemberNotFoundException;
 import com.stubee.rollingdomains.domain.member.model.Member;
-import com.stubee.rollingports.domain.member.ports.QueryMemberPort;
-import com.stubee.rollingusecases.domain.member.usecases.QueryMemberByIdUseCase;
 import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;
