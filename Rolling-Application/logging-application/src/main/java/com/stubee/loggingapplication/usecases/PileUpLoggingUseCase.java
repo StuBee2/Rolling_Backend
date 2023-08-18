@@ -1,7 +1,7 @@
-package com.stubee.rollingusecases.domain.logging.usecases;
+package com.stubee.loggingapplication.usecases;
 
+import com.stubee.loggingapplication.commands.CreateLoggingCommand;
 import com.stubee.rollingdomains.domain.logging.model.Logging;
-import com.stubee.rollingusecases.domain.logging.commands.CreateLoggingCommand;
 
 public interface PileUpLoggingUseCase {
 

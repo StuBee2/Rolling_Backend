@@ -1,4 +1,4 @@
-package com.stubee.rollingusecases.domain.logging.commands;
+package com.stubee.loggingapplication.commands;
 
 public record CreateLoggingCommand(
         String description,

@@ -1,4 +1,4 @@
-package com.stubee.rollingports.domain.logging.ports;
+package com.stubee.loggingapplication.outports;
 
 import com.stubee.rollingdomains.domain.logging.model.Logging;
 
