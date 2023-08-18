@@ -1,4 +1,4 @@
-package com.stubee.rollingusecases.domain.file.usecases;
+package com.stubee.fileapplication.usecases;
 
 import org.springframework.web.multipart.MultipartFile;
 
