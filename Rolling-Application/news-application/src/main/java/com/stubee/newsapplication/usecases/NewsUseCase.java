@@ -1,4 +1,4 @@
-package com.stubee.rollingusecases.domain.news.usecases;
+package com.stubee.newsapplication.usecases;
 
 import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import reactor.core.publisher.Mono;

@@ -1,4 +1,4 @@
-package com.stubee.rollingports.domain.news.ports;
+package com.stubee.newsapplication.outports;
 
 import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import reactor.core.publisher.Mono;
