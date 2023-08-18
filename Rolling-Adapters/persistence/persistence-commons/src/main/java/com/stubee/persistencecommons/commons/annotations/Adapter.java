@@ -1,4 +1,4 @@
-package com.stubee.persistence.common.annotations;
+package com.stubee.persistencecommons.commons.annotations;
 
 import org.springframework.stereotype.Component;
 
@@ -10,5 +10,5 @@ import java.lang.annotation.Target;
 @Component
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Mapper {
+public @interface Adapter {
 }

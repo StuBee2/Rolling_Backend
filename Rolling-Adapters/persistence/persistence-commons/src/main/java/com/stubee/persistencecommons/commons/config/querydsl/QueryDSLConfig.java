@@ -1,4 +1,4 @@
-package com.stubee.persistence.common.config.querydsl;
+package com.stubee.persistencecommons.commons.config.querydsl;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
