@@ -1,8 +1,8 @@
-package com.stubee.persistence.domain.company.mapper;
+package com.stubee.companypersistence.mapper;
 
-import com.stubee.persistence.common.mapper.DomainEntityMapper;
-import com.stubee.persistence.common.annotations.Mapper;
-import com.stubee.persistence.domain.company.entity.CompanyEntity;
+import com.stubee.persistencecommons.commons.annotations.Mapper;
+import com.stubee.persistencecommons.commons.entity.CompanyEntity;
+import com.stubee.persistencecommons.commons.mapper.DomainObjectMapper;
 import com.stubee.rollingdomains.common.model.Grades;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import com.stubee.rollingdomains.domain.company.model.CompanyDetails;
@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 @Mapper
 @RequiredArgsConstructor
-public class CompanyMapper implements DomainEntityMapper<CompanyEntity, Company> {
+public class CompanyMapper implements DomainObjectMapper<CompanyEntity, Company> {
 
     /** Company Entity Except Id */
     @Override

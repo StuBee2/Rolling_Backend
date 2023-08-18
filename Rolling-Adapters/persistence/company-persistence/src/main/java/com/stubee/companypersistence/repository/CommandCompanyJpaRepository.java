@@ -1,6 +1,6 @@
-package com.stubee.persistence.domain.company.repository;
+package com.stubee.companypersistence.repository;
 
-import com.stubee.persistence.domain.company.entity.CompanyEntity;
+import com.stubee.persistencecommons.commons.entity.CompanyEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

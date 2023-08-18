@@ -1,12 +1,13 @@
-package com.stubee.persistence.domain.company.adapters;
+package com.stubee.companypersistence.adapters;
 
-import com.stubee.persistence.common.annotations.Adapter;
-import com.stubee.persistence.domain.company.mapper.CompanyMapper;
+import com.stubee.applicationcommons.ports.company.CheckCompanyExistencePort;
+import com.stubee.companyapplication.outports.QueryCompanyPort;
+import com.stubee.companypersistence.mapper.CompanyMapper;
+import com.stubee.companypersistence.repository.QueryCompanyRepository;
+import com.stubee.persistencecommons.commons.annotations.Adapter;
 import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import com.stubee.rollingdomains.domain.company.response.CompanyQueryResponse;
-import com.stubee.persistence.domain.company.repository.QueryCompanyRepository;
-import com.stubee.rollingports.domain.company.ports.QueryCompanyPort;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -15,13 +16,13 @@ import java.util.UUID;
 
 @Adapter
 @RequiredArgsConstructor
-public class QueryCompanyAdapter implements QueryCompanyPort {
+public class QueryCompanyAdapter implements QueryCompanyPort, CheckCompanyExistencePort {
 
     private final QueryCompanyRepository queryCompanyRepository;
     private final CompanyMapper companyMapper;
 
     @Override
-    public boolean existsByCompanyId(final UUID companyId) {
+    public boolean check(final UUID companyId) {
         return queryCompanyRepository.existsByCompanyId(companyId);
     }
 
