@@ -1,4 +1,4 @@
-package com.stubee.rollingusecases.domain.member.commands;
+package com.stubee.memberapplication.commands;
 
 public record ChangeNicknameCommand(
         String nickName) {

@@ -1,4 +1,4 @@
-package com.stubee.rollingusecases.domain.member.usecases;
+package com.stubee.memberapplication.usecases;
 
 import com.stubee.rollingdomains.domain.member.model.Member;
 

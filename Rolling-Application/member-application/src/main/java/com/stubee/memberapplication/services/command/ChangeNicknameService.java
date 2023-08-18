@@ -1,10 +1,10 @@
-package com.stubee.rollingservices.domain.member.services.command;
+package com.stubee.memberapplication.services.command;
 
-import com.stubee.rollingservices.common.annotations.CommandService;
-import com.stubee.rollingports.domain.member.ports.CommandMemberPort;
-import com.stubee.rollingports.domain.member.ports.MemberSecurityPort;
-import com.stubee.rollingusecases.domain.member.commands.ChangeNicknameCommand;
-import com.stubee.rollingusecases.domain.member.usecases.ChangeNicknameUseCase;
+import com.stubee.applicationcommons.annotations.CommandService;
+import com.stubee.applicationcommons.ports.member.MemberSecurityPort;
+import com.stubee.memberapplication.commands.ChangeNicknameCommand;
+import com.stubee.memberapplication.outports.CommandMemberPort;
+import com.stubee.memberapplication.usecases.ChangeNicknameUseCase;
 import lombok.RequiredArgsConstructor;
 
 @CommandService
