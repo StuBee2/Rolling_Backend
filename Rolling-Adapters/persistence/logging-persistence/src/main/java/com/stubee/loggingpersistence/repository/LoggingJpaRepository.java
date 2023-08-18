@@ -1,6 +1,6 @@
-package com.stubee.persistence.domain.logging.repository;
+package com.stubee.loggingpersistence.repository;
 
-import com.stubee.persistence.domain.logging.entity.LoggingEntity;
+import com.stubee.persistencecommons.commons.entity.LoggingEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

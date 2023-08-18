@@ -1,12 +1,12 @@
-package com.stubee.persistence.domain.logging.mapper;
+package com.stubee.loggingpersistence.mapper;
 
-import com.stubee.persistence.common.mapper.DomainEntityMapper;
+import com.stubee.persistencecommons.commons.annotations.Mapper;
+import com.stubee.persistencecommons.commons.entity.LoggingEntity;
+import com.stubee.persistencecommons.commons.mapper.DomainObjectMapper;
 import com.stubee.rollingdomains.domain.logging.model.Logging;
-import com.stubee.persistence.common.annotations.Mapper;
-import com.stubee.persistence.domain.logging.entity.LoggingEntity;
 
 @Mapper
-public class LoggingMapper implements DomainEntityMapper<LoggingEntity, Logging> {
+public class LoggingMapper implements DomainObjectMapper<LoggingEntity, Logging> {
 
     @Override
     public LoggingEntity toEntity(final Logging domain) {

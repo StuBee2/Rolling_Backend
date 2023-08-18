@@ -1,4 +1,4 @@
-package com.stubee.persistence.domain.logging.entity;
+package com.stubee.persistencecommons.commons.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

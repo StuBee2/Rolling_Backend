@@ -1,10 +1,10 @@
-package com.stubee.persistence.domain.logging.adapters;
+package com.stubee.loggingpersistence.adapters;
 
+import com.stubee.loggingapplication.outports.CommandLoggingPort;
+import com.stubee.persistencecommons.commons.annotations.Adapter;
 import com.stubee.rollingdomains.domain.logging.model.Logging;
-import com.stubee.persistence.common.annotations.Adapter;
-import com.stubee.persistence.domain.logging.mapper.LoggingMapper;
-import com.stubee.persistence.domain.logging.repository.LoggingJpaRepository;
-import com.stubee.rollingports.domain.logging.ports.CommandLoggingPort;
+import com.stubee.loggingpersistence.mapper.LoggingMapper;
+import com.stubee.loggingpersistence.repository.LoggingJpaRepository;
 import lombok.RequiredArgsConstructor;
 
 @Adapter
