@@ -1,0 +1,22 @@
+package com.stubee.employmentpersistence.adapters;
+
+import com.stubee.employmentapplication.outports.CommandEmploymentPort;
+import com.stubee.employmentpersistence.mapper.EmploymentMapper;
+import com.stubee.employmentpersistence.repository.CommandEmploymentJpaRepository;
+import com.stubee.persistencecommons.commons.annotations.Adapter;
+import com.stubee.rollingdomains.domain.employment.model.Employment;
+import lombok.RequiredArgsConstructor;
+
+@Adapter
+@RequiredArgsConstructor
+public class CommandEmploymentAdapter implements CommandEmploymentPort {
+
+    private final CommandEmploymentJpaRepository commandEmploymentJpaRepository;
+    private final EmploymentMapper employmentMapper;
+
+    @Override
+    public Employment register(final Employment employment) {
+        return employmentMapper.toDomain(commandEmploymentJpaRepository.save(employmentMapper.toEntity(employment)));
+    }
+
+}

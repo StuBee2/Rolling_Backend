@@ -1,10 +1,10 @@
 package com.stubee.rollingapi.domain.company;
 
+import com.stubee.companyapplication.usecases.query.*;
 import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import com.stubee.rollingdomains.common.dto.response.PageDataResponse;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import com.stubee.rollingdomains.domain.company.response.CompanyQueryResponse;
-import com.stubee.rollingusecases.domain.company.usecases.query.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

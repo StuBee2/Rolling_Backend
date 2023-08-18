@@ -1,10 +1,10 @@
 package com.stubee.rollingapi.domain.review;
 
+import com.stubee.reviewapplication.commands.DeleteReviewCommand;
+import com.stubee.reviewapplication.usecases.command.DeleteReviewUseCase;
+import com.stubee.reviewapplication.usecases.command.WriteReviewUseCase;
 import com.stubee.rollingapi.domain.review.request.WriteReviewRequest;
 import com.stubee.rollingdomains.domain.review.model.Review;
-import com.stubee.rollingusecases.domain.review.commands.DeleteReviewCommand;
-import com.stubee.rollingusecases.domain.review.usecases.command.DeleteReviewUseCase;
-import com.stubee.rollingusecases.domain.review.usecases.command.WriteReviewUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

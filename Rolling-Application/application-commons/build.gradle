@@ -1,0 +1,13 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.4'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+dependencies {
+    compileOnly project(':Rolling-Domains')
+
+    compileOnly 'org.springframework:spring-tx:6.0.6'
+    compileOnly 'org.springframework:spring-context:6.0.6'
+}

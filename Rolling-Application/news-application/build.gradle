@@ -1,0 +1,7 @@
+dependencies {
+    //Mono
+    compileOnly 'io.projectreactor:reactor-core:3.5.3'
+
+    //@Service
+    compileOnly 'org.springframework:spring-context:6.0.6'
+}

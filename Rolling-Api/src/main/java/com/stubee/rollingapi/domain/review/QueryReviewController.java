@@ -1,13 +1,13 @@
 package com.stubee.rollingapi.domain.review;
 
+import com.stubee.reviewapplication.usecases.query.QueryMyReviewListUseCase;
+import com.stubee.reviewapplication.usecases.query.QueryReviewInfoByIdUseCase;
+import com.stubee.reviewapplication.usecases.query.QueryReviewInfoListByCompanyUseCase;
+import com.stubee.reviewapplication.usecases.query.QueryReviewListByMemberUseCase;
 import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import com.stubee.rollingdomains.common.dto.response.PageDataResponse;
 import com.stubee.rollingdomains.domain.review.response.ReviewInfoResponse;
 import com.stubee.rollingdomains.domain.review.response.ReviewQueryResponse;
-import com.stubee.rollingusecases.domain.review.usecases.query.QueryMyReviewListUseCase;
-import com.stubee.rollingusecases.domain.review.usecases.query.QueryReviewInfoByIdUseCase;
-import com.stubee.rollingusecases.domain.review.usecases.query.QueryReviewInfoListByCompanyUseCase;
-import com.stubee.rollingusecases.domain.review.usecases.query.QueryReviewListByMemberUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

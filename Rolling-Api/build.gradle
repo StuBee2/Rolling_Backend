@@ -7,11 +7,26 @@ apply plugin: 'io.spring.dependency-management'
 
 dependencies {
     implementation project(':Rolling-Domains')
-    implementation project(':Rolling-UseCases')
-    implementation project(':Rolling-Services')
-    implementation project(':Rolling-Ports')
-    implementation project(':Rolling-Adapters:Persistence')
-    implementation project(':Rolling-Adapters:ThirdParty')
+
+    implementation project(':Rolling-Application:member-application')
+    implementation project(':Rolling-Application:company-application')
+    implementation project(':Rolling-Application:employment-application')
+    implementation project(':Rolling-Application:review-application')
+    implementation project(':Rolling-Application:logging-application')
+    implementation project(':Rolling-Application:auth-application')
+    implementation project(':Rolling-Application:news-application')
+    implementation project(':Rolling-Application:file-application')
+    implementation project(':Rolling-Application:application-commons')
+
+    implementation project(':Rolling-Adapters:persistence:member-persistence')
+    implementation project(':Rolling-Adapters:persistence:company-persistence')
+    implementation project(':Rolling-Adapters:persistence:employment-persistence')
+    implementation project(':Rolling-Adapters:persistence:review-persistence')
+    implementation project(':Rolling-Adapters:persistence:logging-persistence')
+    implementation project(':Rolling-Adapters:persistence:persistence-commons')
+
+    implementation project(':Rolling-Adapters:thirdparty')
+    implementation project(':Rolling-Adapters:security')
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
@@ -19,17 +34,6 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-    //MySQL
-    implementation 'mysql:mysql-connector-java:8.0.33'
-
     //Swagger
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4'
-
-    //Jwt
-    compileOnly 'io.jsonwebtoken:jjwt:0.9.1'
-    compileOnly 'javax.xml.bind:jaxb-api:2.3.0'
-
-    //Security
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
 }

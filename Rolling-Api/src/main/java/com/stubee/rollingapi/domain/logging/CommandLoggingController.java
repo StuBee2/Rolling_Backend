@@ -1,8 +1,8 @@
 package com.stubee.rollingapi.domain.logging;
 
+import com.stubee.loggingapplication.usecases.PileUpLoggingUseCase;
 import com.stubee.rollingapi.domain.logging.request.CreateLoggingRequest;
 import com.stubee.rollingdomains.domain.logging.model.Logging;
-import com.stubee.rollingusecases.domain.logging.usecases.PileUpLoggingUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

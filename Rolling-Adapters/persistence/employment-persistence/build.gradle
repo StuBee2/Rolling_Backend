@@ -1,0 +1,4 @@
+dependencies {
+    compileOnly project(':Rolling-Application:employment-application')
+    compileOnly project(':Rolling-Adapters:persistence:persistence-commons')
+}
