@@ -1,4 +1,4 @@
-package com.stubee.rollingports.domain.file.ports;
+package com.stubee.fileapplication.outports;
 
 import org.springframework.web.multipart.MultipartFile;
 
