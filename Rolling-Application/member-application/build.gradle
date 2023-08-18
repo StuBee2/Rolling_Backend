@@ -1,0 +1,3 @@
+dependencies {
+    compileOnly project(':Rolling-Application:application-commons')
+}

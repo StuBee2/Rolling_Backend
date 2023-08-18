@@ -1,0 +1,14 @@
+dependencies {
+    //@Service
+    compileOnly 'org.springframework:spring-context:6.0.6'
+
+    //Jwt
+    compileOnly 'io.jsonwebtoken:jjwt:0.9.1'
+    compileOnly 'javax.xml.bind:jaxb-api:2.3.0'
+
+    //Authentication
+    compileOnly 'org.springframework.security:spring-security-core'
+
+    //HttpServletRequest
+    compileOnly 'org.apache.tomcat.embed:tomcat-embed-core:10.1.5'
+}

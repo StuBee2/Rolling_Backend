@@ -1,0 +1,5 @@
+dependencies {
+    compileOnly project(':Rolling-Application:company-application')
+    compileOnly project(':Rolling-Application:application-commons')
+    compileOnly project(':Rolling-Adapters:persistence:persistence-commons')
+}
