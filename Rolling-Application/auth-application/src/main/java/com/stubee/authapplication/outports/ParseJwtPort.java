@@ -1,4 +1,4 @@
-package com.stubee.rollingports.domain.auth.ports;
+package com.stubee.authapplication.outports;
 
 import com.stubee.rollingdomains.domain.auth.consts.JwtType;
 import io.jsonwebtoken.Claims;

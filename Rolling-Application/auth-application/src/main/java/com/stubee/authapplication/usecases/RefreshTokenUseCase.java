@@ -1,4 +1,4 @@
-package com.stubee.rollingusecases.domain.auth.usecases;
+package com.stubee.authapplication.usecases;
 
 import com.stubee.rollingdomains.domain.auth.response.RefreshTokenResponse;
 

@@ -1,11 +1,11 @@
-package com.stubee.rollingservices.domain.auth.services;
+package com.stubee.authapplication.services;
 
+import com.stubee.authapplication.outports.ParseJwtPort;
+import com.stubee.authapplication.outports.ProvideJwtPort;
+import com.stubee.authapplication.usecases.RefreshTokenUseCase;
 import com.stubee.rollingdomains.domain.auth.consts.JwtType;
 import com.stubee.rollingdomains.domain.auth.response.RefreshTokenResponse;
 import com.stubee.rollingdomains.domain.member.consts.MemberRole;
-import com.stubee.rollingports.domain.auth.ports.ParseJwtPort;
-import com.stubee.rollingports.domain.auth.ports.ProvideJwtPort;
-import com.stubee.rollingusecases.domain.auth.usecases.RefreshTokenUseCase;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import lombok.RequiredArgsConstructor;
