@@ -1,6 +1,6 @@
 package com.stubee.rollingapi.domain.file;
 
-import com.stubee.rollingusecases.domain.file.usecases.FileUploadUseCase;
+import com.stubee.fileapplication.usecases.FileUploadUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
