@@ -1,10 +1,10 @@
-package com.stubee.thirdparty.news.adapters;
+package com.stubee.navernews.adapters;
 
+import com.stubee.navernews.exception.NewsClientException;
 import com.stubee.newsapplication.outports.NewsPort;
 import com.stubee.rollingdomains.common.dto.request.PageRequest;
-import com.stubee.rollingdomains.domain.news.response.NaverNewsResponse;
-import com.stubee.thirdparty.common.annotations.Adapter;
-import com.stubee.thirdparty.news.exception.NewsClientException;
+import com.stubee.newsapplication.services.response.NaverNewsResponse;
+import com.stubee.thirdpartycommons.annotations.Adapter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.web.reactive.function.client.WebClient;

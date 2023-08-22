@@ -1,4 +1,4 @@
-package com.stubee.rollingdomains.domain.news.response;
+package com.stubee.newsapplication.services.response;
 
 import java.util.List;
 

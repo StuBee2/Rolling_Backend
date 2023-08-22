@@ -5,7 +5,7 @@ import com.stubee.reviewapplication.outports.QueryReviewPort;
 import com.stubee.reviewapplication.usecases.query.QueryReviewListByMemberUseCase;
 import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import com.stubee.rollingdomains.common.dto.response.PageDataResponse;
-import com.stubee.rollingdomains.domain.review.response.ReviewQueryResponse;
+import com.stubee.reviewapplication.services.query.response.ReviewQueryResponse;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

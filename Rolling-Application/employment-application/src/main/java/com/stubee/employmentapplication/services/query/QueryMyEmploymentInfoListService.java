@@ -4,7 +4,7 @@ import com.stubee.applicationcommons.annotations.QueryService;
 import com.stubee.applicationcommons.ports.member.MemberSecurityPort;
 import com.stubee.employmentapplication.outports.QueryEmploymentPort;
 import com.stubee.employmentapplication.usecases.query.QueryMyEmploymentInfoListUseCase;
-import com.stubee.rollingdomains.domain.employment.response.EmploymentQueryResponse;
+import com.stubee.employmentapplication.services.query.response.EmploymentQueryResponse;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

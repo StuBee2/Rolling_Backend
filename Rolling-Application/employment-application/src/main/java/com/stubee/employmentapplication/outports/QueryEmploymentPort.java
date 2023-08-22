@@ -1,6 +1,6 @@
 package com.stubee.employmentapplication.outports;
 
-import com.stubee.rollingdomains.domain.employment.response.EmploymentQueryResponse;
+import com.stubee.employmentapplication.services.query.response.EmploymentQueryResponse;
 
 import java.util.List;
 import java.util.UUID;

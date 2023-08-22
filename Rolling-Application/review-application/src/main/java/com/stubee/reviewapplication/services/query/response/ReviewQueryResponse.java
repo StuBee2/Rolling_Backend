@@ -1,4 +1,4 @@
-package com.stubee.rollingdomains.domain.review.response;
+package com.stubee.reviewapplication.services.query.response;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
