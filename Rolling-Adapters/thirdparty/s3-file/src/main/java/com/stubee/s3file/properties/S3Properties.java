@@ -1,4 +1,4 @@
-package com.stubee.thirdparty.common.properties.s3;
+package com.stubee.s3file.properties;
 
 import lombok.Getter;
 import lombok.Setter;

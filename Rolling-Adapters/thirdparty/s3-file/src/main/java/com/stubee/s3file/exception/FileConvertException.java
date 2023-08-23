@@ -1,4 +1,4 @@
-package com.stubee.thirdparty.file.exception;
+package com.stubee.s3file.exception;
 
 import com.stubee.rollingdomains.common.exception.CustomException;
 import com.stubee.rollingdomains.common.exception.ErrorCode;

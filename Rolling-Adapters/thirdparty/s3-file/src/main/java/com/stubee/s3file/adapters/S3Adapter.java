@@ -1,13 +1,13 @@
-package com.stubee.thirdparty.file.adapters;
+package com.stubee.s3file.adapters;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.stubee.fileapplication.outports.S3Port;
-import com.stubee.thirdparty.common.annotations.Adapter;
-import com.stubee.thirdparty.common.properties.s3.S3Properties;
-import com.stubee.thirdparty.file.exception.FileConvertException;
-import com.stubee.thirdparty.file.exception.FileUploadException;
+import com.stubee.s3file.exception.FileConvertException;
+import com.stubee.s3file.exception.FileUploadException;
+import com.stubee.s3file.properties.S3Properties;
+import com.stubee.thirdpartycommons.annotations.Adapter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 

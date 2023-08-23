@@ -1,10 +1,10 @@
-package com.stubee.thirdparty.file.config;
+package com.stubee.s3file.config;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.stubee.thirdparty.common.properties.s3.S3Properties;
+import com.stubee.s3file.properties.S3Properties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
