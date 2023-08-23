@@ -5,17 +5,16 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableBatchProcessing
 @ComponentScan(basePackages = {
-        "com.stubee.rollingservices.domain.company.services.command",
-        "com.stubee.rollingservices.domain.company.services.query",
-        "com.stubee.rollingservices.domain.review.services.query",
-        "com.stubee.rollingadapters.domain.company",
-        "com.stubee.rollingadapters.domain.review",
-        "com.stubee.rollingadapters.global",
-        "com.stubee.rollingexternal.persistence",
-        "com.stubee.rollingexternal.global.config.jpa",
-        "com.stubee.rollingexternal.global.config.querydsl"
+        "com.stubee.companyapplication.services.command",
+        "com.stubee.companyapplication.services.query",
+
+        "com.stubee.reviewapplication.services.query",
+
+        "com.stubee.companypersistence",
+        "com.stubee.reviewpersistence",
+        "com.stubee.persistencecommons"
 })
+@EnableBatchProcessing
 public class BatchConfig {
 }
