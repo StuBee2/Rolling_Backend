@@ -16,6 +16,7 @@ dependencies {
     implementation project(':Rolling-Application:auth-application')
     implementation project(':Rolling-Application:news-application')
     implementation project(':Rolling-Application:file-application')
+    implementation project(':Rolling-Application:notification-application')
     implementation project(':Rolling-Application:application-commons')
 
     implementation project(':Rolling-Adapters:persistence:member-persistence')
@@ -25,12 +26,17 @@ dependencies {
     implementation project(':Rolling-Adapters:persistence:logging-persistence')
     implementation project(':Rolling-Adapters:persistence:persistence-commons')
 
-    implementation project(':Rolling-Adapters:thirdparty')
-    implementation project(':Rolling-Adapters:security')
+    implementation project(':Rolling-Adapters:thirdparty:s3-file')
+    implementation project(':Rolling-Adapters:thirdparty:naver-news')
+    implementation project(':Rolling-Adapters:thirdparty:email-notification')
+    implementation project(':Rolling-Adapters:thirdparty:thirdparty-commons')
+
+    implementation project(':Rolling-Adapters:security:oauth')
+    implementation project(':Rolling-Adapters:security:security-commons')
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    implementation 'io.projectreactor:reactor-core:3.5.3'
+    implementation 'io.projectreactor:reactor-core:3.5.4'
 
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 

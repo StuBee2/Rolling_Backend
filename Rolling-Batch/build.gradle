@@ -7,6 +7,8 @@ apply plugin: 'io.spring.dependency-management'
 
 dependencies {
     implementation project(':Rolling-Domains')
+    implementation project(':Rolling-Application:company-application')
+    implementation project(':Rolling-Application:review-application')
     implementation project(':Rolling-Adapters:persistence')
 
     implementation 'org.springframework.boot:spring-boot-starter-batch'

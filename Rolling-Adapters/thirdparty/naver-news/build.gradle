@@ -1,0 +1,7 @@
+dependencies {
+    compileOnly project(':Rolling-Application:news-application')
+    compileOnly project(':Rolling-Adapters:thirdparty:thirdparty-commons')
+
+    //WebClient
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+}
