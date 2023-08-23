@@ -1,6 +1,6 @@
-package com.stubee.thirdparty.common.config.webclient;
+package com.stubee.navernews.config;
 
-import com.stubee.thirdparty.common.properties.news.NaverProperties;
+import com.stubee.navernews.properties.NaverProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +10,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
 @RequiredArgsConstructor
-public class WebClientConfig {
+public class NaverClientConfig {
 
     private final NaverProperties naverProperties;
 

@@ -1,4 +1,4 @@
-package com.stubee.thirdparty.common.properties.news;
+package com.stubee.navernews.properties;
 
 import lombok.Getter;
 import lombok.Setter;

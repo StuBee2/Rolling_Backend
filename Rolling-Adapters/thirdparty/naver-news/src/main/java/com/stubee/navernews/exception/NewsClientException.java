@@ -1,4 +1,4 @@
-package com.stubee.thirdparty.news.exception;
+package com.stubee.navernews.exception;
 
 import com.stubee.rollingdomains.common.exception.CustomException;
 import com.stubee.rollingdomains.common.exception.ErrorCode;
