@@ -1,4 +1,4 @@
-package com.stubee.security.annotation;
+package com.stubee.securitycommons.annotation;
 
 import org.springframework.stereotype.Component;
 
