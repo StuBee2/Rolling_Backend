@@ -1,4 +1,4 @@
-package com.stubee.security.cookie;
+package com.stubee.securitycommons.cookie;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class CookieManagerImpl {
+public class CookieManagerImpl implements CookieManager {
 
     private final CookieSerializer cookieSerializer;
     private final HttpServletRequest request;
@@ -22,8 +22,7 @@ public class CookieManagerImpl {
                 .flatMap(cookies ->
                         Arrays.stream(cookies)
                                 .filter(cookie -> cookie.getName().equals(name))
-                                .findFirst()
-                );
+                                .findFirst());
     }
 
     public void addCookie(final Cookie cookie) {

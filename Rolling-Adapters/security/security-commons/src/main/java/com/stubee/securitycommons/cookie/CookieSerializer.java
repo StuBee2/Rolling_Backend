@@ -1,4 +1,4 @@
-package com.stubee.security.cookie;
+package com.stubee.securitycommons.cookie;
 
 import org.springframework.stereotype.Component;
 import org.springframework.util.SerializationUtils;

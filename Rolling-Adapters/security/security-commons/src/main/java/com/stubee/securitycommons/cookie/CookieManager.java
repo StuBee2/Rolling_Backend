@@ -1,4 +1,4 @@
-package com.stubee.security.cookie;
+package com.stubee.securitycommons.cookie;
 
 import jakarta.servlet.http.Cookie;
 

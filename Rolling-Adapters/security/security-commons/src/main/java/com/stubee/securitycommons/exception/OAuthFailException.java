@@ -1,4 +1,4 @@
-package com.stubee.security.exception;
+package com.stubee.securitycommons.exception;
 
 import com.stubee.rollingdomains.common.exception.CustomException;
 import com.stubee.rollingdomains.common.exception.ErrorCode;
