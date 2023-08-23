@@ -1,4 +1,4 @@
-package com.stubee.thirdparty.common.properties.email;
+package com.stubee.emailnotification.properties;
 
 import lombok.Getter;
 import lombok.Setter;
