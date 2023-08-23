@@ -1,4 +1,4 @@
-package com.stubee.security.jwt.filter;
+package com.stubee.oauth.filter;
 
 import com.stubee.authapplication.outports.ParseJwtPort;
 import jakarta.servlet.FilterChain;

@@ -1,6 +1,7 @@
-package com.stubee.security.cookie;
+package com.stubee.oauth.cookie;
 
 import com.nimbusds.oauth2.sdk.util.StringUtils;
+import com.stubee.securitycommons.cookie.CookieManager;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,8 @@ public class CookieAuthorizationRequestRepository implements AuthorizationReques
     public static final String OAUTH2_AUTHORIZATION_REQUEST_COOKIE_NAME = "oauth2_auth_request";
     public static final String REDIRECT_URI_PARAM_COOKIE_NAME = "redirect_uri";
     private static final int COOKIE_EXPIRE_SECONDS = 180;
-    private final CookieManagerImpl cookieManager;
+
+    private final CookieManager cookieManager;
 
     @Override
     public OAuth2AuthorizationRequest loadAuthorizationRequest(HttpServletRequest request) {

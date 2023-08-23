@@ -1,4 +1,4 @@
-package com.stubee.security.jwt.filter;
+package com.stubee.oauth.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stubee.rollingdomains.common.dto.response.ErrorResponse;
@@ -45,7 +45,6 @@ public class JwtExceptionFilter extends OncePerRequestFilter {
         try {
             responseToClient(response, ErrorResponse.create(error));
         } catch (IOException e) {
-            log.info("IOException : {}", e.getMessage());
         }
     }
 

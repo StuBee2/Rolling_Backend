@@ -1,14 +1,14 @@
-package com.stubee.security.jwt.adapters;
+package com.stubee.oauth.adapters;
 
 import com.stubee.authapplication.outports.ParseJwtPort;
 import com.stubee.memberapplication.outports.QueryMemberPort;
+import com.stubee.oauth.model.CustomMemberDetails;
 import com.stubee.rollingdomains.domain.auth.consts.JwtType;
 import com.stubee.rollingdomains.domain.auth.exception.WrongTokenTypeException;
 import com.stubee.rollingdomains.domain.member.exception.MemberNotFoundException;
 import com.stubee.rollingdomains.domain.member.model.Member;
-import com.stubee.security.annotation.Adapter;
-import com.stubee.security.jwt.properties.JwtProperties;
-import com.stubee.security.oauth.model.CustomMemberDetails;
+import com.stubee.securitycommons.annotation.Adapter;
+import com.stubee.oauth.properties.JwtProperties;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jws;
@@ -47,7 +47,7 @@ public class ParseJwtAdapter implements ParseJwtPort {
         log.info("memberSocialId : {}", member.socialDetails().socialLoginId());
         log.info("memberSocialId : {}", member.socialDetails().socialId());
 
-        final CustomMemberDetails details = new CustomMemberDetails(member);
+        final CustomMemberDetails details = CustomMemberDetails.create(member);
 
         return new UsernamePasswordAuthenticationToken(details, null, details.getAuthorities());
     }

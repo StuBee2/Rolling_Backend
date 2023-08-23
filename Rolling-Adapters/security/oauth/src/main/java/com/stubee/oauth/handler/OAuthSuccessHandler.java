@@ -1,11 +1,11 @@
-package com.stubee.security.oauth.handler;
+package com.stubee.oauth.handler;
 
 import com.stubee.authapplication.outports.ProvideJwtPort;
-import com.stubee.security.cookie.CookieAuthorizationRequestRepository;
-import com.stubee.security.cookie.CookieManagerImpl;
-import com.stubee.security.oauth.model.CustomMemberDetails;
+import com.stubee.oauth.cookie.CookieAuthorizationRequestRepository;
+import com.stubee.oauth.model.CustomMemberDetails;
 import com.stubee.rollingdomains.domain.member.consts.MemberRole;
 import com.stubee.rollingdomains.domain.member.model.Member;
+import com.stubee.securitycommons.cookie.CookieManager;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -26,7 +26,7 @@ public class OAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
     private final ProvideJwtPort provideJwtPort;
     private final CookieAuthorizationRequestRepository cookieAuthorizationRequestRepository;
-    private final CookieManagerImpl cookieManager;
+    private final CookieManager cookieManager;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,

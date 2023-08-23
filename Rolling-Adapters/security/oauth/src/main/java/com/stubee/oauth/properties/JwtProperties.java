@@ -1,4 +1,4 @@
-package com.stubee.security.jwt.properties;
+package com.stubee.oauth.properties;
 
 import lombok.Getter;
 import lombok.Setter;

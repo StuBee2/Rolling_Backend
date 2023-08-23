@@ -1,4 +1,4 @@
-package com.stubee.security.oauth.model;
+package com.stubee.oauth.model;
 
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
@@ -17,7 +17,7 @@ public class CustomMemberDetails implements UserDetails, OAuth2User {
     private final Member member;
     private Map<String, Object> attributes;
 
-    public CustomMemberDetails(Member member) {
+    private CustomMemberDetails(Member member) {
         this.member = member;
     }
 
@@ -28,6 +28,10 @@ public class CustomMemberDetails implements UserDetails, OAuth2User {
 
     public static CustomMemberDetails create(Member member, Map<String, Object> attributes) {
         return new CustomMemberDetails(member, attributes);
+    }
+
+    public static CustomMemberDetails create(Member member) {
+        return new CustomMemberDetails(member);
     }
 
     public MemberId getMemberId() {

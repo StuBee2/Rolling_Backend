@@ -1,7 +1,8 @@
-package com.stubee.security.oauth.service;
+package com.stubee.oauth.service;
 
+import com.stubee.applicationcommons.annotations.CommandService;
 import com.stubee.memberapplication.outports.CommandMemberPort;
-import com.stubee.security.oauth.model.CustomMemberDetails;
+import com.stubee.oauth.model.CustomMemberDetails;
 import com.stubee.rollingdomains.domain.member.consts.LoginType;
 import com.stubee.rollingdomains.domain.member.consts.OAuthAttributes;
 import com.stubee.rollingdomains.domain.member.model.Member;
@@ -10,14 +11,11 @@ import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserServ
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Locale;
 import java.util.Map;
 
-@Service
-@Transactional
+@CommandService
 @RequiredArgsConstructor
 public class OAuthMemberService extends DefaultOAuth2UserService {
 
