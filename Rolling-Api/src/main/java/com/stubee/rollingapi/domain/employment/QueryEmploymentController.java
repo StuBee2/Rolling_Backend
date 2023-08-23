@@ -1,7 +1,7 @@
 package com.stubee.rollingapi.domain.employment;
 
 import com.stubee.employmentapplication.usecases.query.QueryMyEmploymentInfoListUseCase;
-import com.stubee.rollingdomains.domain.employment.response.EmploymentQueryResponse;
+import com.stubee.employmentapplication.services.query.response.EmploymentQueryResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

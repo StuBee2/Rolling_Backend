@@ -8,21 +8,12 @@ apply plugin: 'io.spring.dependency-management'
 subprojects {
 
     dependencies {
-        compileOnly project(':Rolling-Domains')
-
-        //Jpa
         implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-        //MySQL
         implementation 'mysql:mysql-connector-java:8.0.33'
 
-        //Validation
         implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-        //Annotation
-        implementation 'org.springframework:spring-context:6.0.6'
-
-        //QueryDSL
         implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
         annotationProcessor "com.querydsl:querydsl-apt:5.0.0:jakarta"
         annotationProcessor "jakarta.annotation:jakarta.annotation-api"

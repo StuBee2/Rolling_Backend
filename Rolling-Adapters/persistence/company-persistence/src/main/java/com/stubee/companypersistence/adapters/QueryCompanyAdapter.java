@@ -7,7 +7,7 @@ import com.stubee.companypersistence.repository.QueryCompanyRepository;
 import com.stubee.persistencecommons.commons.annotations.Adapter;
 import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import com.stubee.rollingdomains.domain.company.model.Company;
-import com.stubee.rollingdomains.domain.company.response.CompanyQueryResponse;
+import com.stubee.companyapplication.services.query.response.CompanyQueryResponse;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

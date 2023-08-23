@@ -1,3 +1,4 @@
 dependencies {
-
+    //Annotation
+    implementation 'org.springframework:spring-context:6.0.9'
 }

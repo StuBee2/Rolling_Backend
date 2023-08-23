@@ -2,8 +2,8 @@ package com.stubee.reviewapplication.outports;
 
 import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import com.stubee.rollingdomains.domain.review.model.Review;
-import com.stubee.rollingdomains.domain.review.response.ReviewInfoResponse;
-import com.stubee.rollingdomains.domain.review.response.ReviewQueryResponse;
+import com.stubee.reviewapplication.services.query.response.ReviewInfoResponse;
+import com.stubee.reviewapplication.services.query.response.ReviewQueryResponse;
 
 import java.util.List;
 import java.util.Optional;

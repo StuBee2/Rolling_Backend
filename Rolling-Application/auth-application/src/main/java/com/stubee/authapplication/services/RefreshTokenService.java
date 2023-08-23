@@ -2,9 +2,9 @@ package com.stubee.authapplication.services;
 
 import com.stubee.authapplication.outports.ParseJwtPort;
 import com.stubee.authapplication.outports.ProvideJwtPort;
+import com.stubee.authapplication.services.response.RefreshTokenResponse;
 import com.stubee.authapplication.usecases.RefreshTokenUseCase;
 import com.stubee.rollingdomains.domain.auth.consts.JwtType;
-import com.stubee.rollingdomains.domain.auth.response.RefreshTokenResponse;
 import com.stubee.rollingdomains.domain.member.consts.MemberRole;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;

@@ -2,7 +2,7 @@ package com.stubee.companyapplication.outports;
 
 import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import com.stubee.rollingdomains.domain.company.model.Company;
-import com.stubee.rollingdomains.domain.company.response.CompanyQueryResponse;
+import com.stubee.companyapplication.services.query.response.CompanyQueryResponse;
 
 import java.util.List;
 import java.util.Optional;
