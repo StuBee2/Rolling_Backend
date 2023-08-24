@@ -1,7 +1,7 @@
 package com.stubee.loggingpersistence.adapters;
 
 import com.stubee.loggingapplication.outports.CommandLoggingPort;
-import com.stubee.persistencecommons.commons.annotations.Adapter;
+import com.stubee.persistencecommons.annotations.Adapter;
 import com.stubee.rollingdomains.domain.logging.model.Logging;
 import com.stubee.loggingpersistence.mapper.LoggingMapper;
 import com.stubee.loggingpersistence.repository.LoggingJpaRepository;

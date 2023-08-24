@@ -1,8 +1,7 @@
-package com.stubee.persistencecommons.commons.entity;
+package com.stubee.persistencecommons.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import com.stubee.rollingdomains.domain.company.consts.CompanyStatus;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
@@ -13,22 +12,29 @@ import lombok.experimental.SuperBuilder;
 import java.util.UUID;
 
 @Entity
-@Table(name = "tbl_review")
+@Table(name = "tbl_company")
 @Getter
 @SuperBuilder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ReviewEntity extends BaseEntity {
-
-    @Column(columnDefinition = "TEXT")
-    private String content;
+public class CompanyEntity extends BaseEntity {
 
     @NotNull
-    @Size(max = 255)
-    private String position;
+    @Column(unique = true)
+    private String name;
+
+    @NotNull
+    private String address;
 
     @NotNull
     @Column(columnDefinition = "TEXT")
-    private String careerPath;
+    private String description;
+
+    @Size(max = 1000)
+    private String imgUrl;
+
+    @NotNull
+    @Enumerated(value = EnumType.STRING)
+    private CompanyStatus companyStatus;
 
     @NotNull
     private Double totalGrade;
@@ -46,11 +52,7 @@ public class ReviewEntity extends BaseEntity {
     private Double careerAdvancement;
 
     @NotNull
-    @Column(name = "fk_member_id")
-    private UUID memberId;
-
-    @NotNull
-    @Column(name = "fk_company_id")
-    private UUID companyId;
+    @Column(name = "fk_registrant_id")
+    private UUID registrantId;
 
 }

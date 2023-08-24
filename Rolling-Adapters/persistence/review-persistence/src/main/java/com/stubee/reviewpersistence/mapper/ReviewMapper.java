@@ -1,8 +1,8 @@
 package com.stubee.reviewpersistence.mapper;
 
-import com.stubee.persistencecommons.commons.annotations.Mapper;
-import com.stubee.persistencecommons.commons.entity.ReviewEntity;
-import com.stubee.persistencecommons.commons.mapper.DomainObjectMapper;
+import com.stubee.persistencecommons.annotations.Mapper;
+import com.stubee.persistencecommons.entity.ReviewEntity;
+import com.stubee.persistencecommons.mapper.DomainObjectMapper;
 import com.stubee.rollingdomains.common.model.Grades;
 import com.stubee.rollingdomains.domain.company.model.CompanyId;
 import com.stubee.rollingdomains.domain.member.model.MemberId;

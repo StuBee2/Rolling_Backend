@@ -1,4 +1,4 @@
-package com.stubee.persistencecommons.commons.entity;
+package com.stubee.persistencecommons.entity;
 
 import com.stubee.rollingdomains.domain.member.consts.LoginType;
 import com.stubee.rollingdomains.domain.member.consts.MemberRole;

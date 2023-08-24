@@ -1,4 +1,4 @@
-package com.stubee.persistencecommons.commons.annotations;
+package com.stubee.persistencecommons.annotations;
 
 import org.springframework.stereotype.Component;
 

@@ -1,6 +1,6 @@
 package com.stubee.employmentpersistence.repository;
 
-import com.stubee.persistencecommons.commons.entity.EmploymentEntity;
+import com.stubee.persistencecommons.entity.EmploymentEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

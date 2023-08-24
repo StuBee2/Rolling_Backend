@@ -1,8 +1,8 @@
 package com.stubee.memberpersistence.mapper;
 
-import com.stubee.persistencecommons.commons.entity.MemberEntity;
-import com.stubee.persistencecommons.commons.annotations.Mapper;
-import com.stubee.persistencecommons.commons.mapper.DomainObjectMapper;
+import com.stubee.persistencecommons.entity.MemberEntity;
+import com.stubee.persistencecommons.annotations.Mapper;
+import com.stubee.persistencecommons.mapper.DomainObjectMapper;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.rollingdomains.domain.member.model.MemberDetails;
 import com.stubee.rollingdomains.domain.member.model.MemberId;

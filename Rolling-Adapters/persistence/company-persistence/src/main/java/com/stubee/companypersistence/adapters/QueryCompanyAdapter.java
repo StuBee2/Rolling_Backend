@@ -4,7 +4,7 @@ import com.stubee.applicationcommons.ports.company.CheckCompanyExistencePort;
 import com.stubee.companyapplication.outports.QueryCompanyPort;
 import com.stubee.companypersistence.mapper.CompanyMapper;
 import com.stubee.companypersistence.repository.QueryCompanyRepository;
-import com.stubee.persistencecommons.commons.annotations.Adapter;
+import com.stubee.persistencecommons.annotations.Adapter;
 import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import com.stubee.companyapplication.services.query.response.CompanyQueryResponse;

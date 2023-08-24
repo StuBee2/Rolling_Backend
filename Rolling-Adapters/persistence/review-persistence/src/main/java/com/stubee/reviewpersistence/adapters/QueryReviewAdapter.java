@@ -1,6 +1,6 @@
 package com.stubee.reviewpersistence.adapters;
 
-import com.stubee.persistencecommons.commons.annotations.Adapter;
+import com.stubee.persistencecommons.annotations.Adapter;
 import com.stubee.reviewapplication.outports.QueryReviewPort;
 import com.stubee.reviewpersistence.mapper.ReviewMapper;
 import com.stubee.reviewpersistence.repository.QueryReviewRepository;

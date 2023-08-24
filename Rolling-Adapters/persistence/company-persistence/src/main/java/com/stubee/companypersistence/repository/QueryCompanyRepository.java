@@ -1,6 +1,6 @@
 package com.stubee.companypersistence.repository;
 
-import com.stubee.persistencecommons.commons.entity.CompanyEntity;
+import com.stubee.persistencecommons.entity.CompanyEntity;
 import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import com.stubee.companyapplication.services.query.response.CompanyQueryResponse;
 
