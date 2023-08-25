@@ -1,18 +1,17 @@
 package com.stubee.companypersistence.mapper;
 
-import com.stubee.persistencecommons.commons.annotations.Mapper;
-import com.stubee.persistencecommons.commons.entity.CompanyEntity;
-import com.stubee.persistencecommons.commons.mapper.DomainObjectMapper;
+import com.stubee.persistencecommons.annotations.DomainObjectMapper;
+import com.stubee.persistencecommons.entity.CompanyEntity;
 import com.stubee.rollingdomains.common.model.Grades;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import com.stubee.rollingdomains.domain.company.model.CompanyDetails;
 import com.stubee.rollingdomains.domain.company.model.CompanyId;
 import com.stubee.rollingdomains.domain.company.model.RegistrantId;
-import lombok.RequiredArgsConstructor;
 
-@Mapper
-@RequiredArgsConstructor
-public class CompanyMapper implements DomainObjectMapper<CompanyEntity, Company> {
+import java.util.List;
+
+@DomainObjectMapper
+public class CompanyMapper implements com.stubee.persistencecommons.mapper.DomainObjectMapper<CompanyEntity, Company> {
 
     /** Company Entity Except Id */
     @Override
@@ -59,6 +58,10 @@ public class CompanyMapper implements DomainObjectMapper<CompanyEntity, Company>
 
         return Company.createWithId(CompanyId.create(entity.getId()), companyDetails(entity),
                 companyGrades(entity), RegistrantId.create(entity.getRegistrantId()));
+    }
+
+    public List<Company> toDomainList(final List<CompanyEntity> entityList) {
+        return entityList.stream().map(this::toDomain).toList();
     }
 
     private CompanyDetails companyDetails(final CompanyEntity entity) {

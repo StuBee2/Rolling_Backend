@@ -1,6 +1,6 @@
 package com.stubee.reviewpersistence.repository;
 
-import com.stubee.persistencecommons.commons.entity.ReviewEntity;
+import com.stubee.persistencecommons.entity.ReviewEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

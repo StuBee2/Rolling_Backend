@@ -1,15 +1,14 @@
 package com.stubee.memberpersistence.mapper;
 
-import com.stubee.persistencecommons.commons.entity.MemberEntity;
-import com.stubee.persistencecommons.commons.annotations.Mapper;
-import com.stubee.persistencecommons.commons.mapper.DomainObjectMapper;
+import com.stubee.persistencecommons.entity.MemberEntity;
+import com.stubee.persistencecommons.annotations.DomainObjectMapper;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.rollingdomains.domain.member.model.MemberDetails;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 import com.stubee.rollingdomains.domain.member.model.SocialDetails;
 
-@Mapper
-public class MemberMapper implements DomainObjectMapper<MemberEntity, Member> {
+@DomainObjectMapper
+public class MemberMapper implements com.stubee.persistencecommons.mapper.DomainObjectMapper<MemberEntity, Member> {
 
     /** Member Entity Except Id */
     @Override

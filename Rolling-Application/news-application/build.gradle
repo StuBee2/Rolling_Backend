@@ -1,4 +1,6 @@
 dependencies {
+    compileOnly project(':Rolling-Application:application-commons')
+
     //Mono
     compileOnly 'io.projectreactor:reactor-core:3.5.3'
 

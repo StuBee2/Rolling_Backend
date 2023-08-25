@@ -1,4 +1,4 @@
-package com.stubee.rollingdomains.common.dto.response;
+package com.stubee.applicationcommons.dtos.response;
 
 public record PageDataResponse <T> (
         T data) {

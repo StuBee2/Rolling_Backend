@@ -3,8 +3,8 @@ package com.stubee.reviewapplication.services.query;
 import com.stubee.applicationcommons.annotations.QueryService;
 import com.stubee.reviewapplication.outports.QueryReviewPort;
 import com.stubee.reviewapplication.usecases.query.QueryReviewListByMemberUseCase;
-import com.stubee.rollingdomains.common.dto.request.PageRequest;
-import com.stubee.rollingdomains.common.dto.response.PageDataResponse;
+import com.stubee.applicationcommons.dtos.request.PageRequest;
+import com.stubee.applicationcommons.dtos.response.PageDataResponse;
 import com.stubee.reviewapplication.services.query.response.ReviewQueryResponse;
 import lombok.RequiredArgsConstructor;
 

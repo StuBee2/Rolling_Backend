@@ -1,5 +1,6 @@
 dependencies {
     compileOnly project(':Rolling-Application:news-application')
+    compileOnly project(':Rolling-Application:application-commons')
     compileOnly project(':Rolling-Adapters:thirdparty:thirdparty-commons')
 
     //WebClient

@@ -1,8 +1,8 @@
-package com.stubee.persistencecommons.commons.entity;
+package com.stubee.persistencecommons.entity;
 
+import com.stubee.rollingdomains.domain.employment.consts.EmploymentStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -10,27 +10,26 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "tbl_logging")
+@Table(name = "tbl_employment")
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class LoggingEntity {
+public class EmploymentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotNull
-    @Size(max = 250)
-    @Column(columnDefinition = "TEXT")
-    private String description;
+    private UUID employeeId;
 
     @NotNull
-    private String module;
+    private UUID employerId;
 
     @NotNull
-    private UUID memberId;
+    @Enumerated(value = EnumType.STRING)
+    private EmploymentStatus employmentStatus;
 
     @CreationTimestamp
     private LocalDateTime createdAt;

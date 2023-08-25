@@ -1,12 +1,11 @@
 package com.stubee.employmentpersistence.mapper;
 
-import com.stubee.persistencecommons.commons.annotations.Mapper;
-import com.stubee.persistencecommons.commons.entity.EmploymentEntity;
-import com.stubee.persistencecommons.commons.mapper.DomainObjectMapper;
+import com.stubee.persistencecommons.annotations.DomainObjectMapper;
+import com.stubee.persistencecommons.entity.EmploymentEntity;
 import com.stubee.rollingdomains.domain.employment.model.*;
 
-@Mapper
-public class EmploymentMapper implements DomainObjectMapper<EmploymentEntity, Employment> {
+@DomainObjectMapper
+public class EmploymentMapper implements com.stubee.persistencecommons.mapper.DomainObjectMapper<EmploymentEntity, Employment> {
 
     @Override
     public EmploymentEntity toEntity(final Employment domain) {

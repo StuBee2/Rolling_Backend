@@ -2,7 +2,7 @@ package com.stubee.employmentpersistence.adapters;
 
 import com.stubee.employmentapplication.outports.QueryEmploymentPort;
 import com.stubee.employmentpersistence.repository.QueryEmploymentRepository;
-import com.stubee.persistencecommons.commons.annotations.Adapter;
+import com.stubee.persistencecommons.annotations.Adapter;
 import com.stubee.employmentapplication.services.query.response.EmploymentQueryResponse;
 import lombok.RequiredArgsConstructor;
 

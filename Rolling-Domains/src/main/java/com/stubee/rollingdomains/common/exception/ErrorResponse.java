@@ -1,6 +1,4 @@
-package com.stubee.rollingdomains.common.dto.response;
-
-import com.stubee.rollingdomains.common.exception.ErrorCode;
+package com.stubee.rollingdomains.common.exception;
 
 public record ErrorResponse(
         int status,

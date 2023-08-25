@@ -1,4 +1,4 @@
-package com.stubee.persistencecommons.commons.mapper;
+package com.stubee.persistencecommons.mapper;
 
 public interface DomainObjectMapper<E, D> {
 

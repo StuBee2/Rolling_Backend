@@ -10,8 +10,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.UUID;
 
-import static com.stubee.persistencecommons.commons.entity.QCompanyEntity.companyEntity;
-import static com.stubee.persistencecommons.commons.entity.QEmploymentEntity.employmentEntity;
+import static com.stubee.persistencecommons.entity.QCompanyEntity.companyEntity;
+import static com.stubee.persistencecommons.entity.QEmploymentEntity.employmentEntity;
 
 @Repository
 @RequiredArgsConstructor
