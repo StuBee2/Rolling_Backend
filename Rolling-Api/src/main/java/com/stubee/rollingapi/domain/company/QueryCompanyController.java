@@ -1,8 +1,8 @@
 package com.stubee.rollingapi.domain.company;
 
 import com.stubee.companyapplication.usecases.query.*;
-import com.stubee.rollingdomains.common.dto.request.PageRequest;
-import com.stubee.rollingdomains.common.dto.response.PageDataResponse;
+import com.stubee.applicationcommons.dtos.request.PageRequest;
+import com.stubee.applicationcommons.dtos.response.PageDataResponse;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import com.stubee.companyapplication.services.query.response.CompanyQueryResponse;
 import io.swagger.v3.oas.annotations.Operation;

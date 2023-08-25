@@ -1,6 +1,6 @@
 package com.stubee.reviewapplication.outports;
 
-import com.stubee.rollingdomains.common.dto.request.PageRequest;
+import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.rollingdomains.domain.review.model.Review;
 import com.stubee.reviewapplication.services.query.response.ReviewInfoResponse;
 import com.stubee.reviewapplication.services.query.response.ReviewQueryResponse;

@@ -9,29 +9,35 @@ dependencies {
     implementation project(':Rolling-Domains')
 
     implementation project(':Rolling-Application:member-application')
-    implementation project(':Rolling-Application:company-application')
-    implementation project(':Rolling-Application:employment-application')
-    implementation project(':Rolling-Application:review-application')
-    implementation project(':Rolling-Application:logging-application')
-    implementation project(':Rolling-Application:auth-application')
-    implementation project(':Rolling-Application:news-application')
-    implementation project(':Rolling-Application:file-application')
-    implementation project(':Rolling-Application:notification-application')
-    implementation project(':Rolling-Application:application-commons')
-
     implementation project(':Rolling-Adapters:persistence:member-persistence')
+
+    implementation project(':Rolling-Application:company-application')
     implementation project(':Rolling-Adapters:persistence:company-persistence')
+
+    implementation project(':Rolling-Application:employment-application')
     implementation project(':Rolling-Adapters:persistence:employment-persistence')
+
+    implementation project(':Rolling-Application:review-application')
     implementation project(':Rolling-Adapters:persistence:review-persistence')
+
+    implementation project(':Rolling-Application:logging-application')
     implementation project(':Rolling-Adapters:persistence:logging-persistence')
-    implementation project(':Rolling-Adapters:persistence:persistence-commons')
 
-    implementation project(':Rolling-Adapters:thirdparty:s3-file')
-    implementation project(':Rolling-Adapters:thirdparty:naver-news')
-    implementation project(':Rolling-Adapters:thirdparty:email-notification')
-    implementation project(':Rolling-Adapters:thirdparty:thirdparty-commons')
-
+    implementation project(':Rolling-Application:auth-application')
     implementation project(':Rolling-Adapters:security:oauth')
+
+    implementation project(':Rolling-Application:news-application')
+    implementation project(':Rolling-Adapters:thirdparty:naver-news')
+
+    implementation project(':Rolling-Application:file-application')
+    implementation project(':Rolling-Adapters:thirdparty:s3-file')
+
+    implementation project(':Rolling-Application:notification-application')
+    implementation project(':Rolling-Adapters:thirdparty:email-notification')
+
+    implementation project(':Rolling-Application:application-commons')
+    implementation project(':Rolling-Adapters:persistence:persistence-commons')
+    implementation project(':Rolling-Adapters:thirdparty:thirdparty-commons')
     implementation project(':Rolling-Adapters:security:security-commons')
 
     implementation 'org.springframework.boot:spring-boot-starter-web'

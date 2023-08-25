@@ -1,10 +1,10 @@
 package com.stubee.reviewpersistence.adapters;
 
+import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.persistencecommons.annotations.Adapter;
 import com.stubee.reviewapplication.outports.QueryReviewPort;
 import com.stubee.reviewpersistence.mapper.ReviewMapper;
 import com.stubee.reviewpersistence.repository.QueryReviewRepository;
-import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import com.stubee.rollingdomains.domain.review.model.Review;
 import com.stubee.reviewapplication.services.query.response.ReviewInfoResponse;
 import com.stubee.reviewapplication.services.query.response.ReviewQueryResponse;

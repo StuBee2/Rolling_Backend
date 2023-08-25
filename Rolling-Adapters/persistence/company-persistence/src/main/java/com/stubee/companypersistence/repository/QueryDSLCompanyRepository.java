@@ -6,7 +6,7 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.NumberPath;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.stubee.persistencecommons.entity.CompanyEntity;
-import com.stubee.rollingdomains.common.dto.request.PageRequest;
+import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.companyapplication.services.query.response.CompanyQueryResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

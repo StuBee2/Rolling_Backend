@@ -1,7 +1,7 @@
 package com.stubee.reviewpersistence.repository;
 
+import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.persistencecommons.entity.ReviewEntity;
-import com.stubee.rollingdomains.common.dto.request.PageRequest;
 import com.stubee.reviewapplication.services.query.response.ReviewInfoResponse;
 import com.stubee.reviewapplication.services.query.response.ReviewQueryResponse;
 

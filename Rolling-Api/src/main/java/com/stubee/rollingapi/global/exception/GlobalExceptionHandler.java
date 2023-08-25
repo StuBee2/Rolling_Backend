@@ -1,6 +1,6 @@
 package com.stubee.rollingapi.global.exception;
 
-import com.stubee.rollingdomains.common.dto.response.ErrorResponse;
+import com.stubee.rollingdomains.common.exception.ErrorResponse;
 import com.stubee.rollingdomains.common.exception.CustomException;
 import com.stubee.rollingdomains.common.exception.ErrorCode;
 import lombok.extern.slf4j.Slf4j;

@@ -1,7 +1,7 @@
 package com.stubee.oauth.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.stubee.rollingdomains.common.dto.response.ErrorResponse;
+import com.stubee.rollingdomains.common.exception.ErrorResponse;
 import com.stubee.rollingdomains.common.exception.ErrorCode;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
@@ -45,6 +45,7 @@ public class JwtExceptionFilter extends OncePerRequestFilter {
         try {
             responseToClient(response, ErrorResponse.create(error));
         } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

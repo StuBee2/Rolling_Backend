@@ -1,6 +1,6 @@
 package com.stubee.companyapplication.outports;
 
-import com.stubee.rollingdomains.common.dto.request.PageRequest;
+import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import com.stubee.companyapplication.services.query.response.CompanyQueryResponse;
 
