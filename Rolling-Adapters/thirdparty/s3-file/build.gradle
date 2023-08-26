@@ -1,4 +1,6 @@
 dependencies {
+    compileOnly project(':Rolling-Domains')
+
     compileOnly project(':Rolling-Application:file-application')
     compileOnly project(':Rolling-Adapters:thirdparty:thirdparty-commons')
 
@@ -7,4 +9,7 @@ dependencies {
 
     //S3
     implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+
+    //Properties
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 }

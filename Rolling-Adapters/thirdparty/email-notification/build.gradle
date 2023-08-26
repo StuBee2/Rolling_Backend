@@ -4,4 +4,7 @@ dependencies {
 
     //JavaMailSender
     implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+    //Properties
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 }
