@@ -3,9 +3,6 @@ subprojects {
     dependencies {
         //HttpServletRequest
         compileOnly 'org.apache.tomcat.embed:tomcat-embed-core:10.1.5'
-
-        //Properties
-        annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
     }
 
 }

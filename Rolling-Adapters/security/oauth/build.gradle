@@ -1,7 +1,10 @@
 dependencies {
+    compileOnly project(':Rolling-Domains')
+
     compileOnly project(':Rolling-Application:member-application')
     compileOnly project(':Rolling-Application:auth-application')
     compileOnly project(':Rolling-Application:application-commons')
+
     compileOnly project(':Rolling-Adapters:security:security-commons')
 
     //Jwt
@@ -11,4 +14,7 @@ dependencies {
     //Security
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    //Properties
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 }

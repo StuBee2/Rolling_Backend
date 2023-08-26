@@ -1,7 +1,7 @@
 package com.stubee.oauth.handler;
 
 import com.stubee.oauth.cookie.CookieAuthorizationRequestRepository;
-import com.stubee.securitycommons.exception.OAuthFailException;
+import com.stubee.oauth.exception.OAuthFailException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

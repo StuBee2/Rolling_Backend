@@ -1,15 +1,7 @@
-plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.0.4'
-}
-
-apply plugin: 'io.spring.dependency-management'
-
 subprojects {
 
 	dependencies {
-		//Properties
-		annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
 	}
 
 }

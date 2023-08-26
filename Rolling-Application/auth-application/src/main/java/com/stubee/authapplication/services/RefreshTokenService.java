@@ -22,7 +22,7 @@ public class RefreshTokenService implements RefreshTokenUseCase {
 
     @Override
     public RefreshTokenResponse refresh(final String refreshToken) {
-        final Jws<Claims> claims = parseJwtPort.getClaims(parseJwtPort.extractToken(refreshToken));
+        final Jws<Claims> claims = parseJwtPort.getClaims(refreshToken);
 
         parseJwtPort.isWrongType(claims, JwtType.REFRESH);
 

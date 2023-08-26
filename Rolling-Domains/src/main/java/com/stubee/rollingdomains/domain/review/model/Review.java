@@ -18,7 +18,7 @@ public record Review (
         CompanyId companyId) {
     public static Review create(final String content, final String position, final String careerPath,
                                 final double salaryAndBenefits, final double workLifeBalance, final double organizationalCulture,
-                                final double careerAdvancement, final UUID companyId, MemberId memberId) {
+                                final double careerAdvancement, final UUID companyId, final MemberId memberId) {
         return Review.builder()
                 .reviewDetails(ReviewDetails.create(content, position, careerPath))
                 .reviewGrades(Grades.create(salaryAndBenefits, workLifeBalance, organizationalCulture, careerAdvancement))
