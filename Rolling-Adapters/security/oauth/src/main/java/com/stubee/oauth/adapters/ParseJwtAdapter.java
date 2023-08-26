@@ -32,7 +32,7 @@ public class ParseJwtAdapter implements ParseJwtPort {
 
     @Override
     public Jws<Claims> getClaims(final String token) {
-        return Jwts.parser().setSigningKey(jwtProperties.getAccessKey()).parseClaimsJws(token);
+        return Jwts.parser().setSigningKey(jwtProperties.getAccessKey()).parseClaimsJws(extractToken(token));
     }
 
     @Override
@@ -58,19 +58,18 @@ public class ParseJwtAdapter implements ParseJwtPort {
     }
 
     @Override
-    public String extractToken(final String token) {
+    public void isWrongType(final Jws<Claims> claims, final JwtType jwtType) {
+        if(!(claims.getHeader().get(Header.JWT_TYPE).equals(jwtType.toString()))) {
+            throw WrongTokenTypeException.EXCEPTION;
+        }
+    }
+
+    private String extractToken(final String token) {
         if (StringUtils.hasText(token) && token.startsWith("Bearer ")) {
             return token.substring(7);
         }
 
         return token;
-    }
-
-    @Override
-    public void isWrongType(final Jws<Claims> claims, final JwtType jwtType) {
-        if(!(claims.getHeader().get(Header.JWT_TYPE).equals(jwtType.toString()))) {
-            throw WrongTokenTypeException.EXCEPTION;
-        }
     }
 
 }
