@@ -1,20 +1,14 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot'
+    id 'org.springframework.boot' version '3.0.4'
 }
 
 apply plugin: 'io.spring.dependency-management'
 
-dependencies {
-    implementation project(':Rolling-Domains')
+subprojects {
 
-    implementation project(':Rolling-Application:company-application')
-    implementation project(':Rolling-Application:review-application')
-    implementation project(':Rolling-Application:application-commons')
+    dependencies {
 
-    implementation project(':Rolling-Adapters:persistence:company-persistence')
-    implementation project(':Rolling-Adapters:persistence:review-persistence')
-    implementation project(':Rolling-Adapters:persistence:persistence-commons')
+    }
 
-    implementation 'org.springframework.boot:spring-boot-starter-batch'
 }

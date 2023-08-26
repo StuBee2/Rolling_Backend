@@ -8,6 +8,8 @@ rootProject.name = 'Rolling_BackEnd'
 
 include 'Rolling-Api'
 include 'Rolling-Batch'
+include 'Rolling-Batch:company-average-batch'
+include 'Rolling-Batch:batch-commons'
 
 include 'Rolling-Domains'
 
