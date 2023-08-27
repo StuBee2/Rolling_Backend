@@ -1,7 +1,7 @@
 package com.stubee.reviewapplication.services;
 
 import com.stubee.applicationcommons.annotations.QueryService;
-import com.stubee.applicationcommons.ports.member.MemberSecurityPort;
+import com.stubee.applicationcommons.ports.member.LoadCurrentMemberPort;
 import com.stubee.reviewapplication.outports.QueryReviewPort;
 import com.stubee.reviewapplication.services.query.response.ReviewQueryResponse;
 import com.stubee.reviewapplication.usecases.query.QueryMyReviewListUseCase;
@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class QueryMyReviewListService implements QueryMyReviewListUseCase {
 
-    private final MemberSecurityPort memberSecurityPort;
+    private final LoadCurrentMemberPort memberSecurityPort;
     private final QueryReviewPort queryReviewPort;
 
     @Override

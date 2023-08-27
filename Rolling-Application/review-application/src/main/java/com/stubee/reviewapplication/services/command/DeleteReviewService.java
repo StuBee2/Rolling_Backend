@@ -1,7 +1,7 @@
 package com.stubee.reviewapplication.services.command;
 
 import com.stubee.applicationcommons.annotations.CommandService;
-import com.stubee.applicationcommons.ports.member.MemberSecurityPort;
+import com.stubee.applicationcommons.ports.member.LoadCurrentMemberPort;
 import com.stubee.reviewapplication.commands.DeleteReviewCommand;
 import com.stubee.reviewapplication.outports.CommandReviewPort;
 import com.stubee.reviewapplication.outports.QueryReviewPort;
@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class DeleteReviewService implements DeleteReviewUseCase {
 
-    private final MemberSecurityPort memberSecurityPort;
+    private final LoadCurrentMemberPort memberSecurityPort;
     private final CommandReviewPort commandReviewPort;
     private final QueryReviewPort queryReviewPort;
 

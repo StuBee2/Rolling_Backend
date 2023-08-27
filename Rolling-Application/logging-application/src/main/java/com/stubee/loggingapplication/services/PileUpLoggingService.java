@@ -1,7 +1,7 @@
 package com.stubee.loggingapplication.services;
 
 import com.stubee.applicationcommons.annotations.CommandService;
-import com.stubee.applicationcommons.ports.member.MemberSecurityPort;
+import com.stubee.applicationcommons.ports.member.LoadCurrentMemberPort;
 import com.stubee.loggingapplication.commands.CreateLoggingCommand;
 import com.stubee.loggingapplication.outports.CommandLoggingPort;
 import com.stubee.loggingapplication.usecases.PileUpLoggingUseCase;
@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PileUpLoggingService implements PileUpLoggingUseCase {
 
-    private final MemberSecurityPort memberSecurityPort;
+    private final LoadCurrentMemberPort memberSecurityPort;
     private final CommandLoggingPort commandLoggingPort;
 
     @Override

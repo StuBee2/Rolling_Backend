@@ -1,7 +1,7 @@
 package com.stubee.memberapplication.services.query;
 
 import com.stubee.applicationcommons.annotations.QueryService;
-import com.stubee.applicationcommons.ports.member.MemberSecurityPort;
+import com.stubee.applicationcommons.ports.member.LoadCurrentMemberPort;
 import com.stubee.memberapplication.usecases.QueryMyInfoUseCase;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class QueryMyInfoService implements QueryMyInfoUseCase {
 
-    private final MemberSecurityPort securityPort;
+    private final LoadCurrentMemberPort securityPort;
 
     @Override
     public Member get() {

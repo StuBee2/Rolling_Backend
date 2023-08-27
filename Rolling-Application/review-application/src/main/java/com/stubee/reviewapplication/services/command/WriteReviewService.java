@@ -2,7 +2,7 @@ package com.stubee.reviewapplication.services.command;
 
 import com.stubee.applicationcommons.annotations.CommandService;
 import com.stubee.applicationcommons.ports.company.CheckCompanyExistencePort;
-import com.stubee.applicationcommons.ports.member.MemberSecurityPort;
+import com.stubee.applicationcommons.ports.member.LoadCurrentMemberPort;
 import com.stubee.reviewapplication.commands.WriteReviewCommand;
 import com.stubee.reviewapplication.outports.CommandReviewPort;
 import com.stubee.reviewapplication.usecases.command.WriteReviewUseCase;
@@ -16,7 +16,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class WriteReviewService implements WriteReviewUseCase {
 
-    private final MemberSecurityPort memberSecurityPort;
+    private final LoadCurrentMemberPort memberSecurityPort;
     private final CommandReviewPort commandReviewPort;
     private final CheckCompanyExistencePort checkCompanyExistencePort;
 
