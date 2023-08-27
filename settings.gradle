@@ -7,13 +7,11 @@ pluginManagement {
 rootProject.name = 'Rolling_BackEnd'
 
 include 'Rolling-Api'
-include 'Rolling-Batch'
 include 'Rolling-Batch:company-average-batch'
 include 'Rolling-Batch:batch-commons'
 
 include 'Rolling-Domains'
 
-include 'Rolling-Application'
 include 'Rolling-Application:member-application'
 include 'Rolling-Application:company-application'
 include 'Rolling-Application:employment-application'
@@ -25,8 +23,6 @@ include 'Rolling-Application:notification-application'
 include 'Rolling-Application:auth-application'
 include 'Rolling-Application:application-commons'
 
-include 'Rolling-Adapters'
-include 'Rolling-Adapters:persistence'
 include 'Rolling-Adapters:persistence:member-persistence'
 include 'Rolling-Adapters:persistence:company-persistence'
 include 'Rolling-Adapters:persistence:employment-persistence'
@@ -34,12 +30,10 @@ include 'Rolling-Adapters:persistence:review-persistence'
 include 'Rolling-Adapters:persistence:logging-persistence'
 include 'Rolling-Adapters:persistence:persistence-commons'
 
-include 'Rolling-Adapters:thirdparty'
 include 'Rolling-Adapters:thirdparty:naver-news'
 include 'Rolling-Adapters:thirdparty:s3-file'
 include 'Rolling-Adapters:thirdparty:email-notification'
 include 'Rolling-Adapters:thirdparty:thirdparty-commons'
 
-include 'Rolling-Adapters:security'
 include 'Rolling-Adapters:security:oauth'
 include 'Rolling-Adapters:security:security-commons'
