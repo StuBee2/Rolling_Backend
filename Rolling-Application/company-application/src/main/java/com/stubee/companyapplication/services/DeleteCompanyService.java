@@ -26,7 +26,7 @@ public class DeleteCompanyService implements DeleteCompanyUseCase {
         Company company = queryCompanyPort.findById(command.companyId().getId())
                 .orElseThrow(() -> CompanyNotFoundException.EXCEPTION);
 
-        company.isRightRegistrant(member.memberId());
+        company.isRegistrant(member.memberId());
 
         commandCompanyPort.deleteById(company.companyId());
     }
