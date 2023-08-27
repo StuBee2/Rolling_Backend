@@ -1,7 +1,7 @@
 package com.stubee.companyapplication.services;
 
 import com.stubee.applicationcommons.annotations.QueryService;
-import com.stubee.applicationcommons.ports.member.MemberSecurityPort;
+import com.stubee.applicationcommons.ports.member.LoadCurrentMemberPort;
 import com.stubee.companyapplication.outports.QueryCompanyPort;
 import com.stubee.companyapplication.usecases.query.QueryCompanyListByMemberUseCase;
 import com.stubee.applicationcommons.dtos.request.PageRequest;
@@ -16,7 +16,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class QueryCompanyByMemberService implements QueryCompanyListByMemberUseCase {
 
-    private final MemberSecurityPort memberSecurityPort;
+    private final LoadCurrentMemberPort memberSecurityPort;
     private final QueryCompanyPort queryCompanyPort;
 
     @Override

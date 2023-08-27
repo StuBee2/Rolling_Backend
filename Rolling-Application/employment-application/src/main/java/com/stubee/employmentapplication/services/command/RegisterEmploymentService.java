@@ -2,7 +2,7 @@ package com.stubee.employmentapplication.services.command;
 
 import com.stubee.applicationcommons.annotations.CommandService;
 import com.stubee.applicationcommons.ports.company.CheckCompanyExistencePort;
-import com.stubee.applicationcommons.ports.member.MemberSecurityPort;
+import com.stubee.applicationcommons.ports.member.LoadCurrentMemberPort;
 import com.stubee.employmentapplication.commands.RegisterEmploymentCommand;
 import com.stubee.employmentapplication.outports.CommandEmploymentPort;
 import com.stubee.employmentapplication.usecases.command.RegisterEmploymentUseCase;
@@ -16,7 +16,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class RegisterEmploymentService implements RegisterEmploymentUseCase {
 
-    private final MemberSecurityPort memberSecurityPort;
+    private final LoadCurrentMemberPort memberSecurityPort;
     private final CommandEmploymentPort commandEmploymentPort;
     private final CheckCompanyExistencePort checkCompanyExistencePort;
 
