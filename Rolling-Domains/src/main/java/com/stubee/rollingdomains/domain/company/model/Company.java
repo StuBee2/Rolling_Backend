@@ -35,7 +35,7 @@ public record Company (
         return createWithId(companyId, companyDetails, companyGrades, registrantId);
     }
 
-    public void isRightRegistrant(final BaseId memberId) {
+    public void isRegistrant(final BaseId memberId) {
         if(!registrantId.equals(memberId)) {
             throw NotMatchedMemberException.EXCEPTION;
         }
