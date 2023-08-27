@@ -2,23 +2,22 @@ package com.stubee.s3file.adapters;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.stubee.fileapplication.outports.S3Port;
-import com.stubee.s3file.exception.FileConvertException;
 import com.stubee.s3file.exception.FileUploadException;
 import com.stubee.s3file.properties.S3Properties;
 import com.stubee.thirdpartycommons.annotations.Adapter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Adapter
+@Slf4j
 @RequiredArgsConstructor
 public class S3Adapter implements S3Port {
 
@@ -27,20 +26,11 @@ public class S3Adapter implements S3Port {
 
     @Override
     public String uploadFile(final MultipartFile multipartFile) {
-        try {
-            final File convertFile = convert(multipartFile)
-                    .orElseThrow(() -> FileConvertException.EXCEPTION);
+        final String fileName = getFileName(multipartFile.getName());
 
-            final String fileName = getFileName(convertFile.getName());
+        amazonS3.putObject(getRequest(multipartFile, fileName));
 
-            amazonS3.putObject(putRequest(fileName, convertFile));
-
-            convertFile.delete();
-
-            return getUrl(fileName);
-        } catch (IOException e) {
-            throw FileUploadException.EXCEPTION;
-        }
+        return getUrl(fileName);
     }
 
     @Override
@@ -53,28 +43,29 @@ public class S3Adapter implements S3Port {
         amazonS3.deleteObject(s3Properties.getBucket(), path);
     }
 
-    private Optional<File> convert(final MultipartFile file) throws IOException {
-        final File convertFile = new File(System.getProperty("user.home") + file.getOriginalFilename());
-        if (convertFile.createNewFile()) {
-            try (FileOutputStream fos = new FileOutputStream(convertFile)) {
-                fos.write(file.getBytes());
-            }
-            return Optional.of(convertFile);
+    private PutObjectRequest getRequest(final MultipartFile multipartFile, final String fileName) {
+        try {
+            return new PutObjectRequest(s3Properties.getBucket(), fileName, multipartFile.getInputStream(),
+                    getMetadata(multipartFile)).withCannedAcl(CannedAccessControlList.PublicRead);
+        } catch (IOException e) {
+            throw FileUploadException.EXCEPTION;
         }
-        return Optional.empty();
     }
 
-    private String getFileName(final String convertFileName) {
-        return s3Properties.getBucket() + "/" + UUID.randomUUID() + convertFileName;
-    }
-
-    private PutObjectRequest putRequest(final String fileName, final File convertFile) {
-        return new PutObjectRequest(s3Properties.getBucket(), fileName, convertFile)
-                .withCannedAcl(CannedAccessControlList.PublicRead);
+    private String getFileName(final String fileName) {
+        return s3Properties.getBucket() + "/" + UUID.randomUUID() + fileName;
     }
 
     private String getUrl(final String fileName) {
         return amazonS3.getUrl(s3Properties.getBucket(), fileName).toString();
+    }
+
+    private ObjectMetadata getMetadata(final MultipartFile multipartFile) {
+        final ObjectMetadata objectMetadata = new ObjectMetadata();
+        objectMetadata.setContentLength(multipartFile.getSize());
+        objectMetadata.setContentType(multipartFile.getContentType());
+
+        return objectMetadata;
     }
 
 }
