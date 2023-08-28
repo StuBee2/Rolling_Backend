@@ -1,7 +1,7 @@
 package com.stubee.reviewapplication.services.command;
 
 import com.stubee.applicationcommons.annotations.CommandService;
-import com.stubee.applicationcommons.ports.member.LoadCurrentMemberPort;
+import com.stubee.applicationcommons.ports.LoadCurrentMemberPort;
 import com.stubee.applicationcommons.services.CheckCompanyExistenceService;
 import com.stubee.reviewapplication.commands.WriteReviewCommand;
 import com.stubee.reviewapplication.outports.CommandReviewPort;
@@ -13,15 +13,15 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class WriteReviewService implements WriteReviewUseCase {
 
-    private final LoadCurrentMemberPort memberSecurityPort;
-    private final CommandReviewPort commandReviewPort;
     private final CheckCompanyExistenceService checkCompanyExistenceService;
+    private final LoadCurrentMemberPort loadCurrentMemberPort;
+    private final CommandReviewPort commandReviewPort;
 
     @Override
-    public Review write(WriteReviewCommand command) {
+    public Review write(final WriteReviewCommand command) {
         checkCompanyExistenceService.check(command.companyId());
 
-        return commandReviewPort.save(command.toDomain(memberSecurityPort.getCurrentMemberId()));
+        return commandReviewPort.save(command.toDomain(loadCurrentMemberPort.getMemberId()));
     }
 
 }
