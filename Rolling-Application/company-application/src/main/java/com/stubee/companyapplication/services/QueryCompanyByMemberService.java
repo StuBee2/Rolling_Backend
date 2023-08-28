@@ -1,7 +1,7 @@
 package com.stubee.companyapplication.services;
 
 import com.stubee.applicationcommons.annotations.QueryService;
-import com.stubee.applicationcommons.ports.member.LoadCurrentMemberPort;
+import com.stubee.applicationcommons.ports.LoadCurrentMemberPort;
 import com.stubee.companyapplication.outports.QueryCompanyPort;
 import com.stubee.companyapplication.usecases.query.QueryCompanyListByMemberUseCase;
 import com.stubee.applicationcommons.dtos.request.PageRequest;
@@ -16,16 +16,16 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class QueryCompanyByMemberService implements QueryCompanyListByMemberUseCase {
 
-    private final LoadCurrentMemberPort memberSecurityPort;
+    private final LoadCurrentMemberPort loadCurrentMemberPort;
     private final QueryCompanyPort queryCompanyPort;
 
     @Override
-    public PageDataResponse<List<Company>> getMy(PageRequest pageRequest) {
-        return getByMemberId(memberSecurityPort.getCurrentMemberId().getId(), pageRequest);
+    public PageDataResponse<List<Company>> getMy(final PageRequest pageRequest) {
+        return getByMemberId(loadCurrentMemberPort.getMemberId().getId(), pageRequest);
     }
 
     @Override
-    public PageDataResponse<List<Company>> getByMemberId(final UUID memberId, PageRequest pageRequest) {
+    public PageDataResponse<List<Company>> getByMemberId(final UUID memberId, final PageRequest pageRequest) {
         return PageDataResponse.create(queryCompanyPort.findByRegistrantId(memberId, pageRequest));
     }
 

@@ -1,12 +1,12 @@
-package com.stubee.applicationcommons.ports.member;
+package com.stubee.applicationcommons.ports;
 
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 
 public interface LoadCurrentMemberPort {
 
-    Member getCurrentMember();
+    Member getMember();
 
-    MemberId getCurrentMemberId();
+    MemberId getMemberId();
 
 }
