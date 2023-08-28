@@ -16,7 +16,7 @@ public class CheckCompanyExistenceServiceImpl implements CheckCompanyExistenceSe
 
     @Override
     public void check(final UUID companyId) {
-        if(checkCompanyExistencePort.check(companyId)) {
+        if(!checkCompanyExistencePort.check(companyId)) {
             throw CompanyNotFoundException.EXCEPTION;
         }
     }
