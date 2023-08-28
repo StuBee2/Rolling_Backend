@@ -1,7 +1,7 @@
 package com.stubee.employmentapplication.services.query;
 
 import com.stubee.applicationcommons.annotations.QueryService;
-import com.stubee.applicationcommons.ports.member.LoadCurrentMemberPort;
+import com.stubee.applicationcommons.ports.LoadCurrentMemberPort;
 import com.stubee.employmentapplication.outports.QueryEmploymentPort;
 import com.stubee.employmentapplication.usecases.query.QueryMyEmploymentInfoListUseCase;
 import com.stubee.employmentapplication.services.query.response.EmploymentQueryResponse;
@@ -13,12 +13,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class QueryMyEmploymentInfoListService implements QueryMyEmploymentInfoListUseCase {
 
-    private final LoadCurrentMemberPort memberSecurityPort;
+    private final LoadCurrentMemberPort loadCurrentMemberPort;
     private final QueryEmploymentPort queryEmploymentPort;
 
     @Override
     public List<EmploymentQueryResponse> get() {
-        return queryEmploymentPort.findInfoByEmployeeId(memberSecurityPort.getCurrentMemberId().getId());
+        return queryEmploymentPort.findInfoByEmployeeId(loadCurrentMemberPort.getMemberId().getId());
     }
 
 }

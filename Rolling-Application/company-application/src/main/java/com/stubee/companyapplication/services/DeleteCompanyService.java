@@ -1,7 +1,7 @@
 package com.stubee.companyapplication.services;
 
 import com.stubee.applicationcommons.annotations.CommandService;
-import com.stubee.applicationcommons.ports.member.LoadCurrentMemberPort;
+import com.stubee.applicationcommons.ports.LoadCurrentMemberPort;
 import com.stubee.companyapplication.commands.DeleteCompanyCommand;
 import com.stubee.companyapplication.outports.CommandCompanyPort;
 import com.stubee.companyapplication.outports.QueryCompanyPort;
@@ -15,15 +15,15 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class DeleteCompanyService implements DeleteCompanyUseCase {
 
-    private final LoadCurrentMemberPort memberSecurityPort;
+    private final LoadCurrentMemberPort loadCurrentMemberPort;
     private final CommandCompanyPort commandCompanyPort;
     private final QueryCompanyPort queryCompanyPort;
 
     @Override
-    public void delete(DeleteCompanyCommand command) {
-        Member member = memberSecurityPort.getCurrentMember();
+    public void delete(final DeleteCompanyCommand command) {
+        final Member member = loadCurrentMemberPort.getMember();
 
-        Company company = queryCompanyPort.findById(command.companyId().getId())
+        final Company company = queryCompanyPort.findById(command.companyId().getId())
                 .orElseThrow(() -> CompanyNotFoundException.EXCEPTION);
 
         company.isRegistrant(member.memberId());

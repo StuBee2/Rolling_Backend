@@ -1,4 +1,4 @@
-package com.stubee.applicationcommons.ports.company;
+package com.stubee.applicationcommons.ports;
 
 import java.util.UUID;
 
