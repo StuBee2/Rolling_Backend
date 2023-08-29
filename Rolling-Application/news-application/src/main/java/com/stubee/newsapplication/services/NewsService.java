@@ -1,13 +1,13 @@
 package com.stubee.newsapplication.services;
 
+import com.stubee.applicationcommons.annotations.ExternalService;
 import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.newsapplication.outports.NewsPort;
 import com.stubee.newsapplication.usecases.NewsUseCase;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
-@Service
+@ExternalService
 @RequiredArgsConstructor
 public class NewsService implements NewsUseCase {
 

@@ -1,7 +1,6 @@
 dependencies {
+    compileOnly project(':Rolling-Application:application-commons')
+
     //MultipartFile
     compileOnly 'org.springframework:spring-web:6.0.6'
-
-    //@Service
-    compileOnly 'org.springframework:spring-context:6.0.6'
 }

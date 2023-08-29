@@ -1,14 +1,14 @@
 package com.stubee.fileapplication.services;
 
+import com.stubee.applicationcommons.annotations.ExternalService;
 import com.stubee.fileapplication.outports.S3Port;
 import com.stubee.fileapplication.usecases.FileUploadUseCase;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-@Service
+@ExternalService
 @RequiredArgsConstructor
 public class FileUploadService implements FileUploadUseCase {
 
