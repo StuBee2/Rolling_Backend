@@ -34,8 +34,8 @@ public class QueryDSLEmploymentRepository implements QueryEmploymentRepository {
     public boolean existsByEmployeeIdAndEmployerId(UUID employeeId, UUID employerId) {
         return jpaQueryFactory
                 .selectFrom(employmentEntity)
-                .where(employmentEntity.employeeId.eq(employeeId))
-                .where(employmentEntity.employerId.eq(employerId))
+                .where(employmentEntity.employeeId.eq(employeeId)
+                        .and(employmentEntity.employerId.eq(employerId)))
                 .fetchFirst()==null;
     }
 
