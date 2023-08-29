@@ -13,4 +13,6 @@ public interface MemberJpaRepository extends JpaRepository<MemberEntity, UUID> {
 
     Optional<MemberEntity> findBySocialIdAndLoginType(Integer socialId, LoginType loginType);
 
+    boolean existsByNickName(String nickname);
+
 }
