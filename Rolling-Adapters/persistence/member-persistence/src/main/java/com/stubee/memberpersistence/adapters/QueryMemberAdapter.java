@@ -23,4 +23,9 @@ public class QueryMemberAdapter implements QueryMemberPort {
                 memberJpaRepository.findById(memberId).orElse(null)));
     }
 
+    @Override
+    public boolean check(final String nickname) {
+        return memberJpaRepository.existsByNickName(nickname);
+    }
+
 }
