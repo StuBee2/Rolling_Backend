@@ -5,7 +5,7 @@ import com.stubee.employmentapplication.services.query.response.EmploymentQueryR
 import java.util.List;
 import java.util.UUID;
 
-public interface QueryEmploymentPort {
+public interface QueryEmploymentPort extends CheckEmploymentExistencePort {
 
     List<EmploymentQueryResponse> findInfoByEmployeeId(UUID employeeId);
 

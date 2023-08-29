@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface QueryCompanyPort {
+public interface QueryCompanyPort extends CheckCompanyNameDuplicationPort {
 
     Optional<Company> findById(UUID id);
 

@@ -35,6 +35,15 @@ public class QueryDSLCompanyRepository implements QueryCompanyRepository {
     }
 
     @Override
+    public boolean existsByCompanyName(String companyName) {
+        return jpaQueryFactory
+                .selectFrom(companyEntity)
+                .where(companyEntity.name.eq(companyName))
+                .select(companyEntity.id)
+                .fetchFirst()==null;
+    }
+
+    @Override
     public CompanyEntity findById(UUID id) {
         return jpaQueryFactory
                 .selectFrom(companyEntity)

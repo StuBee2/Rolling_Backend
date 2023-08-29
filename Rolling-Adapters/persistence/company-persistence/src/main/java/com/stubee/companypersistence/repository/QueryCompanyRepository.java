@@ -11,6 +11,8 @@ public interface QueryCompanyRepository {
 
     boolean existsByCompanyId(UUID companyId);
 
+    boolean existsByCompanyName(String companyName);
+
     CompanyEntity findById(UUID id);
 
     CompanyQueryResponse findInfoById(UUID companyId);

@@ -30,6 +30,15 @@ public class QueryDSLEmploymentRepository implements QueryEmploymentRepository {
                 .fetch();
     }
 
+    @Override
+    public boolean existsByEmployeeIdAndEmployerId(UUID employeeId, UUID employerId) {
+        return jpaQueryFactory
+                .selectFrom(employmentEntity)
+                .where(employmentEntity.employeeId.eq(employeeId)
+                        .and(employmentEntity.employerId.eq(employerId)))
+                .fetchFirst()==null;
+    }
+
     private ConstructorExpression<EmploymentQueryResponse> queryResponseProjection() {
         return Projections.constructor(
                 EmploymentQueryResponse.class,
