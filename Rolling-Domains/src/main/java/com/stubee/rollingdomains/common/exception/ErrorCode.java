@@ -28,7 +28,9 @@ public enum ErrorCode {
     MALFORMED_JWT(400, "Jwt is malformed"),
     UNSUPPORTED_JWT(400, "Jwt is unsupported"),
     NEWS_CLIENT(400, "Page or Size is too big"),
-    DUPLICATED_NICKNAME(400, "Duplicated Nickname"),
+    DUPLICATED_NICKNAME(400, "Nickname is duplicated"),
+    DUPLICATED_COMPANY_NAME(400, "Company name is duplicated"),
+    EMPLOYMENT_EXIST(400, "Employment exists"),
     ILLEGAL_ARGUMENT(400, "IllegalArgumentException occurred");
 
     private final int statusValue;

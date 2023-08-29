@@ -21,4 +21,9 @@ public class QueryEmploymentAdapter implements QueryEmploymentPort {
         return queryEmploymentRepository.findInfoByEmployeeId(employeeId);
     }
 
+    @Override
+    public boolean check(UUID employeeId, UUID employerId) {
+        return queryEmploymentRepository.existsByEmployeeIdAndEmployerId(employeeId, employerId);
+    }
+
 }

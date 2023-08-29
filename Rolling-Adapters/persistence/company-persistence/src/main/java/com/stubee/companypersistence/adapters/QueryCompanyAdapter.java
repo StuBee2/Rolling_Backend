@@ -76,4 +76,8 @@ public class QueryCompanyAdapter implements QueryCompanyPort, CheckCompanyExiste
         return companyMapper.toDomainList(queryCompanyRepository.findByCareerAdvancement());
     }
 
+    @Override
+    public boolean check(final String companyName) {
+        return queryCompanyRepository.existsByCompanyName(companyName);
+    }
 }

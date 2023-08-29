@@ -9,4 +9,6 @@ public interface QueryEmploymentRepository {
 
     List<EmploymentQueryResponse> findInfoByEmployeeId(UUID employeeId);
 
+    boolean existsByEmployeeIdAndEmployerId(UUID employeeId, UUID employerId);
+
 }

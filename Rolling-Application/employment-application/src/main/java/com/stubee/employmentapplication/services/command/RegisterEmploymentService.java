@@ -5,8 +5,10 @@ import com.stubee.applicationcommons.ports.LoadCurrentMemberPort;
 import com.stubee.applicationcommons.services.CheckCompanyExistenceService;
 import com.stubee.employmentapplication.commands.RegisterEmploymentCommand;
 import com.stubee.employmentapplication.outports.CommandEmploymentPort;
+import com.stubee.employmentapplication.services.CheckEmploymentExistenceService;
 import com.stubee.employmentapplication.usecases.command.RegisterEmploymentUseCase;
 import com.stubee.rollingdomains.domain.employment.model.Employment;
+import com.stubee.rollingdomains.domain.member.model.MemberId;
 import lombok.RequiredArgsConstructor;
 
 @CommandService
@@ -14,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class RegisterEmploymentService implements RegisterEmploymentUseCase {
 
     private final CheckCompanyExistenceService checkCompanyExistenceService;
+    private final CheckEmploymentExistenceService checkEmploymentExistenceService;
     private final LoadCurrentMemberPort loadCurrentMemberPort;
     private final CommandEmploymentPort commandEmploymentPort;
 
@@ -21,7 +24,11 @@ public class RegisterEmploymentService implements RegisterEmploymentUseCase {
     public Employment register(final RegisterEmploymentCommand command) {
         checkCompanyExistenceService.check(command.employerId());
 
-        return commandEmploymentPort.register(command.toDomain(loadCurrentMemberPort.getMemberId()));
+        final MemberId employeeId = loadCurrentMemberPort.getMemberId();
+
+        checkEmploymentExistenceService.check(employeeId.getId(), command.employerId());
+
+        return commandEmploymentPort.register(command.toDomain(employeeId));
     }
 
 }
