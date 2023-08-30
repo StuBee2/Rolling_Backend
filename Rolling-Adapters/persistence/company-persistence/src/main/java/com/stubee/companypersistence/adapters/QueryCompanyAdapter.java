@@ -1,6 +1,6 @@
 package com.stubee.companypersistence.adapters;
 
-import com.stubee.applicationcommons.ports.CheckCompanyExistencePort;
+import com.stubee.companyapplication.outports.CheckCompanyExistencePort;
 import com.stubee.companyapplication.outports.QueryCompanyPort;
 import com.stubee.companypersistence.mapper.CompanyMapper;
 import com.stubee.companypersistence.repository.QueryCompanyRepository;
