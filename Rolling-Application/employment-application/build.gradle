@@ -1,4 +1,6 @@
 dependencies {
+    compileOnly project(':Rolling-Application:member-shared')
     compileOnly project(':Rolling-Application:company-shared')
+    compileOnly project(':Rolling-Application:employment-shared')
     compileOnly project(':Rolling-Application:application-commons')
 }

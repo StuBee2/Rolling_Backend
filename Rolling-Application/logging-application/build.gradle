@@ -1,3 +1,4 @@
 dependencies {
+    compileOnly project(':Rolling-Application:member-shared')
     compileOnly project(':Rolling-Application:application-commons')
 }
