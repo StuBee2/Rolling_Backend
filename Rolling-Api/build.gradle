@@ -12,6 +12,7 @@ dependencies {
     implementation project(':Rolling-Adapters:persistence:member-persistence')
 
     implementation project(':Rolling-Application:company-application')
+    implementation project(':Rolling-Application:company-shared')
     implementation project(':Rolling-Adapters:persistence:company-persistence')
 
     implementation project(':Rolling-Application:employment-application')

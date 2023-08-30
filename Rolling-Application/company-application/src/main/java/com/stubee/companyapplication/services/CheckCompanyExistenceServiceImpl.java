@@ -2,7 +2,7 @@ package com.stubee.companyapplication.services;
 
 import com.stubee.applicationcommons.annotations.QueryService;
 import com.stubee.applicationcommons.ports.CheckCompanyExistencePort;
-import com.stubee.applicationcommons.services.CheckCompanyExistenceService;
+import com.stubee.companyshared.services.CheckCompanyExistenceService;
 import com.stubee.rollingdomains.domain.company.exception.CompanyNotFoundException;
 import lombok.RequiredArgsConstructor;
 

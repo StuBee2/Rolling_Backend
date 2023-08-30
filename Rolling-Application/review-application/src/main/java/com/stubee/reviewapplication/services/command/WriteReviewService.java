@@ -2,7 +2,7 @@ package com.stubee.reviewapplication.services.command;
 
 import com.stubee.applicationcommons.annotations.CommandService;
 import com.stubee.applicationcommons.ports.LoadCurrentMemberPort;
-import com.stubee.applicationcommons.services.CheckCompanyExistenceService;
+import com.stubee.companyshared.services.CheckCompanyExistenceService;
 import com.stubee.reviewapplication.commands.WriteReviewCommand;
 import com.stubee.reviewapplication.outports.CommandReviewPort;
 import com.stubee.reviewapplication.usecases.command.WriteReviewUseCase;

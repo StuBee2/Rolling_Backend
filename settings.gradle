@@ -13,6 +13,7 @@ include 'Rolling-Batch:batch-commons'
 include 'Rolling-Domains'
 
 include 'Rolling-Application:member-application'
+include 'Rolling-Application:company-shared'
 include 'Rolling-Application:company-application'
 include 'Rolling-Application:employment-application'
 include 'Rolling-Application:review-application'

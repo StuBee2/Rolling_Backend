@@ -7,7 +7,7 @@ import com.stubee.rollingdomains.domain.auth.consts.JwtType;
 import com.stubee.rollingdomains.domain.auth.exception.WrongTokenTypeException;
 import com.stubee.rollingdomains.domain.member.exception.MemberNotFoundException;
 import com.stubee.rollingdomains.domain.member.model.Member;
-import com.stubee.securitycommons.annotation.Adapter;
+import com.stubee.securitycommons.annotations.Adapter;
 import com.stubee.oauth.properties.JwtProperties;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Header;

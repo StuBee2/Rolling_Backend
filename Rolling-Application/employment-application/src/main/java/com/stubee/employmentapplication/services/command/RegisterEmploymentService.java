@@ -2,7 +2,7 @@ package com.stubee.employmentapplication.services.command;
 
 import com.stubee.applicationcommons.annotations.CommandService;
 import com.stubee.applicationcommons.ports.LoadCurrentMemberPort;
-import com.stubee.applicationcommons.services.CheckCompanyExistenceService;
+import com.stubee.companyshared.services.CheckCompanyExistenceService;
 import com.stubee.employmentapplication.commands.RegisterEmploymentCommand;
 import com.stubee.employmentapplication.outports.CommandEmploymentPort;
 import com.stubee.employmentapplication.services.CheckEmploymentExistenceService;
