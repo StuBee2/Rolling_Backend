@@ -1,11 +1,11 @@
 package com.stubee.companyapplication.services;
 
 import com.stubee.applicationcommons.annotations.CommandService;
-import com.stubee.applicationcommons.ports.LoadCurrentMemberPort;
 import com.stubee.companyapplication.commands.RegisterCompanyCommand;
 import com.stubee.companyapplication.outports.CommandCompanyPort;
 import com.stubee.companyapplication.usecases.command.RegisterCompanyUseCase;
 import com.stubee.companyshared.services.CheckCompanyNameDuplicationService;
+import com.stubee.membershared.ports.LoadCurrentMemberPort;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;
 

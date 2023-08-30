@@ -2,6 +2,7 @@ dependencies {
     compileOnly project(':Rolling-Domains')
 
     compileOnly project(':Rolling-Application:member-application')
+    compileOnly project(':Rolling-Application:member-shared')
     compileOnly project(':Rolling-Application:auth-application')
     compileOnly project(':Rolling-Application:application-commons')
 

@@ -1,6 +1,6 @@
 package com.stubee.oauth.adapters;
 
-import com.stubee.applicationcommons.ports.LoadCurrentMemberPort;
+import com.stubee.membershared.ports.LoadCurrentMemberPort;
 import com.stubee.oauth.model.CustomMemberDetails;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.rollingdomains.domain.member.model.MemberId;

@@ -1,8 +1,8 @@
 package com.stubee.memberapplication.services.query;
 
 import com.stubee.applicationcommons.annotations.QueryService;
-import com.stubee.applicationcommons.ports.LoadCurrentMemberPort;
 import com.stubee.memberapplication.usecases.QueryMyInfoUseCase;
+import com.stubee.membershared.ports.LoadCurrentMemberPort;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import lombok.RequiredArgsConstructor;
 
