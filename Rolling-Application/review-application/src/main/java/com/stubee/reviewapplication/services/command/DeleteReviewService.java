@@ -1,7 +1,7 @@
 package com.stubee.reviewapplication.services.command;
 
 import com.stubee.applicationcommons.annotations.CommandService;
-import com.stubee.applicationcommons.ports.LoadCurrentMemberPort;
+import com.stubee.membershared.ports.LoadCurrentMemberPort;
 import com.stubee.reviewapplication.commands.DeleteReviewCommand;
 import com.stubee.reviewapplication.outports.CommandReviewPort;
 import com.stubee.reviewapplication.outports.QueryReviewPort;
