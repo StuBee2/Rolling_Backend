@@ -1,7 +1,7 @@
 package com.stubee.reviewapplication.services;
 
 import com.stubee.applicationcommons.annotations.QueryService;
-import com.stubee.membershared.ports.LoadCurrentMemberPort;
+import com.stubee.memberapplicationshared.ports.LoadCurrentMemberPort;
 import com.stubee.reviewapplication.outports.QueryReviewPort;
 import com.stubee.reviewapplication.services.query.response.ReviewQueryResponse;
 import com.stubee.reviewapplication.usecases.query.QueryMyReviewListUseCase;

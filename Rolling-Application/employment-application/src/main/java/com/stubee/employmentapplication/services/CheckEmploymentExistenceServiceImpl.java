@@ -2,7 +2,7 @@ package com.stubee.employmentapplication.services;
 
 import com.stubee.applicationcommons.annotations.QueryService;
 import com.stubee.employmentapplication.outports.CheckEmploymentExistencePort;
-import com.stubee.employmentshared.services.CheckEmploymentExistenceService;
+import com.stubee.employmentapplicationshared.services.CheckEmploymentExistenceService;
 import com.stubee.rollingdomains.domain.employment.exception.EmploymentExistException;
 import lombok.RequiredArgsConstructor;
 
