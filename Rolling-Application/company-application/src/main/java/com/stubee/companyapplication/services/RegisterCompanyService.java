@@ -4,8 +4,8 @@ import com.stubee.applicationcommons.annotations.CommandService;
 import com.stubee.companyapplication.commands.RegisterCompanyCommand;
 import com.stubee.companyapplication.outports.CommandCompanyPort;
 import com.stubee.companyapplication.usecases.command.RegisterCompanyUseCase;
-import com.stubee.companyshared.services.CheckCompanyNameDuplicationService;
-import com.stubee.membershared.ports.LoadCurrentMemberPort;
+import com.stubee.companyapplicationshared.services.CheckCompanyNameDuplicationService;
+import com.stubee.memberapplicationshared.ports.LoadCurrentMemberPort;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;
 

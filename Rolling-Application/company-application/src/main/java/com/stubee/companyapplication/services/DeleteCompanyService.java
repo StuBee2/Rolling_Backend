@@ -5,7 +5,7 @@ import com.stubee.companyapplication.commands.DeleteCompanyCommand;
 import com.stubee.companyapplication.outports.CommandCompanyPort;
 import com.stubee.companyapplication.outports.QueryCompanyPort;
 import com.stubee.companyapplication.usecases.command.DeleteCompanyUseCase;
-import com.stubee.membershared.ports.LoadCurrentMemberPort;
+import com.stubee.memberapplicationshared.ports.LoadCurrentMemberPort;
 import com.stubee.rollingdomains.domain.company.exception.CompanyNotFoundException;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import com.stubee.rollingdomains.domain.member.model.Member;

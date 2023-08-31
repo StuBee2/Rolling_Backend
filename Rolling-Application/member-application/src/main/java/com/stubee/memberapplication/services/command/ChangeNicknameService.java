@@ -5,7 +5,7 @@ import com.stubee.memberapplication.commands.ChangeNicknameCommand;
 import com.stubee.memberapplication.outports.CommandMemberPort;
 import com.stubee.memberapplication.services.CheckNicknameDuplicationService;
 import com.stubee.memberapplication.usecases.ChangeNicknameUseCase;
-import com.stubee.membershared.ports.LoadCurrentMemberPort;
+import com.stubee.memberapplicationshared.ports.LoadCurrentMemberPort;
 import lombok.RequiredArgsConstructor;
 
 @CommandService

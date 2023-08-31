@@ -1,4 +1,4 @@
-package com.stubee.employmentshared.services;
+package com.stubee.employmentapplicationshared.services;
 
 import java.util.UUID;
 

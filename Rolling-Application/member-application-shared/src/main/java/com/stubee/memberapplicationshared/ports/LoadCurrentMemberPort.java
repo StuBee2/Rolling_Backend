@@ -1,4 +1,4 @@
-package com.stubee.membershared.ports;
+package com.stubee.memberapplicationshared.ports;
 
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
