@@ -1,4 +1,4 @@
-package com.stubee.companyapplicationshared.services;
+package com.stubee.rollingdomains.domain.company.services;
 
 import java.util.UUID;
 

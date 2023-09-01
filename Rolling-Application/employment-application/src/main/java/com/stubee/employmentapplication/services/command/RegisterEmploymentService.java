@@ -1,14 +1,14 @@
 package com.stubee.employmentapplication.services.command;
 
 import com.stubee.applicationcommons.annotations.CommandService;
-import com.stubee.companyapplicationshared.services.CheckCompanyExistenceService;
 import com.stubee.employmentapplication.commands.RegisterEmploymentCommand;
 import com.stubee.employmentapplication.outports.CommandEmploymentPort;
 import com.stubee.employmentapplication.usecases.command.RegisterEmploymentUseCase;
-import com.stubee.employmentapplicationshared.services.CheckEmploymentExistenceService;
-import com.stubee.memberapplicationshared.ports.LoadCurrentMemberPort;
+import com.stubee.rollingdomains.domain.company.services.CheckCompanyExistenceService;
 import com.stubee.rollingdomains.domain.employment.model.Employment;
+import com.stubee.rollingdomains.domain.employment.services.CheckEmploymentExistenceService;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
+import com.stubee.rollingdomains.domain.member.ports.LoadCurrentMemberPort;
 import lombok.RequiredArgsConstructor;
 
 @CommandService

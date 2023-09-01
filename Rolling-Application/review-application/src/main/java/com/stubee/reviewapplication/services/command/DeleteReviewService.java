@@ -1,11 +1,11 @@
 package com.stubee.reviewapplication.services.command;
 
 import com.stubee.applicationcommons.annotations.CommandService;
-import com.stubee.memberapplicationshared.ports.LoadCurrentMemberPort;
 import com.stubee.reviewapplication.commands.DeleteReviewCommand;
 import com.stubee.reviewapplication.outports.CommandReviewPort;
 import com.stubee.reviewapplication.outports.QueryReviewPort;
 import com.stubee.reviewapplication.usecases.command.DeleteReviewUseCase;
+import com.stubee.rollingdomains.domain.member.ports.LoadCurrentMemberPort;
 import com.stubee.rollingdomains.domain.review.exception.ReviewNotFoundException;
 import com.stubee.rollingdomains.domain.review.model.Review;
 import lombok.RequiredArgsConstructor;
