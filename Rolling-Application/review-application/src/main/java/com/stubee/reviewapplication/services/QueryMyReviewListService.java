@@ -1,12 +1,12 @@
 package com.stubee.reviewapplication.services;
 
 import com.stubee.applicationcommons.annotations.QueryService;
-import com.stubee.memberapplicationshared.ports.LoadCurrentMemberPort;
 import com.stubee.reviewapplication.outports.QueryReviewPort;
 import com.stubee.reviewapplication.services.query.response.ReviewQueryResponse;
 import com.stubee.reviewapplication.usecases.query.QueryMyReviewListUseCase;
 import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.applicationcommons.dtos.response.PageDataResponse;
+import com.stubee.rollingdomains.domain.member.ports.LoadCurrentMemberPort;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

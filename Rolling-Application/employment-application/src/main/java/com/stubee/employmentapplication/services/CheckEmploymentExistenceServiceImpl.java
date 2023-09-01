@@ -2,8 +2,8 @@ package com.stubee.employmentapplication.services;
 
 import com.stubee.applicationcommons.annotations.QueryService;
 import com.stubee.employmentapplication.outports.CheckEmploymentExistencePort;
-import com.stubee.employmentapplicationshared.services.CheckEmploymentExistenceService;
 import com.stubee.rollingdomains.domain.employment.exception.EmploymentExistException;
+import com.stubee.rollingdomains.domain.employment.services.CheckEmploymentExistenceService;
 import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;

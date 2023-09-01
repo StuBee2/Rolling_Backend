@@ -4,8 +4,8 @@ import com.stubee.applicationcommons.annotations.CommandService;
 import com.stubee.loggingapplication.commands.PileUpLoggingCommand;
 import com.stubee.loggingapplication.outports.CommandLoggingPort;
 import com.stubee.loggingapplication.usecases.PileUpLoggingUseCase;
-import com.stubee.memberapplicationshared.ports.LoadCurrentMemberPort;
 import com.stubee.rollingdomains.domain.logging.model.Logging;
+import com.stubee.rollingdomains.domain.member.ports.LoadCurrentMemberPort;
 import lombok.RequiredArgsConstructor;
 
 @CommandService

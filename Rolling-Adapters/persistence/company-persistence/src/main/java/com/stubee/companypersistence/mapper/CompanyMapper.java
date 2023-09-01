@@ -16,6 +16,7 @@ public class CompanyMapper implements com.stubee.persistencecommons.mapper.Domai
     /** Company Entity Except Id */
     @Override
     public CompanyEntity toEntity(final Company domain) {
+
         return CompanyEntity.builder()
                 .name(domain.companyDetails().name())
                 .address(domain.companyDetails().companyAddress().address())

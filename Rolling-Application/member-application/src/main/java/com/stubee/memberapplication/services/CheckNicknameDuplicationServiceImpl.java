@@ -3,11 +3,12 @@ package com.stubee.memberapplication.services;
 import com.stubee.applicationcommons.annotations.QueryService;
 import com.stubee.memberapplication.outports.CheckNicknameDuplicationPort;
 import com.stubee.rollingdomains.domain.member.exception.DuplicatedNicknameException;
+import com.stubee.rollingdomains.domain.member.services.CheckNicknameDuplicationService;
 import lombok.RequiredArgsConstructor;
 
 @QueryService
 @RequiredArgsConstructor
-public class CheckNicknameDuplicationService {
+public class CheckNicknameDuplicationServiceImpl implements CheckNicknameDuplicationService {
 
     private final CheckNicknameDuplicationPort checkNicknameDuplicationPort;
 

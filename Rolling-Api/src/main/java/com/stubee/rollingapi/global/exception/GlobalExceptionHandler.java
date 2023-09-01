@@ -4,6 +4,7 @@ import com.stubee.rollingdomains.common.exception.ErrorResponse;
 import com.stubee.rollingdomains.common.exception.CustomException;
 import com.stubee.rollingdomains.common.exception.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.NestedRuntimeException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -44,6 +45,13 @@ public class GlobalExceptionHandler {
         log.error("ServletRequestBindingException message : {}", e.getMessage());
 
         return new ResponseEntity<>(ErrorResponse.create(ErrorCode.SERVLET_BINDING_ERROR), INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(NestedRuntimeException.class)
+    protected ResponseEntity<ErrorResponse> handleNestedException(NestedRuntimeException e) {
+        log.error("NestedRuntimeException message : {}", e.getMessage());
+
+        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.NESTED_RUNTIME_ERROR), INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(Exception.class)

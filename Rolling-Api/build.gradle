@@ -9,15 +9,12 @@ dependencies {
     implementation project(':Rolling-Domains')
 
     implementation project(':Rolling-Application:member-application')
-    implementation project(':Rolling-Application:member-application-shared')
     implementation project(':Rolling-Adapters:persistence:member-persistence')
 
     implementation project(':Rolling-Application:company-application')
-    implementation project(':Rolling-Application:company-application-shared')
     implementation project(':Rolling-Adapters:persistence:company-persistence')
 
     implementation project(':Rolling-Application:employment-application')
-    implementation project(':Rolling-Application:employment-application-shared')
     implementation project(':Rolling-Adapters:persistence:employment-persistence')
 
     implementation project(':Rolling-Application:review-application')
