@@ -30,7 +30,6 @@ allprojects {
 subprojects {
     group 'com.stubee'
     version '1.0'
-    sourceCompatibility = 17
 
     apply plugin: 'java'
     apply plugin: 'io.spring.dependency-management'
