@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 public enum ErrorCode {
 
     IO_ERROR(500, "IOException occurred"),
-    DBACCESS_ERROR(500, "DBAccessException occurred"),
+    NESTED_RUNTIME_ERROR(500, "NestedRuntimeException occurred"),
     SERVLET_BINDING_ERROR(500, "ServletBindingException occurred"),
     INTERNAL_SERVER_ERROR(500, "InternalServerException occurred"),
     FILE_CONVERT_ERROR(500, "FileConvertException occurred"),
