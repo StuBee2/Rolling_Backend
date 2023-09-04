@@ -37,4 +37,16 @@ public record CompanyDetails(
                 .modifiedAt(modifiedAt)
                 .build();
     }
+
+    public CompanyDetails updateStatus(final CompanyStatus companyStatus) {
+        return CompanyDetails.builder()
+                .name(name)
+                .companyAddress(companyAddress)
+                .description(description)
+                .imgUrl(imgUrl)
+                .companyStatus(companyStatus)
+                .createdAt(createdAt)
+                .build();
+    }
+
 }

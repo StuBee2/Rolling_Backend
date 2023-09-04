@@ -1,8 +1,10 @@
 package com.stubee.rollingapi.domain.company;
 
 import com.stubee.companyapplication.commands.DeleteCompanyCommand;
+import com.stubee.companyapplication.usecases.command.ChangeCompanyStatusUseCase;
 import com.stubee.companyapplication.usecases.command.DeleteCompanyUseCase;
 import com.stubee.companyapplication.usecases.command.RegisterCompanyUseCase;
+import com.stubee.rollingapi.domain.company.request.ChangeCompanyStatusRequest;
 import com.stubee.rollingapi.domain.company.request.RegisterCompanyRequest;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import io.swagger.v3.oas.annotations.Operation;
@@ -22,6 +24,7 @@ import static org.springframework.http.HttpStatus.*;
 public class CommandCompanyController {
 
     private final RegisterCompanyUseCase registerCompanyUseCase;
+    private final ChangeCompanyStatusUseCase changeCompanyStatusUseCase;
     private final DeleteCompanyUseCase deleteCompanyUseCase;
 
     @Operation(description = "Company 등록")
@@ -29,6 +32,13 @@ public class CommandCompanyController {
     @ResponseStatus(CREATED)
     public Company register(final @RequestBody @Validated RegisterCompanyRequest request) {
         return registerCompanyUseCase.register(request.toCommand());
+    }
+
+    @Operation(description = "Company Status 변경 (ADMIN)")
+    @PatchMapping("/status")
+    @ResponseStatus(NO_CONTENT)
+    public void changeStatus(final @RequestBody @Validated ChangeCompanyStatusRequest request) {
+        changeCompanyStatusUseCase.change(request.toCommand());
     }
 
     @Operation(description = "Company 삭제")

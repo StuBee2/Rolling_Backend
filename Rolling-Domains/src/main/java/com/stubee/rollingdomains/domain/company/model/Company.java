@@ -2,6 +2,7 @@ package com.stubee.rollingdomains.domain.company.model;
 
 import com.stubee.rollingdomains.common.model.BaseId;
 import com.stubee.rollingdomains.common.model.Grades;
+import com.stubee.rollingdomains.domain.company.consts.CompanyStatus;
 import com.stubee.rollingdomains.domain.member.exception.NotMatchedMemberException;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -33,6 +34,10 @@ public record Company (
 
     public Company updateGrades(final Grades companyGrades) {
         return createWithId(companyId, companyDetails, companyGrades, registrantId);
+    }
+
+    public Company updateStatus(final boolean isAccepted) {
+        return createWithId(companyId, companyDetails.updateStatus(CompanyStatus.of(isAccepted)), companyGrades, registrantId);
     }
 
     public void isRegistrant(final BaseId memberId) {

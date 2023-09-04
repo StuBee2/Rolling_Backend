@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface UpdateCompanyPort {
 
+    void update(Company company);
+
     void updateAll(List<Company> companyList);
 
 }

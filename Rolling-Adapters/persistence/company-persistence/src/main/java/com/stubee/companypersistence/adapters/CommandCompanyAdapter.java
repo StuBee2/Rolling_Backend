@@ -24,8 +24,13 @@ public class CommandCompanyAdapter implements CommandCompanyPort {
     }
 
     @Override
+    public void update(final Company company) {
+        save(companyMapper.toEntityWithId(company));
+    }
+
+    @Override
     public void updateAll(final List<Company> companyList) {
-        companyList.forEach(company -> this.save(companyMapper.toEntityWithId(company)));
+        companyList.forEach(this::update);
     }
 
     @Override
