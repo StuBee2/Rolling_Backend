@@ -44,28 +44,39 @@ public class SecurityConfig {
                 .requestMatchers("/auth/**").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/**").permitAll()
 
-                .requestMatchers(PATCH, "/member/**").hasAnyRole("MEMBER", "ADMIN")
-                .requestMatchers(GET, "/member/**").hasAnyRole("MEMBER", "ADMIN")
+                //Member
+                .requestMatchers(PATCH, "/member/**").hasAnyRole("TEMP", "MEMBER", "ADMIN")
 
+                .requestMatchers(GET, "/member/**").permitAll()
+
+                //Company
                 .requestMatchers(POST, "/company").hasAnyRole("MEMBER", "ADMIN")
-                .requestMatchers(POST, "/company").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(PATCH, "/company/status").hasAnyRole("ADMIN")
                 .requestMatchers(DELETE, "/company/**").hasAnyRole("MEMBER", "ADMIN")
-                .requestMatchers(GET, "/company/info/**").hasAnyRole("MEMBER", "ADMIN")
-                .requestMatchers(GET, "/company/search/**").hasAnyRole("MEMBER", "ADMIN")
-                .requestMatchers(GET, "/company/list/**").hasAnyRole("MEMBER", "ADMIN")
+
+                .requestMatchers(GET, "/company/info/**").permitAll()
+                .requestMatchers(GET, "/company/search/**").permitAll()
+                .requestMatchers(GET, "/company/list/**").permitAll()
                 .requestMatchers(GET, "/company/rank/**").permitAll()
 
+                //Employment
                 .requestMatchers(POST, "/employment").hasAnyRole("MEMBER", "ADMIN")
-                .requestMatchers(GET, "/employment/**").hasAnyRole("MEMBER", "ADMIN")
 
+                .requestMatchers(GET, "/employment/**").permitAll()
+
+                //Review
                 .requestMatchers(POST, "/review").hasAnyRole("MEMBER", "ADMIN")
                 .requestMatchers(DELETE, "/review/**").hasAnyRole("MEMBER", "ADMIN")
-                .requestMatchers(GET, "/review/**").hasAnyRole("MEMBER", "ADMIN")
 
-                .requestMatchers(POST, "/logging").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(GET, "/review/**").permitAll()
 
+                //Logging
+                .requestMatchers(POST, "/logging").hasAnyRole("TEMP", "MEMBER", "ADMIN")
+
+                //File
                 .requestMatchers(POST, "/file").hasAnyRole("MEMBER", "ADMIN")
 
+                //News
                 .requestMatchers(GET, "/news/**").permitAll()
 
                 .anyRequest().authenticated()
