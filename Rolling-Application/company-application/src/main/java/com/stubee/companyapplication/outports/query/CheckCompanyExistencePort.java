@@ -1,4 +1,4 @@
-package com.stubee.companyapplication.outports;
+package com.stubee.companyapplication.outports.query;
 
 import java.util.UUID;
 

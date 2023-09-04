@@ -1,7 +1,7 @@
 package com.stubee.companyapplication.services;
 
 import com.stubee.applicationcommons.annotations.QueryService;
-import com.stubee.companyapplication.outports.QueryCompanyPort;
+import com.stubee.companyapplication.outports.query.QueryCompanyWithPaginationPort;
 import com.stubee.companyapplication.usecases.query.QueryCompanyListByMemberUseCase;
 import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.applicationcommons.dtos.response.PageDataResponse;
@@ -17,7 +17,7 @@ import java.util.UUID;
 public class QueryCompanyByMemberService implements QueryCompanyListByMemberUseCase {
 
     private final LoadCurrentMemberPort loadCurrentMemberPort;
-    private final QueryCompanyPort queryCompanyPort;
+    private final QueryCompanyWithPaginationPort queryCompanyWithPaginationPort;
 
     @Override
     public PageDataResponse<List<Company>> getMy(final PageRequest pageRequest) {
@@ -26,7 +26,7 @@ public class QueryCompanyByMemberService implements QueryCompanyListByMemberUseC
 
     @Override
     public PageDataResponse<List<Company>> getByMemberId(final UUID memberId, final PageRequest pageRequest) {
-        return PageDataResponse.create(queryCompanyPort.findByRegistrantId(memberId, pageRequest));
+        return PageDataResponse.create(queryCompanyWithPaginationPort.findByRegistrantId(memberId, pageRequest));
     }
 
 }

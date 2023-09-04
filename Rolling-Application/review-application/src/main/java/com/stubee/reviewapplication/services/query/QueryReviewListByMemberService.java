@@ -1,7 +1,7 @@
 package com.stubee.reviewapplication.services.query;
 
 import com.stubee.applicationcommons.annotations.QueryService;
-import com.stubee.reviewapplication.outports.QueryReviewPort;
+import com.stubee.reviewapplication.outports.query.QueryReviewWithPaginationPort;
 import com.stubee.reviewapplication.usecases.query.QueryReviewListByMemberUseCase;
 import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.applicationcommons.dtos.response.PageDataResponse;
@@ -15,11 +15,11 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class QueryReviewListByMemberService implements QueryReviewListByMemberUseCase {
 
-    private final QueryReviewPort queryReviewPort;
+    private final QueryReviewWithPaginationPort queryReviewWithPaginationPort;
 
     @Override
     public PageDataResponse<List<ReviewQueryResponse>> get(final UUID memberId, PageRequest pageRequest) {
-        return PageDataResponse.create(queryReviewPort.findByMemberId(memberId, pageRequest));
+        return PageDataResponse.create(queryReviewWithPaginationPort.findByMemberId(memberId, pageRequest));
     }
 
 }

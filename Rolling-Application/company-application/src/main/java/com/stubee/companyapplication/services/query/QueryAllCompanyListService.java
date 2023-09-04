@@ -1,7 +1,7 @@
 package com.stubee.companyapplication.services.query;
 
 import com.stubee.applicationcommons.annotations.QueryService;
-import com.stubee.companyapplication.outports.QueryCompanyPort;
+import com.stubee.companyapplication.outports.query.QueryCompanyWithPaginationPort;
 import com.stubee.companyapplication.usecases.query.QueryAllCompanyListUseCase;
 import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.applicationcommons.dtos.response.PageDataResponse;
@@ -14,11 +14,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class QueryAllCompanyListService implements QueryAllCompanyListUseCase {
 
-    private final QueryCompanyPort queryCompanyPort;
+    private final QueryCompanyWithPaginationPort queryCompanyWithPaginationPort;
 
     @Override
     public PageDataResponse<List<Company>> get(PageRequest pageRequest) {
-        return PageDataResponse.create(queryCompanyPort.findAll(pageRequest));
+        return PageDataResponse.create(queryCompanyWithPaginationPort.findAll(pageRequest));
     }
 
 }

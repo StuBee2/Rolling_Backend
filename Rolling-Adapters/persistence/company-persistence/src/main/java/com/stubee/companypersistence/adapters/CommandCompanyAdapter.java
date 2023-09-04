@@ -1,6 +1,6 @@
 package com.stubee.companypersistence.adapters;
 
-import com.stubee.companyapplication.outports.CommandCompanyPort;
+import com.stubee.companyapplication.outports.command.CommandCompanyPort;
 import com.stubee.companypersistence.mapper.CompanyMapper;
 import com.stubee.companypersistence.repository.CommandCompanyJpaRepository;
 import com.stubee.persistencecommons.annotations.Adapter;
@@ -19,18 +19,13 @@ public class CommandCompanyAdapter implements CommandCompanyPort {
     private final CompanyMapper companyMapper;
 
     @Override
-    public Company create(final Company company) {
+    public Company register(final Company company) {
         return companyMapper.toDomain(save(companyMapper.toEntity(company)));
     }
 
     @Override
-    public void update(final Company company) {
-        save(companyMapper.toEntityWithId(company));
-    }
-
-    @Override
     public void updateAll(final List<Company> companyList) {
-        companyList.forEach(this::update);
+        companyList.forEach(company -> this.save(companyMapper.toEntityWithId(company)));
     }
 
     @Override
