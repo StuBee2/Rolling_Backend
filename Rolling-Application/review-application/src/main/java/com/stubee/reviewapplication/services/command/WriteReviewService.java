@@ -2,7 +2,7 @@ package com.stubee.reviewapplication.services.command;
 
 import com.stubee.applicationcommons.annotations.CommandService;
 import com.stubee.reviewapplication.commands.WriteReviewCommand;
-import com.stubee.reviewapplication.outports.CommandReviewPort;
+import com.stubee.reviewapplication.outports.command.WriteReviewPort;
 import com.stubee.reviewapplication.usecases.command.WriteReviewUseCase;
 import com.stubee.rollingdomains.domain.company.services.CheckCompanyExistenceService;
 import com.stubee.rollingdomains.domain.member.ports.LoadCurrentMemberPort;
@@ -15,13 +15,13 @@ public class WriteReviewService implements WriteReviewUseCase {
 
     private final CheckCompanyExistenceService checkCompanyExistenceService;
     private final LoadCurrentMemberPort loadCurrentMemberPort;
-    private final CommandReviewPort commandReviewPort;
+    private final WriteReviewPort writeReviewPort;
 
     @Override
     public Review write(final WriteReviewCommand command) {
         checkCompanyExistenceService.check(command.companyId());
 
-        return commandReviewPort.save(command.toDomain(loadCurrentMemberPort.getMemberId()));
+        return writeReviewPort.write(command.toDomain(loadCurrentMemberPort.getMemberId()));
     }
 
 }

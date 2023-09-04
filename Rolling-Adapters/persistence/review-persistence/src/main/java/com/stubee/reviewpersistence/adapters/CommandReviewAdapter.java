@@ -1,7 +1,7 @@
 package com.stubee.reviewpersistence.adapters;
 
 import com.stubee.persistencecommons.annotations.Adapter;
-import com.stubee.reviewapplication.outports.CommandReviewPort;
+import com.stubee.reviewapplication.outports.command.CommandReviewPort;
 import com.stubee.reviewpersistence.mapper.ReviewMapper;
 import com.stubee.reviewpersistence.repository.CommandReviewJpaRepository;
 import com.stubee.rollingdomains.domain.review.model.Review;
@@ -16,7 +16,7 @@ public class CommandReviewAdapter implements CommandReviewPort {
     private final ReviewMapper reviewMapper;
 
     @Override
-    public Review save(final Review review) {
+    public Review write(final Review review) {
         return reviewMapper.toDomain(commandReviewJpaRepository.save(reviewMapper.toEntity(review)));
     }
 
