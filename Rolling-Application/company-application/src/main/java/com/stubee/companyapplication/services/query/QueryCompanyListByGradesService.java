@@ -1,7 +1,7 @@
 package com.stubee.companyapplication.services.query;
 
 import com.stubee.applicationcommons.annotations.QueryService;
-import com.stubee.companyapplication.outports.QueryCompanyPort;
+import com.stubee.companyapplication.outports.query.QueryCompanyPort;
 import com.stubee.companyapplication.usecases.query.QueryCompanyListByGradesUseCase;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;

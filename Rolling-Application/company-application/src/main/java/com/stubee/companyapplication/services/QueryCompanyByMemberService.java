@@ -1,7 +1,7 @@
 package com.stubee.companyapplication.services;
 
 import com.stubee.applicationcommons.annotations.QueryService;
-import com.stubee.companyapplication.outports.QueryCompanyPort;
+import com.stubee.companyapplication.outports.query.QueryCompanyPort;
 import com.stubee.companyapplication.usecases.query.QueryCompanyListByMemberUseCase;
 import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.applicationcommons.dtos.response.PageDataResponse;

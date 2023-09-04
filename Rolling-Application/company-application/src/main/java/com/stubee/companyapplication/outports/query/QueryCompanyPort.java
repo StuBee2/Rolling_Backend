@@ -1,4 +1,4 @@
-package com.stubee.companyapplication.outports;
+package com.stubee.companyapplication.outports.query;
 
 import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.rollingdomains.domain.company.model.Company;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface QueryCompanyPort extends CheckCompanyNameDuplicationPort {
+public interface QueryCompanyPort extends CheckCompanyExistencePort, CheckCompanyNameDuplicationPort {
 
     Optional<Company> findById(UUID id);
 

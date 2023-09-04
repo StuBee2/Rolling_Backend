@@ -1,7 +1,7 @@
 package com.stubee.companyapplication.services.query;
 
 import com.stubee.applicationcommons.annotations.QueryService;
-import com.stubee.companyapplication.outports.QueryCompanyPort;
+import com.stubee.companyapplication.outports.query.QueryCompanyPort;
 import com.stubee.companyapplication.usecases.query.QueryCompanyInfoByIdUseCase;
 import com.stubee.rollingdomains.domain.company.exception.CompanyNotFoundException;
 import com.stubee.companyapplication.services.query.response.CompanyQueryResponse;

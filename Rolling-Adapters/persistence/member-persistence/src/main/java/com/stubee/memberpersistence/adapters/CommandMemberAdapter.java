@@ -5,7 +5,7 @@ import com.stubee.persistencecommons.entity.MemberEntity;
 import com.stubee.memberpersistence.mapper.MemberMapper;
 import com.stubee.memberpersistence.repository.MemberJpaRepository;
 import com.stubee.persistencecommons.annotations.Adapter;
-import com.stubee.rollingdomains.domain.email.model.SendWelcomeEmailEvent;
+import com.stubee.rollingdomains.domain.member.events.MemberRegisteredEvent;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.rollingdomains.domain.member.model.MemberProfile;
 import lombok.RequiredArgsConstructor;
@@ -50,7 +50,7 @@ public class CommandMemberAdapter implements CommandMemberPort {
 
     private void publishSendWelcomeEmailEvent(final String memberEmail) {
         if(memberEmail!=null) {
-            applicationEventPublisher.publishEvent(SendWelcomeEmailEvent.create(memberEmail));
+            applicationEventPublisher.publishEvent(MemberRegisteredEvent.create(memberEmail));
         }
     }
 

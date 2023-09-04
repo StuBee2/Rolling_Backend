@@ -1,7 +1,6 @@
 package com.stubee.companypersistence.adapters;
 
-import com.stubee.companyapplication.outports.CheckCompanyExistencePort;
-import com.stubee.companyapplication.outports.QueryCompanyPort;
+import com.stubee.companyapplication.outports.query.QueryCompanyPort;
 import com.stubee.companypersistence.mapper.CompanyMapper;
 import com.stubee.companypersistence.repository.QueryCompanyRepository;
 import com.stubee.persistencecommons.annotations.Adapter;
@@ -16,7 +15,7 @@ import java.util.UUID;
 
 @Adapter
 @RequiredArgsConstructor
-public class QueryCompanyAdapter implements QueryCompanyPort, CheckCompanyExistencePort {
+public class QueryCompanyAdapter implements QueryCompanyPort {
 
     private final QueryCompanyRepository queryCompanyRepository;
     private final CompanyMapper companyMapper;
