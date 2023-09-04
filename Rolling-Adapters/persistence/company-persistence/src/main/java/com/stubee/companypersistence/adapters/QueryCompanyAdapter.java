@@ -79,4 +79,5 @@ public class QueryCompanyAdapter implements QueryCompanyPort {
     public boolean check(final String companyName) {
         return queryCompanyRepository.existsByCompanyName(companyName);
     }
+
 }
