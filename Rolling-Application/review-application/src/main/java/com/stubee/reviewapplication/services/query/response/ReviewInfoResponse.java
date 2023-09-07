@@ -18,6 +18,6 @@ public record ReviewInfoResponse (
 
         UUID writerId,
         String memberNickName,
-        String memberSocialId,
+        String memberSocialLoginId,
         String memberImageUrl) {
 }

@@ -87,7 +87,7 @@ public class QueryDSLReviewRepository implements QueryReviewRepository {
 
                 memberEntity.id,
                 memberEntity.nickName,
-                memberEntity.socialId,
+                memberEntity.socialLoginId,
                 memberEntity.imageUrl);
     }
 

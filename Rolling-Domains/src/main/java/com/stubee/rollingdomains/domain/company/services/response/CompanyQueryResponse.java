@@ -1,4 +1,4 @@
-package com.stubee.companyapplication.services.query.response;
+package com.stubee.rollingdomains.domain.company.services.response;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -19,5 +19,5 @@ public record CompanyQueryResponse(
 
         UUID registrantId,
         String memberNickName,
-        String memberSocialId,
+        String memberSocialLoginId,
         String memberImageUrl) {}

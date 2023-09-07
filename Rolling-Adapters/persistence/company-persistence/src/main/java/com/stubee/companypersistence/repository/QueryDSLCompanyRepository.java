@@ -7,7 +7,7 @@ import com.querydsl.core.types.dsl.NumberPath;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.stubee.persistencecommons.entity.CompanyEntity;
 import com.stubee.applicationcommons.dtos.request.PageRequest;
-import com.stubee.companyapplication.services.query.response.CompanyQueryResponse;
+import com.stubee.rollingdomains.domain.company.services.response.CompanyQueryResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -141,7 +141,7 @@ public class QueryDSLCompanyRepository implements QueryCompanyRepository {
 
                 memberEntity.id,
                 memberEntity.nickName,
-                memberEntity.socialId,
+                memberEntity.socialLoginId,
                 memberEntity.imageUrl);
     }
 
