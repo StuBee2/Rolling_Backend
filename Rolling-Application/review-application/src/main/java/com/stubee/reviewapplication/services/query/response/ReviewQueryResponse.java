@@ -1,5 +1,7 @@
 package com.stubee.reviewapplication.services.query.response;
 
+import com.stubee.rollingdomains.domain.employment.consts.EmploymentStatus;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -18,4 +20,6 @@ public record ReviewQueryResponse (
 
         UUID companyId,
         String companyName,
-        String companyImgUrl) {}
+        String companyImgUrl,
+
+        EmploymentStatus employmentStatus) {}

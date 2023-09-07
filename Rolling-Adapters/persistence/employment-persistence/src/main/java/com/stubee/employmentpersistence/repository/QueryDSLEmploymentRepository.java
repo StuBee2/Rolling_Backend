@@ -31,12 +31,12 @@ public class QueryDSLEmploymentRepository implements QueryEmploymentRepository {
     }
 
     @Override
-    public boolean existsByEmployeeIdAndEmployerId(UUID employeeId, UUID employerId) {
+    public boolean existsByEmployeeIdAndEmployerId(final UUID employeeId, final UUID employerId) {
         return jpaQueryFactory
                 .selectFrom(employmentEntity)
                 .where(employmentEntity.employeeId.eq(employeeId)
                         .and(employmentEntity.employerId.eq(employerId)))
-                .fetchFirst()==null;
+                .fetchFirst()!=null;
     }
 
     private ConstructorExpression<EmploymentQueryResponse> queryResponseProjection() {
