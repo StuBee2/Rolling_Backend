@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static com.stubee.persistencecommons.entity.QCompanyEntity.companyEntity;
+import static com.stubee.persistencecommons.entity.QEmploymentEntity.employmentEntity;
 import static com.stubee.persistencecommons.entity.QMemberEntity.memberEntity;
 import static com.stubee.persistencecommons.entity.QReviewEntity.reviewEntity;
 
@@ -49,7 +50,10 @@ public class QueryDSLReviewRepository implements QueryReviewRepository {
                 .from(reviewEntity)
                 .innerJoin(companyEntity)
                 .on(reviewEntity.companyId.eq(companyEntity.id))
-                .where(companyEntity.registrantId.eq(memberId))
+                .innerJoin(employmentEntity)
+                .on(companyEntity.id.eq(employmentEntity.employerId))
+                .where(reviewEntity.memberId.eq(memberId)
+                        .and(employmentEntity.employeeId.eq(memberId)))
                 .orderBy(reviewEntity.createdAt.desc())
                 .offset((pageRequest.page()-1)*pageRequest.size())
                 .limit(pageRequest.size())
@@ -108,7 +112,9 @@ public class QueryDSLReviewRepository implements QueryReviewRepository {
 
                 companyEntity.id,
                 companyEntity.name,
-                companyEntity.imgUrl);
+                companyEntity.imgUrl,
+
+                employmentEntity.employmentStatus);
     }
 
 }
