@@ -1,4 +1,4 @@
-package com.stubee.loggingapplication.commands;
+package com.stubee.rollingdomains.domain.logging.services.commands;
 
 import com.stubee.rollingdomains.domain.logging.model.Logging;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
