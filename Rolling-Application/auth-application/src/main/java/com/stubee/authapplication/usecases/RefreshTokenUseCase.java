@@ -1,6 +1,6 @@
 package com.stubee.authapplication.usecases;
 
-import com.stubee.authapplication.services.response.RefreshTokenResponse;
+import com.stubee.rollingdomains.domain.auth.services.response.RefreshTokenResponse;
 
 public interface RefreshTokenUseCase {
 
