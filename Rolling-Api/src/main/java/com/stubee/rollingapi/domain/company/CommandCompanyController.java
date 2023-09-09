@@ -1,14 +1,15 @@
 package com.stubee.rollingapi.domain.company;
 
-import com.stubee.companyapplication.commands.DeleteCompanyCommand;
+import com.stubee.rollingdomains.domain.company.services.commands.ChangeCompanyStatusCommand;
+import com.stubee.rollingdomains.domain.company.services.commands.DeleteCompanyCommand;
 import com.stubee.companyapplication.usecases.command.ChangeCompanyStatusUseCase;
 import com.stubee.companyapplication.usecases.command.DeleteCompanyUseCase;
 import com.stubee.companyapplication.usecases.command.RegisterCompanyUseCase;
-import com.stubee.rollingapi.domain.company.request.ChangeCompanyStatusRequest;
 import com.stubee.rollingapi.domain.company.request.RegisterCompanyRequest;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -34,11 +35,18 @@ public class CommandCompanyController {
         return registerCompanyUseCase.register(request.toCommand());
     }
 
-    @Operation(description = "Company Status 변경 (ADMIN)")
-    @PatchMapping("/status")
+    @Operation(description = "Company 수락 (ADMIN)")
+    @PatchMapping("/accept/{companyId}")
     @ResponseStatus(NO_CONTENT)
-    public void changeStatus(final @RequestBody @Validated ChangeCompanyStatusRequest request) {
-        changeCompanyStatusUseCase.change(request.toCommand());
+    public void accept(final @PathVariable @NotNull UUID companyId) {
+        changeCompanyStatusUseCase.change(ChangeCompanyStatusCommand.accept(companyId));
+    }
+
+    @Operation(description = "Company 거절 (ADMIN)")
+    @PatchMapping("/deny/{companyId}")
+    @ResponseStatus(NO_CONTENT)
+    public void deny(final @PathVariable @NotNull UUID companyId) {
+        changeCompanyStatusUseCase.change(ChangeCompanyStatusCommand.deny(companyId));
     }
 
     @Operation(description = "Company 삭제")

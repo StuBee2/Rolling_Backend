@@ -1,4 +1,4 @@
-package com.stubee.companyapplication.services.query;
+package com.stubee.companyapplication.usecases.query.impl;
 
 import com.stubee.applicationcommons.annotations.QueryService;
 import com.stubee.companyapplication.outports.query.QueryCompanyByGradesPort;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @QueryService
 @RequiredArgsConstructor
-public class QueryCompanyListByGradesService implements QueryCompanyListByGradesUseCase {
+public class QueryCompanyListByGradesApi implements QueryCompanyListByGradesUseCase {
 
     private final QueryCompanyByGradesPort queryCompanyByGradesPort;
 

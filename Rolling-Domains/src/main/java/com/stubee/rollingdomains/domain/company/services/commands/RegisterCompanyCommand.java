@@ -1,4 +1,4 @@
-package com.stubee.companyapplication.commands;
+package com.stubee.rollingdomains.domain.company.services.commands;
 
 import com.stubee.rollingdomains.domain.company.model.Company;
 import com.stubee.rollingdomains.domain.company.model.RegistrantId;

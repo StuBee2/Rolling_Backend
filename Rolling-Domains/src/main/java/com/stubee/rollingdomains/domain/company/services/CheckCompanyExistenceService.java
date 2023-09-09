@@ -4,6 +4,6 @@ import java.util.UUID;
 
 public interface CheckCompanyExistenceService {
 
-    void check(UUID companyID);
+    void checkById(UUID id);
 
 }

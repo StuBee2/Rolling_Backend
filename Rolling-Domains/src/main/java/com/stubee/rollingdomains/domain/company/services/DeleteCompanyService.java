@@ -1,8 +1,8 @@
-package com.stubee.companyapplication.usecases.command;
+package com.stubee.rollingdomains.domain.company.services;
 
 import com.stubee.rollingdomains.domain.company.services.commands.DeleteCompanyCommand;
 
-public interface DeleteCompanyUseCase {
+public interface DeleteCompanyService {
 
     void delete(DeleteCompanyCommand command);
 
