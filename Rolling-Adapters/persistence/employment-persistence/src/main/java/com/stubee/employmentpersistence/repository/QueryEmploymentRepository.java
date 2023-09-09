@@ -1,6 +1,6 @@
 package com.stubee.employmentpersistence.repository;
 
-import com.stubee.employmentapplication.services.query.response.EmploymentQueryResponse;
+import com.stubee.employmentapplication.usecases.query.response.EmploymentQueryResponse;
 
 import java.util.List;
 import java.util.UUID;

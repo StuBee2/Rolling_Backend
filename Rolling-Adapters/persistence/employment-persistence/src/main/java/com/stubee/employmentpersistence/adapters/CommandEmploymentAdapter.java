@@ -1,6 +1,6 @@
 package com.stubee.employmentpersistence.adapters;
 
-import com.stubee.employmentapplication.outports.CommandEmploymentPort;
+import com.stubee.employmentapplication.outports.RegisterEmploymentPort;
 import com.stubee.employmentpersistence.mapper.EmploymentMapper;
 import com.stubee.employmentpersistence.repository.CommandEmploymentJpaRepository;
 import com.stubee.persistencecommons.annotations.Adapter;
@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 @Adapter
 @RequiredArgsConstructor
-public class CommandEmploymentAdapter implements CommandEmploymentPort {
+public class CommandEmploymentAdapter implements RegisterEmploymentPort {
 
     private final CommandEmploymentJpaRepository commandEmploymentJpaRepository;
     private final EmploymentMapper employmentMapper;

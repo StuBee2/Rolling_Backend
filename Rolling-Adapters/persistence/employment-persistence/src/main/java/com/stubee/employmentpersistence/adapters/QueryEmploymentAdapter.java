@@ -1,9 +1,10 @@
 package com.stubee.employmentpersistence.adapters;
 
-import com.stubee.employmentapplication.outports.QueryEmploymentPort;
+import com.stubee.employmentapplication.outports.CheckEmploymentExistencePort;
+import com.stubee.employmentapplication.outports.QueryEmploymentByIdPort;
 import com.stubee.employmentpersistence.repository.QueryEmploymentRepository;
 import com.stubee.persistencecommons.annotations.Adapter;
-import com.stubee.employmentapplication.services.query.response.EmploymentQueryResponse;
+import com.stubee.employmentapplication.usecases.query.response.EmploymentQueryResponse;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.UUID;
 
 @Adapter
 @RequiredArgsConstructor
-public class QueryEmploymentAdapter implements QueryEmploymentPort {
+public class QueryEmploymentAdapter implements QueryEmploymentByIdPort, CheckEmploymentExistencePort {
 
     private final QueryEmploymentRepository queryEmploymentRepository;
 

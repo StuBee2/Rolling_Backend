@@ -1,4 +1,4 @@
-package com.stubee.employmentapplication.commands;
+package com.stubee.rollingdomains.domain.employment.services.commands;
 
 import com.stubee.rollingdomains.domain.employment.consts.EmploymentStatus;
 import com.stubee.rollingdomains.domain.employment.model.EmployeeId;
