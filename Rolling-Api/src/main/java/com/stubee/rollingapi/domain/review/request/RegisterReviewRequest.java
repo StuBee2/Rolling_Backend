@@ -1,12 +1,12 @@
 package com.stubee.rollingapi.domain.review.request;
 
-import com.stubee.reviewapplication.commands.WriteReviewCommand;
+import com.stubee.rollingdomains.domain.review.services.commands.RegisterReviewCommand;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
 
-public record WriteReviewRequest (
+public record RegisterReviewRequest(
         @NotNull UUID companyId,
         String content,
         @NotBlank String position,
@@ -15,8 +15,8 @@ public record WriteReviewRequest (
         @NotNull Short workLifeBalance,
         @NotNull Short organizationalCulture,
         @NotNull Short careerAdvancement) {
-    public WriteReviewCommand toCommand() {
-        return WriteReviewCommand.create(
+    public RegisterReviewCommand toCommand() {
+        return RegisterReviewCommand.create(
                 companyId,
                 content,
                 position,

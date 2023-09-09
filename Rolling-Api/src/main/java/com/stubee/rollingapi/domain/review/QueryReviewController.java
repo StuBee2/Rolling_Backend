@@ -6,8 +6,8 @@ import com.stubee.reviewapplication.usecases.query.QueryReviewInfoListByCompanyU
 import com.stubee.reviewapplication.usecases.query.QueryReviewListByMemberUseCase;
 import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.applicationcommons.dtos.response.PageDataResponse;
-import com.stubee.reviewapplication.services.query.response.ReviewInfoResponse;
-import com.stubee.reviewapplication.services.query.response.ReviewQueryResponse;
+import com.stubee.reviewapplication.usecases.query.response.ReviewInfoResponse;
+import com.stubee.reviewapplication.usecases.query.response.ReviewQueryResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

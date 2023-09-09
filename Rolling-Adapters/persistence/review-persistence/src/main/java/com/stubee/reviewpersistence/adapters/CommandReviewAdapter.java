@@ -16,7 +16,7 @@ public class CommandReviewAdapter implements CommandReviewPort {
     private final ReviewMapper reviewMapper;
 
     @Override
-    public Review write(final Review review) {
+    public Review register(final Review review) {
         return reviewMapper.toDomain(commandReviewJpaRepository.save(reviewMapper.toEntity(review)));
     }
 

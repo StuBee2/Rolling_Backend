@@ -1,4 +1,4 @@
-package com.stubee.reviewapplication.services.query.response;
+package com.stubee.reviewapplication.usecases.query.response;
 
 import com.stubee.rollingdomains.domain.employment.consts.EmploymentStatus;
 
