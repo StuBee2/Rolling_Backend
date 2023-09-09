@@ -2,7 +2,7 @@ package com.stubee.companypersistence.repository;
 
 import com.stubee.persistencecommons.entity.CompanyEntity;
 import com.stubee.applicationcommons.dtos.request.PageRequest;
-import com.stubee.companyapplication.services.query.response.CompanyQueryResponse;
+import com.stubee.companyapplication.usecases.query.response.CompanyQueryResponse;
 
 import java.util.List;
 import java.util.UUID;

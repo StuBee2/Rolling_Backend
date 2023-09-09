@@ -4,7 +4,7 @@ import com.stubee.companyapplication.usecases.query.*;
 import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.applicationcommons.dtos.response.PageDataResponse;
 import com.stubee.rollingdomains.domain.company.model.Company;
-import com.stubee.companyapplication.services.query.response.CompanyQueryResponse;
+import com.stubee.companyapplication.usecases.query.response.CompanyQueryResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,6 @@ public class QueryCompanyController {
     private final QueryAllCompanyListUseCase queryAllCompanyListUseCase;
     private final QueryCompanyInfoByIdUseCase queryCompanyInfoByIdUseCase;
     private final SearchCompanyListByNameUseCase searchCompanyListByNameUseCase;
-    private final QueryCompanyListByMemberUseCase queryCompanyListByMemberUseCase;
     private final QueryCompanyListByGradesUseCase queryCompanyListByGradesUseCase;
 
     @Operation(description = "Company id로 Company 정보 조회")
@@ -47,21 +46,6 @@ public class QueryCompanyController {
     @ResponseStatus(OK)
     public PageDataResponse<List<Company>> getAll(final @ModelAttribute PageRequest pageRequest) {
         return queryAllCompanyListUseCase.get(pageRequest);
-    }
-
-    @Operation(description = "내가 등록한 Company List 조회")
-    @GetMapping("/list/my")
-    @ResponseStatus(OK)
-    public PageDataResponse<List<Company>> getMy(final @ModelAttribute PageRequest pageRequest) {
-        return queryCompanyListByMemberUseCase.getMy(pageRequest);
-    }
-
-    @Operation(description = "Member Id로 Company List 조회")
-    @GetMapping("/list/member/{id}")
-    @ResponseStatus(OK)
-    public PageDataResponse<List<Company>> getByMember(final @PathVariable("id") UUID memberId,
-                                     final @ModelAttribute PageRequest pageRequest) {
-        return queryCompanyListByMemberUseCase.getByMemberId(memberId, pageRequest);
     }
 
     @Operation(description = "Company TotalGrade Top 10")

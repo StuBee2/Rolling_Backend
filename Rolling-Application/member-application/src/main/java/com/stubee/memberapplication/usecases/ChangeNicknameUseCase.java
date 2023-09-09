@@ -1,6 +1,6 @@
 package com.stubee.memberapplication.usecases;
 
-import com.stubee.memberapplication.commands.ChangeNicknameCommand;
+import com.stubee.rollingdomains.domain.member.services.commands.ChangeNicknameCommand;
 
 public interface ChangeNicknameUseCase {
 

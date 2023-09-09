@@ -2,8 +2,8 @@ package com.stubee.reviewpersistence.repository;
 
 import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.persistencecommons.entity.ReviewEntity;
-import com.stubee.reviewapplication.services.query.response.ReviewInfoResponse;
-import com.stubee.reviewapplication.services.query.response.ReviewQueryResponse;
+import com.stubee.reviewapplication.usecases.query.response.ReviewInfoResponse;
+import com.stubee.reviewapplication.usecases.query.response.ReviewQueryResponse;
 
 import java.util.List;
 import java.util.UUID;

@@ -1,4 +1,4 @@
 package com.stubee.reviewapplication.outports.command;
 
-public interface CommandReviewPort extends WriteReviewPort, DeleteReviewPort {
+public interface CommandReviewPort extends RegisterReviewPort, DeleteReviewPort {
 }

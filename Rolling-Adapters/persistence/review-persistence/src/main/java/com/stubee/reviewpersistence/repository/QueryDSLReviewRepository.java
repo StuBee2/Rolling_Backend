@@ -5,8 +5,8 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.persistencecommons.entity.ReviewEntity;
-import com.stubee.reviewapplication.services.query.response.ReviewInfoResponse;
-import com.stubee.reviewapplication.services.query.response.ReviewQueryResponse;
+import com.stubee.reviewapplication.usecases.query.response.ReviewInfoResponse;
+import com.stubee.reviewapplication.usecases.query.response.ReviewQueryResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

@@ -6,8 +6,8 @@ import com.stubee.reviewapplication.outports.query.QueryReviewPort;
 import com.stubee.reviewpersistence.mapper.ReviewMapper;
 import com.stubee.reviewpersistence.repository.QueryReviewRepository;
 import com.stubee.rollingdomains.domain.review.model.Review;
-import com.stubee.reviewapplication.services.query.response.ReviewInfoResponse;
-import com.stubee.reviewapplication.services.query.response.ReviewQueryResponse;
+import com.stubee.reviewapplication.usecases.query.response.ReviewInfoResponse;
+import com.stubee.reviewapplication.usecases.query.response.ReviewQueryResponse;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
