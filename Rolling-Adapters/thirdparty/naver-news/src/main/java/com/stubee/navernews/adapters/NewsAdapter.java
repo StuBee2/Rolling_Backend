@@ -3,7 +3,7 @@ package com.stubee.navernews.adapters;
 import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.navernews.exception.NewsClientException;
 import com.stubee.newsapplication.outports.NewsPort;
-import com.stubee.newsapplication.services.response.NaverNewsResponse;
+import com.stubee.newsapplication.usecases.response.NaverNewsResponse;
 import com.stubee.thirdpartycommons.annotations.Adapter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatusCode;

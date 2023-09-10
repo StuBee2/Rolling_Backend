@@ -1,4 +1,4 @@
-package com.stubee.newsapplication.services;
+package com.stubee.newsapplication.usecases.impl;
 
 import com.stubee.applicationcommons.annotations.ExternalService;
 import com.stubee.applicationcommons.dtos.request.PageRequest;
@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 
 @ExternalService
 @RequiredArgsConstructor
-public class NewsService implements NewsUseCase {
+public class NewsApi implements NewsUseCase {
 
     private final NewsPort newsPort;
 
