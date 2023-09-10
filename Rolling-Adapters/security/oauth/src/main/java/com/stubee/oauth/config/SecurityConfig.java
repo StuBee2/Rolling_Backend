@@ -52,7 +52,7 @@ public class SecurityConfig {
                 //Company
                 .requestMatchers(POST, "/company").hasAnyRole("MEMBER", "ADMIN")
                 .requestMatchers(PATCH, "/company/status").hasAnyRole("ADMIN")
-                .requestMatchers(DELETE, "/company/**").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(DELETE, "/company/**").hasAnyRole("ADMIN")
 
                 .requestMatchers(GET, "/company/info/**").permitAll()
                 .requestMatchers(GET, "/company/search/**").permitAll()
@@ -71,7 +71,7 @@ public class SecurityConfig {
                 .requestMatchers(GET, "/review/**").permitAll()
 
                 //Logging
-                .requestMatchers(POST, "/logging").hasAnyRole("TEMP", "MEMBER", "ADMIN")
+                .requestMatchers(POST, "/logging").authenticated()
 
                 //File
                 .requestMatchers(POST, "/file").hasAnyRole("MEMBER", "ADMIN")
