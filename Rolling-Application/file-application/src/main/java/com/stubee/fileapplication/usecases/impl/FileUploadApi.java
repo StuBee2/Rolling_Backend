@@ -1,4 +1,4 @@
-package com.stubee.fileapplication.services;
+package com.stubee.fileapplication.usecases.impl;
 
 import com.stubee.applicationcommons.annotations.ExternalService;
 import com.stubee.fileapplication.outports.S3Port;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @ExternalService
 @RequiredArgsConstructor
-public class FileUploadService implements FileUploadUseCase {
+public class FileUploadApi implements FileUploadUseCase {
 
     private final S3Port s3Port;
 

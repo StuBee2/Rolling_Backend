@@ -13,13 +13,24 @@ public enum OAuthAttributes {
 
     GITHUB(LoginType.GITHUB, (attributes) ->
             new MemberProfile(
-                    (Integer) attributes.get("id"),
+                    (String) attributes.get("id"),
                     (String) attributes.get("login"),
                     (String) attributes.get("name"),
                     (String) attributes.get("email"),
                     (String) attributes.get("avatar_url"),
                     MemberRole.MEMBER,
                     LoginType.GITHUB)
+    ),
+
+    GOOGLE(LoginType.GOOGLE, (attributes) ->
+            new MemberProfile(
+                    (String) attributes.get("sub"),
+                    (String) attributes.get("email"),
+                    (String) attributes.get("name"),
+                    (String) attributes.get("email"),
+                    (String) attributes.get("picture"),
+                    MemberRole.MEMBER,
+                    LoginType.GOOGLE)
     );
 
     private final LoginType registration;

@@ -1,5 +1,6 @@
 package com.stubee.oauth.config;
 
+import com.stubee.oauth.filter.ExceptionFilter;
 import com.stubee.oauth.filter.JwtExceptionFilter;
 import com.stubee.oauth.filter.JwtFilter;
 import com.stubee.oauth.handler.OAuthFailureHandler;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -26,6 +28,7 @@ public class SecurityConfig {
     private final OAuthSuccessHandler oAuthSuccessHandler;
     private final OAuthFailureHandler oAuthFailureHandler;
     private final OAuthMemberService oAuthMemberService;
+    private final ExceptionFilter exceptionFilter;
     private final JwtFilter jwtFilter;
     private final JwtExceptionFilter jwtExceptionFilter;
 
@@ -36,6 +39,7 @@ public class SecurityConfig {
                 .cors()
                 .and()
                 .csrf().disable()
+                .addFilterBefore(exceptionFilter, OAuth2LoginAuthenticationFilter.class)
                 .addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtExceptionFilter, JwtFilter.class)
 
@@ -52,7 +56,7 @@ public class SecurityConfig {
                 //Company
                 .requestMatchers(POST, "/company").hasAnyRole("MEMBER", "ADMIN")
                 .requestMatchers(PATCH, "/company/status").hasAnyRole("ADMIN")
-                .requestMatchers(DELETE, "/company/**").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(DELETE, "/company/**").hasAnyRole("ADMIN")
 
                 .requestMatchers(GET, "/company/info/**").permitAll()
                 .requestMatchers(GET, "/company/search/**").permitAll()
@@ -71,7 +75,7 @@ public class SecurityConfig {
                 .requestMatchers(GET, "/review/**").permitAll()
 
                 //Logging
-                .requestMatchers(POST, "/logging").hasAnyRole("TEMP", "MEMBER", "ADMIN")
+                .requestMatchers(POST, "/logging").authenticated()
 
                 //File
                 .requestMatchers(POST, "/file").hasAnyRole("MEMBER", "ADMIN")

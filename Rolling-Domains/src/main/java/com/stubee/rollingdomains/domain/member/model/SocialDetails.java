@@ -6,13 +6,13 @@ import lombok.Builder;
 
 @Builder(access = AccessLevel.PRIVATE)
 public record SocialDetails(
-        Integer socialId,
+        String socialId,
         String socialLoginId,
         LoginType loginType,
         String name,
         String email,
         String imageUrl) {
-    public static SocialDetails create(final Integer socialId, final String socialLoginId, final LoginType loginType,
+    public static SocialDetails create(final String socialId, final String socialLoginId, final LoginType loginType,
                                        final String name, final String email, final String imageUrl) {
         return SocialDetails.builder()
                 .socialId(socialId)

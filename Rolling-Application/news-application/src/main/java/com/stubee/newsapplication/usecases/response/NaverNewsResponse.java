@@ -1,4 +1,4 @@
-package com.stubee.newsapplication.services.response;
+package com.stubee.newsapplication.usecases.response;
 
 import java.util.List;
 

@@ -4,7 +4,7 @@ import com.stubee.rollingdomains.domain.member.consts.LoginType;
 import com.stubee.rollingdomains.domain.member.consts.MemberRole;
 
 public record MemberProfile (
-        Integer socialId,
+        String socialId,
         String socialLoginId,
         String name,
         String email,
