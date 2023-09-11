@@ -22,7 +22,7 @@ public class MemberEntity extends BaseEntity {
     private String nickName;
 
     @NotNull
-    private Integer socialId;
+    private String socialId;
 
     @NotNull
     private String socialLoginId;

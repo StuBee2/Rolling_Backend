@@ -11,7 +11,7 @@ import java.util.UUID;
 @Repository
 public interface MemberJpaRepository extends JpaRepository<MemberEntity, UUID> {
 
-    Optional<MemberEntity> findBySocialIdAndLoginType(Integer socialId, LoginType loginType);
+    Optional<MemberEntity> findBySocialIdAndLoginTypeOrEmail(String socialId, LoginType loginType, String email);
 
     boolean existsByNickName(String nickname);
 
