@@ -20,6 +20,8 @@ import java.net.URI;
 import java.util.Optional;
 import java.util.UUID;
 
+import static com.stubee.oauth.cookie.CookieAuthorizationRequestRepository.*;
+
 @Component
 @RequiredArgsConstructor
 public class OAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
@@ -43,10 +45,8 @@ public class OAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     }
 
     private String determineTargetUrl(Authentication authentication) {
-        this.isNotMatchedUri(cookieManager.getCookie(CookieAuthorizationRequestRepository.REDIRECT_URI_PARAM_COOKIE_NAME)
+        this.isNotMatchedUri(cookieManager.getCookie(REDIRECT_URI_PARAM_COOKIE_NAME)
                 .map(Cookie::getValue));
-
-        //String targetUrl = redirectUri.orElse("/login/success");
 
         Member member = ((CustomMemberDetails) authentication.getPrincipal()).getMember();
 

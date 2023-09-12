@@ -63,14 +63,14 @@ public class CompanyDomainService implements RegisterCompanyService, ChangeCompa
         }
     }
 
-    private Company getById(final UUID id) {
-        return queryCompanyByIdPort.findById(id)
-                .orElseThrow(() -> CompanyNotFoundException.EXCEPTION);
-    }
-
     @Override
     public void updateAll(final List<Company> companyList) {
         updateCompanyPort.updateAll(companyList);
+    }
+
+    private Company getById(final UUID id) {
+        return queryCompanyByIdPort.findById(id)
+                .orElseThrow(() -> CompanyNotFoundException.EXCEPTION);
     }
 
 }
