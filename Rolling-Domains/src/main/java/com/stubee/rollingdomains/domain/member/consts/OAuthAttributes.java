@@ -13,7 +13,7 @@ public enum OAuthAttributes {
 
     GITHUB(LoginType.GITHUB, (attributes) ->
             new MemberProfile(
-                    (String) attributes.get("id"),
+                    String.valueOf(attributes.get("id")),
                     (String) attributes.get("login"),
                     (String) attributes.get("name"),
                     (String) attributes.get("email"),

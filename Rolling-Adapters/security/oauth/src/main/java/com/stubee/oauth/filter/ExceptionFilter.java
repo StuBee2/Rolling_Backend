@@ -9,6 +9,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -16,6 +17,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 @Component
+@Slf4j
 @RequiredArgsConstructor
 public class ExceptionFilter extends OncePerRequestFilter {
 
@@ -28,6 +30,8 @@ public class ExceptionFilter extends OncePerRequestFilter {
         } catch (CustomException e) {
             setErrorResponse(response, e.getErrorCode());
         } catch (Exception e) {
+            log.info("ErrorName : {}", e.getClass().getSimpleName());
+            log.info("ErrorMessage : {}", e.getMessage());
             setErrorResponse(response, ErrorCode.INTERNAL_SERVER_ERROR);
         }
     }
