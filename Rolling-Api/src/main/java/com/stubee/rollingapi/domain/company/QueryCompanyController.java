@@ -41,7 +41,7 @@ public class QueryCompanyController {
         return searchCompanyListByNameUseCase.get(companyName, pageRequest);
     }
 
-    @Operation(description = "모든 Company List 조회")
+    @Operation(description = "모든 Company List 조회 (ADMIN)")
     @GetMapping("/list/all")
     @ResponseStatus(OK)
     public PageDataResponse<List<Company>> getAll(final @ModelAttribute PageRequest pageRequest) {

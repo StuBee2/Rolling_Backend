@@ -49,7 +49,7 @@ public class CommandCompanyController {
         changeCompanyStatusUseCase.change(ChangeCompanyStatusCommand.deny(companyId));
     }
 
-    @Operation(description = "Company 삭제")
+    @Operation(description = "Company 삭제 (ADMIN)")
     @DeleteMapping("/{companyId}")
     @ResponseStatus(NO_CONTENT)
     public void delete(final @PathVariable UUID companyId) {

@@ -44,8 +44,8 @@ public class ParseJwtAdapter implements ParseJwtPort {
         final Member member = queryMemberPort.findById(UUID.fromString(claims.getBody().getSubject()))
                 .orElseThrow(() -> MemberNotFoundException.EXCEPTION);
 
-        log.info("memberSocialId : {}", member.socialDetails().socialLoginId());
-        log.info("memberSocialId : {}", member.socialDetails().socialId());
+        log.info("SocialId : {}", member.socialDetails().socialId());
+        log.info("SocialLoginId : {}", member.socialDetails().socialLoginId());
 
         final CustomMemberDetails details = CustomMemberDetails.create(member);
 
