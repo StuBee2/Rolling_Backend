@@ -8,6 +8,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.stubee.persistencecommons.entity.CompanyEntity;
 import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.companyapplication.usecases.query.response.CompanyQueryResponse;
+import com.stubee.rollingdomains.domain.company.consts.CompanyStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -29,7 +30,8 @@ public class QueryDSLCompanyRepository implements QueryCompanyRepository {
     public boolean existsByCompanyId(UUID companyId) {
         return jpaQueryFactory
                 .selectFrom(companyEntity)
-                .where(companyEntity.id.eq(companyId))
+                .where(companyEntity.id.eq(companyId)
+                        .and(companyEntity.companyStatus.eq(CompanyStatus.ACCEPTED)))
                 .select(companyEntity.id)
                 .fetchFirst()==null;
     }
@@ -38,9 +40,10 @@ public class QueryDSLCompanyRepository implements QueryCompanyRepository {
     public boolean existsByCompanyName(String companyName) {
         return jpaQueryFactory
                 .selectFrom(companyEntity)
-                .where(companyEntity.name.eq(companyName))
+                .where(companyEntity.name.eq(companyName)
+                        .and(companyEntity.companyStatus.eq(CompanyStatus.ACCEPTED)))
                 .select(companyEntity.id)
-                .fetchFirst()==null;
+                .fetchFirst()!=null;
     }
 
     @Override
@@ -64,18 +67,21 @@ public class QueryDSLCompanyRepository implements QueryCompanyRepository {
 
     @Override
     public List<CompanyEntity> findByNameContaining(String companyName, PageRequest pageRequest) {
-        return findByOptionWithPaging(companyEntity.name.contains(companyName), pageRequest);
+        return findByOptionWithPaging(companyEntity.name.contains(companyName)
+                .and(companyEntity.companyStatus.eq(CompanyStatus.ACCEPTED)), pageRequest);
     }
 
     @Override
     public List<CompanyEntity> findByRegistrantId(UUID registrantId, PageRequest pageRequest) {
-        return findByOptionWithPaging(companyEntity.registrantId.eq(registrantId), pageRequest);
+        return findByOptionWithPaging(companyEntity.registrantId.eq(registrantId)
+                .and(companyEntity.companyStatus.eq(CompanyStatus.ACCEPTED)), pageRequest);
     }
 
     @Override
     public List<CompanyEntity> findAll(PageRequest pageRequest) {
         return jpaQueryFactory
                 .selectFrom(companyEntity)
+                .where(companyEntity.companyStatus.eq(CompanyStatus.ACCEPTED))
                 .offset((pageRequest.page()-1)*pageRequest.size())
                 .limit(pageRequest.size())
                 .fetch();
