@@ -19,7 +19,7 @@ public class QueryReviewInfoListByCompanyApi implements QueryReviewInfoListByCom
 
     @Override
     public PageDataResponse<List<ReviewInfoResponse>> get(UUID companyId, PageRequest pageRequest) {
-        return PageDataResponse.create(queryReviewWithPaginationPort.findByCompanyId(companyId, pageRequest));
+        return queryReviewWithPaginationPort.getByCompanyId(companyId, pageRequest);
     }
 
 }

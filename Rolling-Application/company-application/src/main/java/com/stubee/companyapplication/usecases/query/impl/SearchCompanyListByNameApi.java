@@ -18,7 +18,7 @@ public class SearchCompanyListByNameApi implements SearchCompanyListByNameUseCas
 
     @Override
     public PageDataResponse<List<Company>> get(String companyName, PageRequest pageRequest) {
-        return PageDataResponse.create(queryCompanyWithPaginationPort.findByNameContaining(companyName, pageRequest));
+        return queryCompanyWithPaginationPort.getByNameContaining(companyName, pageRequest);
     }
 
 }

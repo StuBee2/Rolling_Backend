@@ -19,7 +19,7 @@ public class QueryReviewListByMemberApi implements QueryReviewListByMemberUseCas
 
     @Override
     public PageDataResponse<List<ReviewQueryResponse>> get(final UUID memberId, PageRequest pageRequest) {
-        return PageDataResponse.create(queryReviewWithPaginationPort.findByMemberId(memberId, pageRequest));
+        return queryReviewWithPaginationPort.getByMemberId(memberId, pageRequest);
     }
 
 }

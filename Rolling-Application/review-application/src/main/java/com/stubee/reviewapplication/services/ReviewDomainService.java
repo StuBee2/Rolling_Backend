@@ -5,7 +5,6 @@ import com.stubee.reviewapplication.outports.command.DeleteReviewPort;
 import com.stubee.reviewapplication.outports.command.RegisterReviewPort;
 import com.stubee.reviewapplication.outports.query.QueryReviewByIdPort;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
-import com.stubee.rollingdomains.domain.review.exception.ReviewNotFoundException;
 import com.stubee.rollingdomains.domain.review.model.Review;
 import com.stubee.rollingdomains.domain.review.services.DeleteReviewService;
 import com.stubee.rollingdomains.domain.review.services.RegisterReviewService;
@@ -28,8 +27,7 @@ public class ReviewDomainService implements RegisterReviewService, DeleteReviewS
 
     @Override
     public void delete(final DeleteReviewCommand command, final MemberId memberId) {
-        final Review review = queryReviewByIdPort.findById(command.reviewId().getId())
-                .orElseThrow(() -> ReviewNotFoundException.EXCEPTION);
+        final Review review = queryReviewByIdPort.getById(command.reviewId().getId());
 
         review.isAuthor(memberId);
 

@@ -23,7 +23,7 @@ public class QueryMyReviewListApi implements QueryMyReviewListUseCase {
     public PageDataResponse<List<ReviewQueryResponse>> get(final PageRequest pageRequest) {
         final UUID memberId = queryMemberInfoService.getMemberId().getId();
 
-        return PageDataResponse.create(queryReviewWithPaginationPort.findByMemberId(memberId, pageRequest));
+        return queryReviewWithPaginationPort.getByMemberId(memberId, pageRequest);
     }
 
 }
