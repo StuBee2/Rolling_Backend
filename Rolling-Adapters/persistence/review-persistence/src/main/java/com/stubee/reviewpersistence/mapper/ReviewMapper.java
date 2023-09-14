@@ -4,7 +4,7 @@ import com.stubee.persistencecommons.annotations.DomainObjectMapper;
 import com.stubee.persistencecommons.entity.ReviewEntity;
 import com.stubee.rollingdomains.common.model.Grades;
 import com.stubee.rollingdomains.domain.company.model.CompanyId;
-import com.stubee.rollingdomains.domain.member.model.MemberId;
+import com.stubee.rollingdomains.domain.review.model.AuthorId;
 import com.stubee.rollingdomains.domain.review.model.Review;
 import com.stubee.rollingdomains.domain.review.model.ReviewDetails;
 import com.stubee.rollingdomains.domain.review.model.ReviewId;
@@ -35,7 +35,7 @@ public class ReviewMapper implements com.stubee.persistencecommons.mapper.Domain
         }
 
         return Review.createWithId(ReviewId.create(entity.getId()), reviewDetails(entity), reviewGrades(entity),
-                MemberId.create(entity.getMemberId()), CompanyId.create(entity.getCompanyId()));
+                AuthorId.create(entity.getMemberId()), CompanyId.create(entity.getCompanyId()));
     }
 
     private ReviewDetails reviewDetails(final ReviewEntity entity) {

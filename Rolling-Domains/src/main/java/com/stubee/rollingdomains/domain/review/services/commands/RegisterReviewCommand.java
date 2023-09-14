@@ -1,6 +1,7 @@
 package com.stubee.rollingdomains.domain.review.services.commands;
 
 import com.stubee.rollingdomains.domain.member.model.MemberId;
+import com.stubee.rollingdomains.domain.review.model.AuthorId;
 import com.stubee.rollingdomains.domain.review.model.Review;
 
 import java.util.UUID;
@@ -24,6 +25,6 @@ public record RegisterReviewCommand(
     public Review toDomain(final MemberId memberId) {
         return Review.create(content, position, careerPath, salaryAndBenefits,
                 workLifeBalance, organizationalCulture, careerAdvancement,
-                companyId, memberId);
+                companyId, AuthorId.create(memberId.getId()));
     }
 }
