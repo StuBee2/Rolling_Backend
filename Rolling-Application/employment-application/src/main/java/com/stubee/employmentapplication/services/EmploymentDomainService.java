@@ -3,7 +3,6 @@ package com.stubee.employmentapplication.services;
 import com.stubee.applicationcommons.annotations.DomainService;
 import com.stubee.employmentapplication.outports.CheckEmploymentExistencePort;
 import com.stubee.employmentapplication.outports.RegisterEmploymentPort;
-import com.stubee.rollingdomains.domain.employment.exception.EmploymentExistException;
 import com.stubee.rollingdomains.domain.employment.model.Employment;
 import com.stubee.rollingdomains.domain.employment.services.RegisterEmploymentService;
 import com.stubee.rollingdomains.domain.employment.services.commands.RegisterEmploymentCommand;
@@ -19,9 +18,7 @@ public class EmploymentDomainService implements RegisterEmploymentService {
 
     @Override
     public Employment register(final RegisterEmploymentCommand command, final MemberId memberId) {
-        if(checkEmploymentExistencePort.check(memberId.getId(), command.employerId())) {
-            throw EmploymentExistException.EXCEPTION;
-        }
+        checkEmploymentExistencePort.checkByEmployeeAndEmployer(memberId.getId(), command.employerId());
 
         return registerEmploymentPort.register(command.toDomain(memberId));
     }
