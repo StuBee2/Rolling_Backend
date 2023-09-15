@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.multipart.support.MissingServletRequestPartException;
 
 import java.io.IOException;
 
@@ -52,6 +53,13 @@ public class GlobalExceptionHandler {
         log.error("NestedRuntimeException message : {}", e.getMessage());
 
         return new ResponseEntity<>(ErrorResponse.create(ErrorCode.NESTED_RUNTIME_ERROR), INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(MissingServletRequestPartException.class)
+    protected ResponseEntity<ErrorResponse> handleMissingServletRequestPartException(MissingServletRequestPartException e) {
+        log.error("MissingServletRequestPartException message : {}", e.getMessage());
+
+        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.EMPTY_FILE), BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
