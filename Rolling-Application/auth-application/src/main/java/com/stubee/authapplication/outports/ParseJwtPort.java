@@ -10,6 +10,8 @@ public interface ParseJwtPort {
 
     Jws<Claims> getClaims(String token);
 
+    Jws<Claims> getClaimsWithRefreshToken(String refreshToken);
+
     Authentication getAuthentication(String token);
 
     String extractTokenFromRequest(HttpServletRequest request);

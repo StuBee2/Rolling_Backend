@@ -22,7 +22,7 @@ public class AuthService implements RefreshTokenService {
 
     @Override
     public RefreshTokenResponse refresh(final String refreshToken) {
-        final Jws<Claims> claims = parseJwtPort.getClaims(refreshToken);
+        final Jws<Claims> claims = parseJwtPort.getClaimsWithRefreshToken(refreshToken);
 
         parseJwtPort.isWrongType(claims, JwtType.REFRESH);
 
