@@ -37,7 +37,7 @@ public record Company (
     }
 
     public Company updateStatus(final boolean isAccepted) {
-        return createWithId(companyId, companyDetails.updateStatus(CompanyStatus.of(isAccepted)), companyGrades, registrantId);
+        return createWithId(companyId, companyDetails.updateStatus(CompanyStatus.from(isAccepted)), companyGrades, registrantId);
     }
 
     public void isRegistrant(final BaseId memberId) {
