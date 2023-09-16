@@ -16,6 +16,7 @@ public enum ErrorCode {
 
     MEMBER_NOT_FOUND(404, "Member not found"),
     COMPANY_NOT_FOUND(404, "Company not found"),
+    EMPLOYMENT_NOT_FOUND(404, "Employment not found"),
     REVIEW_NOT_FOUND(404, "Review not found"),
 
     NOT_MATCHED_MEMBER(403, "You are not the author/registrant"),
@@ -24,13 +25,14 @@ public enum ErrorCode {
     EXPIRED_JWT(401, "Jwt is expired"),
     OAUTH_FAIL(401, "OAuth failed"),
 
+    EMPTY_FILE(400, "File is empty"),
     WRONG_TOKEN_TYPE(400, "Check your token type"),
     MALFORMED_JWT(400, "Jwt is malformed"),
     UNSUPPORTED_JWT(400, "Jwt is unsupported"),
     NEWS_CLIENT(400, "Page or Size is too big"),
-    DUPLICATED_NICKNAME(400, "Nickname is duplicated"),
-    DUPLICATED_EMAIL(400, "Email is duplicated"),
-    DUPLICATED_COMPANY_NAME(400, "Company name is duplicated"),
+    DUPLICATED_NICKNAME(409, "Nickname is duplicated"),
+    DUPLICATED_EMAIL(409, "Email is duplicated"),
+    DUPLICATED_COMPANY_NAME(409, "Company name is duplicated"),
     EMPLOYMENT_EXIST(400, "Employment exists"),
     ILLEGAL_ARGUMENT(400, "IllegalArgumentException occurred");
 

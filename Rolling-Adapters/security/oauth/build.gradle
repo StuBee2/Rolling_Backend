@@ -13,7 +13,7 @@ dependencies {
 
     //Security
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
+    compileOnly 'org.springframework.boot:spring-boot-starter-security'
 
     //Properties
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"

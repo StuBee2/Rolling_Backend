@@ -36,6 +36,11 @@ public class ParseJwtAdapter implements ParseJwtPort {
     }
 
     @Override
+    public Jws<Claims> getClaimsWithRefreshToken(final String refreshToken) {
+        return Jwts.parser().setSigningKey(jwtProperties.getSecretKey()).parseClaimsJws(extractToken(refreshToken));
+    }
+
+    @Override
     public Authentication getAuthentication(final String token) {
         final Jws<Claims> claims = getClaims(token);
 

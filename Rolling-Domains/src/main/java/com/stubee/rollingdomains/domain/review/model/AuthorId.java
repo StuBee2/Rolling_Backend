@@ -14,4 +14,9 @@ public class AuthorId extends BaseId {
         return new AuthorId(id);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
 }

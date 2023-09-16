@@ -2,6 +2,7 @@ package com.stubee.reviewapplication.usecases.command.impl;
 
 import com.stubee.applicationcommons.annotations.CommandService;
 import com.stubee.rollingdomains.domain.company.services.CheckCompanyExistenceService;
+import com.stubee.rollingdomains.domain.employment.services.CheckEmploymentExistenceService;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 import com.stubee.rollingdomains.domain.review.services.RegisterReviewService;
 import com.stubee.rollingdomains.domain.review.services.commands.RegisterReviewCommand;
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class RegisterReviewApi implements RegisterReviewUseCase {
 
     private final CheckCompanyExistenceService checkCompanyExistenceService;
+    private final CheckEmploymentExistenceService checkEmploymentExistenceService;
     private final GetMemberInfoService getMemberInfoService;
     private final RegisterReviewService registerReviewService;
 
@@ -23,6 +25,8 @@ public class RegisterReviewApi implements RegisterReviewUseCase {
         checkCompanyExistenceService.checkById(command.companyId());
 
         final MemberId memberId = getMemberInfoService.getMemberId();
+
+        checkEmploymentExistenceService.checkByEmployeeAndEmployer(memberId.getId(), command.companyId());
 
         return registerReviewService.register(command, memberId);
     }

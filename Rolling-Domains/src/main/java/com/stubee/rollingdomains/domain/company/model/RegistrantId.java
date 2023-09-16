@@ -14,4 +14,9 @@ public class RegistrantId extends BaseId {
         return new RegistrantId(id);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
 }

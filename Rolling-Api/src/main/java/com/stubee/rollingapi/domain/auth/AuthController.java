@@ -1,6 +1,7 @@
 package com.stubee.rollingapi.domain.auth;
 
 import com.stubee.authapplication.usecases.RefreshTokenUseCase;
+import com.stubee.rollingapi.domain.auth.request.RefreshTokenRequest;
 import com.stubee.rollingdomains.domain.auth.services.response.RefreshTokenResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,8 +21,8 @@ public class AuthController {
     @Operation(description = "Access Token 재발급")
     @PostMapping("/refresh")
     @ResponseStatus(OK)
-    public RefreshTokenResponse refresh(final @RequestBody String refreshToken) {
-        return refreshTokenUseCase.refresh(refreshToken);
+    public RefreshTokenResponse refresh(final @RequestBody RefreshTokenRequest request) {
+        return refreshTokenUseCase.refresh(request.refreshToken());
     }
 
 }

@@ -14,4 +14,9 @@ public class MemberId extends BaseId {
         return new MemberId(id);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
 }

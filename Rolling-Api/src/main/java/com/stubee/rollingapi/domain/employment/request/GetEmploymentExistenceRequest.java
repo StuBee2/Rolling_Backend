@@ -4,7 +4,7 @@ import com.stubee.employmentapplication.usecases.query.impl.queries.GetEmploymen
 
 import java.util.UUID;
 
-public record QueryEmploymentExistenceRequest(
+public record GetEmploymentExistenceRequest(
         UUID employeeId,
         UUID employerId) {
     public GetEmploymentExistenceQuery toQuery() {

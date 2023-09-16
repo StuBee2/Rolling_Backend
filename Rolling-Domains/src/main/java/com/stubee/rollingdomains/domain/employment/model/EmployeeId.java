@@ -14,4 +14,9 @@ public class EmployeeId extends BaseId {
         return new EmployeeId(id);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
 }
