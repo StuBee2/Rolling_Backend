@@ -1,11 +1,9 @@
 package com.stubee.rollingdomains.domain.review.model;
 
 import com.stubee.rollingdomains.common.model.BaseId;
-import lombok.EqualsAndHashCode;
 
 import java.util.UUID;
 
-@EqualsAndHashCode(callSuper = true)
 public class AuthorId extends BaseId {
 
     private AuthorId(UUID id) {
@@ -14,6 +12,11 @@ public class AuthorId extends BaseId {
 
     public static AuthorId create(UUID id) {
         return new AuthorId(id);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
     }
 
 }
