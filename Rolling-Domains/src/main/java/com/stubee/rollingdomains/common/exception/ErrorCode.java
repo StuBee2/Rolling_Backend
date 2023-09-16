@@ -16,6 +16,7 @@ public enum ErrorCode {
 
     MEMBER_NOT_FOUND(404, "Member not found"),
     COMPANY_NOT_FOUND(404, "Company not found"),
+    EMPLOYMENT_NOT_FOUND(404, "Employment not found"),
     REVIEW_NOT_FOUND(404, "Review not found"),
 
     NOT_MATCHED_MEMBER(403, "You are not the author/registrant"),
