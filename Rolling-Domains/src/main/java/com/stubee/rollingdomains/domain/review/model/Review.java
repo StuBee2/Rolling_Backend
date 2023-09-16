@@ -39,7 +39,7 @@ public record Review (
     }
 
     public void isAuthor(final MemberId memberId) {
-        if(authorId.equals(memberId)) {
+        if(!authorId.equals(memberId)) {
             throw NotMatchedMemberException.EXCEPTION;
         }
     }
