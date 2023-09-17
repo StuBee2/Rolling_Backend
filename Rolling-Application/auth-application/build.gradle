@@ -1,4 +1,6 @@
 dependencies {
+    compileOnly project(':Rolling-Application:application-commons')
+
     //Jwt
     compileOnly 'io.jsonwebtoken:jjwt:0.9.1'
     compileOnly 'javax.xml.bind:jaxb-api:2.3.0'
