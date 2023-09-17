@@ -72,6 +72,7 @@ public class SecurityConfig {
                 .requestMatchers(POST, "/review").hasAnyRole("MEMBER", "ADMIN")
                 .requestMatchers(DELETE, "/review/**").hasAnyRole("MEMBER", "ADMIN")
 
+                .requestMatchers(GET, "/review/my").authenticated()
                 .requestMatchers(GET, "/review/**").permitAll()
 
                 //Logging
