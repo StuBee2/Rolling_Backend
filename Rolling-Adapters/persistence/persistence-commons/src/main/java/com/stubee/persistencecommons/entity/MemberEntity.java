@@ -4,6 +4,7 @@ import com.stubee.rollingdomains.domain.member.consts.LoginType;
 import com.stubee.rollingdomains.domain.member.consts.MemberRole;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ public class MemberEntity extends BaseEntity {
     private String nickName;
 
     @NotNull
+    @Size(max = 64)
     private String socialId;
 
     @NotNull
