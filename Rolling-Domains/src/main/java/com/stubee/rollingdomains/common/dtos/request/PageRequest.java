@@ -1,4 +1,4 @@
-package com.stubee.applicationcommons.dtos.request;
+package com.stubee.rollingdomains.common.dtos.request;
 
 public record PageRequest(
         Long page,

@@ -1,6 +1,6 @@
 package com.stubee.reviewpersistence.adapters;
 
-import com.stubee.applicationcommons.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.persistencecommons.annotations.Adapter;
 import com.stubee.reviewapplication.outports.query.QueryReviewPort;
 import com.stubee.reviewpersistence.mapper.ReviewMapper;

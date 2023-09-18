@@ -2,7 +2,6 @@ dependencies {
     compileOnly project(':Rolling-Domains')
 
     compileOnly project(':Rolling-Application:news-application')
-    compileOnly project(':Rolling-Application:application-commons')
 
     compileOnly project(':Rolling-Adapters:thirdparty:thirdparty-commons')
 

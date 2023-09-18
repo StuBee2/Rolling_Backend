@@ -1,6 +1,6 @@
 package com.stubee.newsapplication.usecases;
 
-import com.stubee.applicationcommons.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import reactor.core.publisher.Mono;
 
 public interface NewsUseCase {

@@ -1,6 +1,5 @@
 dependencies {
     compileOnly project(':Rolling-Application:review-application')
-    compileOnly project(':Rolling-Application:application-commons')
 
     compileOnly project(':Rolling-Adapters:persistence:persistence-commons')
 }

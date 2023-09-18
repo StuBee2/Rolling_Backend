@@ -4,7 +4,7 @@ import com.stubee.applicationcommons.annotations.QueryService;
 import com.stubee.reviewapplication.outports.query.QueryReviewWithPaginationPort;
 import com.stubee.reviewapplication.usecases.query.response.ReviewQueryResponse;
 import com.stubee.reviewapplication.usecases.query.QueryMyReviewListUseCase;
-import com.stubee.applicationcommons.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.applicationcommons.dtos.response.PageDataResponse;
 import com.stubee.rollingdomains.domain.member.services.GetMemberInfoService;
 import lombok.RequiredArgsConstructor;

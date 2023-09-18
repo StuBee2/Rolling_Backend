@@ -1,6 +1,6 @@
 package com.stubee.navernews.adapters;
 
-import com.stubee.applicationcommons.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.navernews.exception.NewsClientException;
 import com.stubee.newsapplication.outports.NewsPort;
 import com.stubee.newsapplication.usecases.response.NaverNewsResponse;
