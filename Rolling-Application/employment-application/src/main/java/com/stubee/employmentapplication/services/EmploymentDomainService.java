@@ -23,7 +23,7 @@ public class EmploymentDomainService implements RegisterEmploymentService, Check
 
     @Override
     public Employment register(final RegisterEmploymentCommand command, final MemberId memberId) {
-        if(checkEmploymentExistencePort.check(memberId.getId(), command.employerId())) {
+        if(this.checkExistence(memberId.getId(), command.employerId())) {
             throw EmploymentExistException.EXCEPTION;
         }
 
@@ -32,9 +32,13 @@ public class EmploymentDomainService implements RegisterEmploymentService, Check
 
     @Override
     public void checkByEmployeeAndEmployer(final UUID employeeId, final UUID employerId) {
-        if(!checkEmploymentExistencePort.check(employeeId, employerId)) {
+        if(!this.checkExistence(employeeId, employerId)) {
             throw EmploymentNotFoundException.EXCEPTION;
         }
+    }
+
+    private boolean checkExistence(final UUID employeeId, final UUID employerId) {
+        return checkEmploymentExistencePort.check(employeeId, employerId);
     }
 
 }

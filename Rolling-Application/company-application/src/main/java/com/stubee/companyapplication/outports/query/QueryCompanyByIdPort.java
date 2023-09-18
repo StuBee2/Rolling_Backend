@@ -13,11 +13,6 @@ public interface QueryCompanyByIdPort {
 
     Optional<CompanyQueryResponse> findInfoById(UUID id);
 
-    default Company getById(final UUID id) {
-        return findById(id)
-                .orElseThrow(() -> CompanyNotFoundException.EXCEPTION);
-    }
-
     default CompanyQueryResponse getInfoById(final UUID id) {
         return findInfoById(id)
                 .orElseThrow(() -> CompanyNotFoundException.EXCEPTION);
