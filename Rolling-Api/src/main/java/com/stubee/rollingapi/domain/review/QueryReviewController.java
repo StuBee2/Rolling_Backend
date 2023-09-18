@@ -4,7 +4,7 @@ import com.stubee.reviewapplication.usecases.query.QueryMyReviewListUseCase;
 import com.stubee.reviewapplication.usecases.query.QueryReviewInfoByIdUseCase;
 import com.stubee.reviewapplication.usecases.query.QueryReviewInfoListByCompanyUseCase;
 import com.stubee.reviewapplication.usecases.query.QueryReviewListByMemberUseCase;
-import com.stubee.applicationcommons.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.applicationcommons.dtos.response.PageDataResponse;
 import com.stubee.reviewapplication.usecases.query.response.ReviewInfoResponse;
 import com.stubee.reviewapplication.usecases.query.response.ReviewQueryResponse;

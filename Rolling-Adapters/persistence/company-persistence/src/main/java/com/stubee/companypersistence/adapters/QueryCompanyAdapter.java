@@ -4,7 +4,7 @@ import com.stubee.companyapplication.outports.query.QueryCompanyPort;
 import com.stubee.companypersistence.mapper.CompanyMapper;
 import com.stubee.companypersistence.repository.QueryCompanyRepository;
 import com.stubee.persistencecommons.annotations.Adapter;
-import com.stubee.applicationcommons.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import com.stubee.companyapplication.usecases.query.response.CompanyQueryResponse;
 import lombok.RequiredArgsConstructor;

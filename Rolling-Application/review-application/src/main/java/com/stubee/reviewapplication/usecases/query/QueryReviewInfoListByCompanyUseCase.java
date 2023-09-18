@@ -1,6 +1,6 @@
 package com.stubee.reviewapplication.usecases.query;
 
-import com.stubee.applicationcommons.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.applicationcommons.dtos.response.PageDataResponse;
 import com.stubee.reviewapplication.usecases.query.response.ReviewInfoResponse;
 

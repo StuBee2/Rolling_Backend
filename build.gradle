@@ -6,7 +6,6 @@ plugins {
 
 group = 'com.stubee'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
 
 configurations {
     compileOnly {
@@ -14,17 +13,13 @@ configurations {
     }
 }
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-}
-
 allprojects {
     bootJar {
         enabled = false
     }
+
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
 }
 
 subprojects {
@@ -41,7 +36,7 @@ subprojects {
     }
 
     dependencies {
-        compileOnly 'org.projectlombok:lombok'
+        implementation 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
 
         testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.4'

@@ -1,5 +1,6 @@
 dependencies {
     compileOnly project(':Rolling-Application:notification-application')
+
     compileOnly project(':Rolling-Adapters:thirdparty:thirdparty-commons')
 
     //JavaMailSender

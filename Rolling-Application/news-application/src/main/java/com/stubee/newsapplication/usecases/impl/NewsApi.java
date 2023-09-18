@@ -1,7 +1,7 @@
 package com.stubee.newsapplication.usecases.impl;
 
 import com.stubee.applicationcommons.annotations.ExternalService;
-import com.stubee.applicationcommons.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.newsapplication.outports.NewsPort;
 import com.stubee.newsapplication.usecases.NewsUseCase;
 import lombok.RequiredArgsConstructor;

@@ -13,11 +13,6 @@ public interface QueryReviewByIdPort {
 
     Optional<ReviewInfoResponse> findInfoById(UUID id);
 
-    default Review getById(final UUID id) {
-        return findById(id)
-                .orElseThrow(() -> ReviewNotFoundException.EXCEPTION);
-    }
-
     default ReviewInfoResponse getInfoById(final UUID id) {
         return findInfoById(id)
                 .orElseThrow(() -> ReviewNotFoundException.EXCEPTION);

@@ -49,8 +49,9 @@ public class SecurityConfig {
                 .requestMatchers("/swagger-ui/**", "/v3/**").permitAll()
 
                 //Member
-                .requestMatchers(PATCH, "/member/**").hasAnyRole("TEMP", "MEMBER", "ADMIN")
+                .requestMatchers(PATCH, "/member/**").authenticated()
 
+                .requestMatchers(GET, "/member/my").authenticated()
                 .requestMatchers(GET, "/member/**").permitAll()
 
                 //Company
@@ -66,13 +67,15 @@ public class SecurityConfig {
                 //Employment
                 .requestMatchers(POST, "/employment").hasAnyRole("MEMBER", "ADMIN")
 
-                .requestMatchers(GET, "/employment/**").permitAll()
+                .requestMatchers(GET, "/employment/my").hasAnyRole("MEMBER", "ADMIN")
 
                 //Review
                 .requestMatchers(POST, "/review").hasAnyRole("MEMBER", "ADMIN")
                 .requestMatchers(DELETE, "/review/**").hasAnyRole("MEMBER", "ADMIN")
 
-                .requestMatchers(GET, "/review/**").permitAll()
+                .requestMatchers(GET, "/review/my").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(GET, "/review/info/**").permitAll()
+                .requestMatchers(GET, "/review/list/**").permitAll()
 
                 //Logging
                 .requestMatchers(POST, "/logging").authenticated()
