@@ -1,6 +1,6 @@
 package com.stubee.rollingdomains.domain.member.consts;
 
-import com.stubee.rollingdomains.domain.auth.exception.WrongLoginTypeException;
+import com.stubee.rollingdomains.domain.member.exception.WrongLoginTypeException;
 import com.stubee.rollingdomains.domain.member.model.MemberProfile;
 import lombok.RequiredArgsConstructor;
 
@@ -18,7 +18,7 @@ public enum OAuthAttributes {
                     (String) attributes.get("name"),
                     (String) attributes.get("email"),
                     (String) attributes.get("avatar_url"),
-                    MemberRole.MEMBER,
+                    MemberRole.TEMP,
                     LoginType.GITHUB)
     ),
 
@@ -29,7 +29,7 @@ public enum OAuthAttributes {
                     (String) attributes.get("name"),
                     (String) attributes.get("email"),
                     (String) attributes.get("picture"),
-                    MemberRole.MEMBER,
+                    MemberRole.TEMP,
                     LoginType.GOOGLE)
     );
 
