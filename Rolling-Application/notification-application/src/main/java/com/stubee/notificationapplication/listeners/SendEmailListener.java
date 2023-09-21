@@ -1,20 +1,18 @@
 package com.stubee.notificationapplication.listeners;
 
+import com.stubee.applicationcommons.annotations.AsyncTransactionalListener;
+import com.stubee.applicationcommons.annotations.Listener;
 import com.stubee.notificationapplication.outports.SendEmailPort;
 import com.stubee.rollingdomains.domain.member.events.MemberRegisteredEvent;
 import lombok.RequiredArgsConstructor;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.event.TransactionalEventListener;
 
-@Component
+@Listener
 @RequiredArgsConstructor
 public class SendEmailListener {
 
     private final SendEmailPort sendEmailPort;
 
-    @Async
-    @TransactionalEventListener(classes = {MemberRegisteredEvent.class})
+    @AsyncTransactionalListener
     public void sendWelcomeEmail(final MemberRegisteredEvent event) {
         sendEmailPort.sendWelcome(event.receiverEmail());
     }
