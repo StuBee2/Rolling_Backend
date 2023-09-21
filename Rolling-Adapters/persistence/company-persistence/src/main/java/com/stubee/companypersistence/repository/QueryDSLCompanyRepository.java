@@ -6,9 +6,10 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.NumberPath;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.stubee.persistencecommons.entity.CompanyEntity;
-import com.stubee.applicationcommons.dtos.request.PageRequest;
 import com.stubee.companyapplication.usecases.query.response.CompanyQueryResponse;
-import com.stubee.rollingdomains.domain.company.consts.CompanyStatus;
+import com.stubee.persistencecommons.helper.OrderByNull;
+import com.stubee.persistencecommons.helper.QueryDSLHelper;
+import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +18,7 @@ import java.util.UUID;
 
 import static com.stubee.persistencecommons.entity.QCompanyEntity.companyEntity;
 import static com.stubee.persistencecommons.entity.QMemberEntity.memberEntity;
+import static com.stubee.persistencecommons.helper.Expression.Company.*;
 
 @Repository
 @RequiredArgsConstructor
@@ -24,67 +26,53 @@ public class QueryDSLCompanyRepository implements QueryCompanyRepository {
 
     private static final int RANK_LIMIT = 10;
 
+    private final QueryDSLHelper<CompanyEntity> queryDSLHelper;
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public boolean existsByCompanyId(UUID companyId) {
-        return jpaQueryFactory
-                .selectFrom(companyEntity)
-                .where(companyEntity.id.eq(companyId)
-                        .and(companyEntity.companyStatus.eq(CompanyStatus.ACCEPTED)))
-                .select(companyEntity.id)
-                .fetchFirst()==null;
-    }
-
-    @Override
-    public boolean existsByCompanyName(String companyName) {
-        return jpaQueryFactory
-                .selectFrom(companyEntity)
-                .where(companyEntity.name.eq(companyName)
-                        .and(companyEntity.companyStatus.eq(CompanyStatus.ACCEPTED)))
-                .select(companyEntity.id)
-                .fetchFirst()!=null;
-    }
-
-    @Override
     public CompanyEntity findById(UUID id) {
-        return jpaQueryFactory
-                .selectFrom(companyEntity)
-                .where(companyEntity.id.eq(id))
-                .fetchOne();
+        return queryDSLHelper.findById(companyEntity, isEqualId(id));
     }
 
     @Override
-    public CompanyQueryResponse findInfoById(UUID companyId) {
+    public CompanyQueryResponse findInfoById(UUID id) {
         return jpaQueryFactory
                 .select(responseProjection())
                 .from(companyEntity)
                 .innerJoin(memberEntity)
                 .on(companyEntity.registrantId.eq(memberEntity.id))
-                .where(companyEntity.id.eq(companyId))
+                .where(isEqualId(id))
                 .fetchOne();
     }
 
     @Override
+    public boolean existsByCompanyId(UUID id) {
+        return queryDSLHelper.existsByOption(companyEntity,
+                isEqualId(id).and(isAccepted())) == null;
+    }
+
+    @Override
+    public boolean existsByCompanyName(String companyName) {
+        return queryDSLHelper.existsByOption(companyEntity, isEqualName(companyName)) != null;
+    }
+
+    @Override
     public List<CompanyEntity> findByNameContaining(String companyName, PageRequest pageRequest) {
-        return findByOptionWithPaging(companyEntity.name.contains(companyName)
-                .and(companyEntity.companyStatus.eq(CompanyStatus.ACCEPTED)), pageRequest);
+        return findByOptionWithPaging(isContainingName(companyName), pageRequest);
     }
 
     @Override
     public List<CompanyEntity> findByRegistrantId(UUID registrantId, PageRequest pageRequest) {
-        return findByOptionWithPaging(companyEntity.registrantId.eq(registrantId)
-                .and(companyEntity.companyStatus.eq(CompanyStatus.ACCEPTED)), pageRequest);
+        return findByOptionWithPaging(isEqualRegistrant(registrantId), pageRequest);
+    }
+
+    private List<CompanyEntity> findByOptionWithPaging(Predicate option, PageRequest pageRequest) {
+        return queryDSLHelper.findByOptionWithPagination(companyEntity, option, pageRequest, companyEntity.createdAt.desc());
     }
 
     @Override
     public List<CompanyEntity> findAll(PageRequest pageRequest) {
-        return jpaQueryFactory
-                .selectFrom(companyEntity)
-                .where(companyEntity.companyStatus.eq(CompanyStatus.ACCEPTED))
-                .offset((pageRequest.page()-1)*pageRequest.size())
-                .limit(pageRequest.size())
-                .fetch();
+        return queryDSLHelper.findByOptionWithPagination(companyEntity, isAccepted(), pageRequest, OrderByNull.DEFAULT);
     }
 
     @Override
@@ -112,22 +100,8 @@ public class QueryDSLCompanyRepository implements QueryCompanyRepository {
         return queryTop10orderByGrades(companyEntity.careerAdvancement);
     }
 
-    private List<CompanyEntity> findByOptionWithPaging(Predicate option, PageRequest pageRequest) {
-        return jpaQueryFactory
-                .selectFrom(companyEntity)
-                .where(option)
-                .orderBy(companyEntity.createdAt.desc())
-                .offset((pageRequest.page()-1)*pageRequest.size())
-                .limit(pageRequest.size())
-                .fetch();
-    }
-
     private List<CompanyEntity> queryTop10orderByGrades(NumberPath<Double> order) {
-        return jpaQueryFactory
-                .selectFrom(companyEntity)
-                .orderBy(order.desc())
-                .limit(RANK_LIMIT)
-                .fetch();
+        return queryDSLHelper.findWithOrderAndLimit(companyEntity, order.desc(), RANK_LIMIT);
     }
 
     private ConstructorExpression<CompanyQueryResponse> responseProjection() {
