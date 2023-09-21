@@ -1,4 +1,6 @@
 dependencies {
+    compileOnly project(':Rolling-Domains')
+
     //@TransactionalEventListener
     compileOnly 'org.springframework:spring-tx:6.0.6'
 

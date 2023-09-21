@@ -1,7 +1,0 @@
-subprojects {
-
-    dependencies {
-        compileOnly project(':Rolling-Domains')
-    }
-
-}
