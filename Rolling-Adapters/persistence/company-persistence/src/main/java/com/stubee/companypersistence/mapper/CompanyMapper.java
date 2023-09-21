@@ -58,7 +58,7 @@ public class CompanyMapper implements com.stubee.persistencecommons.mapper.Domai
         }
 
         return Company.createWithId(CompanyId.create(entity.getId()), companyDetails(entity),
-                companyGrades(entity), RegistrantId.create(entity.getRegistrantId()));
+                companyGrades(entity), RegistrantId.of(entity.getRegistrantId()));
     }
 
     public List<Company> toDomainList(final List<CompanyEntity> entityList) {

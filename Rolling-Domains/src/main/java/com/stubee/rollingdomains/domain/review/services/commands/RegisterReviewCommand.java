@@ -25,6 +25,6 @@ public record RegisterReviewCommand(
     public Review toDomain(final MemberId memberId) {
         return Review.create(content, position, careerPath, salaryAndBenefits,
                 workLifeBalance, organizationalCulture, careerAdvancement,
-                companyId, AuthorId.create(memberId.getId()));
+                companyId, AuthorId.of(memberId));
     }
 }

@@ -10,8 +10,12 @@ public class RegistrantId extends BaseId {
         super(id);
     }
 
-    public static RegistrantId create(final UUID id) {
+    public static RegistrantId of(final UUID id) {
         return new RegistrantId(id);
+    }
+
+    public static RegistrantId of(final BaseId id) {
+        return new RegistrantId(id.getId());
     }
 
     @Override

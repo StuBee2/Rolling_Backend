@@ -1,7 +1,5 @@
 dependencies {
-    //@TransactionalEventListener
-    compileOnly 'org.springframework:spring-tx:6.0.6'
+    compileOnly project(':Rolling-Domains')
 
-    //@Async
-    compileOnly 'org.springframework:spring-context:6.0.6'
+    compileOnly project(':Rolling-Application:application-commons')
 }

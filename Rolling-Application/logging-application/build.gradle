@@ -1,3 +1,5 @@
 dependencies {
+    compileOnly project(':Rolling-Domains')
+
     compileOnly project(':Rolling-Application:application-commons')
 }

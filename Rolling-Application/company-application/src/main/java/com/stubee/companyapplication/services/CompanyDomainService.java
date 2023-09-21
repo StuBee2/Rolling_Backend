@@ -7,6 +7,8 @@ import com.stubee.companyapplication.outports.command.UpdateCompanyPort;
 import com.stubee.companyapplication.outports.query.CheckCompanyExistencePort;
 import com.stubee.companyapplication.outports.query.CheckCompanyNameDuplicationPort;
 import com.stubee.companyapplication.outports.query.QueryCompanyByIdPort;
+import com.stubee.rollingdomains.domain.company.exception.CompanyNotFoundException;
+import com.stubee.rollingdomains.domain.company.exception.DuplicatedCompanyNameException;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import com.stubee.rollingdomains.domain.company.services.*;
 import com.stubee.rollingdomains.domain.company.services.commands.ChangeCompanyStatusCommand;
@@ -32,14 +34,20 @@ public class CompanyDomainService implements RegisterCompanyService, ChangeCompa
 
     @Override
     public Company register(final RegisterCompanyCommand command, final MemberId memberId) {
-        checkCompanyNameDuplicationPort.checkByName(command.name());
+        this.checkByName(command.name());
 
         return registerCompanyPort.register(command.toDomain(memberId));
     }
 
+    private void checkByName(final String name) {
+        if(checkCompanyNameDuplicationPort.check(name)) {
+            throw DuplicatedCompanyNameException.EXCEPTION;
+        }
+    }
+
     @Override
     public void change(final ChangeCompanyStatusCommand command) {
-        final Company company = queryCompanyByIdPort.getById(command.companyId())
+        final Company company = this.getById(command.companyId())
                 .updateStatus(command.status());
 
         updateCompanyPort.update(company);
@@ -47,14 +55,21 @@ public class CompanyDomainService implements RegisterCompanyService, ChangeCompa
 
     @Override
     public void delete(final DeleteCompanyCommand command) {
-        final Company company = queryCompanyByIdPort.getById(command.companyId().getId());
+        final Company company = this.getById(command.companyId().getId());
 
         deleteCompanyPort.deleteById(company.companyId());
     }
 
+    private Company getById(final UUID id) {
+        return queryCompanyByIdPort.findById(id)
+                .orElseThrow(() -> CompanyNotFoundException.EXCEPTION);
+    }
+
     @Override
     public void checkById(final UUID id) {
-        checkCompanyExistencePort.checkById(id);
+        if(checkCompanyExistencePort.check(id)) {
+            throw CompanyNotFoundException.EXCEPTION;
+        }
     }
 
     @Override

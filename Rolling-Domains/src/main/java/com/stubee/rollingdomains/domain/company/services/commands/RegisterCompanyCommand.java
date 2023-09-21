@@ -15,6 +15,6 @@ public record RegisterCompanyCommand(
     }
 
     public Company toDomain(final MemberId memberId) {
-        return Company.create(name, address, description, imgUrl, RegistrantId.create(memberId.getId()));
+        return Company.create(name, address, description, imgUrl, RegistrantId.of(memberId));
     }
 }
