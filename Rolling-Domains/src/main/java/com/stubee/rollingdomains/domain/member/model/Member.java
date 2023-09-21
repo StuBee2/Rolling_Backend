@@ -1,5 +1,7 @@
 package com.stubee.rollingdomains.domain.member.model;
 
+import com.stubee.rollingdomains.domain.member.consts.LoginType;
+import com.stubee.rollingdomains.domain.member.exception.WrongLoginTypeException;
 import lombok.AccessLevel;
 import lombok.Builder;
 
@@ -37,5 +39,11 @@ public record Member (
 
     public Member elevateToMember() {
         return create(memberId, socialDetails, memberDetails.elevateToMember());
+    }
+
+    public void isEqualLoginType(final LoginType loginType) {
+        if(socialDetails.loginType()==loginType) {
+            throw WrongLoginTypeException.EXCEPTION;
+        }
     }
 }
