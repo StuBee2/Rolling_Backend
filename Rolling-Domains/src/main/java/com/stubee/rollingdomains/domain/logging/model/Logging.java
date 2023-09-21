@@ -28,7 +28,7 @@ public record Logging (
                 .id(loggingId)
                 .description(description)
                 .module(module)
-                .memberId(MemberId.create(memberId))
+                .memberId(MemberId.of(memberId))
                 .createdAt(createdAt)
                 .build();
     }

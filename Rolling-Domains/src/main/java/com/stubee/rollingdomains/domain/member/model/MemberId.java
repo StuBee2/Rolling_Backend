@@ -10,7 +10,7 @@ public class MemberId extends BaseId {
         super(id);
     }
 
-    public static MemberId create(final UUID id) {
+    public static MemberId of(final UUID id) {
         return new MemberId(id);
     }
 

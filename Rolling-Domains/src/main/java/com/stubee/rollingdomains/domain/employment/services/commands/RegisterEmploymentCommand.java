@@ -17,7 +17,7 @@ public record RegisterEmploymentCommand(
     }
 
     public Employment toDomain(final MemberId employeeId) {
-        return Employment.createExceptEmploymentId(EmployeeId.create(employeeId.getId()),
+        return Employment.createExceptEmploymentId(EmployeeId.of(employeeId),
                 EmployerId.create(employerId), EmploymentDetails.create(employmentStatus));
     }
 }

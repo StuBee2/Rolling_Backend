@@ -10,12 +10,8 @@ import java.util.UUID;
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode
-public class BaseId {
+public abstract class BaseId {
 
     private final UUID id;
-
-    public static BaseId create(final UUID id) {
-        return new BaseId(id);
-    }
 
 }

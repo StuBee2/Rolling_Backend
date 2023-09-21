@@ -10,7 +10,11 @@ public class AuthorId extends BaseId {
         super(id);
     }
 
-    public static AuthorId create(UUID id) {
+    public static AuthorId of(BaseId id) {
+        return new AuthorId(id.getId());
+    }
+
+    public static AuthorId of(UUID id) {
         return new AuthorId(id);
     }
 
