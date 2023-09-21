@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public record EmploymentId(
         Long id) {
-    public static EmploymentId create(final Long id) {
+    public static EmploymentId of(final Long id) {
         return new EmploymentId(id);
     }
 

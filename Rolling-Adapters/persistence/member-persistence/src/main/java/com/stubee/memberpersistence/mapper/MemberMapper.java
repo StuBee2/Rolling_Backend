@@ -48,7 +48,7 @@ public class MemberMapper implements com.stubee.persistencecommons.mapper.Domain
             return null;
         }
 
-        return Member.create(MemberId.create(entity.getId()), socialDetails(entity), memberDetails(entity));
+        return Member.create(MemberId.of(entity.getId()), socialDetails(entity), memberDetails(entity));
     }
 
     private SocialDetails socialDetails(final MemberEntity entity) {

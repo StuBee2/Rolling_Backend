@@ -35,7 +35,7 @@ public class ReviewMapper implements com.stubee.persistencecommons.mapper.Domain
         }
 
         return Review.createWithId(ReviewId.create(entity.getId()), reviewDetails(entity), reviewGrades(entity),
-                AuthorId.create(entity.getMemberId()), CompanyId.create(entity.getCompanyId()));
+                AuthorId.of(entity.getMemberId()), CompanyId.create(entity.getCompanyId()));
     }
 
     private ReviewDetails reviewDetails(final ReviewEntity entity) {

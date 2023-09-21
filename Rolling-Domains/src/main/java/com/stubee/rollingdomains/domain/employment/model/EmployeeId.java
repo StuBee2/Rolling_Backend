@@ -10,6 +10,10 @@ public class EmployeeId extends BaseId {
         super(id);
     }
 
+    public static EmployeeId of(final UUID id) {
+        return new EmployeeId(id);
+    }
+
     public static EmployeeId of(final BaseId id) {
         return new EmployeeId(id.getId());
     }
