@@ -42,7 +42,7 @@ public record Member (
     }
 
     public void isEqualLoginType(final LoginType loginType) {
-        if(socialDetails.loginType()==loginType) {
+        if(socialDetails.loginType()!=loginType) {
             throw WrongLoginTypeException.EXCEPTION;
         }
     }
