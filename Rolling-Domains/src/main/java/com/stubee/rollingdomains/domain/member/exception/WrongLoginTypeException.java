@@ -1,4 +1,4 @@
-package com.stubee.rollingdomains.domain.auth.exception;
+package com.stubee.rollingdomains.domain.member.exception;
 
 import com.stubee.rollingdomains.common.exception.CustomException;
 import com.stubee.rollingdomains.common.exception.ErrorCode;

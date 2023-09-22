@@ -3,7 +3,8 @@ package com.stubee.reviewpersistence.repository;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.stubee.applicationcommons.dtos.request.PageRequest;
+import com.stubee.persistencecommons.helper.QueryDSLHelper;
+import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.persistencecommons.entity.ReviewEntity;
 import com.stubee.reviewapplication.usecases.query.response.ReviewInfoResponse;
 import com.stubee.reviewapplication.usecases.query.response.ReviewQueryResponse;
@@ -17,29 +18,29 @@ import static com.stubee.persistencecommons.entity.QCompanyEntity.companyEntity;
 import static com.stubee.persistencecommons.entity.QEmploymentEntity.employmentEntity;
 import static com.stubee.persistencecommons.entity.QMemberEntity.memberEntity;
 import static com.stubee.persistencecommons.entity.QReviewEntity.reviewEntity;
+import static com.stubee.persistencecommons.helper.Expression.Employment.isEqualEmployee;
+import static com.stubee.persistencecommons.helper.Expression.Review.*;
 
 @Repository
 @RequiredArgsConstructor
 public class QueryDSLReviewRepository implements QueryReviewRepository {
 
+    private final QueryDSLHelper<ReviewEntity> queryDSLHelper;
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public ReviewEntity findById(final UUID reviewId) {
-        return jpaQueryFactory
-                .selectFrom(reviewEntity)
-                .where(reviewEntity.id.eq(reviewId))
-                .fetchOne();
+    public ReviewEntity findById(final UUID id) {
+        return queryDSLHelper.findById(reviewEntity, isEqualId(id));
     }
 
     @Override
-    public ReviewInfoResponse findInfoById(final UUID reviewId) {
+    public ReviewInfoResponse findInfoById(final UUID id) {
         return jpaQueryFactory
                 .select(infoResponseProjection())
                 .from(reviewEntity)
                 .innerJoin(memberEntity)
                 .on(reviewEntity.memberId.eq(memberEntity.id))
-                .where(reviewEntity.id.eq(reviewId))
+                .where(isEqualId(id))
                 .fetchOne();
     }
 
@@ -52,8 +53,7 @@ public class QueryDSLReviewRepository implements QueryReviewRepository {
                 .on(reviewEntity.companyId.eq(companyEntity.id))
                 .innerJoin(employmentEntity)
                 .on(companyEntity.id.eq(employmentEntity.employerId))
-                .where(reviewEntity.memberId.eq(memberId)
-                        .and(employmentEntity.employeeId.eq(memberId)))
+                .where(isEqualAuthor(memberId).and(isEqualEmployee(memberId)))
                 .orderBy(reviewEntity.createdAt.desc())
                 .offset((pageRequest.page()-1)*pageRequest.size())
                 .limit(pageRequest.size())
@@ -67,32 +67,16 @@ public class QueryDSLReviewRepository implements QueryReviewRepository {
                 .from(reviewEntity)
                 .innerJoin(memberEntity)
                 .on(reviewEntity.memberId.eq(memberEntity.id))
-                .where(reviewEntity.companyId.eq(companyId))
+                .where(isEqualCompany(companyId))
                 .orderBy(reviewEntity.createdAt.desc())
                 .offset((pageRequest.page()-1)*pageRequest.size())
                 .limit(pageRequest.size())
                 .fetch();
     }
 
-    private ConstructorExpression<ReviewInfoResponse> infoResponseProjection() {
-        return Projections.constructor(
-                ReviewInfoResponse.class,
-                reviewEntity.id,
-                reviewEntity.content,
-                reviewEntity.position,
-                reviewEntity.careerPath,
-                reviewEntity.totalGrade,
-                reviewEntity.salaryAndBenefits,
-                reviewEntity.workLifeBalance,
-                reviewEntity.organizationalCulture,
-                reviewEntity.careerAdvancement,
-                reviewEntity.createdAt,
-                reviewEntity.modifiedAt,
-
-                memberEntity.id,
-                memberEntity.nickName,
-                memberEntity.socialLoginId,
-                memberEntity.imageUrl);
+    @Override
+    public List<ReviewEntity> findAll(final PageRequest pageRequest) {
+        return queryDSLHelper.findByOptionWithPagination(reviewEntity, null, pageRequest, reviewEntity.createdAt.desc());
     }
 
     private ConstructorExpression<ReviewQueryResponse> queryResponseProjection() {
@@ -115,6 +99,27 @@ public class QueryDSLReviewRepository implements QueryReviewRepository {
                 companyEntity.imgUrl,
 
                 employmentEntity.employmentStatus);
+    }
+
+    private ConstructorExpression<ReviewInfoResponse> infoResponseProjection() {
+        return Projections.constructor(
+                ReviewInfoResponse.class,
+                reviewEntity.id,
+                reviewEntity.content,
+                reviewEntity.position,
+                reviewEntity.careerPath,
+                reviewEntity.totalGrade,
+                reviewEntity.salaryAndBenefits,
+                reviewEntity.workLifeBalance,
+                reviewEntity.organizationalCulture,
+                reviewEntity.careerAdvancement,
+                reviewEntity.createdAt,
+                reviewEntity.modifiedAt,
+
+                memberEntity.id,
+                memberEntity.nickName,
+                memberEntity.socialLoginId,
+                memberEntity.imageUrl);
     }
 
 }

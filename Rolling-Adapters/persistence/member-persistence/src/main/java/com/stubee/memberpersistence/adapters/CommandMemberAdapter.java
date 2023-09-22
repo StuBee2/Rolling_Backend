@@ -5,7 +5,6 @@ import com.stubee.persistencecommons.entity.MemberEntity;
 import com.stubee.memberpersistence.mapper.MemberMapper;
 import com.stubee.memberpersistence.repository.MemberJpaRepository;
 import com.stubee.persistencecommons.annotations.Adapter;
-import com.stubee.rollingdomains.domain.auth.exception.WrongLoginTypeException;
 import com.stubee.rollingdomains.domain.member.events.MemberRegisteredEvent;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.rollingdomains.domain.member.model.MemberProfile;
@@ -30,6 +29,10 @@ public class CommandMemberAdapter implements CommandMemberPort {
         return save(memberMapper.toEntity(member));
     }
 
+    private Member save(final MemberEntity memberEntity) {
+        return memberMapper.toDomain(memberJpaRepository.save(memberEntity));
+    }
+
     @Override
     public Member saveOrUpdate(final MemberProfile memberProfile) {
         final Member member = memberJpaRepository.findBySocialIdAndLoginTypeOrEmail(memberProfile.socialId(),
@@ -38,18 +41,22 @@ public class CommandMemberAdapter implements CommandMemberPort {
                 .orElse(null);
 
         if(member == null) {
-            publishMemberRegisteredEvent(memberProfile.email());
-
-            return saveExceptId(memberProfile.toMember());
-        } else if(member.socialDetails().loginType().equals(memberProfile.loginType())) {
-            return saveWithId(member.updateLoginId(memberProfile.socialLoginId()));
+            return saveMember(memberProfile);
         } else {
-            throw WrongLoginTypeException.EXCEPTION;
+            return updateMember(member, memberProfile);
         }
     }
 
-    private Member save(final MemberEntity memberEntity) {
-        return memberMapper.toDomain(memberJpaRepository.save(memberEntity));
+    private Member saveMember(final MemberProfile memberProfile) {
+        publishMemberRegisteredEvent(memberProfile.email());
+
+        return saveExceptId(memberProfile.toMember());
+    }
+
+    private Member updateMember(final Member member, final MemberProfile memberProfile) {
+        member.isEqualLoginType(memberProfile.loginType());
+
+        return saveWithId(member.updateLoginId(memberProfile.socialLoginId()));
     }
 
     private void publishMemberRegisteredEvent(final String memberEmail) {

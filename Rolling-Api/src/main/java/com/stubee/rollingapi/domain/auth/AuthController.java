@@ -1,6 +1,8 @@
 package com.stubee.rollingapi.domain.auth;
 
+import com.stubee.authapplication.usecases.CertifyAlumniUseCase;
 import com.stubee.authapplication.usecases.RefreshTokenUseCase;
+import com.stubee.rollingapi.domain.auth.request.CertifyAlumniRequest;
 import com.stubee.rollingapi.domain.auth.request.RefreshTokenRequest;
 import com.stubee.rollingdomains.domain.auth.services.response.RefreshTokenResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -17,12 +19,19 @@ import static org.springframework.http.HttpStatus.*;
 public class AuthController {
 
     private final RefreshTokenUseCase refreshTokenUseCase;
+    private final CertifyAlumniUseCase certifyAlumniUseCase;
 
     @Operation(description = "Access Token 재발급")
     @PostMapping("/refresh")
     @ResponseStatus(OK)
     public RefreshTokenResponse refresh(final @RequestBody RefreshTokenRequest request) {
         return refreshTokenUseCase.refresh(request.refreshToken());
+    }
+
+    @Operation(description = "졸업생/재학생 인증")
+    @PatchMapping("/certify")
+    public void certify(final @RequestBody CertifyAlumniRequest request) {
+        certifyAlumniUseCase.certify(request.housemaster());
     }
 
 }
