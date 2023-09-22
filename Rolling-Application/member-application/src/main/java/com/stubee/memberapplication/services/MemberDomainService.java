@@ -1,9 +1,11 @@
 package com.stubee.memberapplication.services;
 
+import com.stubee.applicationcommons.annotations.AsyncEventListener;
 import com.stubee.applicationcommons.annotations.DomainService;
 import com.stubee.memberapplication.outports.CheckNicknameDuplicationPort;
 import com.stubee.memberapplication.outports.CommandMemberPort;
 import com.stubee.memberapplication.outports.QueryMemberPort;
+import com.stubee.rollingdomains.domain.member.events.MemberCertifiedEvent;
 import com.stubee.rollingdomains.domain.member.exception.DuplicatedNicknameException;
 import com.stubee.rollingdomains.domain.member.exception.MemberNotFoundException;
 import com.stubee.rollingdomains.domain.member.model.Member;
@@ -57,7 +59,8 @@ public class MemberDomainService implements ChangeNicknameService, ElevateMember
     }
 
     @Override
-    public void elevate() {
+    @AsyncEventListener
+    public void elevate(final MemberCertifiedEvent event) {
         commandMemberPort.saveWithId(this.getMember().elevateToMember());
     }
 
