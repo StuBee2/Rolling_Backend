@@ -45,7 +45,8 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests()
                 .requestMatchers("/login/**").permitAll()
-                .requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/auth/certify").hasRole("TEMP")
+                .requestMatchers("/auth/refresh").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/**").permitAll()
 
                 //Member
