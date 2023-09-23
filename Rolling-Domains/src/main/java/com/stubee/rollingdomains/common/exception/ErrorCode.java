@@ -29,6 +29,7 @@ public enum ErrorCode {
     OAUTH_FAIL(401, "OAuth failed"),
 
     EMPTY_FILE(400, "File is empty"),
+    JWT_SIGNATURE_NOT_MATCHED(400, "JWT signature doesn't matched"),
     WRONG_TOKEN_TYPE(400, "Check your token type"),
     MALFORMED_JWT(400, "Jwt is malformed"),
     UNSUPPORTED_JWT(400, "Jwt is unsupported"),

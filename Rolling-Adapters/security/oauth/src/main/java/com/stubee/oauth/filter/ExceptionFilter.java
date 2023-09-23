@@ -1,10 +1,10 @@
 package com.stubee.oauth.filter;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stubee.rollingdomains.common.exception.CustomException;
 import com.stubee.rollingdomains.common.exception.ErrorCode;
 import com.stubee.rollingdomains.common.exception.ErrorResponse;
+import io.jsonwebtoken.SignatureException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -28,10 +28,17 @@ public class ExceptionFilter extends OncePerRequestFilter {
         try {
             filterChain.doFilter(request, response);
         } catch (CustomException e) {
+            log.error("CustomException message : {}", e.getMessage());
+
             setErrorResponse(response, e.getErrorCode());
+        } catch (SignatureException e) {
+            log.error("SignatureException message : {}", e.getMessage());
+
+            setErrorResponse(response, ErrorCode.JWT_SIGNATURE_NOT_MATCHED);
         } catch (Exception e) {
-            log.info("ErrorName : {}", e.getClass().getSimpleName());
-            log.info("ErrorMessage : {}", e.getMessage());
+            log.error("ErrorName : {}", e.getClass().getSimpleName());
+            log.error("ErrorMessage : {}", e.getMessage());
+
             setErrorResponse(response, ErrorCode.INTERNAL_SERVER_ERROR);
         }
     }
