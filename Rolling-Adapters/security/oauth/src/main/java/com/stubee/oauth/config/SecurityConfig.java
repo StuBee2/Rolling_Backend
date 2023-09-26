@@ -3,16 +3,19 @@ package com.stubee.oauth.config;
 import com.stubee.oauth.filter.ExceptionFilter;
 import com.stubee.oauth.filter.JwtExceptionFilter;
 import com.stubee.oauth.filter.JwtFilter;
+import com.stubee.oauth.handler.CustomAccessDeniedHandler;
 import com.stubee.oauth.handler.OAuthFailureHandler;
 import com.stubee.oauth.handler.OAuthSuccessHandler;
 import com.stubee.oauth.service.OAuthMemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -27,6 +30,7 @@ public class SecurityConfig {
 
     private final OAuthSuccessHandler oAuthSuccessHandler;
     private final OAuthFailureHandler oAuthFailureHandler;
+    private final CustomAccessDeniedHandler customAccessDeniedHandler;
     private final OAuthMemberService oAuthMemberService;
     private final ExceptionFilter exceptionFilter;
     private final JwtFilter jwtFilter;
@@ -62,7 +66,7 @@ public class SecurityConfig {
 
                 .requestMatchers(GET, "/company/info/**").permitAll()
                 .requestMatchers(GET, "/company/search/**").permitAll()
-                .requestMatchers(GET, "/company/list/**").permitAll()
+                .requestMatchers(GET, "/company/list/**").hasRole("MEMBER")
                 .requestMatchers(GET, "/company/rank/**").permitAll()
 
                 //Employment
@@ -91,7 +95,11 @@ public class SecurityConfig {
 
                 .and()
                 .formLogin().disable()
+                .exceptionHandling()
+                .accessDeniedHandler(customAccessDeniedHandler)
+                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
 
+                .and()
                 .oauth2Login()
                 .successHandler(oAuthSuccessHandler)
                 .failureHandler(oAuthFailureHandler)
