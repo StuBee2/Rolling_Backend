@@ -16,12 +16,12 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class QueryMyReviewListApi implements QueryMyReviewListUseCase {
 
-    private final GetMemberInfoService queryMemberInfoService;
+    private final GetMemberInfoService getMemberInfoService;
     private final QueryReviewWithPaginationPort queryReviewWithPaginationPort;
 
     @Override
     public PageDataResponse<List<ReviewQueryResponse>> get(final PageRequest pageRequest) {
-        final UUID memberId = queryMemberInfoService.getMemberId().getId();
+        final UUID memberId = getMemberInfoService.getMemberId().getId();
 
         return queryReviewWithPaginationPort.getByMemberId(memberId, pageRequest);
     }

@@ -19,14 +19,12 @@ public class CompanyListWriter implements ItemWriter<List<Company>> {
 
     @Override
     public void write(final Chunk<? extends List<Company>> chunk) {
-        log.info("<<<<<Writer Write>>>>>");
+        log.info("Writer Start");
         log.info("chunk size : {}", chunk.size());
 
-        for (List<Company> companyList : chunk.getItems()) {
-            commandCompanyUseCase.updateAll(companyList);
-        }
+        chunk.getItems().forEach(commandCompanyUseCase::updateAll);
 
-        log.info("<<<<<Writer End>>>>>");
+        log.info("Writer End");
     }
 
 }

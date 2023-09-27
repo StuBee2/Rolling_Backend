@@ -27,7 +27,7 @@ public class CompanyGradesAvgScheduler {
                 .addLong("time", System.currentTimeMillis())
                 .toJobParameters();
 
-        log.info("<<<<<<<<<<Batch Start : {}>>>>>>>>>>", LocalDateTime.now());
+        log.info("Calculate Avg Batch Start : {}", LocalDateTime.now());
 
         jobLauncher.run(calAvgJob, jobParameters);
     }

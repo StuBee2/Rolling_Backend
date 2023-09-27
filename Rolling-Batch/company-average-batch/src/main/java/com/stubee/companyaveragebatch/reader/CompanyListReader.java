@@ -1,6 +1,6 @@
 package com.stubee.companyaveragebatch.reader;
 
-import com.stubee.applicationcommons.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.batchcommons.annotations.Reader;
 import com.stubee.companyapplication.usecases.query.QueryAllCompanyListUseCase;
 import com.stubee.rollingdomains.domain.company.model.Company;
@@ -10,12 +10,12 @@ import org.springframework.batch.item.ItemReader;
 
 import java.util.List;
 
+import static com.stubee.companyaveragebatch.job.consts.BatchConstants.*;
+
 @Reader
 @Slf4j
 @RequiredArgsConstructor
 public class CompanyListReader implements ItemReader<List<Company>> {
-
-    private static final long SIZE = 100;
 
     private final QueryAllCompanyListUseCase queryCompanyUseCase;
 
@@ -23,11 +23,13 @@ public class CompanyListReader implements ItemReader<List<Company>> {
 
     @Override
     public List<Company> read() {
-        log.info("<<<<<Reader Read>>>>>");
+        log.info("Reader Start");
         log.info("CurrentPage : {}", currentPage);
 
-        final List<Company> companyList = queryCompanyUseCase.get(pageRequest(currentPage)).data();
+        return determineItems(queryCompanyUseCase.get(PageRequest.of(currentPage, PAGE_SIZE)).data());
+    }
 
+    private List<Company> determineItems(final List<Company> companyList) {
         log.info("CompanyList : {}", companyList.size());
 
         if (companyList.isEmpty()) {
@@ -36,13 +38,9 @@ public class CompanyListReader implements ItemReader<List<Company>> {
 
         currentPage++;
 
-        log.info("<<<<<Reader End>>>>>");
+        log.info("Reader End");
 
         return companyList;
-    }
-
-    private PageRequest pageRequest(final long page) {
-        return new PageRequest(page, SIZE);
     }
 
 }
