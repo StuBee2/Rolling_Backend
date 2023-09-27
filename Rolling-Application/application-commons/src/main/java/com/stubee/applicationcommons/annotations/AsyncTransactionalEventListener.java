@@ -9,5 +9,5 @@ import java.lang.annotation.*;
 @TransactionalEventListener
 @Target({ElementType.METHOD, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface AsyncTransactionalListener {
+public @interface AsyncTransactionalEventListener {
 }
