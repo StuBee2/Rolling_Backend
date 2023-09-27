@@ -8,10 +8,13 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages = {
         "com.stubee.companyaveragebatch",
-        "com.stubee.companyapplication.services.command",
-        "com.stubee.companyapplication.services.query",
 
-        "com.stubee.reviewapplication.services.query",
+        "com.stubee.companyapplication.services",
+        "com.stubee.companyapplication.usecases.command.impl.batch",
+        "com.stubee.companyapplication.usecases.query.impl",
+
+        "com.stubee.reviewapplication.services",
+        "com.stubee.reviewapplication.usecases.query.impl.shared",
 
         "com.stubee.companypersistence",
         "com.stubee.reviewpersistence",
