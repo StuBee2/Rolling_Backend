@@ -16,11 +16,11 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import java.util.List;
 
+import static com.stubee.companyaveragebatch.job.consts.BatchConstants.*;
+
 @Configuration
 @RequiredArgsConstructor
 public class CalculateCompanyGradesAvgJobConfig {
-
-    private static final int CHUNK_SIZE = 1;
 
     private final CompanyListReader companyListReader;
     private final CompanyGradesAvgProcessor companyGradesAvgProcessor;
