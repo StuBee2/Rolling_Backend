@@ -1,4 +1,4 @@
-package com.stubee.companyapplication.usecases.command.impl;
+package com.stubee.companyapplication.usecases.command.impl.batch;
 
 import com.stubee.applicationcommons.annotations.CommandService;
 import com.stubee.companyapplication.usecases.command.UpdateCompanyUseCase;
