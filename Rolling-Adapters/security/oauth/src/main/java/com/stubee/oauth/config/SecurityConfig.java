@@ -49,9 +49,10 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests()
                 .requestMatchers("/login/**").permitAll()
-                .requestMatchers("/auth/certify").hasRole("TEMP")
-                .requestMatchers("/auth/refresh").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/**").permitAll()
+
+                .requestMatchers("/auth/refresh").permitAll()
+                .requestMatchers("/auth/certify").hasRole("TEMP")
 
                 //Member
                 .requestMatchers(PATCH, "/member/**").authenticated()
@@ -66,7 +67,7 @@ public class SecurityConfig {
 
                 .requestMatchers(GET, "/company/info/**").permitAll()
                 .requestMatchers(GET, "/company/search/**").permitAll()
-                .requestMatchers(GET, "/company/list/**").hasRole("MEMBER")
+                .requestMatchers(GET, "/company/list/**").permitAll()
                 .requestMatchers(GET, "/company/rank/**").permitAll()
 
                 //Employment
