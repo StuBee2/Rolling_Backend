@@ -18,7 +18,7 @@ import java.util.UUID;
 
 import static com.stubee.persistencecommons.entity.QCompanyEntity.companyEntity;
 import static com.stubee.persistencecommons.entity.QMemberEntity.memberEntity;
-import static com.stubee.persistencecommons.helper.Expression.Company.*;
+import static com.stubee.persistencecommons.helper.ExpressionSupport.Company.*;
 
 @Repository
 @RequiredArgsConstructor

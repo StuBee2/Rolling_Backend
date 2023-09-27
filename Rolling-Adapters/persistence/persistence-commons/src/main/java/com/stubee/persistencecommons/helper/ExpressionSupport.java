@@ -9,7 +9,7 @@ import static com.stubee.persistencecommons.entity.QCompanyEntity.companyEntity;
 import static com.stubee.persistencecommons.entity.QEmploymentEntity.employmentEntity;
 import static com.stubee.persistencecommons.entity.QReviewEntity.reviewEntity;
 
-public class Expression {
+public class ExpressionSupport {
 
     public static class Company {
 

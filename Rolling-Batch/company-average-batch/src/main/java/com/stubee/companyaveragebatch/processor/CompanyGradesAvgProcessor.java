@@ -1,8 +1,8 @@
 package com.stubee.companyaveragebatch.processor;
 
-import com.stubee.applicationcommons.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.batchcommons.annotations.Processor;
-import com.stubee.reviewapplication.services.query.response.ReviewInfoResponse;
+import com.stubee.reviewapplication.usecases.query.response.ReviewInfoResponse;
 import com.stubee.reviewapplication.usecases.query.QueryReviewInfoListByCompanyUseCase;
 import com.stubee.rollingdomains.common.model.Grades;
 import com.stubee.rollingdomains.domain.company.model.Company;
@@ -12,13 +12,14 @@ import org.springframework.batch.item.ItemProcessor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
+import static com.stubee.companyaveragebatch.job.consts.BatchConstants.PAGE_SIZE;
 
 @Processor
 @Slf4j
 @RequiredArgsConstructor
 public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, List<Company>> {
-
-    private static final long PAGE_SIZE = 100;
 
     private final QueryReviewInfoListByCompanyUseCase queryReviewInfoListByCompanyUseCase;
 
@@ -26,77 +27,86 @@ public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, L
     private double workLifeBalanceSum;
     private double organizationalCultureSum;
     private double careerAdvancementSum;
+    private long reviewPage;
+    private long reviewCnt;
 
     @Override
     public List<Company> process(final List<Company> readCompanyList) {
-        log.info("<<<<<Processor Process>>>>>");
+        log.info("Processor Start");
         log.info("ReadCompanyList Size : {}", readCompanyList.size());
 
         final List<Company> processedCompanyList = new ArrayList<>();
 
-        for (Company company : readCompanyList) {
+        readCompanyList.forEach(company -> {
+            this.init();
+
             log.info("Company Name : {}", company.companyDetails().name());
 
-            long reviewPage = 1, reviewCnt = 0;
-            this.initSums();
+            this.calculateSums(company.companyId().getId());
 
-            while (true) {
-                final List<ReviewInfoResponse> reviewList = queryReviewInfoListByCompanyUseCase.get(
-                        company.companyId().getId(), pageRequest(reviewPage)).data();
+            final Grades updatedGrades = this.calculateAverages();
 
-                calculateSum(reviewList);
-
-                reviewCnt += reviewList.size();
-                reviewPage++;
-
-                if (reviewList.size() < PAGE_SIZE) {
-                    break;
-                }
-            }
-
-            final double salaryAndBenefitsAvg = calculateAvg(salaryAndBenefitsSum, reviewCnt);
-            final double workLifeBalanceAvg = calculateAvg(workLifeBalanceSum, reviewCnt);
-            final double organizationalCultureAvg = calculateAvg(organizationalCultureSum, reviewCnt);
-            final double careerAdvancementAvg = calculateAvg(careerAdvancementSum, reviewCnt);
-
-            Grades updatedGrades = Grades.create(salaryAndBenefitsAvg, workLifeBalanceAvg,
-                    organizationalCultureAvg, careerAdvancementAvg);
-
-            Company updatedCompany = company.updateGrades(updatedGrades);
-
-            log.info("totalAvg : {}", updatedGrades.totalGrade());
-            log.info("salaryAndBenefitsAvg : {}", salaryAndBenefitsAvg);
-            log.info("workLifeBalanceAvg : {}", workLifeBalanceAvg);
-            log.info("organizationalCultureAvg : {}", organizationalCultureAvg);
-            log.info("careerAdvancementAvg : {}", careerAdvancementAvg);
+            final Company updatedCompany = company.updateGrades(updatedGrades);
 
             processedCompanyList.add(updatedCompany);
-        }
+        });
 
-        log.info("<<<<<Processor End>>>>>");
+        log.info("Processor End");
 
         return processedCompanyList;
     }
 
-    private void initSums() {
-        salaryAndBenefitsSum = workLifeBalanceSum = organizationalCultureSum = careerAdvancementSum = 0.0;
-    }
+    private void calculateSums(final UUID companyId) {
+        while (true) {
+            final List<ReviewInfoResponse> reviewList = queryReviewInfoListByCompanyUseCase.get(companyId,
+                    PageRequest.of(reviewPage, PAGE_SIZE)).data();
 
-    private PageRequest pageRequest(final long page) {
-        return new PageRequest(page, PAGE_SIZE);
-    }
+            reviewList.forEach(review -> {
+                salaryAndBenefitsSum += review.salaryAndBenefits();
+                workLifeBalanceSum += review.workLifeBalance();
+                organizationalCultureSum += review.organizationalCulture();
+                careerAdvancementSum += review.careerAdvancement();
+            });
 
-    private void calculateSum(final List<ReviewInfoResponse> reviewList) {
-        for (ReviewInfoResponse response : reviewList) {
-            salaryAndBenefitsSum += response.salaryAndBenefits();
-            workLifeBalanceSum += response.workLifeBalance();
-            organizationalCultureSum += response.organizationalCulture();
-            careerAdvancementSum += response.careerAdvancement();
+            reviewCnt += reviewList.size();
+            reviewPage++;
+
+            if (reviewList.size() < PAGE_SIZE) {
+                break;
+            }
         }
     }
 
-    private double calculateAvg(final double sum, final long reviewCnt) {
-        return reviewCnt==0 ? 0 : Math.round(sum/reviewCnt*10)/10.0;
+    private Grades calculateAverages() {
+        final double salaryAndBenefitsAvg = calculateAverage(salaryAndBenefitsSum);
+        final double workLifeBalanceAvg = calculateAverage(workLifeBalanceSum);
+        final double organizationalCultureAvg = calculateAverage(organizationalCultureSum);
+        final double careerAdvancementAvg = calculateAverage(careerAdvancementSum);
+
+        final Grades updatedGrades = Grades.create(salaryAndBenefitsAvg, workLifeBalanceAvg,
+                organizationalCultureAvg, careerAdvancementAvg);
+
+        log.info("totalAvg : {}", updatedGrades.totalGrade());
+        log.info("salaryAndBenefitsAvg : {}", salaryAndBenefitsAvg);
+        log.info("workLifeBalanceAvg : {}", workLifeBalanceAvg);
+        log.info("organizationalCultureAvg : {}", organizationalCultureAvg);
+        log.info("careerAdvancementAvg : {}", careerAdvancementAvg);
+
+        return updatedGrades;
+    }
+
+    private double calculateAverage(final double sum) {
+        if(reviewCnt==0) {
+            return 0;
+        }
+
+        return Math.round(sum/reviewCnt*10)/10.0;
+    }
+
+    private void init() {
+        reviewPage = 1;
+        reviewCnt = 0;
+        salaryAndBenefitsSum = workLifeBalanceSum = organizationalCultureSum = careerAdvancementSum = 0.0;
     }
 
 }

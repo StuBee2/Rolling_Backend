@@ -9,8 +9,7 @@ public record Grades(
         Double salaryAndBenefits,
         Double workLifeBalance,
         Double organizationalCulture,
-        Double careerAdvancement
-        ) {
+        Double careerAdvancement) {
     public static Grades create(final double salaryAndBenefits, final double workLifeBalance,
                                  final double organizationalCulture, final double careerAdvancement) {
         return Grades.builder()

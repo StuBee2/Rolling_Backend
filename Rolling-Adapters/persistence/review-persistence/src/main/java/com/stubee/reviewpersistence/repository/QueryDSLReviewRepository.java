@@ -4,6 +4,7 @@ import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.stubee.persistencecommons.helper.QueryDSLHelper;
+import com.stubee.reviewapplication.usecases.query.response.ReviewStatusResponse;
 import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.persistencecommons.entity.ReviewEntity;
 import com.stubee.reviewapplication.usecases.query.response.ReviewInfoResponse;
@@ -18,8 +19,8 @@ import static com.stubee.persistencecommons.entity.QCompanyEntity.companyEntity;
 import static com.stubee.persistencecommons.entity.QEmploymentEntity.employmentEntity;
 import static com.stubee.persistencecommons.entity.QMemberEntity.memberEntity;
 import static com.stubee.persistencecommons.entity.QReviewEntity.reviewEntity;
-import static com.stubee.persistencecommons.helper.Expression.Employment.isEqualEmployee;
-import static com.stubee.persistencecommons.helper.Expression.Review.*;
+import static com.stubee.persistencecommons.helper.ExpressionSupport.Employment.isEqualEmployee;
+import static com.stubee.persistencecommons.helper.ExpressionSupport.Review.*;
 
 @Repository
 @RequiredArgsConstructor
@@ -41,6 +42,16 @@ public class QueryDSLReviewRepository implements QueryReviewRepository {
                 .innerJoin(memberEntity)
                 .on(reviewEntity.memberId.eq(memberEntity.id))
                 .where(isEqualId(id))
+                .fetchOne();
+    }
+
+    @Override
+    public ReviewStatusResponse findByMemberId(final UUID memberId) {
+        return jpaQueryFactory
+                .select(queryStatusProjection())
+                .from(reviewEntity)
+                .where(isEqualAuthor(memberId))
+                .orderBy(reviewEntity.modifiedAt.desc())
                 .fetchOne();
     }
 
@@ -77,6 +88,13 @@ public class QueryDSLReviewRepository implements QueryReviewRepository {
     @Override
     public List<ReviewEntity> findAll(final PageRequest pageRequest) {
         return queryDSLHelper.findByOptionWithPagination(reviewEntity, null, pageRequest, reviewEntity.createdAt.desc());
+    }
+
+    private ConstructorExpression<ReviewStatusResponse> queryStatusProjection() {
+        return Projections.constructor(
+                ReviewStatusResponse.class,
+                reviewEntity.count(),
+                reviewEntity.modifiedAt.max());
     }
 
     private ConstructorExpression<ReviewQueryResponse> queryResponseProjection() {

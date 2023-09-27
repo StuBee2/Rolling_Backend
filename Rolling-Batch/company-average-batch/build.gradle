@@ -12,5 +12,4 @@ dependencies {
     implementation project(':Rolling-Batch:batch-commons')
 
     implementation 'org.springframework.boot:spring-boot-starter-batch'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
 }

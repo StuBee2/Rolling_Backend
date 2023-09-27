@@ -1,4 +1,4 @@
 package com.stubee.reviewapplication.outports.query;
 
-public interface QueryReviewPort extends QueryReviewWithPaginationPort, QueryReviewByIdPort {
+public interface QueryReviewPort extends QueryReviewWithPaginationPort, QueryReviewByIdPort, QueryReviewStatusPort {
 }

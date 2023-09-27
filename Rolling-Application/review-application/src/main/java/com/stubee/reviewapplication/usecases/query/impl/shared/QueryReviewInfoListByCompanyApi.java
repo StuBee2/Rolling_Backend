@@ -1,4 +1,4 @@
-package com.stubee.reviewapplication.usecases.query.impl;
+package com.stubee.reviewapplication.usecases.query.impl.shared;
 
 import com.stubee.applicationcommons.annotations.QueryService;
 import com.stubee.reviewapplication.outports.query.QueryReviewWithPaginationPort;

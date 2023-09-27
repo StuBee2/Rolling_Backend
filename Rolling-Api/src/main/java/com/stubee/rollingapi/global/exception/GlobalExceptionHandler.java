@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.NestedRuntimeException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -68,6 +69,13 @@ public class GlobalExceptionHandler {
         log.error("HttpRequestMethodNotSupportedException message : {}", e.getMessage());
 
         return new ResponseEntity<>(ErrorResponse.create(ErrorCode.METHOD_NOT_SUPPORTED), METHOD_NOT_ALLOWED);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    protected ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+        log.error("MethodArgumentNotValidException message : {}", e.getMessage());
+
+        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.METHOD_NOT_VALID), BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)

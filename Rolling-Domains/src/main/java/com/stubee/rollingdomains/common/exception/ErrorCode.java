@@ -14,6 +14,10 @@ public enum ErrorCode {
     FILE_CONVERT_ERROR(500, "FileConvertException occurred"),
     FILE_UPLOAD_ERROR(500, "FileUploadException occurred"),
 
+    DUPLICATED_NICKNAME(409, "Nickname is duplicated"),
+    DUPLICATED_EMAIL(409, "Email is duplicated"),
+    DUPLICATED_COMPANY_NAME(409, "Company name is duplicated"),
+
     METHOD_NOT_SUPPORTED(405, "Http method is not supported"),
 
     MEMBER_NOT_FOUND(404, "Member not found"),
@@ -29,15 +33,13 @@ public enum ErrorCode {
     EXPIRED_JWT(401, "Jwt is expired"),
     OAUTH_FAIL(401, "OAuth failed"),
 
+    METHOD_NOT_VALID(400, "Method is not validated"),
     EMPTY_FILE(400, "File is empty"),
     JWT_SIGNATURE_NOT_MATCHED(400, "JWT signature doesn't matched"),
     WRONG_TOKEN_TYPE(400, "Check your token type"),
     MALFORMED_JWT(400, "Jwt is malformed"),
     UNSUPPORTED_JWT(400, "Jwt is unsupported"),
     NEWS_CLIENT(400, "Page or Size is too big"),
-    DUPLICATED_NICKNAME(409, "Nickname is duplicated"),
-    DUPLICATED_EMAIL(409, "Email is duplicated"),
-    DUPLICATED_COMPANY_NAME(409, "Company name is duplicated"),
     EMPLOYMENT_EXIST(400, "Employment already exists"),
     ILLEGAL_ARGUMENT(400, "IllegalArgumentException occurred");
 

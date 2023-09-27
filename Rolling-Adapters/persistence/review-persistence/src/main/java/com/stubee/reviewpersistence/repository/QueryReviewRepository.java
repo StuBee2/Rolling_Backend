@@ -1,5 +1,6 @@
 package com.stubee.reviewpersistence.repository;
 
+import com.stubee.reviewapplication.usecases.query.response.ReviewStatusResponse;
 import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.persistencecommons.entity.ReviewEntity;
 import com.stubee.reviewapplication.usecases.query.response.ReviewInfoResponse;
@@ -13,6 +14,8 @@ public interface QueryReviewRepository {
     ReviewEntity findById(UUID reviewId);
 
     ReviewInfoResponse findInfoById(UUID reviewId);
+
+    ReviewStatusResponse findByMemberId(UUID memberId);
 
     List<ReviewQueryResponse> findByMemberId(UUID memberId, PageRequest pageRequest);
 
