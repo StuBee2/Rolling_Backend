@@ -1,5 +1,6 @@
 package com.stubee.reviewpersistence.adapters;
 
+import com.stubee.reviewapplication.usecases.query.response.ReviewStatusResponse;
 import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.persistencecommons.annotations.Adapter;
 import com.stubee.reviewapplication.outports.query.QueryReviewPort;
@@ -39,6 +40,11 @@ public class QueryReviewAdapter implements QueryReviewPort {
     @Override
     public List<ReviewInfoResponse> findByCompanyId(final UUID companyId, PageRequest pageRequest) {
         return queryReviewRepository.findByCompanyId(companyId, pageRequest);
+    }
+
+    @Override
+    public ReviewStatusResponse findByMemberId(final UUID memberId) {
+        return queryReviewRepository.findByMemberId(memberId);
     }
 
 }

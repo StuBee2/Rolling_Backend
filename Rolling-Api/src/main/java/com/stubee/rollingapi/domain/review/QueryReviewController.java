@@ -1,9 +1,7 @@
 package com.stubee.rollingapi.domain.review;
 
-import com.stubee.reviewapplication.usecases.query.QueryMyReviewListUseCase;
-import com.stubee.reviewapplication.usecases.query.QueryReviewInfoByIdUseCase;
-import com.stubee.reviewapplication.usecases.query.QueryReviewInfoListByCompanyUseCase;
-import com.stubee.reviewapplication.usecases.query.QueryReviewListByMemberUseCase;
+import com.stubee.reviewapplication.usecases.query.*;
+import com.stubee.reviewapplication.usecases.query.response.ReviewStatusResponse;
 import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.applicationcommons.dtos.response.PageDataResponse;
 import com.stubee.reviewapplication.usecases.query.response.ReviewInfoResponse;
@@ -26,6 +24,7 @@ public class QueryReviewController {
 
     private final QueryReviewInfoByIdUseCase queryReviewInfoByIdUseCase;
     private final QueryMyReviewListUseCase queryMyReviewListUseCase;
+    private final QueryMyReviewStatusUseCase queryMyReviewStatusUseCase;
     private final QueryReviewListByMemberUseCase queryReviewListByMemberUseCase;
     private final QueryReviewInfoListByCompanyUseCase queryReviewInfoListByCompanyUseCase;
 
@@ -41,6 +40,13 @@ public class QueryReviewController {
     @ResponseStatus(OK)
     public PageDataResponse<List<ReviewQueryResponse>> getMy(@ModelAttribute PageRequest pageRequest) {
         return queryMyReviewListUseCase.get(pageRequest);
+    }
+
+    @Operation(description = "내 Review Status 조회")
+    @GetMapping("/my/status")
+    @ResponseStatus(OK)
+    public ReviewStatusResponse getMyStatus() {
+        return queryMyReviewStatusUseCase.get();
     }
 
     @Operation(description = "Member Id로 Review List 조회")
