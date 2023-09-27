@@ -21,6 +21,7 @@ public enum ErrorCode {
     EMPLOYMENT_NOT_FOUND(404, "Employment not found"),
     REVIEW_NOT_FOUND(404, "Review not found"),
 
+    ACCESS_DENIED(403, "Access denied"),
     NOT_MATCHED_MEMBER(403, "You are not the author/registrant"),
     WRONG_LOGIN_TYPE(403, "Check your login type"),
     ALUMNI_CERTIFY_FAILED(403, "Alumni certify failed"),
@@ -29,6 +30,7 @@ public enum ErrorCode {
     OAUTH_FAIL(401, "OAuth failed"),
 
     EMPTY_FILE(400, "File is empty"),
+    JWT_SIGNATURE_NOT_MATCHED(400, "JWT signature doesn't matched"),
     WRONG_TOKEN_TYPE(400, "Check your token type"),
     MALFORMED_JWT(400, "Jwt is malformed"),
     UNSUPPORTED_JWT(400, "Jwt is unsupported"),

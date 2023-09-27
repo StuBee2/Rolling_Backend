@@ -33,6 +33,7 @@ public record MemberDetails(
                 .nickName(nickName)
                 .memberRole(memberRole)
                 .createdAt(createdAt)
+                .modifiedAt(modifiedAt)
                 .build();
     }
 
@@ -41,6 +42,7 @@ public record MemberDetails(
                 .nickName(nickName)
                 .memberRole(MemberRole.MEMBER)
                 .createdAt(createdAt)
+                .modifiedAt(modifiedAt)
                 .build();
     }
 }
