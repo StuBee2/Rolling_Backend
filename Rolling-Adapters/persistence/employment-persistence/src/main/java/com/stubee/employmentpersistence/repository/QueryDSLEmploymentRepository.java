@@ -14,7 +14,7 @@ import java.util.UUID;
 
 import static com.stubee.persistencecommons.entity.QCompanyEntity.companyEntity;
 import static com.stubee.persistencecommons.entity.QEmploymentEntity.employmentEntity;
-import static com.stubee.persistencecommons.helper.Expression.Employment.*;
+import static com.stubee.persistencecommons.helper.ExpressionSupport.Employment.*;
 
 @Repository
 @RequiredArgsConstructor
