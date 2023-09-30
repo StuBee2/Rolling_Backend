@@ -1,10 +1,10 @@
 package com.stubee.rollingdomains.domain.member.model;
 
 import com.stubee.rollingdomains.domain.member.consts.LoginType;
-import lombok.AccessLevel;
 import lombok.Builder;
 
-@Builder(access = AccessLevel.PRIVATE)
+import java.util.Objects;
+
 public record SocialDetails(
         String socialId,
         String socialLoginId,
@@ -12,36 +12,19 @@ public record SocialDetails(
         String name,
         String email,
         String imageUrl) {
-    public static SocialDetails create(final String socialId, final String socialLoginId, final LoginType loginType,
-                                       final String name, final String email, final String imageUrl) {
-        return SocialDetails.builder()
-                .socialId(socialId)
-                .socialLoginId(socialLoginId)
-                .loginType(loginType)
-                .name(name)
-                .email(email)
-                .imageUrl(imageUrl)
-                .build();
+    @Builder(builderClassName = "AllArgsBuilder", builderMethodName = "AllArgsBuilder")
+    public SocialDetails {
+        Objects.requireNonNull(socialId);
+        Objects.requireNonNull(socialLoginId);
+        Objects.requireNonNull(loginType);
+        Objects.requireNonNull(name);
     }
 
     public SocialDetails updateLoginId(final String socialLoginId) {
-        return SocialDetails.builder()
-                .socialId(socialId)
-                .socialLoginId(socialLoginId)
-                .loginType(loginType)
-                .name(name)
-                .email(email)
-                .imageUrl(imageUrl)
-                .build();
+        return new SocialDetails(socialId, socialLoginId, loginType, name, email, imageUrl);
     }
 
     public SocialDetails updateEmail(final String email) {
-        return SocialDetails.builder()
-                .socialId(socialId)
-                .loginType(loginType)
-                .name(name)
-                .email(email)
-                .imageUrl(imageUrl)
-                .build();
+        return new SocialDetails(socialId, socialLoginId, loginType, name, email, imageUrl);
     }
 }

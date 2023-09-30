@@ -12,7 +12,18 @@ public record MemberProfile (
         MemberRole memberRole,
         LoginType loginType) {
     public Member toMember() {
-        return Member.createExceptId(SocialDetails.create(socialId, socialLoginId, loginType, name, email, imageUrl),
-                MemberDetails.createOnlyMemberRole(memberRole));
+        return Member.ExceptIdBuilder()
+                .socialDetails(SocialDetails.AllArgsBuilder()
+                        .socialId(socialId)
+                        .socialLoginId(socialLoginId)
+                        .loginType(loginType)
+                        .name(name)
+                        .email(email)
+                        .imageUrl(imageUrl)
+                        .build())
+                .memberDetails(MemberDetails.OnlyWithRoleBuilder()
+                        .memberRole(memberRole)
+                        .build())
+                .build();
     }
 }

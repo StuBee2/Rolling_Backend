@@ -7,6 +7,6 @@ import java.util.UUID;
 public record DeleteCompanyCommand(
         CompanyId companyId) {
     public static DeleteCompanyCommand toCommand(final UUID companyId) {
-        return new DeleteCompanyCommand(CompanyId.create(companyId));
+        return new DeleteCompanyCommand(CompanyId.of(companyId));
     }
 }

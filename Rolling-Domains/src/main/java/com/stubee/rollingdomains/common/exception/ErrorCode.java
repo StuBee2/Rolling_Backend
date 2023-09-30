@@ -14,6 +14,8 @@ public enum ErrorCode {
     FILE_CONVERT_ERROR(500, "FileConvertException occurred"),
     FILE_UPLOAD_ERROR(500, "FileUploadException occurred"),
 
+    WRONG_CALCULATION(500, "Calculation is wrong"),
+
     DUPLICATED_NICKNAME(409, "Nickname is duplicated"),
     DUPLICATED_EMAIL(409, "Email is duplicated"),
     DUPLICATED_COMPANY_NAME(409, "Company name is duplicated"),

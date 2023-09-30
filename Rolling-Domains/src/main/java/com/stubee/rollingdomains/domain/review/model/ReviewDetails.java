@@ -1,34 +1,26 @@
 package com.stubee.rollingdomains.domain.review.model;
 
-import lombok.AccessLevel;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
-@Builder(access = AccessLevel.PRIVATE)
 public record ReviewDetails(
         String content,
         String position,
         String careerPath,
         LocalDateTime createdAt,
         LocalDateTime modifiedAt) {
-    public static ReviewDetails create(final String content, final String position, final String careerPath) {
-        return ReviewDetails.builder()
-                .content(content)
-                .position(position)
-                .careerPath(careerPath)
-                .build();
+    @Builder(builderClassName = "ExceptDateBuilder", builderMethodName = "ExceptDateBuilder")
+    public ReviewDetails(String content, String position, String careerPath) {
+        this(content, position, careerPath, null, null);
     }
 
-    public static ReviewDetails createWithDate(final String content, final String position, final String careerPath,
-                                               final LocalDateTime createdAt, final LocalDateTime modifiedAt) {
-        return ReviewDetails.builder()
-                .content(content)
-                .position(position)
-                .careerPath(careerPath)
-                .createdAt(createdAt)
-                .modifiedAt(modifiedAt)
-                .build();
+    @Builder(builderClassName = "WithDateBuilder", builderMethodName = "WithDateBuilder")
+    public ReviewDetails {
+        Objects.requireNonNull(content);
+        Objects.requireNonNull(position);
+        Objects.requireNonNull(careerPath);
     }
 
 }

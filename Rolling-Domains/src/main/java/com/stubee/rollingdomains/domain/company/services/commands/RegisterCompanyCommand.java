@@ -1,6 +1,9 @@
 package com.stubee.rollingdomains.domain.company.services.commands;
 
+import com.stubee.rollingdomains.common.model.Grades;
+import com.stubee.rollingdomains.domain.company.model.Address;
 import com.stubee.rollingdomains.domain.company.model.Company;
+import com.stubee.rollingdomains.domain.company.model.CompanyDetails;
 import com.stubee.rollingdomains.domain.company.model.RegistrantId;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 
@@ -15,6 +18,15 @@ public record RegisterCompanyCommand(
     }
 
     public Company toDomain(final MemberId memberId) {
-        return Company.create(name, address, description, imgUrl, RegistrantId.of(memberId));
+        return Company.ExceptIdBuilder()
+                .companyDetails(CompanyDetails.ExceptDateBuilder()
+                        .name(name)
+                        .companyAddress(Address.of(address))
+                        .description(description)
+                        .imgUrl(imgUrl)
+                        .build())
+                .companyGrades(Grades.zeroGrades())
+                .registrantId(RegistrantId.of(memberId))
+                .build();
     }
 }

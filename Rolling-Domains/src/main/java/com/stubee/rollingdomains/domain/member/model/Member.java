@@ -2,43 +2,39 @@ package com.stubee.rollingdomains.domain.member.model;
 
 import com.stubee.rollingdomains.domain.member.consts.LoginType;
 import com.stubee.rollingdomains.domain.member.exception.WrongLoginTypeException;
-import lombok.AccessLevel;
 import lombok.Builder;
 
-@Builder(access = AccessLevel.PRIVATE)
+import java.util.Objects;
+
 public record Member (
         MemberId memberId,
         SocialDetails socialDetails,
         MemberDetails memberDetails) {
-    public static Member create(final MemberId memberId, final SocialDetails socialDetails, final MemberDetails memberDetails) {
-        return Member.builder()
-                .memberId(memberId)
-                .socialDetails(socialDetails)
-                .memberDetails(memberDetails)
-                .build();
+    @Builder(builderClassName = "ExceptIdBuilder", builderMethodName = "ExceptIdBuilder")
+    public Member(SocialDetails socialDetails, MemberDetails memberDetails) {
+        this(null, socialDetails, memberDetails);
     }
 
-    public static Member createExceptId(final SocialDetails socialDetails, final MemberDetails memberDetails) {
-        return Member.builder()
-                .socialDetails(socialDetails)
-                .memberDetails(memberDetails)
-                .build();
+    @Builder(builderClassName = "WithIdBuilder", builderMethodName = "WithIdBuilder")
+    public Member {
+        Objects.requireNonNull(socialDetails);
+        Objects.requireNonNull(memberDetails);
     }
 
     public Member updateLoginId(final String socialLoginId) {
-        return create(memberId, socialDetails.updateLoginId(socialLoginId), memberDetails);
+        return new Member(memberId, socialDetails.updateLoginId(socialLoginId), memberDetails);
     }
 
     public Member changeEmail(final String email) {
-        return create(memberId, socialDetails.updateEmail(email), memberDetails);
+        return new Member(memberId, socialDetails.updateEmail(email), memberDetails);
     }
 
     public Member changeNickname(final String nickname) {
-        return create(memberId, socialDetails, memberDetails.updateNickName(nickname));
+        return new Member(memberId, socialDetails, memberDetails.updateNickName(nickname));
     }
 
     public Member elevateToMember() {
-        return create(memberId, socialDetails, memberDetails.elevateToMember());
+        return new Member(memberId, socialDetails, memberDetails.elevateToMember());
     }
 
     public void isEqualLoginType(final LoginType loginType) {

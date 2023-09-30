@@ -1,30 +1,23 @@
 package com.stubee.rollingdomains.domain.employment.model;
 
-import lombok.AccessLevel;
 import lombok.Builder;
 
-@Builder(access = AccessLevel.PRIVATE)
+import java.util.Objects;
+
 public record Employment(
         EmploymentId employmentId,
         EmployeeId employeeId,
         EmployerId employerId,
         EmploymentDetails employmentDetails) {
-    public static Employment createWithEmploymentId(final EmploymentId employmentId, final EmployeeId employeeId,
-                                                    final EmployerId employerId, final EmploymentDetails employmentDetails) {
-        return Employment.builder()
-                .employmentId(employmentId)
-                .employeeId(employeeId)
-                .employerId(employerId)
-                .employmentDetails(employmentDetails)
-                .build();
+    @Builder(builderClassName = "ExceptIdBuilder", builderMethodName = "ExceptIdBuilder")
+    public Employment(EmployeeId employeeId, EmployerId employerId, EmploymentDetails employmentDetails) {
+        this(null, employeeId, employerId, employmentDetails);
     }
 
-    public static Employment createExceptEmploymentId(final EmployeeId employeeId, final EmployerId employerId,
-                                                      final EmploymentDetails employmentDetails) {
-        return Employment.builder()
-                .employeeId(employeeId)
-                .employerId(employerId)
-                .employmentDetails(employmentDetails)
-                .build();
+    @Builder(builderClassName = "WithIdBuilder", builderMethodName = "WithIdBuilder")
+    public Employment {
+        Objects.requireNonNull(employeeId);
+        Objects.requireNonNull(employerId);
+        Objects.requireNonNull(employmentDetails);
     }
 }

@@ -34,18 +34,33 @@ public class ReviewMapper implements com.stubee.persistencecommons.mapper.Domain
             return null;
         }
 
-        return Review.createWithId(ReviewId.create(entity.getId()), reviewDetails(entity), reviewGrades(entity),
-                AuthorId.of(entity.getMemberId()), CompanyId.create(entity.getCompanyId()));
+        return Review.WithIdBuilder()
+                .reviewId(ReviewId.of(entity.getId()))
+                .reviewDetails(reviewDetails(entity))
+                .reviewGrades(reviewGrades(entity))
+                .authorId(AuthorId.of(entity.getMemberId()))
+                .companyId(CompanyId.of(entity.getCompanyId()))
+                .build();
     }
 
     private ReviewDetails reviewDetails(final ReviewEntity entity) {
-        return ReviewDetails.createWithDate(entity.getContent(), entity.getPosition(),
-                entity.getCareerPath(), entity.getCreatedAt(), entity.getModifiedAt());
+        return ReviewDetails.WithDateBuilder()
+                .content(entity.getContent())
+                .position(entity.getPosition())
+                .careerPath(entity.getCareerPath())
+                .createdAt(entity.getCreatedAt())
+                .modifiedAt(entity.getModifiedAt())
+                .build();
     }
 
     private Grades reviewGrades(final ReviewEntity entity) {
-        return Grades.createWithTotal(entity.getTotalGrade(), entity.getSalaryAndBenefits(), entity.getWorkLifeBalance(),
-                entity.getOrganizationalCulture(), entity.getCareerAdvancement());
+        return Grades.WithTotalBuilder()
+                .totalGrade(entity.getTotalGrade())
+                .salaryAndBenefits(entity.getSalaryAndBenefits())
+                .workLifeBalance(entity.getWorkLifeBalance())
+                .organizationalCulture(entity.getOrganizationalCulture())
+                .careerAdvancement(entity.getCareerAdvancement())
+                .build();
     }
 
 }

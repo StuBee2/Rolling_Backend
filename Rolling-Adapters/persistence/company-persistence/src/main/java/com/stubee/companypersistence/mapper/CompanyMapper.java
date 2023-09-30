@@ -3,17 +3,13 @@ package com.stubee.companypersistence.mapper;
 import com.stubee.persistencecommons.annotations.DomainObjectMapper;
 import com.stubee.persistencecommons.entity.CompanyEntity;
 import com.stubee.rollingdomains.common.model.Grades;
-import com.stubee.rollingdomains.domain.company.model.Company;
-import com.stubee.rollingdomains.domain.company.model.CompanyDetails;
-import com.stubee.rollingdomains.domain.company.model.CompanyId;
-import com.stubee.rollingdomains.domain.company.model.RegistrantId;
+import com.stubee.rollingdomains.domain.company.model.*;
 
 import java.util.List;
 
 @DomainObjectMapper
 public class CompanyMapper implements com.stubee.persistencecommons.mapper.DomainObjectMapper<CompanyEntity, Company> {
 
-    /** Company Entity Except Id */
     @Override
     public CompanyEntity toEntity(final Company domain) {
 
@@ -32,7 +28,6 @@ public class CompanyMapper implements com.stubee.persistencecommons.mapper.Domai
                 .build();
     }
 
-    /** Company Entity With Id */
     public CompanyEntity toEntityWithId(final Company domain) {
         return CompanyEntity.builder()
                 .id(domain.companyId().getId())
@@ -57,8 +52,12 @@ public class CompanyMapper implements com.stubee.persistencecommons.mapper.Domai
             return null;
         }
 
-        return Company.createWithId(CompanyId.create(entity.getId()), companyDetails(entity),
-                companyGrades(entity), RegistrantId.of(entity.getRegistrantId()));
+        return Company.WithIdBuilder()
+                .companyId(CompanyId.of(entity.getId()))
+                .companyDetails(companyDetails(entity))
+                .companyGrades(companyGrades(entity))
+                .registrantId(RegistrantId.of(entity.getRegistrantId()))
+                .build();
     }
 
     public List<Company> toDomainList(final List<CompanyEntity> entityList) {
@@ -66,13 +65,25 @@ public class CompanyMapper implements com.stubee.persistencecommons.mapper.Domai
     }
 
     private CompanyDetails companyDetails(final CompanyEntity entity) {
-        return CompanyDetails.createWithDate(entity.getName(), entity.getAddress(), entity.getDescription(), entity.getImgUrl(),
-                entity.getCompanyStatus(), entity.getCreatedAt(), entity.getModifiedAt());
+        return CompanyDetails.WithDateBuilder()
+                .name(entity.getName())
+                .companyAddress(Address.of(entity.getAddress()))
+                .description(entity.getDescription())
+                .imgUrl(entity.getImgUrl())
+                .companyStatus(entity.getCompanyStatus())
+                .createdAt(entity.getCreatedAt())
+                .modifiedAt(entity.getModifiedAt())
+                .build();
     }
 
     private Grades companyGrades(final CompanyEntity entity) {
-        return Grades.createWithTotal(entity.getTotalGrade(), entity.getSalaryAndBenefits(), entity.getWorkLifeBalance(),
-                entity.getOrganizationalCulture(), entity.getCareerAdvancement());
+        return Grades.WithTotalBuilder()
+                .totalGrade(entity.getTotalGrade())
+                .salaryAndBenefits(entity.getSalaryAndBenefits())
+                .workLifeBalance(entity.getWorkLifeBalance())
+                .organizationalCulture(entity.getOrganizationalCulture())
+                .careerAdvancement(entity.getCareerAdvancement())
+                .build();
     }
 
 }
