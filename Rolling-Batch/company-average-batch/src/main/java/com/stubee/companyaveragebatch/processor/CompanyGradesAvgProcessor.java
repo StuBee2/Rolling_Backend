@@ -33,7 +33,6 @@ public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, L
     @Override
     public List<Company> process(final List<Company> readCompanyList) {
         log.info("Processor Start");
-        log.info("ReadCompanyList Size : {}", readCompanyList.size());
 
         final List<Company> processedCompanyList = new ArrayList<>();
 
@@ -61,6 +60,8 @@ public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, L
             final List<ReviewInfoResponse> reviewList = queryReviewInfoListByCompanyUseCase.get(companyId,
                     PageRequest.of(reviewPage, PAGE_SIZE)).data();
 
+            log.info("ReviewList Size : {}", reviewList.size());
+
             reviewList.forEach(review -> {
                 salaryAndBenefitsSum += review.salaryAndBenefits();
                 workLifeBalanceSum += review.workLifeBalance();
@@ -83,8 +84,12 @@ public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, L
         final double organizationalCultureAvg = calculateAverage(organizationalCultureSum);
         final double careerAdvancementAvg = calculateAverage(careerAdvancementSum);
 
-        final Grades updatedGrades = Grades.create(salaryAndBenefitsAvg, workLifeBalanceAvg,
-                organizationalCultureAvg, careerAdvancementAvg);
+        final Grades updatedGrades = Grades.ExceptTotalBuilder()
+                .salaryAndBenefits(salaryAndBenefitsAvg)
+                .workLifeBalance(workLifeBalanceAvg)
+                .organizationalCulture(organizationalCultureAvg)
+                .careerAdvancement(careerAdvancementAvg)
+                .build();
 
         log.info("totalAvg : {}", updatedGrades.totalGrade());
         log.info("salaryAndBenefitsAvg : {}", salaryAndBenefitsAvg);

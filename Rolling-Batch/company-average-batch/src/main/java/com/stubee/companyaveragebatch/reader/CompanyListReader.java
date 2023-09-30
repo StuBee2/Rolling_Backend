@@ -30,7 +30,7 @@ public class CompanyListReader implements ItemReader<List<Company>> {
     }
 
     private List<Company> determineItems(final List<Company> companyList) {
-        log.info("CompanyList : {}", companyList.size());
+        log.info("CompanyList Size : {}", companyList.size());
 
         if (companyList.isEmpty()) {
             return null;
