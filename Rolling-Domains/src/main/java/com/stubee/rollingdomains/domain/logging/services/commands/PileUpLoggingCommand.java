@@ -11,6 +11,10 @@ public record PileUpLoggingCommand(
     }
 
     public Logging toDomain(final MemberId memberId) {
-        return Logging.createExceptLoggingId(description, module, memberId);
+        return Logging.ExceptIdBuilder()
+                .description(description)
+                .module(module)
+                .memberId(memberId)
+                .build();
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@EnableBatchProcessing
 @ComponentScan(basePackages = {
         "com.stubee.companyaveragebatch",
 
@@ -20,7 +21,6 @@ import org.springframework.context.annotation.ComponentScan;
         "com.stubee.reviewpersistence",
         "com.stubee.persistencecommons"
 })
-@EnableBatchProcessing
 public class CompanyAverageBatchApplication {
 
     public static void main(String[] args) {

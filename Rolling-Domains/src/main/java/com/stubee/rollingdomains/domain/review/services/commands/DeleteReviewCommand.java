@@ -7,6 +7,6 @@ import java.util.UUID;
 public record DeleteReviewCommand(
         ReviewId reviewId) {
     public static DeleteReviewCommand toCommand(final UUID companyId) {
-        return new DeleteReviewCommand(ReviewId.create(companyId));
+        return new DeleteReviewCommand(ReviewId.of(companyId));
     }
 }

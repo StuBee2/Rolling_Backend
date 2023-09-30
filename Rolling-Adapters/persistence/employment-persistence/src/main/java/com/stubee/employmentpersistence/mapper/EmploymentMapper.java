@@ -18,13 +18,15 @@ public class EmploymentMapper implements com.stubee.persistencecommons.mapper.Do
 
     @Override
     public Employment toDomain(final EmploymentEntity entity) {
-        return Employment.createWithEmploymentId(EmploymentId.of(entity.getId()),
-                EmployeeId.of(entity.getEmployeeId()), EmployerId.of(entity.getEmployerId()),
-                employmentDetails(entity));
-    }
-
-    private EmploymentDetails employmentDetails(final EmploymentEntity entity) {
-        return EmploymentDetails.createWithDate(entity.getEmploymentStatus(), entity.getCreatedAt());
+        return Employment.WithIdBuilder()
+                .employmentId(EmploymentId.of(entity.getId()))
+                .employeeId(EmployeeId.of(entity.getEmployeeId()))
+                .employerId(EmployerId.of(entity.getEmployerId()))
+                .employmentDetails(EmploymentDetails.WithDateBuilder()
+                        .employmentStatus(entity.getEmploymentStatus())
+                        .createdAt(entity.getCreatedAt())
+                        .build())
+                .build();
     }
 
 }

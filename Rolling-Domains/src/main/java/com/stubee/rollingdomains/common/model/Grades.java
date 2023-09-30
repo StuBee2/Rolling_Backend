@@ -1,39 +1,48 @@
 package com.stubee.rollingdomains.common.model;
 
-import lombok.AccessLevel;
+import com.stubee.rollingdomains.common.exception.WrongCalculationException;
 import lombok.Builder;
 
-@Builder(access = AccessLevel.PRIVATE)
+import java.util.Objects;
+
 public record Grades(
         Double totalGrade,
         Double salaryAndBenefits,
         Double workLifeBalance,
         Double organizationalCulture,
         Double careerAdvancement) {
-    public static Grades create(final double salaryAndBenefits, final double workLifeBalance,
-                                 final double organizationalCulture, final double careerAdvancement) {
-        return Grades.builder()
-                .totalGrade(calculateTotalGrade(salaryAndBenefits, workLifeBalance, organizationalCulture, careerAdvancement))
-                .salaryAndBenefits(salaryAndBenefits)
-                .workLifeBalance(workLifeBalance)
-                .organizationalCulture(organizationalCulture)
-                .careerAdvancement(careerAdvancement)
-                .build();
+    public static Grades zeroGrades() {
+        return new Grades(0.0, 0.0, 0.0, 0.0, 0.0);
     }
 
-    public static Grades createWithTotal(final double totalGrade, final double salaryAndBenefits, final double workLifeBalance,
-                                          final double organizationalCulture, final double careerAdvancement) {
-        return Grades.builder()
-                .totalGrade(totalGrade)
-                .salaryAndBenefits(salaryAndBenefits)
-                .workLifeBalance(workLifeBalance)
-                .organizationalCulture(organizationalCulture)
-                .careerAdvancement(careerAdvancement)
-                .build();
+    @Builder(builderClassName = "ExceptTotalBuilder", builderMethodName = "ExceptTotalBuilder")
+    public Grades(double salaryAndBenefits, double workLifeBalance, double organizationalCulture, double careerAdvancement) {
+        this(calculateTotalGrade(salaryAndBenefits, workLifeBalance, organizationalCulture, careerAdvancement),
+                salaryAndBenefits, workLifeBalance, organizationalCulture, careerAdvancement);
+    }
+
+    @Builder(builderClassName = "WithTotalBuilder", builderMethodName = "WithTotalBuilder")
+    public Grades {
+        Objects.requireNonNull(totalGrade);
+        isRightCalculation();
+        Objects.requireNonNull(salaryAndBenefits);
+        Objects.requireNonNull(workLifeBalance);
+        Objects.requireNonNull(organizationalCulture);
+        Objects.requireNonNull(careerAdvancement);
     }
 
     private static double calculateTotalGrade(final double salaryAndBenefits, final double workLifeBalance,
                                                final double organizationalCulture, final double careerAdvancement) {
+        return Math.round((salaryAndBenefits+workLifeBalance+organizationalCulture+careerAdvancement)/4.0*10)/10.0;
+    }
+
+    private void isRightCalculation() {
+        if(!totalGrade.equals(calculateTotalGrade())) {
+            throw WrongCalculationException.EXCEPTION;
+        }
+    }
+
+    private double calculateTotalGrade() {
         return Math.round((salaryAndBenefits+workLifeBalance+organizationalCulture+careerAdvancement)/4.0*10)/10.0;
     }
 }

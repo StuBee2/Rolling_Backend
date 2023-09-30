@@ -45,7 +45,7 @@ public class OAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     }
 
     private String determineTargetUrl(Authentication authentication) {
-        this.isNotMatchedUri(cookieManager.getCookie(REDIRECT_URI_PARAM_COOKIE_NAME)
+        isNotMatchedUri(cookieManager.getCookie(REDIRECT_URI_PARAM_COOKIE_NAME)
                 .map(Cookie::getValue));
 
         Member member = ((CustomMemberDetails) authentication.getPrincipal()).getMember();
@@ -62,21 +62,20 @@ public class OAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
                 .build().toUriString();
     }
 
-    private void isNotMatchedUri(final Optional<String> redirectUri) {
-        if (redirectUri.isPresent() && !isAuthorizedRedirectUri(redirectUri.get())) {
-            throw new IllegalArgumentException("redirect URIs are not matched");
-        }
-    }
-
     private void clearAuthenticationAttributesAndCookies(HttpServletRequest request) {
         super.clearAuthenticationAttributes(request);
 
         cookieAuthorizationRequestRepository.removeAuthorizationRequestCookies();
     }
 
+    private void isNotMatchedUri(final Optional<String> redirectUri) {
+        if (redirectUri.isPresent() && !isAuthorizedRedirectUri(redirectUri.get())) {
+            throw new IllegalArgumentException("redirect URIs are not matched");
+        }
+    }
+
     private boolean isAuthorizedRedirectUri(final String uri) {
         URI clientRedirectUri = URI.create(uri);
-        //URI authorizedUri = URI.create(redirectUri);
         URI authorizedUri = URI.create("/login/success");
 
         return authorizedUri.getHost().equalsIgnoreCase(clientRedirectUri.getHost())

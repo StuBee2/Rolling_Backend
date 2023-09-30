@@ -10,7 +10,7 @@ public class CompanyId extends BaseId {
         super(id);
     }
 
-    public static CompanyId create(final UUID id) {
+    public static CompanyId of(final UUID id) {
         return new CompanyId(id);
     }
 

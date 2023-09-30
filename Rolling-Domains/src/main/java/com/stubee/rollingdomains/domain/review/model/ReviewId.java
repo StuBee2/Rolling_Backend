@@ -10,7 +10,7 @@ public class ReviewId extends BaseId {
         super(id);
     }
 
-    public static ReviewId create(final UUID id) {
+    public static ReviewId of(final UUID id) {
         return new ReviewId(id);
     }
 
