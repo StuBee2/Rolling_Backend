@@ -18,7 +18,7 @@ public record MemberDetails(
 
     @Builder(builderClassName = "AllArgsBuilder", builderMethodName = "AllArgsBuilder")
     public MemberDetails {
-        Objects.requireNonNull(memberRole);
+        Objects.requireNonNull(memberRole, "MemberRole can not be null");
     }
 
     public MemberDetails updateNickName(final String nickName) {

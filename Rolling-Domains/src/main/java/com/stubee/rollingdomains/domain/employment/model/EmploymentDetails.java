@@ -16,6 +16,6 @@ public record EmploymentDetails(
 
     @Builder(builderClassName = "WithDateBuilder", builderMethodName = "WithDateBuilder")
     public EmploymentDetails {
-        Objects.requireNonNull(employmentStatus);
+        Objects.requireNonNull(employmentStatus, "EmploymentStatus can not be null");
     }
 }
