@@ -78,6 +78,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(ErrorResponse.create(ErrorCode.METHOD_NOT_VALID), BAD_REQUEST);
     }
 
+    @ExceptionHandler(NullPointerException.class)
+    protected ResponseEntity<ErrorResponse> handleNullPointerException(NullPointerException e) {
+        log.error("NullPointerException message : {}", e.getMessage());
+
+        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.INTERNAL_SERVER_ERROR), INTERNAL_SERVER_ERROR);
+    }
+
     @ExceptionHandler(Exception.class)
     protected ResponseEntity<ErrorResponse> handleException(Exception e) {
         log.error("Exception class : {}", e.getClass().getSimpleName());
