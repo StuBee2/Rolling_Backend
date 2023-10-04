@@ -33,7 +33,7 @@ public class AuthService implements RefreshTokenService, CertifyAlumniService {
         parseJwtPort.isWrongType(claims, JwtType.REFRESH);
 
         final String accessToken = provideJwtPort.generateAccessToken(UUID.fromString(claims.getBody().getSubject()),
-                (MemberRole) claims.getHeader().get("authority"));
+                MemberRole.valueOf((String) claims.getBody().get("authority")));
 
         return RefreshTokenResponse.of(accessToken);
     }
