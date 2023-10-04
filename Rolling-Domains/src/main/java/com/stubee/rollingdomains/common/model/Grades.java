@@ -24,11 +24,11 @@ public record Grades(
     @Builder(builderClassName = "WithTotalBuilder", builderMethodName = "WithTotalBuilder")
     public Grades {
         Objects.requireNonNull(totalGrade);
-        isRightCalculation();
         Objects.requireNonNull(salaryAndBenefits);
         Objects.requireNonNull(workLifeBalance);
         Objects.requireNonNull(organizationalCulture);
         Objects.requireNonNull(careerAdvancement);
+        isRightCalculation(totalGrade, salaryAndBenefits, workLifeBalance, organizationalCulture, careerAdvancement);
     }
 
     private static double calculateTotalGrade(final double salaryAndBenefits, final double workLifeBalance,
@@ -36,13 +36,9 @@ public record Grades(
         return Math.round((salaryAndBenefits+workLifeBalance+organizationalCulture+careerAdvancement)/4.0*10)/10.0;
     }
 
-    private void isRightCalculation() {
-        if(!totalGrade.equals(calculateTotalGrade())) {
+    private void isRightCalculation(double totalGrade, double salaryAndBenefits, double workLifeBalance, double organizationalCulture, double careerAdvancement) {
+        if(!(totalGrade==calculateTotalGrade(salaryAndBenefits, workLifeBalance, organizationalCulture, careerAdvancement))) {
             throw WrongCalculationException.EXCEPTION;
         }
-    }
-
-    private double calculateTotalGrade() {
-        return Math.round((salaryAndBenefits+workLifeBalance+organizationalCulture+careerAdvancement)/4.0*10)/10.0;
     }
 }
