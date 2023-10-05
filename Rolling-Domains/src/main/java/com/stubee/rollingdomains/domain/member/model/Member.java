@@ -17,8 +17,8 @@ public record Member (
 
     @Builder(builderClassName = "WithIdBuilder", builderMethodName = "WithIdBuilder")
     public Member {
-        Objects.requireNonNull(socialDetails);
-        Objects.requireNonNull(memberDetails);
+        Objects.requireNonNull(socialDetails, "SocialDetails can not be null");
+        Objects.requireNonNull(memberDetails, "MemberDetails can not be null");
     }
 
     public Member updateLoginId(final String socialLoginId) {

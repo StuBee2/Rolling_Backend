@@ -14,10 +14,10 @@ public record SocialDetails(
         String imageUrl) {
     @Builder(builderClassName = "AllArgsBuilder", builderMethodName = "AllArgsBuilder")
     public SocialDetails {
-        Objects.requireNonNull(socialId);
-        Objects.requireNonNull(socialLoginId);
-        Objects.requireNonNull(loginType);
-        Objects.requireNonNull(name);
+        Objects.requireNonNull(socialId, "SocialId can not be null");
+        Objects.requireNonNull(socialLoginId, "SocialLoginId can not be null");
+        Objects.requireNonNull(loginType, "LoginType can not be null");
+        Objects.requireNonNull(name, "Name can not be null");
     }
 
     public SocialDetails updateLoginId(final String socialLoginId) {

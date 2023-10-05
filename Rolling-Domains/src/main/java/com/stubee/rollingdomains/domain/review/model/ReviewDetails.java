@@ -18,9 +18,9 @@ public record ReviewDetails(
 
     @Builder(builderClassName = "WithDateBuilder", builderMethodName = "WithDateBuilder")
     public ReviewDetails {
-        Objects.requireNonNull(content);
-        Objects.requireNonNull(position);
-        Objects.requireNonNull(careerPath);
+        Objects.requireNonNull(content, "Content can not be null");
+        Objects.requireNonNull(position, "Position can not be null");
+        Objects.requireNonNull(careerPath, "CareerPath can not be null");
     }
 
 }

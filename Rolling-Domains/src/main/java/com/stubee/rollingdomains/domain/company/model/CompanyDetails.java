@@ -21,10 +21,10 @@ public record CompanyDetails(
 
     @Builder(builderClassName = "WithDateBuilder", builderMethodName = "WithDateBuilder")
     public CompanyDetails {
-        Objects.requireNonNull(name);
-        Objects.requireNonNull(companyAddress);
-        Objects.requireNonNull(description);
-        Objects.requireNonNull(companyStatus);
+        Objects.requireNonNull(name, "CompanyName can not be null");
+        Objects.requireNonNull(companyAddress, "CompanyAddress can not be null");
+        Objects.requireNonNull(description, "Description can not be null");
+        Objects.requireNonNull(companyStatus, "CompanyStatus can not be null");
     }
 
     public CompanyDetails updateStatus(final CompanyStatus companyStatus) {

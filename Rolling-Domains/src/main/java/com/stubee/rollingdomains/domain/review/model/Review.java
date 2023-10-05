@@ -21,10 +21,10 @@ public record Review (
 
     @Builder(builderClassName = "WithIdBuilder", builderMethodName = "WithIdBuilder")
     public Review {
-        Objects.requireNonNull(reviewDetails);
-        Objects.requireNonNull(reviewGrades);
-        Objects.requireNonNull(authorId);
-        Objects.requireNonNull(companyId);
+        Objects.requireNonNull(reviewDetails, "ReviewDetails can not be null");
+        Objects.requireNonNull(reviewGrades, "ReviewGrades can not be null");
+        Objects.requireNonNull(authorId, "AuthorId can not be null");
+        Objects.requireNonNull(companyId, "CompanyId can not be null");
     }
 
     public void isAuthor(final MemberId memberId) {

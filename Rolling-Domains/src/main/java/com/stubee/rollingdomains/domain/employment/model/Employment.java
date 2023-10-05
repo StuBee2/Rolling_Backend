@@ -16,8 +16,8 @@ public record Employment(
 
     @Builder(builderClassName = "WithIdBuilder", builderMethodName = "WithIdBuilder")
     public Employment {
-        Objects.requireNonNull(employeeId);
-        Objects.requireNonNull(employerId);
-        Objects.requireNonNull(employmentDetails);
+        Objects.requireNonNull(employeeId, "EmployeeId can not be null");
+        Objects.requireNonNull(employerId, "EmployerId can not be null");
+        Objects.requireNonNull(employmentDetails, "EmploymentDetails can not be null");
     }
 }

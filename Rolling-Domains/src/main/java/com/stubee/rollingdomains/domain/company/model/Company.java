@@ -18,9 +18,9 @@ public record Company (
 
     @Builder(builderClassName = "WithIdBuilder", builderMethodName = "WithIdBuilder")
     public Company {
-        Objects.requireNonNull(companyDetails);
-        Objects.requireNonNull(companyGrades);
-        Objects.requireNonNull(registrantId);
+        Objects.requireNonNull(companyDetails, "CompanyDetails can not be null");
+        Objects.requireNonNull(companyGrades, "CompanyGrades can not be null");
+        Objects.requireNonNull(registrantId, "RegistrantId can not be null");
     }
 
     public Company updateGrades(final Grades companyGrades) {
