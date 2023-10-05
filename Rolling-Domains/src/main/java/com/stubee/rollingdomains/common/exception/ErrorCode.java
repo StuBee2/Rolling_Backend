@@ -16,6 +16,8 @@ public enum ErrorCode {
 
     WRONG_CALCULATION(500, "Calculation is wrong"),
 
+    MEDIA_TYPE_NOT_SUPPORTED(415, "Http media type is not supported"),
+
     DUPLICATED_NICKNAME(409, "Nickname is duplicated"),
     DUPLICATED_EMAIL(409, "Email is duplicated"),
     DUPLICATED_COMPANY_NAME(409, "Company name is duplicated"),

@@ -6,6 +6,7 @@ import com.stubee.rollingdomains.common.exception.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.NestedRuntimeException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.ServletRequestBindingException;
@@ -76,6 +77,13 @@ public class GlobalExceptionHandler {
         log.error("MethodArgumentNotValidException message : {}", e.getMessage());
 
         return new ResponseEntity<>(ErrorResponse.create(ErrorCode.METHOD_NOT_VALID), BAD_REQUEST);
+    }
+
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    protected ResponseEntity<ErrorResponse> handleHttpMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException e) {
+        log.error("HttpMediaTypeNotSupportedException message : {}", e.getMessage());
+
+        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.MEDIA_TYPE_NOT_SUPPORTED), UNSUPPORTED_MEDIA_TYPE);
     }
 
     @ExceptionHandler(NullPointerException.class)
