@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Getter
 @Setter
 @Configuration
-@ConfigurationProperties(prefix = "naver")
+@ConfigurationProperties(prefix = "app.naver")
 public class NaverProperties {
 
     private String baseUrl;

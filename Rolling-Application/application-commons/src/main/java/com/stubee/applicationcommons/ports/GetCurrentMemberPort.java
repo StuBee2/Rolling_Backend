@@ -1,9 +1,9 @@
-package com.stubee.rollingdomains.domain.member.services;
+package com.stubee.applicationcommons.ports;
 
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 
-public interface GetMemberInfoService {
+public interface GetCurrentMemberPort {
 
     Member getMember();
 
