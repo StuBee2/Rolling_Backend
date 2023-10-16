@@ -1,4 +1,4 @@
-package com.stubee.rollingdomains.domain.auth.services.response;
+package com.stubee.authapplication.usecases;
 
 public record RefreshTokenResponse(
         String accessToken) {
