@@ -2,7 +2,7 @@ package com.stubee.reviewpersistence.mapper;
 
 import com.stubee.persistencecommons.annotations.DomainObjectMapper;
 import com.stubee.persistencecommons.entity.ReviewEntity;
-import com.stubee.rollingdomains.common.model.Grades;
+import com.stubee.rollingdomains.domain.review.model.ReviewGrades;
 import com.stubee.rollingdomains.domain.company.model.CompanyId;
 import com.stubee.rollingdomains.domain.review.model.AuthorId;
 import com.stubee.rollingdomains.domain.review.model.Review;
@@ -18,11 +18,11 @@ public class ReviewMapper implements com.stubee.persistencecommons.mapper.Domain
                 .content(domain.reviewDetails().content())
                 .position(domain.reviewDetails().position())
                 .careerPath(domain.reviewDetails().careerPath())
-                .totalGrade(domain.reviewGrades().totalGrade())
-                .salaryAndBenefits(domain.reviewGrades().salaryAndBenefits())
-                .workLifeBalance(domain.reviewGrades().workLifeBalance())
-                .organizationalCulture(domain.reviewGrades().organizationalCulture())
-                .careerAdvancement(domain.reviewGrades().careerAdvancement())
+                .totalGrade(domain.reviewGrades().getTotal())
+                .salaryAndBenefits(domain.reviewGrades().getSalaryAndBenefits())
+                .workLifeBalance(domain.reviewGrades().getWorkLifeBalance())
+                .organizationalCulture(domain.reviewGrades().getOrganizationalCulture())
+                .careerAdvancement(domain.reviewGrades().getCareerAdvancement())
                 .memberId(domain.authorId().getId())
                 .companyId(domain.companyId().getId())
                 .build();
@@ -53,9 +53,9 @@ public class ReviewMapper implements com.stubee.persistencecommons.mapper.Domain
                 .build();
     }
 
-    private Grades reviewGrades(final ReviewEntity entity) {
-        return Grades.WithTotalBuilder()
-                .totalGrade(entity.getTotalGrade())
+    private ReviewGrades reviewGrades(final ReviewEntity entity) {
+        return ReviewGrades.WithTotalBuilder()
+                .total(entity.getTotalGrade())
                 .salaryAndBenefits(entity.getSalaryAndBenefits())
                 .workLifeBalance(entity.getWorkLifeBalance())
                 .organizationalCulture(entity.getOrganizationalCulture())

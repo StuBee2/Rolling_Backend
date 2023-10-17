@@ -4,7 +4,7 @@ import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.batchcommons.annotations.Processor;
 import com.stubee.reviewapplication.usecases.query.response.ReviewInfoResponse;
 import com.stubee.reviewapplication.usecases.query.QueryReviewInfoListByCompanyUseCase;
-import com.stubee.rollingdomains.common.model.Grades;
+import com.stubee.rollingdomains.domain.company.model.CompanyGrades;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -43,7 +43,7 @@ public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, L
 
             this.calculateSums(company.companyId().getId());
 
-            final Grades updatedGrades = this.calculateAverages();
+            final CompanyGrades updatedGrades = this.calculateAverages();
 
             final Company updatedCompany = company.updateGrades(updatedGrades);
 
@@ -78,20 +78,20 @@ public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, L
         }
     }
 
-    private Grades calculateAverages() {
+    private CompanyGrades calculateAverages() {
         final double salaryAndBenefitsAvg = calculateAverage(salaryAndBenefitsSum);
         final double workLifeBalanceAvg = calculateAverage(workLifeBalanceSum);
         final double organizationalCultureAvg = calculateAverage(organizationalCultureSum);
         final double careerAdvancementAvg = calculateAverage(careerAdvancementSum);
 
-        final Grades updatedGrades = Grades.ExceptTotalBuilder()
+        final CompanyGrades updatedGrades = CompanyGrades.ExceptTotalBuilder()
                 .salaryAndBenefits(salaryAndBenefitsAvg)
                 .workLifeBalance(workLifeBalanceAvg)
                 .organizationalCulture(organizationalCultureAvg)
                 .careerAdvancement(careerAdvancementAvg)
                 .build();
 
-        log.info("totalAvg : {}", updatedGrades.totalGrade());
+        log.info("totalAvg : {}", updatedGrades.getTotal());
         log.info("salaryAndBenefitsAvg : {}", salaryAndBenefitsAvg);
         log.info("workLifeBalanceAvg : {}", workLifeBalanceAvg);
         log.info("organizationalCultureAvg : {}", organizationalCultureAvg);

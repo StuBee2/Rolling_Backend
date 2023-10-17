@@ -13,7 +13,6 @@ public enum ErrorCode {
     INTERNAL_SERVER_ERROR(500, "InternalServerException occurred"),
     FILE_CONVERT_ERROR(500, "FileConvertException occurred"),
     FILE_UPLOAD_ERROR(500, "FileUploadException occurred"),
-
     WRONG_CALCULATION(500, "Calculation is wrong"),
 
     MEDIA_TYPE_NOT_SUPPORTED(415, "Http media type is not supported"),
@@ -30,7 +29,7 @@ public enum ErrorCode {
     REVIEW_NOT_FOUND(404, "Review not found"),
 
     ACCESS_DENIED(403, "Access denied"),
-    NOT_MATCHED_MEMBER(403, "You are not the author/registrant"),
+    NOT_MATCHED_ID(403, "Not matched id"),
     WRONG_LOGIN_TYPE(403, "Check your login type"),
     ALUMNI_CERTIFY_FAILED(403, "Alumni certify failed"),
 

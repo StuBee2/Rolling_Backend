@@ -1,6 +1,6 @@
 package com.stubee.rollingdomains.domain.company.services.commands;
 
-import com.stubee.rollingdomains.common.model.Grades;
+import com.stubee.rollingdomains.domain.company.model.CompanyGrades;
 import com.stubee.rollingdomains.domain.company.model.Address;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import com.stubee.rollingdomains.domain.company.model.CompanyDetails;
@@ -25,7 +25,7 @@ public record RegisterCompanyCommand(
                         .description(description)
                         .imgUrl(imgUrl)
                         .build())
-                .companyGrades(Grades.zeroGrades())
+                .companyGrades(CompanyGrades.zero())
                 .registrantId(RegistrantId.of(memberId))
                 .build();
     }

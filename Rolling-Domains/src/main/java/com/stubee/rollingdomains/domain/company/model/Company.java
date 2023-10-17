@@ -1,6 +1,5 @@
 package com.stubee.rollingdomains.domain.company.model;
 
-import com.stubee.rollingdomains.common.model.Grades;
 import com.stubee.rollingdomains.domain.company.consts.CompanyStatus;
 import lombok.Builder;
 
@@ -9,10 +8,10 @@ import java.util.Objects;
 public record Company (
         CompanyId companyId,
         CompanyDetails companyDetails,
-        Grades companyGrades,
+        CompanyGrades companyGrades,
         RegistrantId registrantId) {
     @Builder(builderClassName = "ExceptIdBuilder", builderMethodName = "ExceptIdBuilder")
-    public Company(CompanyDetails companyDetails, Grades companyGrades, RegistrantId registrantId) {
+    public Company(CompanyDetails companyDetails, CompanyGrades companyGrades, RegistrantId registrantId) {
         this(null, companyDetails, companyGrades, registrantId);
     }
 
@@ -23,7 +22,7 @@ public record Company (
         Objects.requireNonNull(registrantId, "RegistrantId can not be null");
     }
 
-    public Company updateGrades(final Grades companyGrades) {
+    public Company updateGrades(final CompanyGrades companyGrades) {
         return new Company(companyId, companyDetails, companyGrades, registrantId);
     }
 

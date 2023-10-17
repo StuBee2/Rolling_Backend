@@ -1,5 +1,6 @@
 package com.stubee.rollingdomains.common.model;
 
+import com.stubee.rollingdomains.common.exception.NotMatchedIdException;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -13,5 +14,11 @@ import java.util.UUID;
 public abstract class BaseId {
 
     private final UUID id;
+
+    public void isEqual(BaseId baseId) {
+        if(!this.equals(baseId)) {
+            throw NotMatchedIdException.EXCEPTION;
+        }
+    }
 
 }

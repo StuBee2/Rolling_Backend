@@ -1,6 +1,6 @@
 package com.stubee.rollingdomains.domain.review.services.commands;
 
-import com.stubee.rollingdomains.common.model.Grades;
+import com.stubee.rollingdomains.domain.review.model.ReviewGrades;
 import com.stubee.rollingdomains.domain.company.model.CompanyId;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 import com.stubee.rollingdomains.domain.review.model.AuthorId;
@@ -18,7 +18,7 @@ public record RegisterReviewCommand(
         Short workLifeBalance,
         Short organizationalCulture,
         Short careerAdvancement) {
-    public static RegisterReviewCommand create(final UUID companyId, final String content, final String position, final String careerPath,
+    public static RegisterReviewCommand of(final UUID companyId, final String content, final String position, final String careerPath,
                                                final Short salaryAndBenefits, final Short workLifeBalance,
                                                final Short organizationalCulture, final Short careerAdvancement) {
         return new RegisterReviewCommand(companyId, content, position, careerPath,
@@ -32,11 +32,11 @@ public record RegisterReviewCommand(
                         .position(position)
                         .careerPath(careerPath)
                         .build())
-                .reviewGrades(Grades.ExceptTotalBuilder()
-                        .salaryAndBenefits(salaryAndBenefits)
-                        .workLifeBalance(workLifeBalance)
-                        .organizationalCulture(organizationalCulture)
-                        .careerAdvancement(careerAdvancement)
+                .reviewGrades(ReviewGrades.ExceptTotalBuilder()
+                        .salaryAndBenefits(Double.valueOf(salaryAndBenefits))
+                        .workLifeBalance(Double.valueOf(workLifeBalance))
+                        .organizationalCulture(Double.valueOf(organizationalCulture))
+                        .careerAdvancement(Double.valueOf(careerAdvancement))
                         .build())
                 .authorId(AuthorId.of(memberId))
                 .companyId(CompanyId.of(companyId))
