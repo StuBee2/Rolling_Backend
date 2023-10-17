@@ -15,22 +15,22 @@ subprojects {
         annotationProcessor "jakarta.persistence:jakarta.persistence-api"
     }
 
-    def querydslDir = "$buildDir/generated/querydsl"
+}
 
-    sourceSets {
-        main.java.srcDirs += [querydslDir]
-    }
+def querydslDir = "$buildDir/generated/querydsl"
 
-    tasks.withType(JavaCompile) {
-        options.annotationProcessorGeneratedSourcesDirectory = file(querydslDir)
-    }
+sourceSets {
+    main.java.srcDirs += [querydslDir]
+}
 
-    clean.doLast {
-        file(querydslDir).deleteDir()
-    }
+tasks.withType(JavaCompile) {
+    options.annotationProcessorGeneratedSourcesDirectory = file(querydslDir)
+}
 
-    tasks.named('test') {
-        useJUnitPlatform()
-    }
+clean.doLast {
+    file(querydslDir).deleteDir()
+}
 
+tasks.named('test') {
+    useJUnitPlatform()
 }
