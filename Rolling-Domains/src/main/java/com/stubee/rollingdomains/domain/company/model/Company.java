@@ -1,9 +1,8 @@
 package com.stubee.rollingdomains.domain.company.model;
 
+import com.stubee.rollingdomains.common.error.Assert;
 import com.stubee.rollingdomains.domain.company.consts.CompanyStatus;
 import lombok.Builder;
-
-import java.util.Objects;
 
 public record Company (
         CompanyId companyId,
@@ -17,9 +16,9 @@ public record Company (
 
     @Builder(builderClassName = "WithIdBuilder", builderMethodName = "WithIdBuilder")
     public Company {
-        Objects.requireNonNull(companyDetails, "CompanyDetails can not be null");
-        Objects.requireNonNull(companyGrades, "CompanyGrades can not be null");
-        Objects.requireNonNull(registrantId, "RegistrantId can not be null");
+        Assert.notNull(companyDetails, "CompanyDetails must not be null");
+        Assert.notNull(companyGrades, "CompanyGrades must not be null");
+        Assert.notNull(registrantId, "RegistrantId must not be null");
     }
 
     public Company updateGrades(final CompanyGrades companyGrades) {

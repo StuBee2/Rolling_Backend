@@ -1,10 +1,10 @@
 package com.stubee.rollingdomains.domain.member.model;
 
+import com.stubee.rollingdomains.common.error.Assert;
 import com.stubee.rollingdomains.domain.member.consts.MemberRole;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 public record MemberDetails(
         String nickName,
@@ -18,7 +18,7 @@ public record MemberDetails(
 
     @Builder(builderClassName = "AllArgsBuilder", builderMethodName = "AllArgsBuilder")
     public MemberDetails {
-        Objects.requireNonNull(memberRole, "MemberRole can not be null");
+        Assert.notNull(memberRole, "MemberRole must not be null");
     }
 
     public MemberDetails updateNickName(final String nickName) {
@@ -26,6 +26,9 @@ public record MemberDetails(
     }
 
     public MemberDetails elevateToMember() {
+        if(memberRole!=MemberRole.TEMP) {
+            return this;
+        }
         return new MemberDetails(nickName, MemberRole.MEMBER, createdAt, modifiedAt);
     }
 }

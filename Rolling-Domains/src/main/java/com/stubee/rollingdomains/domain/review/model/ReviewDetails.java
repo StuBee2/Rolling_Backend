@@ -1,9 +1,9 @@
 package com.stubee.rollingdomains.domain.review.model;
 
+import com.stubee.rollingdomains.common.error.Assert;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 public record ReviewDetails(
         String content,
@@ -18,9 +18,9 @@ public record ReviewDetails(
 
     @Builder(builderClassName = "WithDateBuilder", builderMethodName = "WithDateBuilder")
     public ReviewDetails {
-        Objects.requireNonNull(content, "Content can not be null");
-        Objects.requireNonNull(position, "Position can not be null");
-        Objects.requireNonNull(careerPath, "CareerPath can not be null");
+        Assert.notNull(content, "Content must not be null");
+        Assert.notNull(position, "Position must not be null");
+        Assert.notNull(careerPath, "CareerPath must not be null");
     }
 
 }

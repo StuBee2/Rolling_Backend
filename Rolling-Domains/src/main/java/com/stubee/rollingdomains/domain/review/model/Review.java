@@ -1,10 +1,9 @@
 package com.stubee.rollingdomains.domain.review.model;
 
+import com.stubee.rollingdomains.common.error.Assert;
 import com.stubee.rollingdomains.domain.company.model.CompanyId;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 import lombok.Builder;
-
-import java.util.Objects;
 
 public record Review (
         ReviewId reviewId,
@@ -19,10 +18,10 @@ public record Review (
 
     @Builder(builderClassName = "WithIdBuilder", builderMethodName = "WithIdBuilder")
     public Review {
-        Objects.requireNonNull(reviewDetails, "ReviewDetails can not be null");
-        Objects.requireNonNull(reviewGrades, "ReviewGrades can not be null");
-        Objects.requireNonNull(authorId, "AuthorId can not be null");
-        Objects.requireNonNull(companyId, "CompanyId can not be null");
+        Assert.notNull(reviewDetails, "ReviewDetails must not be null");
+        Assert.notNull(reviewGrades, "ReviewGrades must not be null");
+        Assert.notNull(authorId, "AuthorId must not be null");
+        Assert.notNull(companyId, "CompanyId must not be null");
     }
 
     public void isAuthor(final MemberId memberId) {

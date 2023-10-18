@@ -1,10 +1,10 @@
 package com.stubee.rollingdomains.domain.company.model;
 
+import com.stubee.rollingdomains.common.error.Assert;
 import com.stubee.rollingdomains.domain.company.consts.CompanyStatus;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 public record CompanyDetails(
         String name,
@@ -21,10 +21,10 @@ public record CompanyDetails(
 
     @Builder(builderClassName = "WithDateBuilder", builderMethodName = "WithDateBuilder")
     public CompanyDetails {
-        Objects.requireNonNull(name, "CompanyName can not be null");
-        Objects.requireNonNull(companyAddress, "CompanyAddress can not be null");
-        Objects.requireNonNull(description, "Description can not be null");
-        Objects.requireNonNull(companyStatus, "CompanyStatus can not be null");
+        Assert.notNull(name, "CompanyName must not be null");
+        Assert.notNull(companyAddress, "CompanyAddress must not be null");
+        Assert.notNull(description, "Description must not be null");
+        Assert.notNull(companyStatus, "CompanyStatus must not be null");
     }
 
     public CompanyDetails updateStatus(final CompanyStatus companyStatus) {
