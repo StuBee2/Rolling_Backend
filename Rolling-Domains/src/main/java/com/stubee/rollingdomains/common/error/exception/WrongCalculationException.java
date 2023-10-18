@@ -1,4 +1,7 @@
-package com.stubee.rollingdomains.common.exception;
+package com.stubee.rollingdomains.common.error.exception;
+
+import com.stubee.rollingdomains.common.error.CustomException;
+import com.stubee.rollingdomains.common.error.ErrorCode;
 
 public class WrongCalculationException extends CustomException {
 
