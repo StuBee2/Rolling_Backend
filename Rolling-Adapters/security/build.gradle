@@ -1,4 +1,7 @@
-subprojects {
+allprojects {
+
+    bootJar { enabled = false }
+    jar { enabled = true }
 
     dependencies {
         //HttpServletRequest

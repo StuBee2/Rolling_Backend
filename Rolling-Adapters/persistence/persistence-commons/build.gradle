@@ -1,4 +1,6 @@
 dependencies {
     //Annotation
     compileOnly 'org.springframework:spring-context:6.0.9'
+
+    implementation 'io.hypersistence:hypersistence-utils-hibernate-60:3.6.0'
 }
