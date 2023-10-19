@@ -84,7 +84,7 @@ public class SecurityConfig {
                 .requestMatchers(GET, "/review/list/**").permitAll()
 
                 //Logging
-                .requestMatchers(POST, "/logging").authenticated()
+                .requestMatchers(POST, "/logging").permitAll()
 
                 //File
                 .requestMatchers(POST, "/file").hasAnyRole("MEMBER", "ADMIN")

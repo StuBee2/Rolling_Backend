@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 @Listener
 @RequiredArgsConstructor
-public class SendEmailListener {
+public class SendEmailHandler {
 
     private final SendEmailPort sendEmailPort;
 
