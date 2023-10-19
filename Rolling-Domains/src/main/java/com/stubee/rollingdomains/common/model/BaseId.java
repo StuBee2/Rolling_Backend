@@ -1,6 +1,6 @@
 package com.stubee.rollingdomains.common.model;
 
-import com.stubee.rollingdomains.common.exception.NotMatchedIdException;
+import com.stubee.rollingdomains.common.error.exception.NotMatchedIdException;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

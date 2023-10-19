@@ -1,4 +1,4 @@
-package com.stubee.rollingdomains.common.exception;
+package com.stubee.rollingdomains.common.error;
 
 public record ErrorResponse(
         int status,

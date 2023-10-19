@@ -1,4 +1,4 @@
-package com.stubee.rollingdomains.common.exception;
+package com.stubee.rollingdomains.common.error;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +36,7 @@ public enum ErrorCode {
     EXPIRED_JWT(401, "Jwt is expired"),
     OAUTH_FAIL(401, "OAuth failed"),
 
+    OBJECT_VALID_FAIL(400, "Object validation failed"),
     METHOD_NOT_VALID(400, "Method is not validated"),
     EMPTY_FILE(400, "File is empty"),
     JWT_SIGNATURE_NOT_MATCHED(400, "JWT signature doesn't matched"),

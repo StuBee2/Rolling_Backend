@@ -1,7 +1,7 @@
 package com.stubee.oauth.exception;
 
-import com.stubee.rollingdomains.common.exception.CustomException;
-import com.stubee.rollingdomains.common.exception.ErrorCode;
+import com.stubee.rollingdomains.common.error.CustomException;
+import com.stubee.rollingdomains.common.error.ErrorCode;
 
 public class OAuthFailException extends CustomException {
 
