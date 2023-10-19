@@ -21,13 +21,17 @@ public class JwtFilter extends OncePerRequestFilter {
     @Override
     public void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                  FilterChain chain) throws IOException, ServletException {
-        final String token = parseJwtPort.extractTokenFromRequest(request);
+        final String token = extractFromHeader(request);
 
         if(token != null) {
-            SecurityContextHolder.getContext().setAuthentication(parseJwtPort.getAuthentication(token));
+            SecurityContextHolder.getContext().setAuthentication(parseJwtPort.getAuthenticationFromToken(token));
         }
 
         chain.doFilter(request, response);
+    }
+
+    private String extractFromHeader(HttpServletRequest request) {
+        return request.getHeader("Authorization");
     }
 
 }
