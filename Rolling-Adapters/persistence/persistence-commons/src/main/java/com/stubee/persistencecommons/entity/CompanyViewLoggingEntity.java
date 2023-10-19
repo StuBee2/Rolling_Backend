@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class CompanyViewLoggingEntity extends BaseTSIDEntity {
 
-    @NotNull
     private Long memberId;
 
     @NotNull
