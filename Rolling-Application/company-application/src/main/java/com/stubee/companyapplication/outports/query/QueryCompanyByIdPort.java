@@ -5,15 +5,14 @@ import com.stubee.rollingdomains.domain.company.exception.CompanyNotFoundExcepti
 import com.stubee.rollingdomains.domain.company.model.Company;
 
 import java.util.Optional;
-import java.util.UUID;
 
 public interface QueryCompanyByIdPort {
 
-    Optional<Company> findById(UUID id);
+    Optional<Company> findById(Long id);
 
-    Optional<CompanyQueryResponse> findInfoById(UUID id);
+    Optional<CompanyQueryResponse> findInfoById(Long id);
 
-    default CompanyQueryResponse getInfoById(final UUID id) {
+    default CompanyQueryResponse getInfoById(final Long id) {
         return findInfoById(id)
                 .orElseThrow(() -> CompanyNotFoundException.EXCEPTION);
     }

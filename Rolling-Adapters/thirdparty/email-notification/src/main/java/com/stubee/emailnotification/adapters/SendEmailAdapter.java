@@ -22,7 +22,7 @@ public class SendEmailAdapter implements SendEmailPort {
     }
 
     private SimpleMailMessage getWelcomeMessage(final String receiver) {
-        log.info("Send Welcome Email to {}" + receiver);
+        log.info("Send Welcome Email to {}", receiver);
 
         final SimpleMailMessage message = new SimpleMailMessage();
 

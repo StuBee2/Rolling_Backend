@@ -2,15 +2,13 @@ package com.stubee.rollingdomains.domain.employment.model;
 
 import com.stubee.rollingdomains.common.model.BaseId;
 
-import java.util.UUID;
-
 public class EmployeeId extends BaseId {
 
-    private EmployeeId(UUID id) {
+    private EmployeeId(Long id) {
         super(id);
     }
 
-    public static EmployeeId of(final UUID id) {
+    public static EmployeeId of(final Long id) {
         return new EmployeeId(id);
     }
 

@@ -4,8 +4,11 @@ plugins {
     id 'io.spring.dependency-management' version '1.1.0'
 }
 
-group = 'com.stubee'
-version = '0.0.1-SNAPSHOT'
+bootJar.enabled = false
+
+repositories {
+    mavenCentral()
+}
 
 configurations {
     compileOnly {
@@ -13,23 +16,14 @@ configurations {
     }
 }
 
-allprojects {
-    bootJar {
-        enabled = false
-    }
-
-    sourceCompatibility = '17'
-    targetCompatibility = '17'
-}
-
 subprojects {
-    group 'com.stubee'
-    version '1.0'
+    group = 'com.stubee'
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = '17'
 
     apply plugin: 'java'
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'org.springframework.boot'
-    apply plugin: 'jacoco'
 
     repositories {
         mavenCentral()
@@ -47,19 +41,8 @@ subprojects {
     test {
         useJUnitPlatform()
     }
-
-    jacocoTestReport {
-        reports {
-            xml.enabled true
-            html.enabled false
-        }
-    }
 }
 
 tasks.named('test') {
     useJUnitPlatform()
-}
-
-jar {
-    enabled = false
 }

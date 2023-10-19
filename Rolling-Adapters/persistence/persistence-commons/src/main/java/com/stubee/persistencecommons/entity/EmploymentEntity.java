@@ -1,5 +1,6 @@
 package com.stubee.persistencecommons.entity;
 
+import com.stubee.persistencecommons.entity.base.BaseTSIDEntity;
 import com.stubee.rollingdomains.domain.employment.consts.EmploymentStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -7,7 +8,6 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Table(name = "tbl_employment")
@@ -15,17 +15,13 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class EmploymentEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class EmploymentEntity extends BaseTSIDEntity {
 
     @NotNull
-    private UUID employeeId;
+    private Long employeeId;
 
     @NotNull
-    private UUID employerId;
+    private Long employerId;
 
     @NotNull
     @Enumerated(value = EnumType.STRING)

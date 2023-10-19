@@ -1,5 +1,6 @@
 package com.stubee.persistencecommons.entity;
 
+import com.stubee.persistencecommons.entity.base.BaseEntity;
 import com.stubee.rollingdomains.domain.member.consts.LoginType;
 import com.stubee.rollingdomains.domain.member.consts.MemberRole;
 import jakarta.persistence.*;

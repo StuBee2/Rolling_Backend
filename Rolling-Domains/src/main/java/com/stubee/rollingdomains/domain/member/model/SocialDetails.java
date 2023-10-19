@@ -1,9 +1,8 @@
 package com.stubee.rollingdomains.domain.member.model;
 
+import com.stubee.rollingdomains.common.error.Assert;
 import com.stubee.rollingdomains.domain.member.consts.LoginType;
 import lombok.Builder;
-
-import java.util.Objects;
 
 public record SocialDetails(
         String socialId,
@@ -14,10 +13,10 @@ public record SocialDetails(
         String imageUrl) {
     @Builder(builderClassName = "AllArgsBuilder", builderMethodName = "AllArgsBuilder")
     public SocialDetails {
-        Objects.requireNonNull(socialId, "SocialId can not be null");
-        Objects.requireNonNull(socialLoginId, "SocialLoginId can not be null");
-        Objects.requireNonNull(loginType, "LoginType can not be null");
-        Objects.requireNonNull(name, "Name can not be null");
+        Assert.notNull(socialId, "SocialId must not be null");
+        Assert.notNull(socialLoginId, "SocialLoginId must not be null");
+        Assert.notNull(loginType, "LoginType must not be null");
+        Assert.notNull(name, "Name must not be null");
     }
 
     public SocialDetails updateLoginId(final String socialLoginId) {

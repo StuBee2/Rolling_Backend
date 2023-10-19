@@ -2,7 +2,7 @@ package com.stubee.companypersistence.mapper;
 
 import com.stubee.persistencecommons.annotations.DomainObjectMapper;
 import com.stubee.persistencecommons.entity.CompanyEntity;
-import com.stubee.rollingdomains.common.model.Grades;
+import com.stubee.rollingdomains.domain.company.model.CompanyGrades;
 import com.stubee.rollingdomains.domain.company.model.*;
 
 import java.util.List;
@@ -19,11 +19,11 @@ public class CompanyMapper implements com.stubee.persistencecommons.mapper.Domai
                 .description(domain.companyDetails().description())
                 .imgUrl(domain.companyDetails().imgUrl())
                 .companyStatus(domain.companyDetails().companyStatus())
-                .totalGrade(domain.companyGrades().totalGrade())
-                .salaryAndBenefits(domain.companyGrades().salaryAndBenefits())
-                .workLifeBalance(domain.companyGrades().workLifeBalance())
-                .organizationalCulture(domain.companyGrades().organizationalCulture())
-                .careerAdvancement(domain.companyGrades().careerAdvancement())
+                .totalGrade(domain.companyGrades().getTotal())
+                .salaryAndBenefits(domain.companyGrades().getSalaryAndBenefits())
+                .workLifeBalance(domain.companyGrades().getWorkLifeBalance())
+                .organizationalCulture(domain.companyGrades().getOrganizationalCulture())
+                .careerAdvancement(domain.companyGrades().getCareerAdvancement())
                 .registrantId(domain.registrantId().getId())
                 .build();
     }
@@ -36,11 +36,11 @@ public class CompanyMapper implements com.stubee.persistencecommons.mapper.Domai
                 .description(domain.companyDetails().description())
                 .imgUrl(domain.companyDetails().imgUrl())
                 .companyStatus(domain.companyDetails().companyStatus())
-                .totalGrade(domain.companyGrades().totalGrade())
-                .salaryAndBenefits(domain.companyGrades().salaryAndBenefits())
-                .workLifeBalance(domain.companyGrades().workLifeBalance())
-                .organizationalCulture(domain.companyGrades().organizationalCulture())
-                .careerAdvancement(domain.companyGrades().careerAdvancement())
+                .totalGrade(domain.companyGrades().getTotal())
+                .salaryAndBenefits(domain.companyGrades().getSalaryAndBenefits())
+                .workLifeBalance(domain.companyGrades().getWorkLifeBalance())
+                .organizationalCulture(domain.companyGrades().getOrganizationalCulture())
+                .careerAdvancement(domain.companyGrades().getCareerAdvancement())
                 .registrantId(domain.registrantId().getId())
                 .createdAt(domain.companyDetails().createdAt())
                 .build();
@@ -76,9 +76,9 @@ public class CompanyMapper implements com.stubee.persistencecommons.mapper.Domai
                 .build();
     }
 
-    private Grades companyGrades(final CompanyEntity entity) {
-        return Grades.WithTotalBuilder()
-                .totalGrade(entity.getTotalGrade())
+    private CompanyGrades companyGrades(final CompanyEntity entity) {
+        return CompanyGrades.WithTotalBuilder()
+                .total(entity.getTotalGrade())
                 .salaryAndBenefits(entity.getSalaryAndBenefits())
                 .workLifeBalance(entity.getWorkLifeBalance())
                 .organizationalCulture(entity.getOrganizationalCulture())

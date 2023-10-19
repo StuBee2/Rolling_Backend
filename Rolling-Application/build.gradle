@@ -1,0 +1,13 @@
+subprojects {
+
+    bootJar { enabled = false }
+    jar { enabled = true }
+
+    dependencies {
+        compileOnly project(':Rolling-Domains')
+    }
+
+}
+
+bootJar { enabled = false }
+jar { enabled = true }

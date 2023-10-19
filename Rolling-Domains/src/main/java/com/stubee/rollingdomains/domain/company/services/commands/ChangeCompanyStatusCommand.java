@@ -1,15 +1,13 @@
 package com.stubee.rollingdomains.domain.company.services.commands;
 
-import java.util.UUID;
-
 public record ChangeCompanyStatusCommand(
-        UUID companyId,
+        Long companyId,
         boolean status) {
-    public static ChangeCompanyStatusCommand accept(final UUID companyId) {
+    public static ChangeCompanyStatusCommand accept(final Long companyId) {
         return new ChangeCompanyStatusCommand(companyId, true);
     }
 
-    public static ChangeCompanyStatusCommand deny(final UUID companyId) {
+    public static ChangeCompanyStatusCommand deny(final Long companyId) {
         return new ChangeCompanyStatusCommand(companyId, false);
     }
 }

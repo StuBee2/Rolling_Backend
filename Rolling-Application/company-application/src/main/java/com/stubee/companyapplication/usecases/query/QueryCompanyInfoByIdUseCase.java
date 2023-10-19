@@ -2,10 +2,8 @@ package com.stubee.companyapplication.usecases.query;
 
 import com.stubee.companyapplication.usecases.query.response.CompanyQueryResponse;
 
-import java.util.UUID;
-
 public interface QueryCompanyInfoByIdUseCase {
 
-    CompanyQueryResponse get(UUID companyId);
+    CompanyQueryResponse get(Long companyId);
 
 }

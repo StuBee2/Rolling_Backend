@@ -1,8 +1,8 @@
 package com.stubee.rollingapi.global.exception;
 
-import com.stubee.rollingdomains.common.exception.ErrorResponse;
-import com.stubee.rollingdomains.common.exception.CustomException;
-import com.stubee.rollingdomains.common.exception.ErrorCode;
+import com.stubee.rollingdomains.common.error.ErrorResponse;
+import com.stubee.rollingdomains.common.error.CustomException;
+import com.stubee.rollingdomains.common.error.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.NestedRuntimeException;
 import org.springframework.http.ResponseEntity;
@@ -84,13 +84,6 @@ public class GlobalExceptionHandler {
         log.error("HttpMediaTypeNotSupportedException message : {}", e.getMessage());
 
         return new ResponseEntity<>(ErrorResponse.create(ErrorCode.MEDIA_TYPE_NOT_SUPPORTED), UNSUPPORTED_MEDIA_TYPE);
-    }
-
-    @ExceptionHandler(NullPointerException.class)
-    protected ResponseEntity<ErrorResponse> handleNullPointerException(NullPointerException e) {
-        log.error("NullPointerException message : {}", e.getMessage());
-
-        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.INTERNAL_SERVER_ERROR), INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(Exception.class)

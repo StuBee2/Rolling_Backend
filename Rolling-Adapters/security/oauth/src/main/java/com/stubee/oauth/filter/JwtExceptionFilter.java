@@ -1,8 +1,8 @@
 package com.stubee.oauth.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.stubee.rollingdomains.common.exception.ErrorResponse;
-import com.stubee.rollingdomains.common.exception.ErrorCode;
+import com.stubee.rollingdomains.common.error.ErrorResponse;
+import com.stubee.rollingdomains.common.error.ErrorCode;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.UnsupportedJwtException;

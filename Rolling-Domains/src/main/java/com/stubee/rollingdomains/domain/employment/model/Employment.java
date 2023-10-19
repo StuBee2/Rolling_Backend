@@ -1,8 +1,7 @@
 package com.stubee.rollingdomains.domain.employment.model;
 
+import com.stubee.rollingdomains.common.error.Assert;
 import lombok.Builder;
-
-import java.util.Objects;
 
 public record Employment(
         EmploymentId employmentId,
@@ -16,8 +15,8 @@ public record Employment(
 
     @Builder(builderClassName = "WithIdBuilder", builderMethodName = "WithIdBuilder")
     public Employment {
-        Objects.requireNonNull(employeeId, "EmployeeId can not be null");
-        Objects.requireNonNull(employerId, "EmployerId can not be null");
-        Objects.requireNonNull(employmentDetails, "EmploymentDetails can not be null");
+        Assert.notNull(employeeId, "EmployeeId must not be null");
+        Assert.notNull(employerId, "EmployerId must not be null");
+        Assert.notNull(employmentDetails, "EmploymentDetails must not be null");
     }
 }

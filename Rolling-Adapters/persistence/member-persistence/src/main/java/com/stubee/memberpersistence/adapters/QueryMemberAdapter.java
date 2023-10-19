@@ -8,7 +8,6 @@ import com.stubee.rollingdomains.domain.member.model.Member;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Optional;
-import java.util.UUID;
 
 @Adapter
 @RequiredArgsConstructor
@@ -18,7 +17,7 @@ public class QueryMemberAdapter implements QueryMemberPort {
     private final MemberMapper memberMapper;
 
     @Override
-    public Optional<Member> findById(final UUID memberId) {
+    public Optional<Member> findById(final Long memberId) {
         return Optional.ofNullable(memberMapper.toDomain(
                 memberJpaRepository.findById(memberId).orElse(null)));
     }

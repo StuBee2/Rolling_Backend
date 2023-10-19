@@ -1,8 +1,6 @@
 package com.stubee.companypersistence.adapters;
 
-import com.stubee.companyapplication.outports.command.DeleteCompanyPort;
-import com.stubee.companyapplication.outports.command.RegisterCompanyPort;
-import com.stubee.companyapplication.outports.command.UpdateCompanyPort;
+import com.stubee.companyapplication.outports.command.CommandCompanyPort;
 import com.stubee.companypersistence.mapper.CompanyMapper;
 import com.stubee.companypersistence.repository.CommandCompanyJpaRepository;
 import com.stubee.persistencecommons.annotations.Adapter;
@@ -15,7 +13,7 @@ import java.util.List;
 
 @Adapter
 @RequiredArgsConstructor
-public class CommandCompanyAdapter implements RegisterCompanyPort, UpdateCompanyPort, DeleteCompanyPort {
+public class CommandCompanyAdapter implements CommandCompanyPort {
 
     private final CommandCompanyJpaRepository commandCompanyJpaRepository;
     private final CompanyMapper companyMapper;

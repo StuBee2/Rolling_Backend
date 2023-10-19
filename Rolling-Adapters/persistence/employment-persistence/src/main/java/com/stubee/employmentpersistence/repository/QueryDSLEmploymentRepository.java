@@ -24,7 +24,7 @@ public class QueryDSLEmploymentRepository implements QueryEmploymentRepository {
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public List<EmploymentQueryResponse> findInfoByEmployeeId(final UUID employeeId) {
+    public List<EmploymentQueryResponse> findInfoByEmployeeId(final Long employeeId) {
         return jpaQueryFactory
                 .select(queryResponseProjection())
                 .from(employmentEntity)
@@ -35,7 +35,7 @@ public class QueryDSLEmploymentRepository implements QueryEmploymentRepository {
     }
 
     @Override
-    public boolean existsByEmployeeIdAndEmployerId(final UUID employeeId, final UUID employerId) {
+    public boolean existsByEmployeeIdAndEmployerId(final Long employeeId, final Long employerId) {
         return queryDSLHelper.existsByOption(employmentEntity, isEqualEmployeeAndEmployer(employeeId, employerId)) != null;
     }
 

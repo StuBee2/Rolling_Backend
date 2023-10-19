@@ -1,5 +1,6 @@
 package com.stubee.persistencecommons.entity;
 
+import com.stubee.persistencecommons.entity.base.BaseEntity;
 import com.stubee.rollingdomains.domain.company.consts.CompanyStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -8,8 +9,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-
-import java.util.UUID;
 
 @Entity
 @Table(name = "tbl_company")
@@ -52,7 +51,6 @@ public class CompanyEntity extends BaseEntity {
     private Double careerAdvancement;
 
     @NotNull
-    @Column(name = "fk_registrant_id")
-    private UUID registrantId;
+    private Long registrantId;
 
 }

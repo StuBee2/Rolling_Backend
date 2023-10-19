@@ -4,8 +4,6 @@ import com.stubee.persistencecommons.entity.CompanyEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.UUID;
-
 @Repository
-public interface CommandCompanyJpaRepository extends JpaRepository<CompanyEntity, UUID> {
+public interface CommandCompanyJpaRepository extends JpaRepository<CompanyEntity, Long> {
 }

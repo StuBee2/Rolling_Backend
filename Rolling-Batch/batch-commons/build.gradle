@@ -1,3 +1,6 @@
+bootJar { enabled = false }
+jar { enabled = true }
+
 dependencies {
     compileOnly 'org.springframework:spring-context:6.0.9'
 }

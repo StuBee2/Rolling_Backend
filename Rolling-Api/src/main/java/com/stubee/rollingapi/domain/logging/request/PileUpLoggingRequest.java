@@ -5,8 +5,9 @@ import jakarta.validation.constraints.NotBlank;
 
 public record PileUpLoggingRequest(
         @NotBlank String description,
-        @NotBlank String module) {
+        @NotBlank String module,
+        Long memberId) {
     public PileUpLoggingCommand toCommand() {
-        return PileUpLoggingCommand.create(description, module);
+        return PileUpLoggingCommand.create(description, module, memberId);
     }
 }

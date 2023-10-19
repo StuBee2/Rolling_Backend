@@ -6,14 +6,14 @@ import java.util.List;
 
 public interface QueryCompanyByGradesPort {
 
-    List<Company> findByTotalGrade();
+    List<Company> getByTotalGrade();
 
-    List<Company> findBySalaryAndBenefits();
+    List<Company> getBySalaryAndBenefits();
 
-    List<Company> findByWorkLifeBalance();
+    List<Company> getByWorkLifeBalance();
 
-    List<Company> findByOrganizationalCulture();
+    List<Company> getByOrganizationalCulture();
 
-    List<Company> findByCareerAdvancement();
+    List<Company> getByCareerAdvancement();
 
 }

@@ -1,5 +1,5 @@
 dependencies {
-    compileOnly project(':Rolling-Domains')
-
     compileOnly project(':Rolling-Application:application-commons')
+
+    compileOnly 'org.springframework:spring-context:6.0.6'
 }

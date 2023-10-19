@@ -1,10 +1,9 @@
 package com.stubee.rollingdomains.domain.member.model;
 
+import com.stubee.rollingdomains.common.error.Assert;
 import com.stubee.rollingdomains.domain.member.consts.LoginType;
 import com.stubee.rollingdomains.domain.member.exception.WrongLoginTypeException;
 import lombok.Builder;
-
-import java.util.Objects;
 
 public record Member (
         MemberId memberId,
@@ -17,8 +16,8 @@ public record Member (
 
     @Builder(builderClassName = "WithIdBuilder", builderMethodName = "WithIdBuilder")
     public Member {
-        Objects.requireNonNull(socialDetails, "SocialDetails can not be null");
-        Objects.requireNonNull(memberDetails, "MemberDetails can not be null");
+        Assert.notNull(socialDetails, "SocialDetails must not be null");
+        Assert.notNull(memberDetails, "MemberDetails must not be null");
     }
 
     public Member updateLoginId(final String socialLoginId) {

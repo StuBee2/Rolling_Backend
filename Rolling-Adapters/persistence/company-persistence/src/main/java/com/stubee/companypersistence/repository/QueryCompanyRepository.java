@@ -5,21 +5,20 @@ import com.stubee.companyapplication.usecases.query.response.CompanyQueryRespons
 import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface QueryCompanyRepository {
 
-    boolean existsByCompanyId(UUID companyId);
+    boolean existsByCompanyId(Long companyId);
 
     boolean existsByCompanyName(String companyName);
 
-    CompanyEntity findById(UUID id);
+    CompanyEntity findById(Long id);
 
-    CompanyQueryResponse findInfoById(UUID companyId);
+    CompanyQueryResponse findInfoById(Long companyId);
 
     List<CompanyEntity> findByNameContaining(String companyName, PageRequest pageRequest);
 
-    List<CompanyEntity> findByRegistrantId(UUID registrantId, PageRequest pageRequest);
+    List<CompanyEntity> findByRegistrantId(Long registrantId, PageRequest pageRequest);
 
     List<CompanyEntity> findAll(PageRequest pageRequest);
 

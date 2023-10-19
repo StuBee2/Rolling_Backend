@@ -14,8 +14,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
-
 import static org.springframework.http.HttpStatus.*;
 
 @Tag(name = "Command Company", description = "Command Company API")
@@ -38,21 +36,21 @@ public class CommandCompanyController {
     @Operation(description = "Company 수락 (ADMIN)")
     @PatchMapping("/accept/{companyId}")
     @ResponseStatus(NO_CONTENT)
-    public void accept(final @PathVariable @NotNull UUID companyId) {
+    public void accept(final @PathVariable @NotNull Long companyId) {
         changeCompanyStatusUseCase.change(ChangeCompanyStatusCommand.accept(companyId));
     }
 
     @Operation(description = "Company 거절 (ADMIN)")
     @PatchMapping("/deny/{companyId}")
     @ResponseStatus(NO_CONTENT)
-    public void deny(final @PathVariable @NotNull UUID companyId) {
+    public void deny(final @PathVariable @NotNull Long companyId) {
         changeCompanyStatusUseCase.change(ChangeCompanyStatusCommand.deny(companyId));
     }
 
     @Operation(description = "Company 삭제 (ADMIN)")
     @DeleteMapping("/{companyId}")
     @ResponseStatus(NO_CONTENT)
-    public void delete(final @PathVariable UUID companyId) {
+    public void delete(final @PathVariable Long companyId) {
         deleteCompanyUseCase.delete(DeleteCompanyCommand.toCommand(companyId));
     }
 

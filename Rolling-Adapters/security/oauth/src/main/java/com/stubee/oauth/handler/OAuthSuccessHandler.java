@@ -18,7 +18,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Optional;
-import java.util.UUID;
 
 import static com.stubee.oauth.cookie.CookieAuthorizationRequestRepository.*;
 
@@ -50,7 +49,7 @@ public class OAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
         Member member = ((CustomMemberDetails) authentication.getPrincipal()).getMember();
 
-        UUID memberId = member.memberId().getId();
+        Long memberId = member.memberId().getId();
         MemberRole memberRole = member.memberDetails().memberRole();
 
         final String accessToken = provideJwtPort.generateAccessToken(memberId, memberRole);
