@@ -25,7 +25,6 @@ public class HistoryLoggingEntity extends BaseTSIDEntity {
     @NotNull
     private String module;
 
-    @NotNull
     private Long memberId;
 
     @NotNull
