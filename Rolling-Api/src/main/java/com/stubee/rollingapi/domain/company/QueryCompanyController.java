@@ -1,10 +1,10 @@
 package com.stubee.rollingapi.domain.company;
 
 import com.stubee.companyapplication.usecases.query.*;
+import com.stubee.companyapplication.usecases.query.response.CompanyQueryResponse;
+import com.stubee.companyapplication.usecases.query.response.CompanyResponse;
 import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.applicationcommons.dtos.response.PageDataResponse;
-import com.stubee.rollingdomains.domain.company.model.Company;
-import com.stubee.companyapplication.usecases.query.response.CompanyQueryResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -35,50 +35,50 @@ public class QueryCompanyController {
     @Operation(description = "Company Name으로 Company 검색")
     @GetMapping("/search")
     @ResponseStatus(OK)
-    public PageDataResponse<List<Company>> searchByName(final @RequestParam(name = "name") String companyName,
-                                                        final @ModelAttribute PageRequest pageRequest) {
+    public PageDataResponse<List<CompanyResponse>> searchByName(final @RequestParam(name = "name") String companyName,
+                                                                final @ModelAttribute PageRequest pageRequest) {
         return searchCompanyListByNameUseCase.get(companyName, pageRequest);
     }
 
     @Operation(description = "모든 Company List 조회 (ADMIN)")
     @GetMapping("/list/all")
     @ResponseStatus(OK)
-    public PageDataResponse<List<Company>> getAll(final @ModelAttribute PageRequest pageRequest) {
+    public PageDataResponse<List<CompanyResponse>> getAll(final @ModelAttribute PageRequest pageRequest) {
         return queryAllCompanyListUseCase.get(pageRequest);
     }
 
     @Operation(description = "Company TotalGrade Top 10")
     @GetMapping("/rank/total")
     @ResponseStatus(OK)
-    public List<Company> getByTotalGrade() {
+    public List<CompanyResponse> getByTotalGrade() {
         return queryCompanyListByGradesUseCase.getByTotalGrade();
     }
 
     @Operation(description = "Company Salary And Benefits Top 10")
     @GetMapping("/rank/salary-benefits")
     @ResponseStatus(OK)
-    public List<Company> getBySalaryAndBenefits() {
+    public List<CompanyResponse> getBySalaryAndBenefits() {
         return queryCompanyListByGradesUseCase.getBySalaryAndBenefits();
     }
 
     @Operation(description = "Company Work-Life Balance Top 10")
     @GetMapping("/rank/balance")
     @ResponseStatus(OK)
-    public List<Company> getByWorkLifeBalance() {
+    public List<CompanyResponse> getByWorkLifeBalance() {
         return queryCompanyListByGradesUseCase.getByWorkLifeBalance();
     }
 
     @Operation(description = "Company Organizational Culture Top 10")
     @GetMapping("/rank/culture")
     @ResponseStatus(OK)
-    public List<Company> getByOrganizationalCulture() {
+    public List<CompanyResponse> getByOrganizationalCulture() {
         return queryCompanyListByGradesUseCase.getByOrganizationalCulture();
     }
 
     @Operation(description = "Company Career Advancement Top 10")
     @GetMapping("/rank/career")
     @ResponseStatus(OK)
-    public List<Company> getByCareerAdvancement() {
+    public List<CompanyResponse> getByCareerAdvancement() {
         return queryCompanyListByGradesUseCase.getByCareerAdvancement();
     }
 

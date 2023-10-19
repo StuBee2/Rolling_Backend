@@ -2,8 +2,8 @@ package com.stubee.companyapplication.usecases.query.impl;
 
 import com.stubee.applicationcommons.annotations.QueryService;
 import com.stubee.companyapplication.outports.query.QueryCompanyByGradesPort;
+import com.stubee.companyapplication.usecases.query.response.CompanyResponse;
 import com.stubee.companyapplication.usecases.query.QueryCompanyListByGradesUseCase;
-import com.stubee.rollingdomains.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -15,28 +15,38 @@ public class QueryCompanyListByGradesApi implements QueryCompanyListByGradesUseC
     private final QueryCompanyByGradesPort queryCompanyByGradesPort;
 
     @Override
-    public List<Company> getByTotalGrade() {
-        return queryCompanyByGradesPort.getByTotalGrade();
+    public List<CompanyResponse> getByTotalGrade() {
+        return queryCompanyByGradesPort.getByTotalGrade().stream()
+                .map(CompanyResponse::of)
+                .toList();
     }
 
     @Override
-    public List<Company> getBySalaryAndBenefits() {
-        return queryCompanyByGradesPort.getBySalaryAndBenefits();
+    public List<CompanyResponse> getBySalaryAndBenefits() {
+        return queryCompanyByGradesPort.getBySalaryAndBenefits().stream()
+                .map(CompanyResponse::of)
+                .toList();
     }
 
     @Override
-    public List<Company> getByWorkLifeBalance() {
-        return queryCompanyByGradesPort.getByWorkLifeBalance();
+    public List<CompanyResponse> getByWorkLifeBalance() {
+        return queryCompanyByGradesPort.getByWorkLifeBalance().stream()
+                .map(CompanyResponse::of)
+                .toList();
     }
 
     @Override
-    public List<Company> getByOrganizationalCulture() {
-        return queryCompanyByGradesPort.getByOrganizationalCulture();
+    public List<CompanyResponse> getByOrganizationalCulture() {
+        return queryCompanyByGradesPort.getByOrganizationalCulture().stream()
+                .map(CompanyResponse::of)
+                .toList();
     }
 
     @Override
-    public List<Company> getByCareerAdvancement() {
-        return queryCompanyByGradesPort.getByCareerAdvancement();
+    public List<CompanyResponse> getByCareerAdvancement() {
+        return queryCompanyByGradesPort.getByCareerAdvancement().stream()
+                .map(CompanyResponse::of)
+                .toList();
     }
 
 }

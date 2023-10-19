@@ -104,7 +104,7 @@ public class QueryDSLCompanyRepository implements QueryCompanyRepository {
 
     private ConstructorExpression<CompanyQueryResponse> responseProjection() {
         return Projections.constructor(CompanyQueryResponse.class,
-                companyEntity.id,
+                companyEntity.id.stringValue(),
                 companyEntity.name,
                 companyEntity.address,
                 companyEntity.description,
@@ -117,7 +117,7 @@ public class QueryDSLCompanyRepository implements QueryCompanyRepository {
                 companyEntity.createdAt,
                 companyEntity.modifiedAt,
 
-                memberEntity.id,
+                memberEntity.id.stringValue(),
                 memberEntity.nickName,
                 memberEntity.socialLoginId,
                 memberEntity.imageUrl);

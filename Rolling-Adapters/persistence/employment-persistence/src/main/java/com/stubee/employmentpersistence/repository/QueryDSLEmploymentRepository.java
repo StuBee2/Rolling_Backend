@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.UUID;
 
 import static com.stubee.persistencecommons.entity.QCompanyEntity.companyEntity;
 import static com.stubee.persistencecommons.entity.QEmploymentEntity.employmentEntity;
@@ -44,7 +43,7 @@ public class QueryDSLEmploymentRepository implements QueryEmploymentRepository {
                 EmploymentQueryResponse.class,
                 employmentEntity.employmentStatus,
 
-                employmentEntity.employerId,
+                employmentEntity.employerId.stringValue(),
                 companyEntity.name,
                 companyEntity.description,
                 companyEntity.address,

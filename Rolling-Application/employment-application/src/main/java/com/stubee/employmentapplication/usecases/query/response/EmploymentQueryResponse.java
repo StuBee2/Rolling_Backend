@@ -2,12 +2,10 @@ package com.stubee.employmentapplication.usecases.query.response;
 
 import com.stubee.rollingdomains.domain.employment.consts.EmploymentStatus;
 
-import java.util.UUID;
-
 public record EmploymentQueryResponse(
         EmploymentStatus employmentStatus,
 
-        UUID employerId,
+        String employerId,
         String employerName,
         String employerDescription,
         String employerAddress,

@@ -3,7 +3,7 @@ package com.stubee.companyapplication.usecases.query.response;
 import java.time.LocalDateTime;
 
 public record CompanyQueryResponse(
-        Long companyId,
+        String companyId,
         String companyName,
         String companyAddress,
         String companyDescription,
@@ -16,7 +16,7 @@ public record CompanyQueryResponse(
         LocalDateTime companyCreatedAt,
         LocalDateTime companyModifiedAt,
 
-        Long registrantId,
+        String registrantId,
         String memberNickName,
         String memberSocialLoginId,
         String memberImageUrl) {}
