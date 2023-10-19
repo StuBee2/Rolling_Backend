@@ -8,8 +8,6 @@ import com.stubee.employmentapplication.usecases.query.response.EmploymentQueryR
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-import java.util.UUID;
-
 
 @Adapter
 @RequiredArgsConstructor
@@ -18,12 +16,12 @@ public class QueryEmploymentAdapter implements QueryEmploymentByIdPort, CheckEmp
     private final QueryEmploymentRepository queryEmploymentRepository;
 
     @Override
-    public List<EmploymentQueryResponse> findInfoByEmployeeId(final UUID employeeId) {
+    public List<EmploymentQueryResponse> findInfoByEmployeeId(final Long employeeId) {
         return queryEmploymentRepository.findInfoByEmployeeId(employeeId);
     }
 
     @Override
-    public boolean check(UUID employeeId, UUID employerId) {
+    public boolean check(Long employeeId, Long employerId) {
         return queryEmploymentRepository.existsByEmployeeIdAndEmployerId(employeeId, employerId);
     }
 

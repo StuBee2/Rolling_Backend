@@ -1,5 +1,6 @@
 package com.stubee.persistencecommons.entity;
 
+import com.stubee.persistencecommons.entity.base.BaseTSIDEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -7,7 +8,6 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Table(name = "tbl_history_logging")
@@ -15,11 +15,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class HistoryLoggingEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+public class HistoryLoggingEntity extends BaseTSIDEntity {
 
     @NotNull
     @Size(max = 250)
@@ -30,8 +26,9 @@ public class HistoryLoggingEntity {
     private String module;
 
     @NotNull
-    private UUID memberId;
+    private Long memberId;
 
+    @NotNull
     private Boolean isAnonymous;
 
     @CreationTimestamp

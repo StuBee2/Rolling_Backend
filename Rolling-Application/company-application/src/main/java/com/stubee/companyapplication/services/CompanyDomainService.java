@@ -15,7 +15,6 @@ import com.stubee.rollingdomains.domain.member.model.MemberId;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-import java.util.UUID;
 
 @DomainService
 @RequiredArgsConstructor
@@ -54,13 +53,13 @@ public class CompanyDomainService implements RegisterCompanyService, ChangeCompa
         commandCompanyPort.deleteById(company.companyId());
     }
 
-    private Company getById(final UUID id) {
+    private Company getById(final Long id) {
         return queryCompanyByIdPort.findById(id)
                 .orElseThrow(() -> CompanyNotFoundException.EXCEPTION);
     }
 
     @Override
-    public void checkById(final UUID id) {
+    public void checkById(final Long id) {
         if(checkCompanyPort.check(id)) {
             throw CompanyNotFoundException.EXCEPTION;
         }

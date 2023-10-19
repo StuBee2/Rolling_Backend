@@ -4,10 +4,8 @@ import com.stubee.rollingdomains.domain.employment.services.commands.RegisterEmp
 import com.stubee.rollingdomains.domain.employment.consts.EmploymentStatus;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.UUID;
-
 public record RegisterEmploymentRequest(
-        @NotNull UUID employerId,
+        @NotNull Long employerId,
         @NotNull EmploymentStatus employmentStatus) {
     public RegisterEmploymentCommand toCommand() {
         return RegisterEmploymentCommand.create(employerId, employmentStatus);

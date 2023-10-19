@@ -11,7 +11,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Date;
-import java.util.UUID;
 
 @Adapter
 @RequiredArgsConstructor
@@ -20,7 +19,7 @@ public class ProvideJwtAdapter implements ProvideJwtPort {
     private final JwtProperties jwtProperties;
 
     @Override
-    public String generateAccessToken(final UUID id, final MemberRole memberRole) {
+    public String generateAccessToken(final Long id, final MemberRole memberRole) {
         return Jwts.builder()
                 .setHeaderParam(Header.JWT_TYPE, JwtType.ACCESS)
                 .setSubject(id.toString())
@@ -32,7 +31,7 @@ public class ProvideJwtAdapter implements ProvideJwtPort {
     }
 
     @Override
-    public String generateRefreshToken(final UUID id, final MemberRole memberRole) {
+    public String generateRefreshToken(final Long id, final MemberRole memberRole) {
         return Jwts.builder()
                 .setHeaderParam(Header.JWT_TYPE, JwtType.REFRESH)
                 .setSubject(id.toString())

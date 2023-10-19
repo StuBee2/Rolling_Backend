@@ -26,7 +26,7 @@ public enum ErrorCode {
     MEMBER_NOT_FOUND(404, "Member not found"),
     COMPANY_NOT_FOUND(404, "Company not found"),
     EMPLOYMENT_NOT_FOUND(404, "Employment not found"),
-    REVIEW_NOT_FOUND(404, "Review not found"),
+    STORY_NOT_FOUND(404, "Story not found"),
 
     ACCESS_DENIED(403, "Access denied"),
     NOT_MATCHED_ID(403, "Not matched id"),

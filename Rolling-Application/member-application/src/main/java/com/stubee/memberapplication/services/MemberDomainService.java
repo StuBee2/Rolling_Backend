@@ -16,8 +16,6 @@ import com.stubee.rollingdomains.domain.member.services.GetMemberByIdService;
 import com.stubee.rollingdomains.domain.member.services.commands.ChangeNicknameCommand;
 import lombok.RequiredArgsConstructor;
 
-import java.util.UUID;
-
 @DomainService
 @RequiredArgsConstructor
 public class MemberDomainService implements ChangeNicknameService, ElevateMemberRoleService, GetMemberByIdService {
@@ -28,7 +26,7 @@ public class MemberDomainService implements ChangeNicknameService, ElevateMember
     private final GetCurrentMemberPort getCurrentMemberPort;
 
     @Override
-    public Member getById(final UUID id) {
+    public Member getById(final Long id) {
         return queryMemberPort.findById(id)
                 .orElseThrow(() -> MemberNotFoundException.EXCEPTION);
     }

@@ -6,8 +6,6 @@ import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.rollingdomains.domain.member.services.GetMemberByIdService;
 import lombok.RequiredArgsConstructor;
 
-import java.util.UUID;
-
 @QueryService
 @RequiredArgsConstructor
 public class QueryMemberByIdApi implements QueryMemberByIdUseCase {
@@ -15,7 +13,7 @@ public class QueryMemberByIdApi implements QueryMemberByIdUseCase {
     private final GetMemberByIdService queryMemberByIdService;
 
     @Override
-    public Member get(final UUID memberId) {
+    public Member get(final Long memberId) {
         return queryMemberByIdService.getById(memberId);
     }
 

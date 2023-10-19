@@ -8,8 +8,6 @@ import com.stubee.rollingdomains.domain.company.events.CompanyViewedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 
-import java.util.UUID;
-
 @QueryService
 @RequiredArgsConstructor
 public class QueryCompanyInfoByIdApi implements QueryCompanyInfoByIdUseCase {
@@ -18,7 +16,7 @@ public class QueryCompanyInfoByIdApi implements QueryCompanyInfoByIdUseCase {
     private final ApplicationEventPublisher applicationEventPublisher;
 
     @Override
-    public CompanyQueryResponse get(final UUID companyId) {
+    public CompanyQueryResponse get(final Long companyId) {
         final CompanyQueryResponse response = queryCompanyByIdPort.getInfoById(companyId);
 
         applicationEventPublisher.publishEvent(CompanyViewedEvent.of(companyId));

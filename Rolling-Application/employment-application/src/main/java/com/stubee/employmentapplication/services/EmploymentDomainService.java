@@ -12,8 +12,6 @@ import com.stubee.rollingdomains.domain.employment.services.commands.RegisterEmp
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 import lombok.RequiredArgsConstructor;
 
-import java.util.UUID;
-
 @DomainService
 @RequiredArgsConstructor
 public class EmploymentDomainService implements RegisterEmploymentService, CheckEmploymentExistenceService {
@@ -31,13 +29,13 @@ public class EmploymentDomainService implements RegisterEmploymentService, Check
     }
 
     @Override
-    public void checkByEmployeeAndEmployer(final UUID employeeId, final UUID employerId) {
+    public void checkByEmployeeAndEmployer(final Long employeeId, final Long employerId) {
         if(!this.checkExistence(employeeId, employerId)) {
             throw EmploymentNotFoundException.EXCEPTION;
         }
     }
 
-    private boolean checkExistence(final UUID employeeId, final UUID employerId) {
+    private boolean checkExistence(final Long employeeId, final Long employerId) {
         return checkEmploymentExistencePort.check(employeeId, employerId);
     }
 

@@ -7,12 +7,10 @@ import com.stubee.rollingdomains.domain.employment.model.Employment;
 import com.stubee.rollingdomains.domain.employment.model.EmploymentDetails;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 
-import java.util.UUID;
-
 public record RegisterEmploymentCommand(
-        UUID employerId,
+        Long employerId,
         EmploymentStatus employmentStatus) {
-    public static RegisterEmploymentCommand create(final UUID employerId, final EmploymentStatus employmentStatus) {
+    public static RegisterEmploymentCommand create(final Long employerId, final EmploymentStatus employmentStatus) {
         return new RegisterEmploymentCommand(employerId, employmentStatus);
     }
 

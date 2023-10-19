@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 import static org.springframework.http.HttpStatus.*;
 
@@ -29,7 +28,7 @@ public class QueryCompanyController {
     @Operation(description = "Company id로 Company 정보 조회")
     @GetMapping("/info/{id}")
     @ResponseStatus(OK)
-    public CompanyQueryResponse getInfo(final @PathVariable("id") UUID companyId) {
+    public CompanyQueryResponse getInfo(final @PathVariable("id") Long companyId) {
         return queryCompanyInfoByIdUseCase.get(companyId);
     }
 

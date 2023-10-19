@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Adapter
 @RequiredArgsConstructor
@@ -22,17 +21,17 @@ public class QueryCompanyAdapter implements QueryCompanyPort, CheckCompanyPort {
     private final CompanyMapper companyMapper;
 
     @Override
-    public boolean check(final UUID companyId) {
+    public boolean check(final Long companyId) {
         return queryCompanyRepository.existsByCompanyId(companyId);
     }
 
     @Override
-    public Optional<Company> findById(final UUID id) {
+    public Optional<Company> findById(final Long id) {
         return Optional.ofNullable(companyMapper.toDomain(queryCompanyRepository.findById(id)));
     }
 
     @Override
-    public Optional<CompanyQueryResponse> findInfoById(UUID companyId) {
+    public Optional<CompanyQueryResponse> findInfoById(Long companyId) {
         return Optional.ofNullable(queryCompanyRepository.findInfoById(companyId));
     }
 
@@ -42,7 +41,7 @@ public class QueryCompanyAdapter implements QueryCompanyPort, CheckCompanyPort {
     }
 
     @Override
-    public List<Company> findByRegistrantId(UUID registrantId, PageRequest pageRequest) {
+    public List<Company> findByRegistrantId(Long registrantId, PageRequest pageRequest) {
         return companyMapper.toDomainList(queryCompanyRepository.findByRegistrantId(registrantId, pageRequest));
     }
 

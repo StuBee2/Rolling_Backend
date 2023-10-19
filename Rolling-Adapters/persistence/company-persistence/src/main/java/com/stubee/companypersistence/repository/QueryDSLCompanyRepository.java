@@ -14,7 +14,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.UUID;
 
 import static com.stubee.persistencecommons.entity.QCompanyEntity.companyEntity;
 import static com.stubee.persistencecommons.entity.QMemberEntity.memberEntity;
@@ -30,12 +29,12 @@ public class QueryDSLCompanyRepository implements QueryCompanyRepository {
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public CompanyEntity findById(UUID id) {
+    public CompanyEntity findById(Long id) {
         return queryDSLHelper.findById(companyEntity, isEqualId(id));
     }
 
     @Override
-    public CompanyQueryResponse findInfoById(UUID id) {
+    public CompanyQueryResponse findInfoById(Long id) {
         return jpaQueryFactory
                 .select(responseProjection())
                 .from(companyEntity)
@@ -46,7 +45,7 @@ public class QueryDSLCompanyRepository implements QueryCompanyRepository {
     }
 
     @Override
-    public boolean existsByCompanyId(UUID id) {
+    public boolean existsByCompanyId(Long id) {
         return queryDSLHelper.existsByOption(companyEntity, isEqualId(id).and(isAccepted())) == null;
     }
 
@@ -61,7 +60,7 @@ public class QueryDSLCompanyRepository implements QueryCompanyRepository {
     }
 
     @Override
-    public List<CompanyEntity> findByRegistrantId(UUID registrantId, PageRequest pageRequest) {
+    public List<CompanyEntity> findByRegistrantId(Long registrantId, PageRequest pageRequest) {
         return findByOptionWithPaging(isEqualRegistrant(registrantId), pageRequest);
     }
 

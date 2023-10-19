@@ -19,8 +19,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.util.StringUtils;
 
-import java.util.UUID;
-
 @Adapter
 @Slf4j
 @RequiredArgsConstructor
@@ -38,7 +36,7 @@ public class ParseJwtAdapter implements ParseJwtPort {
     public Authentication getAuthenticationFromToken(final String token) {
         final Jws<Claims> claims = getClaims(token, JwtType.ACCESS);
 
-        final Member member = queryMemberPort.findById(UUID.fromString(claims.getBody().getSubject()))
+        final Member member = queryMemberPort.findById(Long.parseLong(claims.getBody().getSubject()))
                 .orElseThrow(() -> MemberNotFoundException.EXCEPTION);
 
         log.info("Member Role : {}", member.memberDetails().memberRole());

@@ -10,8 +10,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import java.util.UUID;
-
 @Entity
 @Table(name = "tbl_company")
 @Getter
@@ -53,7 +51,6 @@ public class CompanyEntity extends BaseEntity {
     private Double careerAdvancement;
 
     @NotNull
-    @Column(name = "fk_registrant_id")
-    private UUID registrantId;
+    private Long registrantId;
 
 }

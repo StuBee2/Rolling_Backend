@@ -3,11 +3,11 @@ package com.stubee.persistencecommons.entity;
 import com.stubee.persistencecommons.entity.base.BaseTSIDEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Table(name = "tbl_company_view_logging")
@@ -17,10 +17,13 @@ import java.util.UUID;
 @AllArgsConstructor
 public class CompanyViewLoggingEntity extends BaseTSIDEntity {
 
-    private UUID memberId;
+    @NotNull
+    private Long memberId;
 
-    private UUID companyId;
+    @NotNull
+    private Long companyId;
 
+    @NotNull
     private Boolean isAnonymous;
 
     @CreationTimestamp

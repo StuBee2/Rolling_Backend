@@ -1,24 +1,25 @@
 package com.stubee.rollingdomains.domain.logging.model;
 
 import com.stubee.rollingdomains.common.error.Assert;
+import com.stubee.rollingdomains.domain.company.model.CompanyId;
+import com.stubee.rollingdomains.domain.member.model.MemberId;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 public record CompanyViewLogging(
         Long id,
-        UUID memberId,
-        UUID companyId,
+        MemberId memberId,
+        CompanyId companyId,
         Boolean isAnonymous,
         LocalDateTime createdAt) {
     @Builder(builderClassName = "ExceptIdBuilder", builderMethodName = "ExceptIdBuilder")
-    public CompanyViewLogging(UUID memberId, UUID companyId) {
+    public CompanyViewLogging(MemberId memberId, CompanyId companyId) {
         this(null, memberId, companyId, false, null);
     }
 
     @Builder(builderClassName = "AnonymousBuilder", builderMethodName = "AnonymousBuilder")
-    public CompanyViewLogging(UUID companyId) {
+    public CompanyViewLogging(CompanyId companyId) {
         this(null, null, companyId, true, null);
     }
 

@@ -2,16 +2,18 @@ package com.stubee.rollingdomains.domain.member.model;
 
 import com.stubee.rollingdomains.common.model.BaseId;
 
-import java.util.UUID;
-
 public class MemberId extends BaseId {
 
-    private MemberId(UUID id) {
+    private MemberId(Long id) {
         super(id);
     }
 
-    public static MemberId of(final UUID id) {
+    public static MemberId of(final Long id) {
         return new MemberId(id);
+    }
+
+    public static MemberId of(final BaseId baseId) {
+        return new MemberId(baseId.getId());
     }
 
     @Override
