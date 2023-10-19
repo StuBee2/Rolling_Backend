@@ -18,7 +18,7 @@ public record RegisterReviewRequest(
         @NotNull @Min(1) @Max(5) Short organizationalCulture,
         @NotNull @Min(1) @Max(5) Short careerAdvancement) {
     public RegisterReviewCommand toCommand() {
-        return RegisterReviewCommand.create(
+        return RegisterReviewCommand.of(
                 companyId,
                 content,
                 position,
