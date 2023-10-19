@@ -15,7 +15,7 @@ public interface QueryReviewRepository {
 
     ReviewInfoResponse findInfoById(UUID reviewId);
 
-    ReviewStatusResponse findByMemberId(UUID memberId);
+    ReviewStatusResponse findStatusByMemberId(UUID memberId);
 
     List<ReviewQueryResponse> findByMemberId(UUID memberId, PageRequest pageRequest);
 

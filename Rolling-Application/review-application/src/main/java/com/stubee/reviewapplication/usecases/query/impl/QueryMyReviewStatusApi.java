@@ -20,7 +20,7 @@ public class QueryMyReviewStatusApi implements QueryMyReviewStatusUseCase {
     public ReviewStatusResponse get() {
         final UUID memberId = getCurrentMemberPort.getMemberId().getId();
 
-        return queryReviewStatusPort.findByMemberId(memberId);
+        return queryReviewStatusPort.getStatusByMemberId(memberId);
     }
 
 }

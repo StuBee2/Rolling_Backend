@@ -6,6 +6,6 @@ import java.util.UUID;
 
 public interface QueryReviewStatusPort {
 
-    ReviewStatusResponse findByMemberId(UUID memberId);
+    ReviewStatusResponse getStatusByMemberId(UUID memberId);
 
 }

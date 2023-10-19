@@ -43,8 +43,8 @@ public class QueryReviewAdapter implements QueryReviewPort {
     }
 
     @Override
-    public ReviewStatusResponse findByMemberId(final UUID memberId) {
-        return queryReviewRepository.findByMemberId(memberId);
+    public ReviewStatusResponse getStatusByMemberId(final UUID memberId) {
+        return queryReviewRepository.findStatusByMemberId(memberId);
     }
 
 }

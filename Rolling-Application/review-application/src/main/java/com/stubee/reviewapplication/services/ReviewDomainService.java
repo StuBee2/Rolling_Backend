@@ -1,8 +1,7 @@
 package com.stubee.reviewapplication.services;
 
 import com.stubee.applicationcommons.annotations.DomainService;
-import com.stubee.reviewapplication.outports.command.DeleteReviewPort;
-import com.stubee.reviewapplication.outports.command.RegisterReviewPort;
+import com.stubee.reviewapplication.outports.command.CommandReviewPort;
 import com.stubee.reviewapplication.outports.query.QueryReviewByIdPort;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 import com.stubee.rollingdomains.domain.review.exception.ReviewNotFoundException;
@@ -19,13 +18,12 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ReviewDomainService implements RegisterReviewService, DeleteReviewService {
 
-    private final RegisterReviewPort registerReviewPort;
-    private final DeleteReviewPort deleteReviewPort;
+    private final CommandReviewPort commandReviewPort;
     private final QueryReviewByIdPort queryReviewByIdPort;
 
     @Override
     public Review register(final RegisterReviewCommand command, final MemberId memberId) {
-        return registerReviewPort.register(command.toDomain(memberId));
+        return commandReviewPort.register(command.toDomain(memberId));
     }
 
     @Override
@@ -34,7 +32,7 @@ public class ReviewDomainService implements RegisterReviewService, DeleteReviewS
 
         review.isAuthor(memberId);
 
-        deleteReviewPort.deleteById(command.reviewId());
+        commandReviewPort.deleteById(command.reviewId());
     }
 
     private Review getById(final UUID id) {
