@@ -1,10 +1,9 @@
 package com.stubee.companyapplication.usecases.query.response;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 public record CompanyQueryResponse(
-        UUID companyId,
+        Long companyId,
         String companyName,
         String companyAddress,
         String companyDescription,
@@ -17,7 +16,7 @@ public record CompanyQueryResponse(
         LocalDateTime companyCreatedAt,
         LocalDateTime companyModifiedAt,
 
-        UUID registrantId,
+        Long registrantId,
         String memberNickName,
         String memberSocialLoginId,
         String memberImageUrl) {}
