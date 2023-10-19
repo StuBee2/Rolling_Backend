@@ -4,7 +4,7 @@ import com.stubee.authapplication.outports.ParseJwtPort;
 import com.stubee.memberapplication.outports.QueryMemberPort;
 import com.stubee.oauth.model.CustomMemberDetails;
 import com.stubee.rollingdomains.domain.auth.consts.JwtType;
-import com.stubee.rollingdomains.domain.auth.exception.WrongTokenTypeException;
+import com.stubee.oauth.exception.WrongTokenTypeException;
 import com.stubee.rollingdomains.domain.member.exception.MemberNotFoundException;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.securitycommons.annotations.Adapter;
@@ -13,7 +13,6 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -31,20 +30,13 @@ public class ParseJwtAdapter implements ParseJwtPort {
     private final JwtProperties jwtProperties;
 
     @Override
-    public Jws<Claims> getClaims(final String token) {
-        return Jwts.parser().setSigningKey(jwtProperties.getAccessKey()).parseClaimsJws(extractToken(token));
+    public Jws<Claims> getClaimsFromRefreshToken(final String refreshToken) {
+        return getClaims(refreshToken, JwtType.REFRESH);
     }
 
     @Override
-    public Jws<Claims> getClaimsWithRefreshToken(final String refreshToken) {
-        return Jwts.parser().setSigningKey(jwtProperties.getSecretKey()).parseClaimsJws(extractToken(refreshToken));
-    }
-
-    @Override
-    public Authentication getAuthentication(final String token) {
-        final Jws<Claims> claims = getClaims(token);
-
-        this.isWrongType(claims, JwtType.ACCESS);
+    public Authentication getAuthenticationFromToken(final String token) {
+        final Jws<Claims> claims = getClaims(token, JwtType.ACCESS);
 
         final Member member = queryMemberPort.findById(UUID.fromString(claims.getBody().getSubject()))
                 .orElseThrow(() -> MemberNotFoundException.EXCEPTION);
@@ -57,13 +49,17 @@ public class ParseJwtAdapter implements ParseJwtPort {
         return new UsernamePasswordAuthenticationToken(details, null, details.getAuthorities());
     }
 
-    @Override
-    public String extractTokenFromRequest(final HttpServletRequest request) {
-        return extractToken(request.getHeader("Authorization"));
+    private Jws<Claims> getClaims(final String token, final JwtType jwtType) {
+        final String key = jwtType==JwtType.ACCESS ? jwtProperties.getAccessKey() : jwtProperties.getSecretKey();
+
+        final Jws<Claims> jwsClaims = Jwts.parser().setSigningKey(key).parseClaimsJws(extractToken(token));
+
+        this.isWrongType(jwsClaims, jwtType);
+
+        return jwsClaims;
     }
 
-    @Override
-    public void isWrongType(final Jws<Claims> claims, final JwtType jwtType) {
+    private void isWrongType(final Jws<Claims> claims, final JwtType jwtType) {
         if(!(claims.getHeader().get(Header.JWT_TYPE).equals(jwtType.toString()))) {
             throw WrongTokenTypeException.EXCEPTION;
         }
