@@ -1,10 +1,10 @@
 package com.stubee.loggingapplication.usecases;
 
 import com.stubee.rollingdomains.domain.logging.services.commands.PileUpLoggingCommand;
-import com.stubee.rollingdomains.domain.logging.model.Logging;
+import com.stubee.rollingdomains.domain.logging.model.HistoryLogging;
 
 public interface PileUpLoggingUseCase {
 
-    Logging pileUp(PileUpLoggingCommand request);
+    HistoryLogging pileUp(PileUpLoggingCommand request);
 
 }

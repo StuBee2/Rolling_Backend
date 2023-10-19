@@ -2,7 +2,7 @@ package com.stubee.rollingapi.domain.logging;
 
 import com.stubee.loggingapplication.usecases.PileUpLoggingUseCase;
 import com.stubee.rollingapi.domain.logging.request.PileUpLoggingRequest;
-import com.stubee.rollingdomains.domain.logging.model.Logging;
+import com.stubee.rollingdomains.domain.logging.model.HistoryLogging;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ public class CommandLoggingController {
     @Operation(description = "logging 생성")
     @PostMapping
     @ResponseStatus(CREATED)
-    public Logging pileUp(final @RequestBody @Validated PileUpLoggingRequest request) {
+    public HistoryLogging pileUp(final @RequestBody @Validated PileUpLoggingRequest request) {
         return pileUpLoggingUseCase.pileUp(request.toCommand());
     }
 
