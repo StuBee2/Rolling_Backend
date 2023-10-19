@@ -1,5 +1,6 @@
 package com.stubee.companypersistence.adapters;
 
+import com.stubee.companyapplication.outports.query.CheckCompanyPort;
 import com.stubee.companyapplication.outports.query.QueryCompanyPort;
 import com.stubee.companypersistence.mapper.CompanyMapper;
 import com.stubee.companypersistence.repository.QueryCompanyRepository;
@@ -15,7 +16,7 @@ import java.util.UUID;
 
 @Adapter
 @RequiredArgsConstructor
-public class QueryCompanyAdapter implements QueryCompanyPort {
+public class QueryCompanyAdapter implements QueryCompanyPort, CheckCompanyPort {
 
     private final QueryCompanyRepository queryCompanyRepository;
     private final CompanyMapper companyMapper;
@@ -51,27 +52,27 @@ public class QueryCompanyAdapter implements QueryCompanyPort {
     }
 
     @Override
-    public List<Company> findByTotalGrade() {
+    public List<Company> getByTotalGrade() {
         return companyMapper.toDomainList(queryCompanyRepository.findByTotalGrade());
     }
 
     @Override
-    public List<Company> findBySalaryAndBenefits() {
+    public List<Company> getBySalaryAndBenefits() {
         return companyMapper.toDomainList(queryCompanyRepository.findBySalaryAndBenefits());
     }
 
     @Override
-    public List<Company> findByWorkLifeBalance() {
+    public List<Company> getByWorkLifeBalance() {
         return companyMapper.toDomainList(queryCompanyRepository.findByWorkLifeBalance());
     }
 
     @Override
-    public List<Company> findByOrganizationalCulture() {
+    public List<Company> getByOrganizationalCulture() {
         return companyMapper.toDomainList(queryCompanyRepository.findByOrganizationalCulture());
     }
 
     @Override
-    public List<Company> findByCareerAdvancement() {
+    public List<Company> getByCareerAdvancement() {
         return companyMapper.toDomainList(queryCompanyRepository.findByCareerAdvancement());
     }
 

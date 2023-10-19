@@ -4,7 +4,9 @@ import com.stubee.applicationcommons.annotations.QueryService;
 import com.stubee.companyapplication.outports.query.QueryCompanyByIdPort;
 import com.stubee.companyapplication.usecases.query.QueryCompanyInfoByIdUseCase;
 import com.stubee.companyapplication.usecases.query.response.CompanyQueryResponse;
+import com.stubee.rollingdomains.domain.company.events.CompanyViewedEvent;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 
 import java.util.UUID;
 
@@ -13,10 +15,15 @@ import java.util.UUID;
 public class QueryCompanyInfoByIdApi implements QueryCompanyInfoByIdUseCase {
 
     private final QueryCompanyByIdPort queryCompanyByIdPort;
+    private final ApplicationEventPublisher applicationEventPublisher;
 
     @Override
     public CompanyQueryResponse get(final UUID companyId) {
-        return queryCompanyByIdPort.getInfoById(companyId);
+        final CompanyQueryResponse response = queryCompanyByIdPort.getInfoById(companyId);
+
+        applicationEventPublisher.publishEvent(CompanyViewedEvent.of(companyId));
+
+        return response;
     }
 
 }

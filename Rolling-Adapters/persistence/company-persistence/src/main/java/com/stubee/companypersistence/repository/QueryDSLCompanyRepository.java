@@ -47,8 +47,7 @@ public class QueryDSLCompanyRepository implements QueryCompanyRepository {
 
     @Override
     public boolean existsByCompanyId(UUID id) {
-        return queryDSLHelper.existsByOption(companyEntity,
-                isEqualId(id).and(isAccepted())) == null;
+        return queryDSLHelper.existsByOption(companyEntity, isEqualId(id).and(isAccepted())) == null;
     }
 
     @Override

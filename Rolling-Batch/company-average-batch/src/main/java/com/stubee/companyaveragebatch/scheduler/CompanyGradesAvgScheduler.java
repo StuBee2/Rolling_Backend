@@ -21,7 +21,8 @@ public class CompanyGradesAvgScheduler {
     private final JobLauncher jobLauncher;
     private final Job calAvgJob;
 
-    @Scheduled(cron = "0 0 3 * * ?", zone = "Asia/Seoul")
+    //@Scheduled(cron = "0 0 3 * * ?", zone = "Asia/Seoul")
+    @Scheduled(cron = "10 * * * * *", zone = "Asia/Seoul")
     public void calculateAvg() throws Exception {
         final JobParameters jobParameters = new JobParametersBuilder()
                 .addLong("time", System.currentTimeMillis())

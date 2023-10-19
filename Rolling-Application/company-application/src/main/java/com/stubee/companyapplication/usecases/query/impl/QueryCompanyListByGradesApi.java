@@ -16,27 +16,27 @@ public class QueryCompanyListByGradesApi implements QueryCompanyListByGradesUseC
 
     @Override
     public List<Company> getByTotalGrade() {
-        return queryCompanyByGradesPort.findByTotalGrade();
+        return queryCompanyByGradesPort.getByTotalGrade();
     }
 
     @Override
     public List<Company> getBySalaryAndBenefits() {
-        return queryCompanyByGradesPort.findBySalaryAndBenefits();
+        return queryCompanyByGradesPort.getBySalaryAndBenefits();
     }
 
     @Override
     public List<Company> getByWorkLifeBalance() {
-        return queryCompanyByGradesPort.findByWorkLifeBalance();
+        return queryCompanyByGradesPort.getByWorkLifeBalance();
     }
 
     @Override
     public List<Company> getByOrganizationalCulture() {
-        return queryCompanyByGradesPort.findByOrganizationalCulture();
+        return queryCompanyByGradesPort.getByOrganizationalCulture();
     }
 
     @Override
     public List<Company> getByCareerAdvancement() {
-        return queryCompanyByGradesPort.findByCareerAdvancement();
+        return queryCompanyByGradesPort.getByCareerAdvancement();
     }
 
 }
