@@ -10,12 +10,12 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "tbl_logging")
+@Table(name = "tbl_history_logging")
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class LoggingEntity {
+public class HistoryLoggingEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +31,8 @@ public class LoggingEntity {
 
     @NotNull
     private UUID memberId;
+
+    private Boolean isAnonymous;
 
     @CreationTimestamp
     private LocalDateTime createdAt;

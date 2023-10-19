@@ -1,4 +1,4 @@
-package com.stubee.persistencecommons.entity;
+package com.stubee.persistencecommons.entity.base;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;

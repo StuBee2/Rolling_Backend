@@ -1,5 +1,6 @@
 package com.stubee.persistencecommons.entity;
 
+import com.stubee.persistencecommons.entity.base.BaseEntity;
 import com.stubee.rollingdomains.domain.company.consts.CompanyStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

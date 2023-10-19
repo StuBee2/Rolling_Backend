@@ -1,4 +1,4 @@
-package com.stubee.persistencecommons.entity;
+package com.stubee.persistencecommons.entity.base;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
