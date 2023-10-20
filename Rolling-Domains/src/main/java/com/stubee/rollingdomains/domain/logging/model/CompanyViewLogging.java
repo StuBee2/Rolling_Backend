@@ -20,7 +20,7 @@ public record CompanyViewLogging(
 
     @Builder(builderClassName = "AnonymousBuilder", builderMethodName = "AnonymousBuilder")
     public CompanyViewLogging(CompanyId companyId) {
-        this(null, null, companyId, true, null);
+        this(null, MemberId.of(0L), companyId, true, null);
     }
 
     @Builder(builderClassName = "WithIdBuilder", builderMethodName = "WithIdBuilder")
