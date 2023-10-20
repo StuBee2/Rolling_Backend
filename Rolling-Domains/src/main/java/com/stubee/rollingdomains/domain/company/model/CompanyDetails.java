@@ -7,6 +7,7 @@ import lombok.Builder;
 import java.time.LocalDateTime;
 
 public record CompanyDetails(
+        RegistrantId registrantId,
         String name,
         Address companyAddress,
         String description,
@@ -15,12 +16,13 @@ public record CompanyDetails(
         LocalDateTime createdAt,
         LocalDateTime modifiedAt) {
     @Builder(builderClassName = "ExceptDateBuilder", builderMethodName = "ExceptDateBuilder")
-    public CompanyDetails(String name, Address companyAddress, String description, String imgUrl) {
-        this(name, companyAddress, description, imgUrl, CompanyStatus.ACCEPTED, null, null);
+    public CompanyDetails(RegistrantId registrantId, String name, Address companyAddress, String description, String imgUrl) {
+        this(registrantId, name, companyAddress, description, imgUrl, CompanyStatus.ACCEPTED, null, null);
     }
 
     @Builder(builderClassName = "WithDateBuilder", builderMethodName = "WithDateBuilder")
     public CompanyDetails {
+        Assert.notNull(registrantId, "RegistrantId must not be null");
         Assert.notNull(name, "CompanyName must not be null");
         Assert.notNull(companyAddress, "CompanyAddress must not be null");
         Assert.notNull(description, "Description must not be null");
@@ -28,7 +30,7 @@ public record CompanyDetails(
     }
 
     public CompanyDetails updateStatus(final CompanyStatus companyStatus) {
-        return new CompanyDetails(name, companyAddress, description, imgUrl, companyStatus, createdAt, null);
+        return new CompanyDetails(registrantId, name, companyAddress, description, imgUrl, companyStatus, createdAt, null);
     }
 
 }

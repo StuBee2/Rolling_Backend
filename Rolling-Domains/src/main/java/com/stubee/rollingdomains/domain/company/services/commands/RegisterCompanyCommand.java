@@ -20,13 +20,13 @@ public record RegisterCompanyCommand(
     public Company toDomain(final MemberId memberId) {
         return Company.ExceptIdBuilder()
                 .companyDetails(CompanyDetails.ExceptDateBuilder()
+                        .registrantId(RegistrantId.of(memberId))
                         .name(name)
                         .companyAddress(Address.of(address))
                         .description(description)
                         .imgUrl(imgUrl)
                         .build())
                 .companyGrades(CompanyGrades.zero())
-                .registrantId(RegistrantId.of(memberId))
                 .build();
     }
 }

@@ -13,6 +13,6 @@ public record CompanyResponse(
 ) {
     public static CompanyResponse of(Company company) {
         return new CompanyResponse(TSID.of(company.companyId()), company.companyDetails(),
-                company.companyGrades(), TSID.of(company.registrantId()));
+                company.companyGrades(), TSID.of(company.companyDetails().registrantId()));
     }
 }

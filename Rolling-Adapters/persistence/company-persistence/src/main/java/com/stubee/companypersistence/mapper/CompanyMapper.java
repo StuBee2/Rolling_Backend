@@ -14,6 +14,7 @@ public class CompanyMapper implements com.stubee.persistencecommons.mapper.Domai
     public CompanyEntity toEntity(final Company domain) {
 
         return CompanyEntity.builder()
+                .registrantId(domain.companyDetails().registrantId().getId())
                 .name(domain.companyDetails().name())
                 .address(domain.companyDetails().companyAddress().address())
                 .description(domain.companyDetails().description())
@@ -24,13 +25,14 @@ public class CompanyMapper implements com.stubee.persistencecommons.mapper.Domai
                 .workLifeBalance(domain.companyGrades().getWorkLifeBalance())
                 .organizationalCulture(domain.companyGrades().getOrganizationalCulture())
                 .careerAdvancement(domain.companyGrades().getCareerAdvancement())
-                .registrantId(domain.registrantId().getId())
+                .registrantId(domain.companyDetails().registrantId().getId())
                 .build();
     }
 
     public CompanyEntity toEntityWithId(final Company domain) {
         return CompanyEntity.builder()
                 .id(domain.companyId().getId())
+                .registrantId(domain.companyDetails().registrantId().getId())
                 .name(domain.companyDetails().name())
                 .address(domain.companyDetails().companyAddress().address())
                 .description(domain.companyDetails().description())
@@ -41,7 +43,6 @@ public class CompanyMapper implements com.stubee.persistencecommons.mapper.Domai
                 .workLifeBalance(domain.companyGrades().getWorkLifeBalance())
                 .organizationalCulture(domain.companyGrades().getOrganizationalCulture())
                 .careerAdvancement(domain.companyGrades().getCareerAdvancement())
-                .registrantId(domain.registrantId().getId())
                 .createdAt(domain.companyDetails().createdAt())
                 .build();
     }
@@ -56,7 +57,6 @@ public class CompanyMapper implements com.stubee.persistencecommons.mapper.Domai
                 .companyId(CompanyId.of(entity.getId()))
                 .companyDetails(companyDetails(entity))
                 .companyGrades(companyGrades(entity))
-                .registrantId(RegistrantId.of(entity.getRegistrantId()))
                 .build();
     }
 
@@ -66,6 +66,7 @@ public class CompanyMapper implements com.stubee.persistencecommons.mapper.Domai
 
     private CompanyDetails companyDetails(final CompanyEntity entity) {
         return CompanyDetails.WithDateBuilder()
+                .registrantId(RegistrantId.of(entity.getRegistrantId()))
                 .name(entity.getName())
                 .companyAddress(Address.of(entity.getAddress()))
                 .description(entity.getDescription())

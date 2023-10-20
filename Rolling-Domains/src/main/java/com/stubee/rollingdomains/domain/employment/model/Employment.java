@@ -5,18 +5,14 @@ import lombok.Builder;
 
 public record Employment(
         EmploymentId employmentId,
-        EmployeeId employeeId,
-        EmployerId employerId,
         EmploymentDetails employmentDetails) {
     @Builder(builderClassName = "ExceptIdBuilder", builderMethodName = "ExceptIdBuilder")
-    public Employment(EmployeeId employeeId, EmployerId employerId, EmploymentDetails employmentDetails) {
-        this(null, employeeId, employerId, employmentDetails);
+    public Employment(EmploymentDetails employmentDetails) {
+        this(null, employmentDetails);
     }
 
     @Builder(builderClassName = "WithIdBuilder", builderMethodName = "WithIdBuilder")
     public Employment {
-        Assert.notNull(employeeId, "EmployeeId must not be null");
-        Assert.notNull(employerId, "EmployerId must not be null");
         Assert.notNull(employmentDetails, "EmploymentDetails must not be null");
     }
 }
