@@ -75,13 +75,13 @@ public class SecurityConfig {
 
                 .requestMatchers(GET, "/employment/my").hasAnyRole("MEMBER", "ADMIN")
 
-                //Review
-                .requestMatchers(POST, "/review").hasAnyRole("MEMBER", "ADMIN")
-                .requestMatchers(DELETE, "/review/**").hasAnyRole("MEMBER", "ADMIN")
+                //Story
+                .requestMatchers(POST, "/story").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(DELETE, "/story/**").hasAnyRole("MEMBER", "ADMIN")
 
-                .requestMatchers(GET, "/review/my").hasAnyRole("MEMBER", "ADMIN")
-                .requestMatchers(GET, "/review/info/**").permitAll()
-                .requestMatchers(GET, "/review/list/**").permitAll()
+                .requestMatchers(GET, "/story/my").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(GET, "/story/info/**").permitAll()
+                .requestMatchers(GET, "/story/list/**").permitAll()
 
                 //Logging
                 .requestMatchers(POST, "/logging").permitAll()
@@ -98,7 +98,7 @@ public class SecurityConfig {
                 .formLogin().disable()
                 .exceptionHandling()
                 .accessDeniedHandler(customAccessDeniedHandler)
-                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.NOT_FOUND))
 
                 .and()
                 .oauth2Login()

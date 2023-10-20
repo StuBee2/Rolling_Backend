@@ -1,8 +1,8 @@
 package com.stubee.rollingapi.domain.member;
 
+import com.stubee.memberapplication.usecases.response.MemberResponse;
 import com.stubee.memberapplication.usecases.QueryMemberByIdUseCase;
 import com.stubee.memberapplication.usecases.QueryMyInfoUseCase;
-import com.stubee.rollingdomains.domain.member.model.Member;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -22,14 +22,14 @@ public class QueryMemberController {
     @Operation(description = "내 정보 조회")
     @GetMapping("/my")
     @ResponseStatus(OK)
-    public Member getMy() {
+    public MemberResponse getMy() {
         return queryMyInfoUseCase.get();
     }
 
     @Operation(description = "MemberId로 Member 정보 조회")
     @GetMapping("/{id}")
     @ResponseStatus(OK)
-    public Member getMemberById(final @PathVariable("id") Long memberId) {
+    public MemberResponse getMemberById(final @PathVariable("id") Long memberId) {
         return queryMemberByIdUseCase.get(memberId);
     }
 

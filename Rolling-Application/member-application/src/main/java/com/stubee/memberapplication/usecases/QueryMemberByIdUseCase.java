@@ -1,9 +1,9 @@
 package com.stubee.memberapplication.usecases;
 
-import com.stubee.rollingdomains.domain.member.model.Member;
+import com.stubee.memberapplication.usecases.response.MemberResponse;
 
 public interface QueryMemberByIdUseCase {
 
-    Member get(Long memberId);
+    MemberResponse get(Long memberId);
 
 }

@@ -97,7 +97,7 @@ public class QueryDSLStoryRepository implements QueryStoryRepository {
     private ConstructorExpression<StoryQueryByMemberResponse> queryByMemberResponse() {
         return Projections.constructor(
                 StoryQueryByMemberResponse.class,
-                storyEntity.id,
+                storyEntity.id.stringValue(),
                 storyEntity.position,
                 storyEntity.schoolLife,
                 storyEntity.preparationCourse,
@@ -119,7 +119,7 @@ public class QueryDSLStoryRepository implements QueryStoryRepository {
                 storyEntity.createdAt,
                 storyEntity.modifiedAt,
 
-                companyEntity.id,
+                companyEntity.id.stringValue(),
                 companyEntity.name,
                 companyEntity.imgUrl/*,
 
@@ -129,7 +129,7 @@ public class QueryDSLStoryRepository implements QueryStoryRepository {
     private ConstructorExpression<StoryQueryByCompanyResponse> queryByCompanyResponse() {
         return Projections.constructor(
                 StoryQueryByCompanyResponse.class,
-                storyEntity.id,
+                storyEntity.id.stringValue(),
                 storyEntity.position,
                 storyEntity.schoolLife,
                 storyEntity.preparationCourse,
@@ -151,7 +151,7 @@ public class QueryDSLStoryRepository implements QueryStoryRepository {
                 storyEntity.createdAt,
                 storyEntity.modifiedAt,
 
-                memberEntity.id,
+                memberEntity.id.stringValue(),
                 memberEntity.nickName,
                 memberEntity.socialLoginId,
                 memberEntity.imageUrl);

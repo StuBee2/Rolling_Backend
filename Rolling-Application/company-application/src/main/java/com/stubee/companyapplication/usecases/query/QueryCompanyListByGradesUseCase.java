@@ -1,19 +1,19 @@
 package com.stubee.companyapplication.usecases.query;
 
-import com.stubee.rollingdomains.domain.company.model.Company;
+import com.stubee.companyapplication.usecases.query.response.CompanyResponse;
 
 import java.util.List;
 
 public interface QueryCompanyListByGradesUseCase {
 
-    List<Company> getByTotalGrade();
+    List<CompanyResponse> getByTotalGrade();
 
-    List<Company> getBySalaryAndBenefits();
+    List<CompanyResponse> getBySalaryAndBenefits();
 
-    List<Company> getByWorkLifeBalance();
+    List<CompanyResponse> getByWorkLifeBalance();
 
-    List<Company> getByOrganizationalCulture();
+    List<CompanyResponse> getByOrganizationalCulture();
 
-    List<Company> getByCareerAdvancement();
+    List<CompanyResponse> getByCareerAdvancement();
 
 }

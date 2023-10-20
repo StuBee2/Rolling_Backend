@@ -3,7 +3,7 @@ package com.stubee.reviewapplication.usecases.query.response;
 import java.time.LocalDateTime;
 
 public record StoryQueryByMemberResponse(
-        Long reviewId,
+        String storyId,
 
         String position,
         String schoolLife,
@@ -18,15 +18,15 @@ public record StoryQueryByMemberResponse(
         String advantages,
         String disAdvantages,
 
-        Double totalGrade,
+        Double total,
         Double salaryAndBenefits,
         Double workLifeBalance,
         Double organizationalCulture,
         Double careerAdvancement,
-        LocalDateTime reviewCreatedAt,
-        LocalDateTime reviewModifiedAt,
+        LocalDateTime storyCreatedAt,
+        LocalDateTime storyModifiedAt,
 
-        Long companyId,
+        String companyId,
         String companyName,
         String companyImgUrl/*,
 
