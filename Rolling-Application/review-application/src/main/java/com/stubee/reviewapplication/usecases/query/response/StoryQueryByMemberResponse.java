@@ -18,7 +18,7 @@ public record StoryQueryByMemberResponse(
         String advantages,
         String disAdvantages,
 
-        Double totalGrade,
+        Double total,
         Double salaryAndBenefits,
         Double workLifeBalance,
         Double organizationalCulture,
