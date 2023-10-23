@@ -1,6 +1,6 @@
 package com.stubee.oauth.adapters;
 
-import com.stubee.authapplication.outports.ProvideJwtPort;
+import com.stubee.authapplication.outports.ProvideTokenPort;
 import com.stubee.rollingdomains.domain.auth.consts.JwtType;
 import com.stubee.rollingdomains.domain.member.consts.MemberRole;
 import com.stubee.securitycommons.annotations.Adapter;
@@ -14,7 +14,7 @@ import java.util.Date;
 
 @Adapter
 @RequiredArgsConstructor
-public class ProvideJwtAdapter implements ProvideJwtPort {
+public class ProvideJwtAdapter implements ProvideTokenPort {
 
     private final JwtProperties jwtProperties;
 

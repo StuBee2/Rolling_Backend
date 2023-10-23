@@ -1,8 +1,9 @@
 package com.stubee.oauth.handler;
 
-import com.stubee.authapplication.outports.ProvideJwtPort;
+import com.stubee.authapplication.outports.ProvideTokenPort;
 import com.stubee.oauth.cookie.CookieAuthorizationRequestRepository;
 import com.stubee.oauth.model.CustomMemberDetails;
+import com.stubee.oauth.properties.OAuthProperties;
 import com.stubee.rollingdomains.domain.member.consts.MemberRole;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.securitycommons.cookie.CookieManager;
@@ -25,9 +26,10 @@ import static com.stubee.oauth.cookie.CookieAuthorizationRequestRepository.*;
 @RequiredArgsConstructor
 public class OAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
-    private final ProvideJwtPort provideJwtPort;
+    private final ProvideTokenPort provideJwtPort;
     private final CookieAuthorizationRequestRepository cookieAuthorizationRequestRepository;
     private final CookieManager cookieManager;
+    private final OAuthProperties oAuthProperties;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -47,15 +49,17 @@ public class OAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         isNotMatchedUri(cookieManager.getCookie(REDIRECT_URI_PARAM_COOKIE_NAME)
                 .map(Cookie::getValue));
 
-        Member member = ((CustomMemberDetails) authentication.getPrincipal()).getMember();
+        final Member member = ((CustomMemberDetails) authentication.getPrincipal()).getMember();
 
-        Long memberId = member.memberId().getId();
-        MemberRole memberRole = member.memberDetails().memberRole();
+        final Long memberId = member.memberId().getId();
+        final MemberRole memberRole = member.memberDetails().memberRole();
+
+        final String redirectUrl = oAuthProperties.getRedirectUrl();
 
         final String accessToken = provideJwtPort.generateAccessToken(memberId, memberRole);
         final String refreshToken = provideJwtPort.generateRefreshToken(memberId, memberRole);
 
-        return UriComponentsBuilder.fromUriString("http://localhost:3000/callback")
+        return UriComponentsBuilder.fromUriString(redirectUrl)
                 .queryParam("accessToken", accessToken)
                 .queryParam("refreshToken", refreshToken)
                 .build().toUriString();

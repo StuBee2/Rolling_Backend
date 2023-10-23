@@ -2,7 +2,7 @@ package com.stubee.authapplication.outports;
 
 import com.stubee.rollingdomains.domain.member.consts.MemberRole;
 
-public interface ProvideJwtPort {
+public interface ProvideTokenPort {
 
     String generateAccessToken(Long id, MemberRole memberRole);
 

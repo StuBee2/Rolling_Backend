@@ -1,6 +1,6 @@
 package com.stubee.oauth.filter;
 
-import com.stubee.authapplication.outports.ParseJwtPort;
+import com.stubee.authapplication.outports.ParseTokenPort;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,7 +16,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {
 
-    private final ParseJwtPort parseJwtPort;
+    private final ParseTokenPort parseJwtPort;
 
     @Override
     public void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
