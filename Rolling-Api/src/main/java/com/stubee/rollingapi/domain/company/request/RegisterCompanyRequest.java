@@ -7,8 +7,9 @@ public record RegisterCompanyRequest(
         @NotBlank String name,
         @NotBlank String address,
         @NotBlank String description,
-        String imgUrl) {
+        String imgUrl,
+        Integer rgb) {
     public RegisterCompanyCommand toCommand() {
-        return RegisterCompanyCommand.create(name, address, description, imgUrl);
+        return RegisterCompanyCommand.create(name, address, description, imgUrl, rgb);
     }
 }

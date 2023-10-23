@@ -31,6 +31,10 @@ public class CompanyEntity extends BaseEntity {
     @Size(max = 1000)
     private String imgUrl;
 
+    private String logoUrl;
+
+    private Integer logoRGB;
+
     @NotNull
     @Enumerated(value = EnumType.STRING)
     private CompanyStatus companyStatus;

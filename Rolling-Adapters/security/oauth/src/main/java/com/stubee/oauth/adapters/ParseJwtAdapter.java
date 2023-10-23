@@ -1,6 +1,6 @@
 package com.stubee.oauth.adapters;
 
-import com.stubee.authapplication.outports.ParseJwtPort;
+import com.stubee.authapplication.outports.ParseTokenPort;
 import com.stubee.memberapplication.outports.QueryMemberPort;
 import com.stubee.oauth.model.CustomMemberDetails;
 import com.stubee.rollingdomains.domain.auth.consts.JwtType;
@@ -22,21 +22,21 @@ import org.springframework.util.StringUtils;
 @Adapter
 @Slf4j
 @RequiredArgsConstructor
-public class ParseJwtAdapter implements ParseJwtPort {
+public class ParseJwtAdapter implements ParseTokenPort {
 
     private final QueryMemberPort queryMemberPort;
     private final JwtProperties jwtProperties;
 
     @Override
-    public Jws<Claims> getClaimsFromRefreshToken(final String refreshToken) {
-        return getClaims(refreshToken, JwtType.REFRESH);
+    public Long getSubjectFromRefreshToken(final String refreshToken) {
+        return getSubject(refreshToken, JwtType.REFRESH);
     }
 
     @Override
     public Authentication getAuthenticationFromToken(final String token) {
-        final Jws<Claims> claims = getClaims(token, JwtType.ACCESS);
+        final Long memberId = getSubject(token, JwtType.ACCESS);
 
-        final Member member = queryMemberPort.findById(Long.parseLong(claims.getBody().getSubject()))
+        final Member member = queryMemberPort.findById(memberId)
                 .orElseThrow(() -> MemberNotFoundException.EXCEPTION);
 
         log.info("Member Role : {}", member.memberDetails().memberRole());
@@ -47,14 +47,14 @@ public class ParseJwtAdapter implements ParseJwtPort {
         return new UsernamePasswordAuthenticationToken(details, null, details.getAuthorities());
     }
 
-    private Jws<Claims> getClaims(final String token, final JwtType jwtType) {
+    private Long getSubject(final String token, final JwtType jwtType) {
         final String key = jwtType==JwtType.ACCESS ? jwtProperties.getAccessKey() : jwtProperties.getSecretKey();
 
         final Jws<Claims> jwsClaims = Jwts.parser().setSigningKey(key).parseClaimsJws(extractToken(token));
 
         this.isWrongType(jwsClaims, jwtType);
 
-        return jwsClaims;
+        return Long.parseLong(jwsClaims.getBody().getSubject());
     }
 
     private void isWrongType(final Jws<Claims> claims, final JwtType jwtType) {

@@ -1,6 +1,7 @@
 package com.stubee.rollingapi.domain.file;
 
 import com.stubee.fileapplication.usecases.FileUploadUseCase;
+import com.stubee.fileapplication.usecases.response.FileResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,7 @@ public class FileController {
     @Operation(description = "file 업로드")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public String upload(final @RequestPart("file") MultipartFile file) {
+    public FileResponse upload(final @RequestPart("file") MultipartFile file) {
         return fileUploadUseCase.uploadFile(file);
     }
 

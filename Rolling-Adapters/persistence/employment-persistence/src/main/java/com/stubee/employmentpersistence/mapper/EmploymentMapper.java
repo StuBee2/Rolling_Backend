@@ -10,8 +10,8 @@ public class EmploymentMapper implements com.stubee.persistencecommons.mapper.Do
     @Override
     public EmploymentEntity toEntity(final Employment domain) {
         return EmploymentEntity.builder()
-                .employeeId(domain.employeeId().getId())
-                .employerId(domain.employerId().getId())
+                .employeeId(domain.employmentDetails().employeeId().getId())
+                .employerId(domain.employmentDetails().employerId().getId())
                 .employmentStatus(domain.employmentDetails().employmentStatus())
                 .build();
     }
@@ -20,12 +20,16 @@ public class EmploymentMapper implements com.stubee.persistencecommons.mapper.Do
     public Employment toDomain(final EmploymentEntity entity) {
         return Employment.WithIdBuilder()
                 .employmentId(EmploymentId.of(entity.getId()))
+                .employmentDetails(employmentDetails(entity))
+                .build();
+    }
+
+    private EmploymentDetails employmentDetails(final EmploymentEntity entity) {
+        return EmploymentDetails.WithDateBuilder()
                 .employeeId(EmployeeId.of(entity.getEmployeeId()))
                 .employerId(EmployerId.of(entity.getEmployerId()))
-                .employmentDetails(EmploymentDetails.WithDateBuilder()
-                        .employmentStatus(entity.getEmploymentStatus())
-                        .createdAt(entity.getCreatedAt())
-                        .build())
+                .employmentStatus(entity.getEmploymentStatus())
+                .createdAt(entity.getCreatedAt())
                 .build();
     }
 
