@@ -9,15 +9,15 @@ import java.time.LocalDateTime;
 public record CompanyDetails(
         RegistrantId registrantId,
         String name,
-        Address companyAddress,
         String description,
-        String imgUrl,
+        Address companyAddress,
+        CompanyLogo companyLogo,
         CompanyStatus companyStatus,
         LocalDateTime createdAt,
         LocalDateTime modifiedAt) {
     @Builder(builderClassName = "ExceptDateBuilder", builderMethodName = "ExceptDateBuilder")
-    public CompanyDetails(RegistrantId registrantId, String name, Address companyAddress, String description, String imgUrl) {
-        this(registrantId, name, companyAddress, description, imgUrl, CompanyStatus.ACCEPTED, null, null);
+    public CompanyDetails(RegistrantId registrantId, String name, Address companyAddress, String description, CompanyLogo companyLogo) {
+        this(registrantId, name, description, companyAddress, companyLogo, CompanyStatus.ACCEPTED, null, null);
     }
 
     @Builder(builderClassName = "WithDateBuilder", builderMethodName = "WithDateBuilder")
@@ -30,7 +30,7 @@ public record CompanyDetails(
     }
 
     public CompanyDetails updateStatus(final CompanyStatus companyStatus) {
-        return new CompanyDetails(registrantId, name, companyAddress, description, imgUrl, companyStatus, createdAt, null);
+        return new CompanyDetails(registrantId, name, description, companyAddress, companyLogo, companyStatus, createdAt, null);
     }
 
 }

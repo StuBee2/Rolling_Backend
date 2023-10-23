@@ -4,7 +4,8 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.stubee.fileapplication.outports.S3Port;
+import com.stubee.fileapplication.outports.UploadImagePort;
+import com.stubee.fileapplication.usecases.response.FileResponse;
 import com.stubee.s3file.exception.FileUploadException;
 import com.stubee.s3file.properties.S3Properties;
 import com.stubee.thirdpartycommons.annotations.Adapter;
@@ -12,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
@@ -19,23 +22,33 @@ import java.util.UUID;
 @Adapter
 @Slf4j
 @RequiredArgsConstructor
-public class S3Adapter implements S3Port {
+public class S3Adapter implements UploadImagePort {
 
     private final AmazonS3 amazonS3;
     private final S3Properties s3Properties;
 
     @Override
-    public String uploadFile(final MultipartFile multipartFile) {
+    public FileResponse upload(final MultipartFile multipartFile) {
         final String fileName = getFileName(multipartFile.getName());
 
-        amazonS3.putObject(getRequest(multipartFile, fileName));
+        PutObjectRequest request = getRequest(multipartFile, fileName);
 
-        return getUrl(fileName);
+        amazonS3.putObject(request);
+
+        return FileResponse.of(getUrl(fileName), getColor(multipartFile));
+    }
+
+    private String getFileName(final String fileName) {
+        return s3Properties.getBucket() + "/" + UUID.randomUUID() + fileName;
+    }
+
+    private String getUrl(final String fileName) {
+        return amazonS3.getUrl(s3Properties.getBucket(), fileName).toString();
     }
 
     @Override
-    public List<String> uploadFileList(final List<MultipartFile> multipartFileList) {
-        return multipartFileList.stream().map(this::uploadFile).toList();
+    public List<FileResponse> uploadList(final List<MultipartFile> multipartFileList) {
+        return multipartFileList.stream().map(this::upload).toList();
     }
 
     @Override
@@ -52,12 +65,14 @@ public class S3Adapter implements S3Port {
         }
     }
 
-    private String getFileName(final String fileName) {
-        return s3Properties.getBucket() + "/" + UUID.randomUUID() + fileName;
-    }
+    private Integer getColor(final MultipartFile multipartFile) {
+        try {
+            BufferedImage bufferedImage = ImageIO.read(multipartFile.getInputStream());
 
-    private String getUrl(final String fileName) {
-        return amazonS3.getUrl(s3Properties.getBucket(), fileName).toString();
+            return bufferedImage.getRGB(1, 1);
+        } catch (IOException e) {
+            throw FileUploadException.EXCEPTION;
+        }
     }
 
     private ObjectMetadata getMetadata(final MultipartFile multipartFile) {
