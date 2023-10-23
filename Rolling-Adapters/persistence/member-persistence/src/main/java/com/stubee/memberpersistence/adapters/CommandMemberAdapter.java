@@ -35,8 +35,8 @@ public class CommandMemberAdapter implements CommandMemberPort {
 
     @Override
     public Member saveOrUpdate(final MemberProfile memberProfile) {
-        final Member member = memberJpaRepository.findBySocialIdAndLoginTypeOrEmail(memberProfile.socialId(),
-                        memberProfile.loginType(), memberProfile.email())
+        final Member member = memberJpaRepository.findBySocialIdAndLoginType(memberProfile.socialId(),
+                        memberProfile.loginType())
                 .map(memberMapper::toDomain)
                 .orElse(null);
 
