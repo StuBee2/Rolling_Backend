@@ -6,7 +6,7 @@ import com.stubee.rollingdomains.domain.member.model.MemberDetails;
 import com.stubee.rollingdomains.domain.member.model.SocialDetails;
 
 public record MemberResponse(
-        TSID id,
+        TSID memberId,
         SocialDetails socialDetails,
         MemberDetails memberDetails) {
     public static MemberResponse of(Member member) {
