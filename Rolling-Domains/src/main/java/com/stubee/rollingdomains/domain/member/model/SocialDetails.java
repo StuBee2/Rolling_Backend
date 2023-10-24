@@ -19,11 +19,11 @@ public record SocialDetails(
         Assert.notNull(name, "Name must not be null");
     }
 
-    public SocialDetails updateLoginId(final String socialLoginId) {
+    SocialDetails updateLoginId(final String socialLoginId) {
         return new SocialDetails(socialId, socialLoginId, loginType, name, email, imageUrl);
     }
 
-    public SocialDetails updateEmail(final String email) {
+    SocialDetails updateEmail(final String email) {
         return new SocialDetails(socialId, socialLoginId, loginType, name, email, imageUrl);
     }
 }

@@ -29,7 +29,7 @@ public record CompanyDetails(
         Assert.notNull(companyStatus, "CompanyStatus must not be null");
     }
 
-    public CompanyDetails updateStatus(final CompanyStatus companyStatus) {
+    CompanyDetails updateStatus(final CompanyStatus companyStatus) {
         return new CompanyDetails(registrantId, name, description, companyAddress, companyLogo, companyStatus, createdAt, null);
     }
 
