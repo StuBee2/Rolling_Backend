@@ -42,7 +42,7 @@ public class StoryMapper implements com.stubee.persistencecommons.mapper.DomainO
         }
 
         return Story.WithIdBuilder()
-                .reviewId(StoryId.of(entity.getId()))
+                .storyId(StoryId.of(entity.getId()))
                 .employmentDetails(employmentDetails(entity))
                 .corporationDetails(corporationDetails(entity))
                 .storyDetails(storyDetails(entity))

@@ -16,7 +16,7 @@ public class CommandStoryAdapter implements CommandStoryPort {
     private final StoryMapper reviewMapper;
 
     @Override
-    public Story register(final Story story) {
+    public Story save(final Story story) {
         return reviewMapper.toDomain(commandReviewJpaRepository.save(reviewMapper.toEntity(story)));
     }
 
