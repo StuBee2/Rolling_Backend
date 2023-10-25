@@ -4,6 +4,7 @@ import com.stubee.applicationcommons.annotations.QueryService;
 import com.stubee.companyapplication.outports.query.QueryCompanyByGradesPort;
 import com.stubee.companyapplication.usecases.query.response.CompanyResponse;
 import com.stubee.companyapplication.usecases.query.QueryCompanyListByGradesUseCase;
+import com.stubee.rollingdomains.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -15,38 +16,21 @@ public class QueryCompanyListByGradesApi implements QueryCompanyListByGradesUseC
     private final QueryCompanyByGradesPort queryCompanyByGradesPort;
 
     @Override
-    public List<CompanyResponse> getByTotalGrade() {
-        return queryCompanyByGradesPort.getByTotalGrade().stream()
+    public List<CompanyResponse> get(final String gradeType) {
+        return fetchByGradeType(gradeType).stream()
                 .map(CompanyResponse::of)
                 .toList();
     }
 
-    @Override
-    public List<CompanyResponse> getBySalaryAndBenefits() {
-        return queryCompanyByGradesPort.getBySalaryAndBenefits().stream()
-                .map(CompanyResponse::of)
-                .toList();
-    }
-
-    @Override
-    public List<CompanyResponse> getByWorkLifeBalance() {
-        return queryCompanyByGradesPort.getByWorkLifeBalance().stream()
-                .map(CompanyResponse::of)
-                .toList();
-    }
-
-    @Override
-    public List<CompanyResponse> getByOrganizationalCulture() {
-        return queryCompanyByGradesPort.getByOrganizationalCulture().stream()
-                .map(CompanyResponse::of)
-                .toList();
-    }
-
-    @Override
-    public List<CompanyResponse> getByCareerAdvancement() {
-        return queryCompanyByGradesPort.getByCareerAdvancement().stream()
-                .map(CompanyResponse::of)
-                .toList();
+    private List<Company> fetchByGradeType(final String gradeType) {
+        return switch (gradeType) {
+            case "total" -> queryCompanyByGradesPort.getByTotalGrade();
+            case "salary-benefits" -> queryCompanyByGradesPort.getBySalaryAndBenefits();
+            case "balance" -> queryCompanyByGradesPort.getByWorkLifeBalance();
+            case "culture" -> queryCompanyByGradesPort.getByOrganizationalCulture();
+            case "career" -> queryCompanyByGradesPort.getByCareerAdvancement();
+            default -> throw new IllegalArgumentException("Wrong grade type");
+        };
     }
 
 }

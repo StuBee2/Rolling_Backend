@@ -6,14 +6,6 @@ import java.util.List;
 
 public interface QueryCompanyListByGradesUseCase {
 
-    List<CompanyResponse> getByTotalGrade();
-
-    List<CompanyResponse> getBySalaryAndBenefits();
-
-    List<CompanyResponse> getByWorkLifeBalance();
-
-    List<CompanyResponse> getByOrganizationalCulture();
-
-    List<CompanyResponse> getByCareerAdvancement();
+    List<CompanyResponse> get(String gradeType);
 
 }
