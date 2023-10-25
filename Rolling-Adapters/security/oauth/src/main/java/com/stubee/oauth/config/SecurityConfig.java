@@ -65,10 +65,10 @@ public class SecurityConfig {
                 .requestMatchers(PATCH, "/company/status").hasAnyRole("ADMIN")
                 .requestMatchers(DELETE, "/company/**").hasAnyRole("ADMIN")
 
-                .requestMatchers(GET, "/company/info/**").hasAnyRole("MEMBER", "ADMIN")
-                .requestMatchers(GET, "/company/search/**").hasAnyRole("MEMBER", "ADMIN")
-                .requestMatchers(GET, "/company/list/**").hasAnyRole("MEMBER", "ADMIN")
-                .requestMatchers(GET, "/company/rank/**").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(GET, "/company/info/**").permitAll()
+                .requestMatchers(GET, "/company/search/**").permitAll()
+                .requestMatchers(GET, "/company/list/**").permitAll()
+                .requestMatchers(GET, "/company/rank/**").permitAll()
 
                 //Employment
                 .requestMatchers(POST, "/employment").hasAnyRole("MEMBER", "ADMIN")
@@ -80,17 +80,17 @@ public class SecurityConfig {
                 .requestMatchers(DELETE, "/story/**").hasAnyRole("MEMBER", "ADMIN")
 
                 .requestMatchers(GET, "/story/my").hasAnyRole("MEMBER", "ADMIN")
-                .requestMatchers(GET, "/story/info/**").hasAnyRole("MEMBER", "ADMIN")
-                .requestMatchers(GET, "/story/list/**").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(GET, "/story/info/**").permitAll()
+                .requestMatchers(GET, "/story/list/**").permitAll()
 
                 //Logging
-                .requestMatchers(POST, "/logging").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(POST, "/logging").authenticated()
 
                 //File
                 .requestMatchers(POST, "/file").hasAnyRole("MEMBER", "ADMIN")
 
                 //News
-                .requestMatchers(GET, "/news/**").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(GET, "/news/**").permitAll()
 
                 .anyRequest().authenticated()
 
