@@ -45,6 +45,7 @@ public class CompanyMapper implements com.stubee.persistencecommons.mapper.Domai
                 .organizationalCulture(domain.companyGrades().getOrganizationalCulture())
                 .careerAdvancement(domain.companyGrades().getCareerAdvancement())
                 .createdAt(domain.companyDetails().createdAt())
+                .modifiedAt(domain.companyDetails().modifiedAt())
                 .build();
     }
 

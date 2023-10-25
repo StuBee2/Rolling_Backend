@@ -1,8 +1,9 @@
 package com.stubee.rollingapi.domain.company;
 
-import com.stubee.rollingdomains.domain.company.services.commands.ChangeCompanyStatusCommand;
+import com.stubee.companyapplication.usecases.command.ModifyCompanyUseCase;
+import com.stubee.rollingapi.domain.company.request.ModifyCompanyRequest;
+import com.stubee.rollingdomains.domain.company.services.commands.ModifyCompanyStatusCommand;
 import com.stubee.rollingdomains.domain.company.services.commands.DeleteCompanyCommand;
-import com.stubee.companyapplication.usecases.command.ChangeCompanyStatusUseCase;
 import com.stubee.companyapplication.usecases.command.DeleteCompanyUseCase;
 import com.stubee.companyapplication.usecases.command.RegisterCompanyUseCase;
 import com.stubee.rollingapi.domain.company.request.RegisterCompanyRequest;
@@ -23,8 +24,8 @@ import static org.springframework.http.HttpStatus.*;
 public class CommandCompanyController {
 
     private final RegisterCompanyUseCase registerCompanyUseCase;
-    private final ChangeCompanyStatusUseCase changeCompanyStatusUseCase;
     private final DeleteCompanyUseCase deleteCompanyUseCase;
+    private final ModifyCompanyUseCase modifyCompanyUseCase;
 
     @Operation(description = "Company 등록")
     @PostMapping
@@ -37,14 +38,14 @@ public class CommandCompanyController {
     @PatchMapping("/accept/{companyId}")
     @ResponseStatus(NO_CONTENT)
     public void accept(final @PathVariable @NotNull Long companyId) {
-        changeCompanyStatusUseCase.change(ChangeCompanyStatusCommand.accept(companyId));
+        modifyCompanyUseCase.modify(ModifyCompanyStatusCommand.accept(companyId));
     }
 
     @Operation(description = "Company 거절 (ADMIN)")
     @PatchMapping("/deny/{companyId}")
     @ResponseStatus(NO_CONTENT)
     public void deny(final @PathVariable @NotNull Long companyId) {
-        changeCompanyStatusUseCase.change(ChangeCompanyStatusCommand.deny(companyId));
+        modifyCompanyUseCase.modify(ModifyCompanyStatusCommand.deny(companyId));
     }
 
     @Operation(description = "Company 삭제 (ADMIN)")
@@ -52,6 +53,12 @@ public class CommandCompanyController {
     @ResponseStatus(NO_CONTENT)
     public void delete(final @PathVariable Long companyId) {
         deleteCompanyUseCase.delete(DeleteCompanyCommand.toCommand(companyId));
+    }
+
+    @Operation(description = "Company 수정")
+    @PatchMapping("/{companyId}")
+    public void modify(final @RequestBody ModifyCompanyRequest request, final @PathVariable Long companyId) {
+        modifyCompanyUseCase.modify(request.toCommand(companyId));
     }
 
 }
