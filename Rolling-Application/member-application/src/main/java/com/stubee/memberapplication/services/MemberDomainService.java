@@ -10,15 +10,15 @@ import com.stubee.rollingdomains.domain.member.exception.DuplicatedNicknameExcep
 import com.stubee.rollingdomains.domain.member.exception.MemberNotFoundException;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.applicationcommons.ports.GetCurrentMemberPort;
-import com.stubee.rollingdomains.domain.member.services.ChangeNicknameService;
+import com.stubee.rollingdomains.domain.member.services.ModifyNicknameService;
 import com.stubee.rollingdomains.domain.member.services.ElevateMemberRoleService;
 import com.stubee.rollingdomains.domain.member.services.GetMemberByIdService;
-import com.stubee.rollingdomains.domain.member.services.commands.ChangeNicknameCommand;
+import com.stubee.rollingdomains.domain.member.services.commands.ModifyNicknameCommand;
 import lombok.RequiredArgsConstructor;
 
 @DomainService
 @RequiredArgsConstructor
-public class MemberDomainService implements ChangeNicknameService, ElevateMemberRoleService, GetMemberByIdService {
+public class MemberDomainService implements ModifyNicknameService, ElevateMemberRoleService, GetMemberByIdService {
 
     private final CommandMemberPort commandMemberPort;
     private final QueryMemberPort queryMemberPort;
@@ -32,10 +32,10 @@ public class MemberDomainService implements ChangeNicknameService, ElevateMember
     }
 
     @Override
-    public void change(final ChangeNicknameCommand command) {
+    public void modify(final ModifyNicknameCommand command) {
         this.checkByNickname(command.nickname());
 
-        commandMemberPort.saveWithId(this.getMember().changeNickname(command.nickname()));
+        commandMemberPort.saveWithId(this.getMember().updateNickname(command.nickname()));
     }
 
     private void checkByNickname(final String nickname) {

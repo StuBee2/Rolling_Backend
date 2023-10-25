@@ -21,7 +21,7 @@ public record MemberDetails(
         Assert.notNull(memberRole, "MemberRole must not be null");
     }
 
-    MemberDetails updateNickName(final String nickName) {
+    MemberDetails update(final String nickName) {
         return new MemberDetails(nickName, memberRole, createdAt, modifiedAt);
     }
 
