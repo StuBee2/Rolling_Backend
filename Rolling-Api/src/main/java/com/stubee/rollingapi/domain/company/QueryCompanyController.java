@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.springframework.http.HttpStatus.*;
-
 @Tag(name = "Query Company", description = "Query Company API")
 @RestController
 @RequestMapping(value = "/company")
@@ -27,14 +25,12 @@ public class QueryCompanyController {
 
     @Operation(description = "Company id로 Company 정보 조회")
     @GetMapping("/info/{id}")
-    @ResponseStatus(OK)
     public CompanyQueryResponse getInfo(final @PathVariable("id") Long companyId) {
         return queryCompanyInfoByIdUseCase.get(companyId);
     }
 
     @Operation(description = "Company Name으로 Company 검색")
     @GetMapping("/search")
-    @ResponseStatus(OK)
     public PageDataResponse<List<CompanyResponse>> searchByName(final @RequestParam(name = "name") String companyName,
                                                                 final @ModelAttribute PageRequest pageRequest) {
         return searchCompanyListByNameUseCase.get(companyName, pageRequest);
@@ -42,44 +38,14 @@ public class QueryCompanyController {
 
     @Operation(description = "모든 Company List 조회 (ADMIN)")
     @GetMapping("/list/all")
-    @ResponseStatus(OK)
     public PageDataResponse<List<CompanyResponse>> getAll(final @ModelAttribute PageRequest pageRequest) {
         return queryAllCompanyListUseCase.get(pageRequest);
     }
 
-    @Operation(description = "Company TotalGrade Top 10")
-    @GetMapping("/rank/total")
-    @ResponseStatus(OK)
-    public List<CompanyResponse> getByTotalGrade() {
-        return queryCompanyListByGradesUseCase.getByTotalGrade();
-    }
-
-    @Operation(description = "Company Salary And Benefits Top 10")
-    @GetMapping("/rank/salary-benefits")
-    @ResponseStatus(OK)
-    public List<CompanyResponse> getBySalaryAndBenefits() {
-        return queryCompanyListByGradesUseCase.getBySalaryAndBenefits();
-    }
-
-    @Operation(description = "Company Work-Life Balance Top 10")
-    @GetMapping("/rank/balance")
-    @ResponseStatus(OK)
-    public List<CompanyResponse> getByWorkLifeBalance() {
-        return queryCompanyListByGradesUseCase.getByWorkLifeBalance();
-    }
-
-    @Operation(description = "Company Organizational Culture Top 10")
-    @GetMapping("/rank/culture")
-    @ResponseStatus(OK)
-    public List<CompanyResponse> getByOrganizationalCulture() {
-        return queryCompanyListByGradesUseCase.getByOrganizationalCulture();
-    }
-
-    @Operation(description = "Company Career Advancement Top 10")
-    @GetMapping("/rank/career")
-    @ResponseStatus(OK)
-    public List<CompanyResponse> getByCareerAdvancement() {
-        return queryCompanyListByGradesUseCase.getByCareerAdvancement();
+    @Operation(description = "Company Top 10 By Grade (total, salary-benefits, balance, culture, career)")
+    @GetMapping("/rank/{gradeType}")
+    public List<CompanyResponse> getByGrade(final @PathVariable String gradeType) {
+        return queryCompanyListByGradesUseCase.get(gradeType);
     }
 
 }

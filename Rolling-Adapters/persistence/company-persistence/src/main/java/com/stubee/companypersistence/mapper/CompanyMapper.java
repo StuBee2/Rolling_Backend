@@ -45,6 +45,7 @@ public class CompanyMapper implements com.stubee.persistencecommons.mapper.Domai
                 .organizationalCulture(domain.companyGrades().getOrganizationalCulture())
                 .careerAdvancement(domain.companyGrades().getCareerAdvancement())
                 .createdAt(domain.companyDetails().createdAt())
+                .modifiedAt(domain.companyDetails().modifiedAt())
                 .build();
     }
 
@@ -69,7 +70,7 @@ public class CompanyMapper implements com.stubee.persistencecommons.mapper.Domai
         return CompanyDetails.WithDateBuilder()
                 .registrantId(RegistrantId.of(entity.getRegistrantId()))
                 .name(entity.getName())
-                .companyAddress(Address.of(entity.getAddress()))
+                .companyAddress(Address.of(entity.getAddress(), entity.getAddressEtc()))
                 .description(entity.getDescription())
                 .companyLogo(CompanyLogo.of(entity.getLogoUrl(), entity.getLogoRGB()))
                 .companyStatus(entity.getCompanyStatus())

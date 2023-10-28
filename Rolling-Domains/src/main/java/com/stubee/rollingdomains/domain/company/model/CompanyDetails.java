@@ -29,8 +29,16 @@ public record CompanyDetails(
         Assert.notNull(companyStatus, "CompanyStatus must not be null");
     }
 
-    public CompanyDetails updateStatus(final CompanyStatus companyStatus) {
-        return new CompanyDetails(registrantId, name, description, companyAddress, companyLogo, companyStatus, createdAt, null);
+    CompanyDetails update(final String name, final String description, final Address companyAddress, final CompanyLogo companyLogo) {
+        Assert.notNull(name, "Name must not be null");
+        Assert.notNull(companyAddress, "CompanyAddress must not be null");
+        Assert.notNull(description, "Description must not be null");
+
+        return new CompanyDetails(registrantId, name, description, companyAddress, companyLogo, companyStatus, createdAt, modifiedAt);
+    }
+
+    CompanyDetails update(final CompanyStatus companyStatus) {
+        return new CompanyDetails(registrantId, name, description, companyAddress, companyLogo, companyStatus, createdAt, modifiedAt);
     }
 
 }

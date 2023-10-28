@@ -24,12 +24,12 @@ public record Member (
         return new Member(memberId, socialDetails.updateLoginId(socialLoginId), memberDetails);
     }
 
-    public Member changeEmail(final String email) {
+    public Member updateEmail(final String email) {
         return new Member(memberId, socialDetails.updateEmail(email), memberDetails);
     }
 
-    public Member changeNickname(final String nickname) {
-        return new Member(memberId, socialDetails, memberDetails.updateNickName(nickname));
+    public Member updateNickname(final String nickname) {
+        return new Member(memberId, socialDetails, memberDetails.update(nickname));
     }
 
     public Member elevateToMember() {

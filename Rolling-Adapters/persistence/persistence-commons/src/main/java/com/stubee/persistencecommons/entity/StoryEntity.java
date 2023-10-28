@@ -48,7 +48,6 @@ public class StoryEntity extends BaseEntity {
     @Size(max = 100)
     private String welfare;
 
-    @NotNull
     @Size(max = 100)
     private String commuteTime;
 

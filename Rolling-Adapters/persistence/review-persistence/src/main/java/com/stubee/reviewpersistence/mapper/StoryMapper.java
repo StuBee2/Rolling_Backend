@@ -11,18 +11,18 @@ public class StoryMapper implements com.stubee.persistencecommons.mapper.DomainO
     @Override
     public StoryEntity toEntity(final Story domain) {
         return StoryEntity.builder()
-                .position(domain.employmentDetails().position())
-                .schoolLife(domain.employmentDetails().schoolLife())
-                .preparationCourse(domain.employmentDetails().preparationCourse())
-                .employmentProcess(domain.employmentDetails().employmentProcess())
-                .interviewQuestion(domain.employmentDetails().interviewQuestion())
-                .mostImportantThing(domain.employmentDetails().mostImportantThing())
+                .position(domain.storyDetails().corporationDetails().position())
+                .schoolLife(domain.storyDetails().employmentDetails().schoolLife())
+                .preparationCourse(domain.storyDetails().employmentDetails().preparationCourse())
+                .employmentProcess(domain.storyDetails().employmentDetails().employmentProcess())
+                .interviewQuestion(domain.storyDetails().employmentDetails().interviewQuestion())
+                .mostImportantThing(domain.storyDetails().employmentDetails().mostImportantThing())
 
-                .welfare(domain.corporationDetails().welfare())
-                .commuteTime(domain.corporationDetails().commuteTime())
-                .meal(domain.corporationDetails().meal())
-                .advantages(domain.corporationDetails().advantages())
-                .disAdvantages(domain.corporationDetails().disAdvantages())
+                .welfare(domain.storyDetails().corporationDetails().welfare())
+                .commuteTime(domain.storyDetails().corporationDetails().commuteTime())
+                .meal(domain.storyDetails().corporationDetails().meal())
+                .advantages(domain.storyDetails().corporationDetails().pros())
+                .disAdvantages(domain.storyDetails().corporationDetails().cons())
 
                 .totalGrade(domain.reviewGrades().getTotal())
                 .salaryAndBenefits(domain.reviewGrades().getSalaryAndBenefits())
@@ -35,6 +35,35 @@ public class StoryMapper implements com.stubee.persistencecommons.mapper.DomainO
                 .build();
     }
 
+    public StoryEntity toEntityWithId(final Story domain) {
+        return StoryEntity.builder()
+                .id(domain.storyId().getId())
+                .position(domain.storyDetails().corporationDetails().position())
+                .schoolLife(domain.storyDetails().employmentDetails().schoolLife())
+                .preparationCourse(domain.storyDetails().employmentDetails().preparationCourse())
+                .employmentProcess(domain.storyDetails().employmentDetails().employmentProcess())
+                .interviewQuestion(domain.storyDetails().employmentDetails().interviewQuestion())
+                .mostImportantThing(domain.storyDetails().employmentDetails().mostImportantThing())
+
+                .welfare(domain.storyDetails().corporationDetails().welfare())
+                .commuteTime(domain.storyDetails().corporationDetails().commuteTime())
+                .meal(domain.storyDetails().corporationDetails().meal())
+                .advantages(domain.storyDetails().corporationDetails().pros())
+                .disAdvantages(domain.storyDetails().corporationDetails().cons())
+
+                .totalGrade(domain.reviewGrades().getTotal())
+                .salaryAndBenefits(domain.reviewGrades().getSalaryAndBenefits())
+                .workLifeBalance(domain.reviewGrades().getWorkLifeBalance())
+                .organizationalCulture(domain.reviewGrades().getOrganizationalCulture())
+                .careerAdvancement(domain.reviewGrades().getCareerAdvancement())
+
+                .memberId(domain.storyDetails().authorId().getId())
+                .companyId(domain.storyDetails().companyId().getId())
+                .createdAt(domain.storyDetails().createdAt())
+                .modifiedAt(domain.storyDetails().modifiedAt())
+                .build();
+    }
+
     @Override
     public Story toDomain(final StoryEntity entity) {
         if(entity==null) {
@@ -42,17 +71,25 @@ public class StoryMapper implements com.stubee.persistencecommons.mapper.DomainO
         }
 
         return Story.WithIdBuilder()
-                .reviewId(StoryId.of(entity.getId()))
-                .employmentDetails(employmentDetails(entity))
-                .corporationDetails(corporationDetails(entity))
+                .storyId(StoryId.of(entity.getId()))
                 .storyDetails(storyDetails(entity))
                 .reviewGrades(reviewGrades(entity))
                 .build();
     }
 
+    private StoryDetails storyDetails(final StoryEntity entity) {
+        return StoryDetails.WithDateBuilder()
+                .authorId(AuthorId.of(entity.getMemberId()))
+                .companyId(CompanyId.of(entity.getCompanyId()))
+                .employmentDetails(employmentDetails(entity))
+                .corporationDetails(corporationDetails(entity))
+                .createdAt(entity.getCreatedAt())
+                .modifiedAt(entity.getModifiedAt())
+                .build();
+    }
+
     private EmploymentDetails employmentDetails(final StoryEntity entity) {
         return EmploymentDetails.builder()
-                .position(entity.getPosition())
                 .schoolLife(entity.getSchoolLife())
                 .preparationCourse(entity.getPreparationCourse())
                 .employmentProcess(entity.getEmploymentProcess())
@@ -63,20 +100,12 @@ public class StoryMapper implements com.stubee.persistencecommons.mapper.DomainO
 
     private CorporationDetails corporationDetails(final StoryEntity entity) {
         return CorporationDetails.builder()
+                .position(entity.getPosition())
                 .welfare(entity.getWelfare())
                 .commuteTime(entity.getCommuteTime())
                 .meal(entity.getMeal())
-                .advantages(entity.getAdvantages())
-                .disAdvantages(entity.getDisAdvantages())
-                .build();
-    }
-
-    private StoryDetails storyDetails(final StoryEntity entity) {
-        return StoryDetails.WithDateBuilder()
-                .authorId(AuthorId.of(entity.getMemberId()))
-                .companyId(CompanyId.of(entity.getCompanyId()))
-                .createdAt(entity.getCreatedAt())
-                .modifiedAt(entity.getModifiedAt())
+                .pros(entity.getAdvantages())
+                .cons(entity.getDisAdvantages())
                 .build();
     }
 

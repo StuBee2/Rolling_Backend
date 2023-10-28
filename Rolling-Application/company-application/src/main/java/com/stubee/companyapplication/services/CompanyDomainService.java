@@ -6,19 +6,23 @@ import com.stubee.companyapplication.outports.query.CheckCompanyPort;
 import com.stubee.companyapplication.outports.query.QueryCompanyByIdPort;
 import com.stubee.rollingdomains.domain.company.exception.CompanyNotFoundException;
 import com.stubee.rollingdomains.domain.company.exception.DuplicatedCompanyNameException;
+import com.stubee.rollingdomains.domain.company.model.Address;
 import com.stubee.rollingdomains.domain.company.model.Company;
+import com.stubee.rollingdomains.domain.company.model.CompanyLogo;
 import com.stubee.rollingdomains.domain.company.services.*;
-import com.stubee.rollingdomains.domain.company.services.commands.ChangeCompanyStatusCommand;
+import com.stubee.rollingdomains.domain.company.services.commands.ModifyCompanyStatusCommand;
 import com.stubee.rollingdomains.domain.company.services.commands.DeleteCompanyCommand;
+import com.stubee.rollingdomains.domain.company.services.commands.ModifyCompanyDetailsCommand;
 import com.stubee.rollingdomains.domain.company.services.commands.RegisterCompanyCommand;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.Objects;
 
 @DomainService
 @RequiredArgsConstructor
-public class CompanyDomainService implements RegisterCompanyService, ChangeCompanyStatusService, DeleteCompanyService,
+public class CompanyDomainService implements RegisterCompanyService, ModifyCompanyService, DeleteCompanyService,
         UpdateCompanyListService, CheckCompanyExistenceService {
 
     private final CommandCompanyPort commandCompanyPort;
@@ -36,14 +40,6 @@ public class CompanyDomainService implements RegisterCompanyService, ChangeCompa
         if(checkCompanyPort.check(name)) {
             throw DuplicatedCompanyNameException.EXCEPTION;
         }
-    }
-
-    @Override
-    public void change(final ChangeCompanyStatusCommand command) {
-        final Company company = this.getById(command.companyId())
-                .updateStatus(command.status());
-
-        commandCompanyPort.update(company);
     }
 
     @Override
@@ -68,6 +64,28 @@ public class CompanyDomainService implements RegisterCompanyService, ChangeCompa
     @Override
     public void updateAll(final List<Company> companyList) {
         commandCompanyPort.updateAll(companyList);
+    }
+
+    @Override
+    public void modify(final ModifyCompanyDetailsCommand command, final MemberId memberId) {
+        final Company company = getById(command.id());
+
+        company.isAuthor(memberId);
+
+        if(!Objects.equals(company.companyDetails().name(), command.name())) {
+            checkByName(command.name());
+        }
+
+        commandCompanyPort.update(company.update(command.name(), command.description(),
+                Address.of(command.companyAddress(), command.companyAddressEtc()),
+                CompanyLogo.of(command.url(), command.rgb())));
+    }
+
+    @Override
+    public void modify(final ModifyCompanyStatusCommand command) {
+        final Company company = this.getById(command.companyId());
+
+        commandCompanyPort.update(company.update(command.status()));
     }
 
 }

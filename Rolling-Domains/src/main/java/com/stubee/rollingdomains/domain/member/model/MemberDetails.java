@@ -21,11 +21,11 @@ public record MemberDetails(
         Assert.notNull(memberRole, "MemberRole must not be null");
     }
 
-    public MemberDetails updateNickName(final String nickName) {
+    MemberDetails update(final String nickName) {
         return new MemberDetails(nickName, memberRole, createdAt, modifiedAt);
     }
 
-    public MemberDetails elevateToMember() {
+    MemberDetails elevateToMember() {
         if(memberRole!=MemberRole.TEMP) {
             return this;
         }

@@ -5,23 +5,22 @@ import com.stubee.rollingdomains.domain.member.model.MemberId;
 import lombok.Builder;
 
 public record Story(
-        StoryId reviewId,
-        EmploymentDetails employmentDetails,
-        CorporationDetails corporationDetails,
-        ReviewGrades reviewGrades,
-        StoryDetails storyDetails) {
+        StoryId storyId,
+        StoryDetails storyDetails,
+        ReviewGrades reviewGrades) {
     @Builder(builderClassName = "ExceptIdBuilder", builderMethodName = "ExceptIdBuilder")
-    public Story(EmploymentDetails employmentDetails, CorporationDetails corporationDetails, ReviewGrades reviewGrades,
-                 StoryDetails storyDetails) {
-        this(null, employmentDetails, corporationDetails, reviewGrades, storyDetails);
+    public Story(StoryDetails storyDetails, ReviewGrades reviewGrades) {
+        this(null, storyDetails, reviewGrades);
     }
 
     @Builder(builderClassName = "WithIdBuilder", builderMethodName = "WithIdBuilder")
     public Story {
-        Assert.notNull(employmentDetails, "EmploymentDetails must not be null");
-        Assert.notNull(corporationDetails, "CorporationDetails must not be null");
-        Assert.notNull(reviewGrades, "ReviewGrades must not be null");
         Assert.notNull(storyDetails, "StoryDetails must not be null");
+        Assert.notNull(reviewGrades, "ReviewGrades must not be null");
+    }
+
+    public Story update(final EmploymentDetails employmentDetails, final CorporationDetails corporationDetails) {
+        return new Story(storyId, storyDetails.update(employmentDetails, corporationDetails), reviewGrades);
     }
 
     public void isAuthor(final MemberId memberId) {

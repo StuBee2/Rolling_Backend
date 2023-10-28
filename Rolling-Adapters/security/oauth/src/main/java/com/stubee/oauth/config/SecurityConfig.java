@@ -58,7 +58,7 @@ public class SecurityConfig {
                 .requestMatchers(PATCH, "/member/**").authenticated()
 
                 .requestMatchers(GET, "/member/my").authenticated()
-                .requestMatchers(GET, "/member/**").permitAll()
+                .requestMatchers(GET, "/member/**").authenticated()
 
                 //Company
                 .requestMatchers(POST, "/company").hasAnyRole("MEMBER", "ADMIN")
@@ -79,12 +79,12 @@ public class SecurityConfig {
                 .requestMatchers(POST, "/story").hasAnyRole("MEMBER", "ADMIN")
                 .requestMatchers(DELETE, "/story/**").hasAnyRole("MEMBER", "ADMIN")
 
-                .requestMatchers(GET, "/story/my").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(GET, "/story/my").authenticated()
                 .requestMatchers(GET, "/story/info/**").permitAll()
                 .requestMatchers(GET, "/story/list/**").permitAll()
 
                 //Logging
-                .requestMatchers(POST, "/logging").permitAll()
+                .requestMatchers(POST, "/logging").authenticated()
 
                 //File
                 .requestMatchers(POST, "/file").hasAnyRole("MEMBER", "ADMIN")
@@ -98,7 +98,7 @@ public class SecurityConfig {
                 .formLogin().disable()
                 .exceptionHandling()
                 .accessDeniedHandler(customAccessDeniedHandler)
-                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.NOT_FOUND))
+                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
 
                 .and()
                 .oauth2Login()

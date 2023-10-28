@@ -18,13 +18,9 @@ public record CompanyViewLogging(
         this(null, memberId, companyId, false, null);
     }
 
-    @Builder(builderClassName = "AnonymousBuilder", builderMethodName = "AnonymousBuilder")
-    public CompanyViewLogging(CompanyId companyId) {
-        this(null, MemberId.of(0L), companyId, true, null);
-    }
-
     @Builder(builderClassName = "WithIdBuilder", builderMethodName = "WithIdBuilder")
     public CompanyViewLogging {
+        Assert.notNull(memberId, "MemberId must not be null");
         Assert.notNull(companyId, "CompanyId must not be null");
         Assert.notNull(isAnonymous, "IsAnonymous must not be null");
     }

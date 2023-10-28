@@ -121,7 +121,7 @@ public class QueryDSLStoryRepository implements QueryStoryRepository {
 
                 companyEntity.id.stringValue(),
                 companyEntity.name,
-                companyEntity.imgUrl/*,
+                companyEntity.logoUrl/*,
 
                 employmentEntity.employmentStatus*/);
     }

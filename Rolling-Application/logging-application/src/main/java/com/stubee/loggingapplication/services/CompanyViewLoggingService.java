@@ -18,16 +18,10 @@ public class CompanyViewLoggingService {
 
     @AsyncTransactionalEventListener
     public void pileUp(final CompanyViewedEvent event) {
-        try {
-            commandLoggingPort.save(CompanyViewLogging.ExceptIdBuilder()
-                    .memberId(getCurrentMemberPort.getMemberId())
-                    .companyId(CompanyId.of(event.companyId()))
-                    .build());
-        } catch (Exception e) {
-            commandLoggingPort.save(CompanyViewLogging.AnonymousBuilder()
-                    .companyId(CompanyId.of(event.companyId()))
-                    .build());
-        }
+        commandLoggingPort.save(CompanyViewLogging.ExceptIdBuilder()
+                .memberId(getCurrentMemberPort.getMemberId())
+                .companyId(CompanyId.of(event.companyId()))
+                .build());
     }
 
 }

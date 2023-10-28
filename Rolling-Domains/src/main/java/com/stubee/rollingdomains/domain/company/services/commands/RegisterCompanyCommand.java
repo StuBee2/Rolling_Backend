@@ -6,12 +6,13 @@ import com.stubee.rollingdomains.domain.member.model.MemberId;
 public record RegisterCompanyCommand(
         String name,
         String address,
+        String addressEtc,
         String description,
         String imgUrl,
         Integer rgb) {
-    public static RegisterCompanyCommand create(final String name, final String address,
+    public static RegisterCompanyCommand create(final String name, final String address, final String addressEtc,
                                                 final String description, final String imgUrl, final Integer rgb) {
-        return new RegisterCompanyCommand(name, address, description, imgUrl, rgb);
+        return new RegisterCompanyCommand(name, address, addressEtc, description, imgUrl, rgb);
     }
 
     public Company toDomain(final MemberId memberId) {
@@ -20,7 +21,7 @@ public record RegisterCompanyCommand(
                         .registrantId(RegistrantId.of(memberId))
                         .name(name)
                         .description(description)
-                        .companyAddress(Address.of(address))
+                        .companyAddress(Address.of(address, addressEtc))
                         .companyLogo(CompanyLogo.of(imgUrl, rgb))
                         .build())
                 .companyGrades(CompanyGrades.zero())
