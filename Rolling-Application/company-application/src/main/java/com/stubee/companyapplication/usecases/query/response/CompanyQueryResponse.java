@@ -6,6 +6,7 @@ public record CompanyQueryResponse(
         String companyId,
         String companyName,
         String companyAddress,
+        String companyAddressEtc,
         String companyDescription,
         String companyLogoUrl,
         Integer companyLogoRGB,

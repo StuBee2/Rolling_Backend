@@ -107,6 +107,7 @@ public class QueryDSLCompanyRepository implements QueryCompanyRepository {
                 companyEntity.id.stringValue(),
                 companyEntity.name,
                 companyEntity.address,
+                companyEntity.addressEtc,
                 companyEntity.description,
                 companyEntity.logoUrl,
                 companyEntity.logoRGB,

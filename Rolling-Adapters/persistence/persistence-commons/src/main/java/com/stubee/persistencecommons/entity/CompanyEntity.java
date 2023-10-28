@@ -26,6 +26,8 @@ public class CompanyEntity extends BaseEntity {
     @NotNull
     private String address;
 
+    private String addressEtc;
+
     @NotNull
     @Column(columnDefinition = "TEXT")
     private String description;
