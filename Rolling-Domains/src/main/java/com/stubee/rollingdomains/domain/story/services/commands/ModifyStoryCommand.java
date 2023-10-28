@@ -13,6 +13,6 @@ public record ModifyStoryCommand(
         String welfare,
         String commuteTime,
         String meal,
-        String advantages,
-        String disAdvantages
+        String pros,
+        String cons
 ) {}

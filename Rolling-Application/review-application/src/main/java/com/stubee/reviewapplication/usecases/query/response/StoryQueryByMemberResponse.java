@@ -15,8 +15,8 @@ public record StoryQueryByMemberResponse(
         String welfare,
         String commuteTime,
         String meal,
-        String advantages,
-        String disAdvantages,
+        String pros,
+        String cons,
 
         Double total,
         Double salaryAndBenefits,

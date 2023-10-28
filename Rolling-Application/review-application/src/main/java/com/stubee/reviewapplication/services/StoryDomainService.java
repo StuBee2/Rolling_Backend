@@ -5,10 +5,7 @@ import com.stubee.reviewapplication.outports.command.CommandStoryPort;
 import com.stubee.reviewapplication.outports.query.QueryStoryByIdPort;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 import com.stubee.rollingdomains.domain.story.exception.StoryNotFoundException;
-import com.stubee.rollingdomains.domain.story.model.CorporationDetails;
-import com.stubee.rollingdomains.domain.story.model.EmploymentDetails;
-import com.stubee.rollingdomains.domain.story.model.Story;
-import com.stubee.rollingdomains.domain.story.model.StoryId;
+import com.stubee.rollingdomains.domain.story.model.*;
 import com.stubee.rollingdomains.domain.story.services.DeleteStoryService;
 import com.stubee.rollingdomains.domain.story.services.ModifyStoryService;
 import com.stubee.rollingdomains.domain.story.services.WriteStoryService;
@@ -44,7 +41,7 @@ public class StoryDomainService implements WriteStoryService, DeleteStoryService
 
         story.isAuthor(memberId);
 
-        commandStoryPort.save(story.modify(toEmploymentDetails(command), toCorporationDetails(command)));
+        commandStoryPort.update(story.update(toEmploymentDetails(command), toCorporationDetails(command)));
     }
 
     private Story getById(final StoryId storyId) {
@@ -54,7 +51,6 @@ public class StoryDomainService implements WriteStoryService, DeleteStoryService
 
     private EmploymentDetails toEmploymentDetails(final ModifyStoryCommand command) {
         return EmploymentDetails.builder()
-                .position(command.position())
                 .schoolLife(command.schoolLife())
                 .preparationCourse(command.preparationCourse())
                 .employmentProcess(command.employmentProcess())
@@ -65,11 +61,12 @@ public class StoryDomainService implements WriteStoryService, DeleteStoryService
 
     private CorporationDetails toCorporationDetails(final ModifyStoryCommand command) {
         return CorporationDetails.builder()
+                .position(command.position())
                 .welfare(command.welfare())
                 .commuteTime(command.commuteTime())
                 .meal(command.meal())
-                .advantages(command.advantages())
-                .disAdvantages(command.disAdvantages())
+                .pros(command.pros())
+                .cons(command.cons())
                 .build();
     }
 
