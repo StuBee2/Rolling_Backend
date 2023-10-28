@@ -12,17 +12,22 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CommandStoryAdapter implements CommandStoryPort {
 
-    private final CommandStoryJpaRepository commandReviewJpaRepository;
-    private final StoryMapper reviewMapper;
+    private final CommandStoryJpaRepository commandStoryJpaRepository;
+    private final StoryMapper storyMapper;
 
     @Override
     public Story save(final Story story) {
-        return reviewMapper.toDomain(commandReviewJpaRepository.save(reviewMapper.toEntity(story)));
+        return storyMapper.toDomain(commandStoryJpaRepository.save(storyMapper.toEntity(story)));
     }
 
     @Override
     public void deleteById(final StoryId storyId) {
-        commandReviewJpaRepository.deleteById(storyId.getId());
+        commandStoryJpaRepository.deleteById(storyId.getId());
+    }
+
+    @Override
+    public void update(final Story story) {
+        commandStoryJpaRepository.save(storyMapper.toEntityWithId(story));
     }
 
 }

@@ -40,9 +40,9 @@ public class CommandStoryController {
     }
 
     @Operation(description = "Story 수정")
-    @PutMapping("/{storyId}")
+    @PatchMapping("/{storyId}")
     @ResponseStatus(NO_CONTENT)
-    public void modify(final @RequestBody ModifyStoryRequest request, @PathVariable Long storyId) {
+    public void modify(final @RequestBody @Validated ModifyStoryRequest request, @PathVariable Long storyId) {
         modifyStoryUseCase.modify(request.toCommand(storyId));
     }
 
