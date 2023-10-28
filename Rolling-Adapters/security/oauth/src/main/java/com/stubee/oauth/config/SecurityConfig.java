@@ -55,10 +55,10 @@ public class SecurityConfig {
                 .requestMatchers("/auth/certify").hasRole("TEMP")
 
                 //Member
-                .requestMatchers(PATCH, "/member/**").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(PATCH, "/member/**").authenticated()
 
-                .requestMatchers(GET, "/member/my").hasAnyRole("MEMBER", "ADMIN")
-                .requestMatchers(GET, "/member/**").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(GET, "/member/my").authenticated()
+                .requestMatchers(GET, "/member/**").authenticated()
 
                 //Company
                 .requestMatchers(POST, "/company").hasAnyRole("MEMBER", "ADMIN")
@@ -79,7 +79,7 @@ public class SecurityConfig {
                 .requestMatchers(POST, "/story").hasAnyRole("MEMBER", "ADMIN")
                 .requestMatchers(DELETE, "/story/**").hasAnyRole("MEMBER", "ADMIN")
 
-                .requestMatchers(GET, "/story/my").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers(GET, "/story/my").authenticated()
                 .requestMatchers(GET, "/story/info/**").permitAll()
                 .requestMatchers(GET, "/story/list/**").permitAll()
 
