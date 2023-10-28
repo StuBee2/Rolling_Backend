@@ -39,7 +39,6 @@ public class ParseJwtAdapter implements ParseTokenPort {
         final Member member = queryMemberPort.findById(memberId)
                 .orElseThrow(() -> MemberNotFoundException.EXCEPTION);
 
-        log.info("Member Role : {}", member.memberDetails().memberRole());
         log.info("SocialLoginId : {}", member.socialDetails().socialLoginId());
 
         final CustomMemberDetails details = CustomMemberDetails.create(member);
