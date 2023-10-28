@@ -35,7 +35,7 @@ public class S3Adapter implements UploadImagePort {
 
         amazonS3.putObject(request);
 
-        return FileResponse.of(getUrl(fileName), getColor(multipartFile));
+        return FileResponse.of(getUrl(fileName), getRGB(multipartFile));
     }
 
     private String getFileName(final String fileName) {
@@ -65,7 +65,7 @@ public class S3Adapter implements UploadImagePort {
         }
     }
 
-    private Integer getColor(final MultipartFile multipartFile) {
+    private Integer getRGB(final MultipartFile multipartFile) {
         try {
             BufferedImage bufferedImage = ImageIO.read(multipartFile.getInputStream());
 
