@@ -1,5 +1,6 @@
 package com.stubee.rollingapi.domain.company;
 
+import com.stubee.applicationcommons.dtos.response.TSID;
 import com.stubee.companyapplication.usecases.command.ModifyCompanyUseCase;
 import com.stubee.rollingapi.domain.company.request.ModifyCompanyRequest;
 import com.stubee.rollingdomains.domain.company.services.commands.ModifyCompanyStatusCommand;
@@ -7,7 +8,6 @@ import com.stubee.rollingdomains.domain.company.services.commands.DeleteCompanyC
 import com.stubee.companyapplication.usecases.command.DeleteCompanyUseCase;
 import com.stubee.companyapplication.usecases.command.RegisterCompanyUseCase;
 import com.stubee.rollingapi.domain.company.request.RegisterCompanyRequest;
-import com.stubee.rollingdomains.domain.company.model.Company;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotNull;
@@ -30,7 +30,7 @@ public class CommandCompanyController {
     @Operation(description = "Company 등록")
     @PostMapping
     @ResponseStatus(CREATED)
-    public Company register(final @RequestBody @Validated RegisterCompanyRequest request) {
+    public TSID register(final @RequestBody @Validated RegisterCompanyRequest request) {
         return registerCompanyUseCase.register(request.toCommand());
     }
 
@@ -51,13 +51,13 @@ public class CommandCompanyController {
     @Operation(description = "Company 삭제 (ADMIN)")
     @DeleteMapping("/{companyId}")
     @ResponseStatus(NO_CONTENT)
-    public void delete(final @PathVariable Long companyId) {
+    public void delete(final @PathVariable @NotNull Long companyId) {
         deleteCompanyUseCase.delete(DeleteCompanyCommand.toCommand(companyId));
     }
 
     @Operation(description = "Company 수정")
     @PatchMapping("/{companyId}")
-    public void modify(final @RequestBody ModifyCompanyRequest request, final @PathVariable Long companyId) {
+    public void modify(final @RequestBody @Validated ModifyCompanyRequest request, final @PathVariable Long companyId) {
         modifyCompanyUseCase.modify(request.toCommand(companyId));
     }
 
