@@ -24,8 +24,8 @@ public record Company (
         companyDetails.registrantId().isEqual(memberId);
     }
 
-    public Company update(final String description, final Address companyAddress, final CompanyLogo companyLogo) {
-        return new Company(companyId, companyDetails.update(description, companyAddress, companyLogo), companyGrades);
+    public Company update(final String name, final String description, final Address companyAddress, final CompanyLogo companyLogo) {
+        return new Company(companyId, companyDetails.update(name, description, companyAddress, companyLogo), companyGrades);
     }
 
     public Company update(final CompanyGrades companyGrades) {

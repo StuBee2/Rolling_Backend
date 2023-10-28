@@ -29,7 +29,8 @@ public record CompanyDetails(
         Assert.notNull(companyStatus, "CompanyStatus must not be null");
     }
 
-    CompanyDetails update(final String description, final Address companyAddress, final CompanyLogo companyLogo) {
+    CompanyDetails update(final String name, final String description, final Address companyAddress, final CompanyLogo companyLogo) {
+        Assert.notNull(name, "Name must not be null");
         Assert.notNull(companyAddress, "CompanyAddress must not be null");
         Assert.notNull(description, "Description must not be null");
 

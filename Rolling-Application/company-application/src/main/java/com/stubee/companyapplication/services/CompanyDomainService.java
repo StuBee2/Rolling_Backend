@@ -18,6 +18,7 @@ import com.stubee.rollingdomains.domain.member.model.MemberId;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.Objects;
 
 @DomainService
 @RequiredArgsConstructor
@@ -71,7 +72,12 @@ public class CompanyDomainService implements RegisterCompanyService, ModifyCompa
 
         company.isAuthor(memberId);
 
-        commandCompanyPort.update(company.update(command.description(), Address.of(command.companyAddress()),
+        if(!Objects.equals(company.companyDetails().name(), command.name())) {
+            checkByName(command.name());
+        }
+
+        commandCompanyPort.update(company.update(command.name(), command.description(),
+                Address.of(command.companyAddress(), command.companyAddressEtc()),
                 CompanyLogo.of(command.url(), command.rgb())));
     }
 
