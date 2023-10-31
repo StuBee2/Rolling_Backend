@@ -1,8 +1,8 @@
-package com.stubee.oauth.filter;
+package com.stubee.jwt.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.stubee.rollingdomains.common.error.ErrorResponse;
 import com.stubee.rollingdomains.common.error.ErrorCode;
+import com.stubee.rollingdomains.common.error.ErrorResponse;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.UnsupportedJwtException;
@@ -11,7 +11,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -19,7 +18,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 @Component
-@Slf4j
 @RequiredArgsConstructor
 public class JwtExceptionFilter extends OncePerRequestFilter {
 
@@ -43,7 +41,7 @@ public class JwtExceptionFilter extends OncePerRequestFilter {
 
     private void setErrorResponse(HttpServletResponse response, ErrorCode error) {
         try {
-            responseToClient(response, ErrorResponse.create(error));
+            responseToClient(response, ErrorResponse.of(error));
         } catch (IOException e) {
             e.printStackTrace();
         }
