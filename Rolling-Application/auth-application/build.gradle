@@ -2,12 +2,7 @@ dependencies {
     compileOnly project(':Rolling-Application:member-application')
     compileOnly project(':Rolling-Application:application-commons')
 
-    //Jwt
-    compileOnly 'io.jsonwebtoken:jjwt:0.9.1'
-    compileOnly 'javax.xml.bind:jaxb-api:2.3.0'
-
-    //Authentication
-    compileOnly 'org.springframework.security:spring-security-core'
+    compileOnly 'org.springframework:spring-context:6.0.6'
 
     //HttpServletRequest
     compileOnly 'org.apache.tomcat.embed:tomcat-embed-core:10.1.5'
