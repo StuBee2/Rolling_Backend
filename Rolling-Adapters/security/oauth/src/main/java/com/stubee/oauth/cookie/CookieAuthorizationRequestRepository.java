@@ -1,7 +1,6 @@
 package com.stubee.oauth.cookie;
 
 import com.nimbusds.oauth2.sdk.util.StringUtils;
-import com.stubee.securitycommons.cookie.CookieManager;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

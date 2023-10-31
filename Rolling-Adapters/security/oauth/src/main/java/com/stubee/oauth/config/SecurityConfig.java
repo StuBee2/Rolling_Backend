@@ -1,7 +1,7 @@
 package com.stubee.oauth.config;
 
-import com.stubee.oauth.filter.ExceptionFilter;
-import com.stubee.oauth.filter.JwtExceptionFilter;
+import com.stubee.jwt.filter.ExceptionFilter;
+import com.stubee.jwt.filter.JwtExceptionFilter;
 import com.stubee.oauth.filter.JwtFilter;
 import com.stubee.oauth.handler.CustomAccessDeniedHandler;
 import com.stubee.oauth.handler.OAuthFailureHandler;

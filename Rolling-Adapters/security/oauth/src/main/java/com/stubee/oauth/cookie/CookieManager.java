@@ -1,5 +1,6 @@
-package com.stubee.securitycommons.cookie;
+package com.stubee.oauth.cookie;
 
+import com.stubee.securitycommons.utils.CookieSerializer;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -11,9 +12,8 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class CookieManagerImpl implements CookieManager {
+public class CookieManager {
 
-    private final CookieSerializer cookieSerializer;
     private final HttpServletRequest request;
     private final HttpServletResponse response;
 
@@ -43,7 +43,7 @@ public class CookieManagerImpl implements CookieManager {
     }
 
     public <T> void addSerializedCookie(final String name, final T object, final int expire) {
-        String cookieValue = cookieSerializer.serialize(object);
+        String cookieValue = CookieSerializer.serialize(object);
         Cookie cookie = new Cookie(name, cookieValue);
         cookie.setMaxAge(expire);
         addCookie(cookie);
@@ -52,7 +52,7 @@ public class CookieManagerImpl implements CookieManager {
     public <T> Optional<T> getDeserializedCookie(final String name, final Class<T> cls) {
         return getCookie(name)
                 .map(Cookie::getValue)
-                .map(cookieValue -> cookieSerializer.deserialize(cookieValue, cls));
+                .map(cookieValue -> CookieSerializer.deserialize(cookieValue, cls));
     }
 
 }
