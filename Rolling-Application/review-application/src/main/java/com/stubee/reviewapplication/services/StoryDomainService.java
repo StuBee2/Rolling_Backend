@@ -41,7 +41,8 @@ public class StoryDomainService implements WriteStoryService, DeleteStoryService
 
         story.isAuthor(memberId);
 
-        commandStoryPort.update(story.update(toEmploymentDetails(command), toCorporationDetails(command)));
+        commandStoryPort.update(story.update(toEmploymentDetails(command), toCorporationDetails(command),
+                toReviewGrades(command)));
     }
 
     private Story getById(final StoryId storyId) {
@@ -67,6 +68,16 @@ public class StoryDomainService implements WriteStoryService, DeleteStoryService
                 .meal(command.meal())
                 .pros(command.pros())
                 .cons(command.cons())
+                .etc(command.etc())
+                .build();
+    }
+
+    private ReviewGrades toReviewGrades(final ModifyStoryCommand command) {
+        return ReviewGrades.ExceptTotalBuilder()
+                .salaryAndBenefits(Double.valueOf(command.salaryAndBenefits()))
+                .workLifeBalance(Double.valueOf(command.workLifeBalance()))
+                .organizationalCulture(Double.valueOf(command.organizationalCulture()))
+                .careerAdvancement(Double.valueOf(command.careerAdvancement()))
                 .build();
     }
 

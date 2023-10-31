@@ -14,5 +14,10 @@ public record ModifyStoryCommand(
         String commuteTime,
         String meal,
         String pros,
-        String cons
+        String cons,
+        String etc,
+        Short salaryAndBenefits,
+        Short workLifeBalance,
+        Short organizationalCulture,
+        Short careerAdvancement
 ) {}
