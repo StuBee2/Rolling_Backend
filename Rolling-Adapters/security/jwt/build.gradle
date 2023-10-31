@@ -1,0 +1,22 @@
+dependencies {
+    compileOnly project(':Rolling-Domains')
+
+    compileOnly project(':Rolling-Application:auth-application')
+    compileOnly project(':Rolling-Application:member-application')
+
+    compileOnly project(':Rolling-Adapters:security:security-commons')
+
+    compileOnly project(':Rolling-Adapters:adapters-commons')
+
+    //Jwt
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
+
+    //@ConfigurationProperties, @Component
+    compileOnly 'org.springframework.boot:spring-boot:3.1.0'
+
+    compileOnly 'org.springframework:spring-web:6.0.6'
+
+    //Properties
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+}

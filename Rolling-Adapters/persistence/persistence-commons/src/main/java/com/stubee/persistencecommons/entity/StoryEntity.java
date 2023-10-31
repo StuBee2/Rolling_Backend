@@ -24,23 +24,18 @@ public class StoryEntity extends BaseEntity {
     @Size(max = 30)
     private String position;
 
-    @NotNull
     @Column(columnDefinition = "TEXT")
     private String schoolLife;
 
-    @NotNull
     @Column(columnDefinition = "TEXT")
     private String preparationCourse;
 
-    @NotNull
     @Size(max = 100)
     private String employmentProcess;
 
-    @NotNull
     @Column(columnDefinition = "TEXT")
     private String interviewQuestion;
 
-    @NotNull
     @Size(max = 100)
     private String mostImportantThing;
 
@@ -48,6 +43,7 @@ public class StoryEntity extends BaseEntity {
     @Size(max = 100)
     private String welfare;
 
+    @NotNull
     @Size(max = 100)
     private String commuteTime;
 

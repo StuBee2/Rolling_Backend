@@ -19,7 +19,8 @@ public record Story(
         Assert.notNull(reviewGrades, "ReviewGrades must not be null");
     }
 
-    public Story update(final EmploymentDetails employmentDetails, final CorporationDetails corporationDetails) {
+    public Story update(final EmploymentDetails employmentDetails, final CorporationDetails corporationDetails,
+                        final ReviewGrades reviewGrades) {
         return new Story(storyId, storyDetails.update(employmentDetails, corporationDetails), reviewGrades);
     }
 

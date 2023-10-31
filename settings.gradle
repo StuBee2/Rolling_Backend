@@ -33,7 +33,10 @@ include 'Rolling-Adapters:persistence:persistence-commons'
 include 'Rolling-Adapters:thirdparty:naver-news'
 include 'Rolling-Adapters:thirdparty:s3-file'
 include 'Rolling-Adapters:thirdparty:email-notification'
-include 'Rolling-Adapters:thirdparty:thirdparty-commons'
 
+include 'Rolling-Adapters:security:auth'
+include 'Rolling-Adapters:security:jwt'
 include 'Rolling-Adapters:security:oauth'
 include 'Rolling-Adapters:security:security-commons'
+
+include 'Rolling-Adapters:adapters-commons'

@@ -1,8 +1,8 @@
 package com.stubee.emailnotification.adapters;
 
+import com.stubee.adapterscommons.annotations.Adapter;
 import com.stubee.emailnotification.properties.EmailProperties;
 import com.stubee.notificationapplication.outports.SendEmailPort;
-import com.stubee.thirdpartycommons.annotations.Adapter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.SimpleMailMessage;

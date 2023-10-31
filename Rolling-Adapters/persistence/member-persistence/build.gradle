@@ -2,4 +2,6 @@ dependencies {
     compileOnly project(':Rolling-Application:member-application')
 
     compileOnly project(':Rolling-Adapters:persistence:persistence-commons')
+
+    compileOnly project(':Rolling-Adapters:adapters-commons')
 }

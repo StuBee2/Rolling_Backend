@@ -1,3 +1,0 @@
-dependencies {
-    compileOnly 'org.springframework:spring-context:6.0.6'
-}

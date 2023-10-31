@@ -1,6 +1,6 @@
 package com.stubee.reviewpersistence.adapters;
 
-import com.stubee.persistencecommons.annotations.Adapter;
+import com.stubee.adapterscommons.annotations.Adapter;
 import com.stubee.reviewapplication.outports.command.CommandStoryPort;
 import com.stubee.reviewpersistence.mapper.StoryMapper;
 import com.stubee.reviewpersistence.repository.CommandStoryJpaRepository;

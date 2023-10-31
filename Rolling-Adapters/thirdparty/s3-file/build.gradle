@@ -2,7 +2,8 @@ dependencies {
     compileOnly project(':Rolling-Domains')
 
     compileOnly project(':Rolling-Application:file-application')
-    compileOnly project(':Rolling-Adapters:thirdparty:thirdparty-commons')
+
+    compileOnly project(':Rolling-Adapters:adapters-commons')
 
     //MultipartFile
     compileOnly 'org.springframework:spring-web:6.0.6'
