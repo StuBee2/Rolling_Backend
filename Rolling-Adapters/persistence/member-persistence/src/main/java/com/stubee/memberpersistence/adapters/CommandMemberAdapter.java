@@ -1,10 +1,10 @@
 package com.stubee.memberpersistence.adapters;
 
+import com.stubee.adapterscommons.annotations.Adapter;
 import com.stubee.memberapplication.outports.CommandMemberPort;
 import com.stubee.persistencecommons.entity.MemberEntity;
 import com.stubee.memberpersistence.mapper.MemberMapper;
 import com.stubee.memberpersistence.repository.MemberJpaRepository;
-import com.stubee.persistencecommons.annotations.Adapter;
 import com.stubee.rollingdomains.domain.member.events.MemberRegisteredEvent;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.rollingdomains.domain.member.model.MemberProfile;

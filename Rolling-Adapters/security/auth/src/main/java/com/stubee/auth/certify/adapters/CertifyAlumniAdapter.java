@@ -1,9 +1,9 @@
-package com.stubee.oauth.adapters;
+package com.stubee.auth.certify.adapters;
 
+import com.stubee.adapterscommons.annotations.Adapter;
+import com.stubee.auth.certify.exception.AlumniCertifyFailedException;
+import com.stubee.auth.certify.properties.CertifyProperties;
 import com.stubee.authapplication.outports.CertifyAlumniPort;
-import com.stubee.oauth.properties.CertifyProperties;
-import com.stubee.oauth.exception.AlumniCertifyFailedException;
-import com.stubee.securitycommons.annotations.Adapter;
 import lombok.RequiredArgsConstructor;
 
 @Adapter

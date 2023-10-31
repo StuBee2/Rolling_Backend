@@ -1,9 +1,9 @@
 package com.stubee.loggingpersistence.adapters;
 
+import com.stubee.adapterscommons.annotations.Adapter;
 import com.stubee.loggingapplication.outports.CommandLoggingPort;
 import com.stubee.loggingpersistence.mapper.CompanyViewLoggingMapper;
 import com.stubee.loggingpersistence.repository.CompanyViewLoggingRepository;
-import com.stubee.persistencecommons.annotations.Adapter;
 import com.stubee.rollingdomains.domain.logging.model.CompanyViewLogging;
 import lombok.RequiredArgsConstructor;
 

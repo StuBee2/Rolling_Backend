@@ -1,8 +1,8 @@
 package com.stubee.reviewpersistence.adapters;
 
+import com.stubee.adapterscommons.annotations.Adapter;
 import com.stubee.reviewapplication.usecases.query.response.StoryStatusResponse;
 import com.stubee.rollingdomains.common.dtos.request.PageRequest;
-import com.stubee.persistencecommons.annotations.Adapter;
 import com.stubee.reviewapplication.outports.query.QueryStoryPort;
 import com.stubee.reviewpersistence.mapper.StoryMapper;
 import com.stubee.reviewpersistence.repository.QueryStoryRepository;

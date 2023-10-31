@@ -1,10 +1,10 @@
-package com.stubee.oauth.adapters;
+package com.stubee.jwt.adapters;
 
+import com.stubee.adapterscommons.annotations.Adapter;
 import com.stubee.authapplication.outports.ProvideTokenPort;
+import com.stubee.jwt.properties.JwtProperties;
 import com.stubee.rollingdomains.domain.auth.consts.JwtType;
 import com.stubee.rollingdomains.domain.member.consts.MemberRole;
-import com.stubee.securitycommons.annotations.Adapter;
-import com.stubee.oauth.properties.JwtProperties;
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
