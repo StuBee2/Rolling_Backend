@@ -27,63 +27,63 @@ public class GlobalExceptionHandler {
         log.error("CustomException message : {}", e.getMessage());
 
         return new ResponseEntity<>(
-                ErrorResponse.create(e.getErrorCode()), valueOf(e.getErrorCode().getStatusValue()));
+                ErrorResponse.of(e.getErrorCode()), valueOf(e.getErrorCode().getStatusValue()));
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
     protected ResponseEntity<ErrorResponse> handleIllegalArgumentException(IllegalArgumentException e) {
         log.error("IllegalArgumentException message : {}", e.getMessage());
 
-        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.ILLEGAL_ARGUMENT), BAD_REQUEST);
+        return new ResponseEntity<>(ErrorResponse.of(ErrorCode.ILLEGAL_ARGUMENT), BAD_REQUEST);
     }
 
     @ExceptionHandler(IOException.class)
     protected ResponseEntity<ErrorResponse> handleIOException(IOException e) {
         log.error("IoException message : {}", e.getMessage());
 
-        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.IO_ERROR), INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(ErrorResponse.of(ErrorCode.IO_ERROR), INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(ServletRequestBindingException.class)
     protected ResponseEntity<ErrorResponse> handleBindException(ServletRequestBindingException e) {
         log.error("ServletRequestBindingException message : {}", e.getMessage());
 
-        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.SERVLET_BINDING_ERROR), INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(ErrorResponse.of(ErrorCode.SERVLET_BINDING_ERROR), INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(NestedRuntimeException.class)
     protected ResponseEntity<ErrorResponse> handleNestedException(NestedRuntimeException e) {
         log.error("NestedRuntimeException message : {}", e.getMessage());
 
-        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.NESTED_RUNTIME_ERROR), INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(ErrorResponse.of(ErrorCode.NESTED_RUNTIME_ERROR), INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(MissingServletRequestPartException.class)
     protected ResponseEntity<ErrorResponse> handleMissingServletRequestPartException(MissingServletRequestPartException e) {
         log.error("MissingServletRequestPartException message : {}", e.getMessage());
 
-        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.EMPTY_FILE), BAD_REQUEST);
+        return new ResponseEntity<>(ErrorResponse.of(ErrorCode.EMPTY_FILE), BAD_REQUEST);
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     protected ResponseEntity<ErrorResponse> handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
         log.error("HttpRequestMethodNotSupportedException message : {}", e.getMessage());
 
-        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.METHOD_NOT_SUPPORTED), METHOD_NOT_ALLOWED);
+        return new ResponseEntity<>(ErrorResponse.of(ErrorCode.METHOD_NOT_SUPPORTED), METHOD_NOT_ALLOWED);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     protected ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         log.error("MethodArgumentNotValidException message : {}", e.getMessage());
 
-        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.METHOD_NOT_VALID), BAD_REQUEST);
+        return new ResponseEntity<>(ErrorResponse.of(ErrorCode.METHOD_NOT_VALID), BAD_REQUEST);
     }
 
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
     protected ResponseEntity<ErrorResponse> handleHttpMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException e) {
         log.error("HttpMediaTypeNotSupportedException message : {}", e.getMessage());
 
-        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.MEDIA_TYPE_NOT_SUPPORTED), UNSUPPORTED_MEDIA_TYPE);
+        return new ResponseEntity<>(ErrorResponse.of(ErrorCode.MEDIA_TYPE_NOT_SUPPORTED), UNSUPPORTED_MEDIA_TYPE);
     }
 
     @ExceptionHandler(Exception.class)
@@ -91,7 +91,7 @@ public class GlobalExceptionHandler {
         log.error("Exception class : {}", e.getClass().getSimpleName());
         log.error("Exception message : {}", e.getMessage());
 
-        return new ResponseEntity<>(ErrorResponse.create(ErrorCode.INTERNAL_SERVER_ERROR), INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(ErrorResponse.of(ErrorCode.INTERNAL_SERVER_ERROR), INTERNAL_SERVER_ERROR);
     }
 
 }
