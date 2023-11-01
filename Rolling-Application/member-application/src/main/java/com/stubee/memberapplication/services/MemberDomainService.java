@@ -4,32 +4,22 @@ import com.stubee.applicationcommons.annotations.AsyncEventListener;
 import com.stubee.applicationcommons.annotations.DomainService;
 import com.stubee.memberapplication.outports.CheckNicknameDuplicationPort;
 import com.stubee.memberapplication.outports.CommandMemberPort;
-import com.stubee.memberapplication.outports.QueryMemberPort;
 import com.stubee.rollingdomains.domain.member.events.MemberCertifiedEvent;
 import com.stubee.rollingdomains.domain.member.exception.DuplicatedNicknameException;
-import com.stubee.rollingdomains.domain.member.exception.MemberNotFoundException;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.applicationcommons.ports.GetCurrentMemberPort;
 import com.stubee.rollingdomains.domain.member.services.ModifyNicknameService;
 import com.stubee.rollingdomains.domain.member.services.ElevateMemberRoleService;
-import com.stubee.rollingdomains.domain.member.services.GetMemberByIdService;
 import com.stubee.rollingdomains.domain.member.services.commands.ModifyNicknameCommand;
 import lombok.RequiredArgsConstructor;
 
 @DomainService
 @RequiredArgsConstructor
-public class MemberDomainService implements ModifyNicknameService, ElevateMemberRoleService, GetMemberByIdService {
+public class MemberDomainService implements ModifyNicknameService, ElevateMemberRoleService {
 
     private final CommandMemberPort commandMemberPort;
-    private final QueryMemberPort queryMemberPort;
     private final CheckNicknameDuplicationPort checkNicknameDuplicationPort;
     private final GetCurrentMemberPort getCurrentMemberPort;
-
-    @Override
-    public Member getById(final Long id) {
-        return queryMemberPort.findById(id)
-                .orElseThrow(() -> MemberNotFoundException.EXCEPTION);
-    }
 
     @Override
     public void modify(final ModifyNicknameCommand command) {
