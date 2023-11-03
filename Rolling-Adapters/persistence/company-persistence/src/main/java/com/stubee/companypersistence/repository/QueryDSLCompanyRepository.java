@@ -6,7 +6,7 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.NumberPath;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.stubee.persistencecommons.entity.CompanyEntity;
-import com.stubee.companyapplication.usecases.query.response.CompanyQueryResponse;
+import com.stubee.companyapplication.usecases.query.CompanyQueryResponse;
 import com.stubee.persistencecommons.helper.OrderByNull;
 import com.stubee.persistencecommons.helper.QueryDSLHelper;
 import com.stubee.rollingdomains.common.dtos.request.PageRequest;

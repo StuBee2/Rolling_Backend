@@ -1,4 +1,4 @@
-package com.stubee.companyapplication.usecases.query.response;
+package com.stubee.companyapplication.usecases.query;
 
 import java.time.LocalDateTime;
 
