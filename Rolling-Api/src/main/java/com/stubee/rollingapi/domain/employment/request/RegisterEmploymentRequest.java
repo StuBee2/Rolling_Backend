@@ -1,6 +1,6 @@
 package com.stubee.rollingapi.domain.employment.request;
 
-import com.stubee.rollingdomains.domain.employment.services.commands.RegisterEmploymentCommand;
+import com.stubee.employmentapplication.usecases.command.RegisterEmploymentCommand;
 import com.stubee.rollingdomains.domain.employment.consts.EmploymentStatus;
 import jakarta.validation.constraints.NotNull;
 

@@ -6,10 +6,9 @@ import com.stubee.employmentapplication.outports.RegisterEmploymentPort;
 import com.stubee.rollingdomains.domain.employment.exception.EmploymentExistException;
 import com.stubee.rollingdomains.domain.employment.exception.EmploymentNotFoundException;
 import com.stubee.rollingdomains.domain.employment.model.Employment;
+import com.stubee.rollingdomains.domain.employment.model.EmploymentDetails;
 import com.stubee.rollingdomains.domain.employment.services.CheckEmploymentExistenceService;
 import com.stubee.rollingdomains.domain.employment.services.RegisterEmploymentService;
-import com.stubee.rollingdomains.domain.employment.services.commands.RegisterEmploymentCommand;
-import com.stubee.rollingdomains.domain.member.model.MemberId;
 import lombok.RequiredArgsConstructor;
 
 @DomainService
@@ -20,12 +19,12 @@ public class EmploymentDomainService implements RegisterEmploymentService, Check
     private final CheckEmploymentExistencePort checkEmploymentExistencePort;
 
     @Override
-    public Employment register(final RegisterEmploymentCommand command, final MemberId memberId) {
-        if(this.checkExistence(memberId.getId(), command.employerId())) {
+    public Employment register(final Employment employment) {
+        if(this.checkExistence(employment.employmentDetails())) {
             throw EmploymentExistException.EXCEPTION;
         }
 
-        return registerEmploymentPort.register(command.toDomain(memberId));
+        return registerEmploymentPort.register(employment);
     }
 
     @Override
@@ -37,6 +36,10 @@ public class EmploymentDomainService implements RegisterEmploymentService, Check
 
     private boolean checkExistence(final Long employeeId, final Long employerId) {
         return checkEmploymentExistencePort.check(employeeId, employerId);
+    }
+
+    private boolean checkExistence(final EmploymentDetails employmentDetails) {
+        return checkEmploymentExistencePort.check(employmentDetails.employeeId().getId(), employmentDetails.employerId().getId());
     }
 
 }

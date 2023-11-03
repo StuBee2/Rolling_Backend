@@ -2,9 +2,10 @@ package com.stubee.employmentapplication.usecases.command.impl;
 
 import com.stubee.applicationcommons.annotations.CommandService;
 import com.stubee.applicationcommons.ports.GetCurrentMemberPort;
+import com.stubee.employmentapplication.mapper.EmploymentMapper;
 import com.stubee.rollingdomains.domain.company.services.CheckCompanyExistenceService;
 import com.stubee.rollingdomains.domain.employment.services.RegisterEmploymentService;
-import com.stubee.rollingdomains.domain.employment.services.commands.RegisterEmploymentCommand;
+import com.stubee.employmentapplication.usecases.command.RegisterEmploymentCommand;
 import com.stubee.employmentapplication.usecases.command.RegisterEmploymentUseCase;
 import com.stubee.rollingdomains.domain.employment.model.Employment;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
@@ -24,7 +25,9 @@ public class RegisterEmploymentApi implements RegisterEmploymentUseCase {
 
         final MemberId memberId = getCurrentMemberPort.getMemberId();
 
-        return registerEmploymentService.register(command, memberId);
+        final Employment employment = EmploymentMapper.toDomain(command, memberId);
+
+        return registerEmploymentService.register(employment);
     }
 
 }
