@@ -76,7 +76,7 @@ public class GlobalExceptionHandler {
     protected ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         log.error("MethodArgumentNotValidException message : {}", e.getMessage());
 
-        return new ResponseEntity<>(ErrorResponse.of(ErrorCode.METHOD_NOT_VALID), BAD_REQUEST);
+        return new ResponseEntity<>(ErrorResponse.of(ErrorCode.METHOD_ARG_NOT_VALID), BAD_REQUEST);
     }
 
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)

@@ -1,6 +1,6 @@
 package com.stubee.loggingapplication.services;
 
-import com.stubee.applicationcommons.annotations.AsyncTransactionalEventListener;
+import com.stubee.applicationcommons.annotations.AsyncEventListener;
 import com.stubee.applicationcommons.annotations.Listener;
 import com.stubee.applicationcommons.ports.GetCurrentMemberPort;
 import com.stubee.loggingapplication.outports.CommandLoggingPort;
@@ -16,7 +16,7 @@ public class CompanyViewLoggingService {
     private final CommandLoggingPort<CompanyViewLogging> commandLoggingPort;
     private final GetCurrentMemberPort getCurrentMemberPort;
 
-    @AsyncTransactionalEventListener
+    @AsyncEventListener
     public void pileUp(final CompanyViewedEvent event) {
         commandLoggingPort.save(CompanyViewLogging.ExceptIdBuilder()
                 .memberId(getCurrentMemberPort.getMemberId())

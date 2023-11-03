@@ -2,8 +2,8 @@ package com.stubee.companyaveragebatch.processor;
 
 import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.batchcommons.annotations.Processor;
-import com.stubee.reviewapplication.usecases.query.response.ReviewInfoResponse;
-import com.stubee.reviewapplication.usecases.query.QueryReviewInfoListByCompanyUseCase;
+import com.stubee.reviewapplication.usecases.query.response.StoryQueryByCompanyResponse;
+import com.stubee.reviewapplication.usecases.query.QueryStoryInfoListByCompanyUseCase;
 import com.stubee.rollingdomains.domain.company.model.CompanyGrades;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,6 @@ import org.springframework.batch.item.ItemProcessor;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import static com.stubee.companyaveragebatch.job.consts.BatchConstants.PAGE_SIZE;
 
@@ -21,7 +20,7 @@ import static com.stubee.companyaveragebatch.job.consts.BatchConstants.PAGE_SIZE
 @RequiredArgsConstructor
 public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, List<Company>> {
 
-    private final QueryReviewInfoListByCompanyUseCase queryReviewInfoListByCompanyUseCase;
+    private final QueryStoryInfoListByCompanyUseCase queryReviewInfoListByCompanyUseCase;
 
     private double salaryAndBenefitsSum;
     private double workLifeBalanceSum;
@@ -45,7 +44,7 @@ public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, L
 
             final CompanyGrades updatedGrades = this.calculateAverages();
 
-            final Company updatedCompany = company.updateGrades(updatedGrades);
+            final Company updatedCompany = company.update(updatedGrades);
 
             processedCompanyList.add(updatedCompany);
         });
@@ -55,9 +54,9 @@ public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, L
         return processedCompanyList;
     }
 
-    private void calculateSums(final UUID companyId) {
+    private void calculateSums(final Long companyId) {
         while (true) {
-            final List<ReviewInfoResponse> reviewList = queryReviewInfoListByCompanyUseCase.get(companyId,
+            final List<StoryQueryByCompanyResponse> reviewList = queryReviewInfoListByCompanyUseCase.get(companyId,
                     PageRequest.of(reviewPage, PAGE_SIZE)).data();
 
             log.info("ReviewList Size : {}", reviewList.size());

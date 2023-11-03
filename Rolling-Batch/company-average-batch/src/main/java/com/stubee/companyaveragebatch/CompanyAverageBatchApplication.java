@@ -19,7 +19,9 @@ import org.springframework.context.annotation.ComponentScan;
 
         "com.stubee.companypersistence",
         "com.stubee.reviewpersistence",
-        "com.stubee.persistencecommons"
+        "com.stubee.persistencecommons",
+
+        "com.stubee.adapterscommons"
 })
 public class CompanyAverageBatchApplication {
 
