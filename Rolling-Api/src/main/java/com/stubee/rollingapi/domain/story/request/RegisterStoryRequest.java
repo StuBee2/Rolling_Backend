@@ -1,6 +1,6 @@
 package com.stubee.rollingapi.domain.story.request;
 
-import com.stubee.rollingdomains.domain.story.services.commands.RegisterStoryCommand;
+import com.stubee.reviewapplication.usecases.command.RegisterStoryCommand;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;

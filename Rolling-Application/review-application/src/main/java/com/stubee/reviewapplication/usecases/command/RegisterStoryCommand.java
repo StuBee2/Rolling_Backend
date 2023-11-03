@@ -1,8 +1,4 @@
-package com.stubee.rollingdomains.domain.story.services.commands;
-
-import com.stubee.rollingdomains.domain.story.model.*;
-import com.stubee.rollingdomains.domain.company.model.CompanyId;
-import com.stubee.rollingdomains.domain.member.model.MemberId;
+package com.stubee.reviewapplication.usecases.command;
 
 public record RegisterStoryCommand(
         Long companyId,
@@ -45,36 +41,5 @@ public record RegisterStoryCommand(
                 position, schoolLife, preparationCourse, employmentProcess, interviewQuestion, mostImportantThing,
                 welfare, commuteTime, meal, advantages, disAdvantages, corporationEtc,
                 salaryAndBenefits, workLifeBalance, organizationalCulture, careerAdvancement);
-    }
-
-    public Story toDomain(final MemberId memberId) {
-        return Story.ExceptIdBuilder()
-                .storyDetails(StoryDetails.ExceptDateBuilder()
-                        .authorId(AuthorId.of(memberId))
-                        .companyId(CompanyId.of(companyId))
-                        .employmentDetails(EmploymentDetails.builder()
-                                .schoolLife(schoolLife)
-                                .preparationCourse(preparationCourse)
-                                .employmentProcess(employmentProcess)
-                                .interviewQuestion(interviewQuestion)
-                                .mostImportantThing(mostImportantThing)
-                                .build())
-                        .corporationDetails(CorporationDetails.builder()
-                                .position(position)
-                                .welfare(welfare)
-                                .commuteTime(commuteTime)
-                                .meal(meal)
-                                .pros(pros)
-                                .cons(cons)
-                                .etc(corporationEtc)
-                                .build())
-                        .build())
-                .reviewGrades(ReviewGrades.ExceptTotalBuilder()
-                        .salaryAndBenefits(Double.valueOf(salaryAndBenefits))
-                        .workLifeBalance(Double.valueOf(workLifeBalance))
-                        .organizationalCulture(Double.valueOf(organizationalCulture))
-                        .careerAdvancement(Double.valueOf(careerAdvancement))
-                        .build())
-                .build();
     }
 }

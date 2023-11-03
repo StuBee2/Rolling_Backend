@@ -8,77 +8,43 @@ import com.stubee.rollingdomains.domain.story.exception.StoryNotFoundException;
 import com.stubee.rollingdomains.domain.story.model.*;
 import com.stubee.rollingdomains.domain.story.services.DeleteStoryService;
 import com.stubee.rollingdomains.domain.story.services.ModifyStoryService;
-import com.stubee.rollingdomains.domain.story.services.WriteStoryService;
-import com.stubee.rollingdomains.domain.story.services.commands.DeleteStoryCommand;
-import com.stubee.rollingdomains.domain.story.services.commands.ModifyStoryCommand;
-import com.stubee.rollingdomains.domain.story.services.commands.RegisterStoryCommand;
+import com.stubee.rollingdomains.domain.story.services.RegisterStoryService;
 import lombok.RequiredArgsConstructor;
 
 @DomainService
 @RequiredArgsConstructor
-public class StoryDomainService implements WriteStoryService, DeleteStoryService, ModifyStoryService {
+public class StoryDomainService implements RegisterStoryService, DeleteStoryService, ModifyStoryService {
 
     private final CommandStoryPort commandStoryPort;
     private final QueryStoryByIdPort queryStoryByIdPort;
 
     @Override
-    public Story write(final RegisterStoryCommand command, final MemberId memberId) {
-        return commandStoryPort.save(command.toDomain(memberId));
+    public Story register(final Story story) {
+        return commandStoryPort.save(story);
     }
 
     @Override
-    public void delete(final DeleteStoryCommand command, final MemberId memberId) {
-        final Story story = this.getById(command.storyId());
+    public void delete(final StoryId storyId, final MemberId memberId) {
+        final Story story = this.getById(storyId);
 
         story.isAuthor(memberId);
 
-        commandStoryPort.deleteById(command.storyId());
+        commandStoryPort.deleteById(storyId);
     }
 
     @Override
-    public void modify(final ModifyStoryCommand command, final MemberId memberId) {
-        final Story story = this.getById(command.id());
+    public void modify(final StoryId id, final EmploymentDetails employmentDetails, final CorporationDetails corporationDetails,
+                       final ReviewGrades reviewGrades, final MemberId memberId) {
+        final Story story = this.getById(id);
 
         story.isAuthor(memberId);
 
-        commandStoryPort.update(story.update(toEmploymentDetails(command), toCorporationDetails(command),
-                toReviewGrades(command)));
+        commandStoryPort.update(story.update(employmentDetails, corporationDetails, reviewGrades));
     }
 
     private Story getById(final StoryId storyId) {
         return queryStoryByIdPort.findById(storyId.getId())
                 .orElseThrow(() -> StoryNotFoundException.EXCEPTION);
-    }
-
-    private EmploymentDetails toEmploymentDetails(final ModifyStoryCommand command) {
-        return EmploymentDetails.builder()
-                .schoolLife(command.schoolLife())
-                .preparationCourse(command.preparationCourse())
-                .employmentProcess(command.employmentProcess())
-                .interviewQuestion(command.interviewQuestion())
-                .mostImportantThing(command.mostImportantThing())
-                .build();
-    }
-
-    private CorporationDetails toCorporationDetails(final ModifyStoryCommand command) {
-        return CorporationDetails.builder()
-                .position(command.position())
-                .welfare(command.welfare())
-                .commuteTime(command.commuteTime())
-                .meal(command.meal())
-                .pros(command.pros())
-                .cons(command.cons())
-                .etc(command.etc())
-                .build();
-    }
-
-    private ReviewGrades toReviewGrades(final ModifyStoryCommand command) {
-        return ReviewGrades.ExceptTotalBuilder()
-                .salaryAndBenefits(Double.valueOf(command.salaryAndBenefits()))
-                .workLifeBalance(Double.valueOf(command.workLifeBalance()))
-                .organizationalCulture(Double.valueOf(command.organizationalCulture()))
-                .careerAdvancement(Double.valueOf(command.careerAdvancement()))
-                .build();
     }
 
 }
