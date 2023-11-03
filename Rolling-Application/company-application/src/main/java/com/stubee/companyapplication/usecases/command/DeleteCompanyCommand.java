@@ -1,4 +1,4 @@
-package com.stubee.rollingdomains.domain.company.services.commands;
+package com.stubee.companyapplication.usecases.command;
 
 import com.stubee.rollingdomains.domain.company.model.CompanyId;
 

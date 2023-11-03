@@ -1,13 +1,13 @@
 package com.stubee.rollingdomains.domain.company.services;
 
-import com.stubee.rollingdomains.domain.company.services.commands.ModifyCompanyStatusCommand;
-import com.stubee.rollingdomains.domain.company.services.commands.ModifyCompanyDetailsCommand;
-import com.stubee.rollingdomains.domain.member.model.MemberId;
+import com.stubee.rollingdomains.domain.company.consts.CompanyStatus;
+import com.stubee.rollingdomains.domain.company.model.CompanyDetails;
+import com.stubee.rollingdomains.domain.company.model.CompanyId;
 
 public interface ModifyCompanyService {
 
-    void modify(ModifyCompanyDetailsCommand command, MemberId memberId);
+    void modify(Long id, CompanyDetails companyDetails);
 
-    void modify(ModifyCompanyStatusCommand command);
+    void modify(CompanyId companyId, CompanyStatus status);
 
 }

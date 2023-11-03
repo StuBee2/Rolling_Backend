@@ -4,17 +4,11 @@ import com.stubee.applicationcommons.annotations.DomainService;
 import com.stubee.companyapplication.outports.command.CommandCompanyPort;
 import com.stubee.companyapplication.outports.query.CheckCompanyPort;
 import com.stubee.companyapplication.outports.query.QueryCompanyByIdPort;
+import com.stubee.rollingdomains.domain.company.consts.CompanyStatus;
 import com.stubee.rollingdomains.domain.company.exception.CompanyNotFoundException;
 import com.stubee.rollingdomains.domain.company.exception.DuplicatedCompanyNameException;
-import com.stubee.rollingdomains.domain.company.model.Address;
-import com.stubee.rollingdomains.domain.company.model.Company;
-import com.stubee.rollingdomains.domain.company.model.CompanyLogo;
+import com.stubee.rollingdomains.domain.company.model.*;
 import com.stubee.rollingdomains.domain.company.services.*;
-import com.stubee.rollingdomains.domain.company.services.commands.ModifyCompanyStatusCommand;
-import com.stubee.rollingdomains.domain.company.services.commands.DeleteCompanyCommand;
-import com.stubee.rollingdomains.domain.company.services.commands.ModifyCompanyDetailsCommand;
-import com.stubee.rollingdomains.domain.company.services.commands.RegisterCompanyCommand;
-import com.stubee.rollingdomains.domain.member.model.MemberId;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -30,10 +24,10 @@ public class CompanyDomainService implements RegisterCompanyService, ModifyCompa
     private final QueryCompanyByIdPort queryCompanyByIdPort;
 
     @Override
-    public Company register(final RegisterCompanyCommand command, final MemberId memberId) {
-        this.checkByName(command.name());
+    public Company register(final Company company) {
+        this.checkByName(company.companyDetails().name());
 
-        return commandCompanyPort.register(command.toDomain(memberId));
+        return commandCompanyPort.register(company);
     }
 
     private void checkByName(final String name) {
@@ -43,15 +37,10 @@ public class CompanyDomainService implements RegisterCompanyService, ModifyCompa
     }
 
     @Override
-    public void delete(final DeleteCompanyCommand command) {
-        final Company company = this.getById(command.companyId().getId());
+    public void delete(final CompanyId companyId) {
+        this.checkById(companyId.getId());
 
-        commandCompanyPort.deleteById(company.companyId());
-    }
-
-    private Company getById(final Long id) {
-        return queryCompanyByIdPort.findById(id)
-                .orElseThrow(() -> CompanyNotFoundException.EXCEPTION);
+        commandCompanyPort.deleteById(companyId);
     }
 
     @Override
@@ -67,25 +56,28 @@ public class CompanyDomainService implements RegisterCompanyService, ModifyCompa
     }
 
     @Override
-    public void modify(final ModifyCompanyDetailsCommand command, final MemberId memberId) {
-        final Company company = getById(command.id());
+    public void modify(final Long id, final CompanyDetails companyDetails) {
+        final Company company = getById(id);
 
-        company.isAuthor(memberId);
+        company.isAuthor(companyDetails.registrantId());
 
-        if(!Objects.equals(company.companyDetails().name(), command.name())) {
-            checkByName(command.name());
+        if(!Objects.equals(company.companyDetails().name(), companyDetails.name())) {
+            checkByName(companyDetails.name());
         }
 
-        commandCompanyPort.update(company.update(command.name(), command.description(),
-                Address.of(command.companyAddress(), command.companyAddressEtc()),
-                CompanyLogo.of(command.url(), command.rgb())));
+        commandCompanyPort.update(company.update(companyDetails));
     }
 
     @Override
-    public void modify(final ModifyCompanyStatusCommand command) {
-        final Company company = this.getById(command.companyId());
+    public void modify(final CompanyId companyId, final CompanyStatus status) {
+        final Company company = this.getById(companyId.getId());
 
-        commandCompanyPort.update(company.update(command.status()));
+        commandCompanyPort.update(company.update(status));
+    }
+
+    private Company getById(final Long id) {
+        return queryCompanyByIdPort.findById(id)
+                .orElseThrow(() -> CompanyNotFoundException.EXCEPTION);
     }
 
 }
