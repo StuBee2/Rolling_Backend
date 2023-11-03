@@ -4,7 +4,7 @@ import com.stubee.applicationcommons.annotations.QueryService;
 import com.stubee.applicationcommons.ports.GetCurrentMemberPort;
 import com.stubee.reviewapplication.outports.query.QueryStoryStatusPort;
 import com.stubee.reviewapplication.usecases.query.QueryMyStoryStatusUseCase;
-import com.stubee.reviewapplication.usecases.query.response.StoryStatusResponse;
+import com.stubee.reviewapplication.usecases.query.StoryStatusResponse;
 import lombok.RequiredArgsConstructor;
 
 @QueryService

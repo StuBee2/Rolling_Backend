@@ -5,10 +5,10 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.stubee.persistencecommons.entity.StoryEntity;
 import com.stubee.persistencecommons.helper.QueryDSLHelper;
-import com.stubee.reviewapplication.usecases.query.response.StoryStatusResponse;
+import com.stubee.reviewapplication.usecases.query.StoryStatusResponse;
 import com.stubee.rollingdomains.common.dtos.request.PageRequest;
-import com.stubee.reviewapplication.usecases.query.response.StoryQueryByCompanyResponse;
-import com.stubee.reviewapplication.usecases.query.response.StoryQueryByMemberResponse;
+import com.stubee.reviewapplication.usecases.query.StoryQueryByCompanyResponse;
+import com.stubee.reviewapplication.usecases.query.StoryQueryByMemberResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
