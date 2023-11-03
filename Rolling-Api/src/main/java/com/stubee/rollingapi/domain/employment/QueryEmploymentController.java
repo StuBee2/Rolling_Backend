@@ -2,7 +2,7 @@ package com.stubee.rollingapi.domain.employment;
 
 import com.stubee.employmentapplication.usecases.query.QueryEmploymentExistenceUseCase;
 import com.stubee.employmentapplication.usecases.query.QueryMyEmploymentInfoListUseCase;
-import com.stubee.employmentapplication.usecases.query.response.EmploymentQueryResponse;
+import com.stubee.employmentapplication.usecases.query.EmploymentQueryResponse;
 import com.stubee.rollingapi.domain.employment.request.GetEmploymentExistenceRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

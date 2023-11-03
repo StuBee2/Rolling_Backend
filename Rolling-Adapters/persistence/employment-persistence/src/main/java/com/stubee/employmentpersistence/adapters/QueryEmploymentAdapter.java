@@ -4,7 +4,7 @@ import com.stubee.adapterscommons.annotations.Adapter;
 import com.stubee.employmentapplication.outports.CheckEmploymentExistencePort;
 import com.stubee.employmentapplication.outports.QueryEmploymentByIdPort;
 import com.stubee.employmentpersistence.repository.QueryEmploymentRepository;
-import com.stubee.employmentapplication.usecases.query.response.EmploymentQueryResponse;
+import com.stubee.employmentapplication.usecases.query.EmploymentQueryResponse;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

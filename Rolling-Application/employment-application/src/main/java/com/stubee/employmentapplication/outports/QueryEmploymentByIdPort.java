@@ -1,6 +1,6 @@
 package com.stubee.employmentapplication.outports;
 
-import com.stubee.employmentapplication.usecases.query.response.EmploymentQueryResponse;
+import com.stubee.employmentapplication.usecases.query.EmploymentQueryResponse;
 
 import java.util.List;
 

@@ -3,7 +3,7 @@ package com.stubee.employmentpersistence.repository;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.stubee.employmentapplication.usecases.query.response.EmploymentQueryResponse;
+import com.stubee.employmentapplication.usecases.query.EmploymentQueryResponse;
 import com.stubee.persistencecommons.entity.EmploymentEntity;
 import com.stubee.persistencecommons.helper.QueryDSLHelper;
 import lombok.RequiredArgsConstructor;
