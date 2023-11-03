@@ -1,7 +1,7 @@
 package com.stubee.rollingapi.domain.story.request;
 
 import com.stubee.rollingdomains.domain.story.model.StoryId;
-import com.stubee.rollingdomains.domain.story.services.commands.ModifyStoryCommand;
+import com.stubee.reviewapplication.usecases.command.ModifyStoryCommand;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

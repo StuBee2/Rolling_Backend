@@ -2,7 +2,7 @@ package com.stubee.companyapplication.usecases.query.impl;
 
 import com.stubee.applicationcommons.annotations.QueryService;
 import com.stubee.companyapplication.outports.query.QueryCompanyWithPaginationPort;
-import com.stubee.companyapplication.usecases.query.response.CompanyResponse;
+import com.stubee.companyapplication.usecases.query.CompanyResponse;
 import com.stubee.companyapplication.usecases.query.SearchCompanyListByNameUseCase;
 import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.applicationcommons.dtos.response.PageDataResponse;

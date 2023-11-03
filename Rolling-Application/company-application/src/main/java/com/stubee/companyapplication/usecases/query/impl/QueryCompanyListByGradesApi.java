@@ -2,7 +2,7 @@ package com.stubee.companyapplication.usecases.query.impl;
 
 import com.stubee.applicationcommons.annotations.QueryService;
 import com.stubee.companyapplication.outports.query.QueryCompanyByGradesPort;
-import com.stubee.companyapplication.usecases.query.response.CompanyResponse;
+import com.stubee.companyapplication.usecases.query.CompanyResponse;
 import com.stubee.companyapplication.usecases.query.QueryCompanyListByGradesUseCase;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import lombok.RequiredArgsConstructor;

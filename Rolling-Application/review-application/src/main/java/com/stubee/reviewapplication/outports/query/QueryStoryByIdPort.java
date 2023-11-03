@@ -1,6 +1,6 @@
 package com.stubee.reviewapplication.outports.query;
 
-import com.stubee.reviewapplication.usecases.query.response.StoryQueryByCompanyResponse;
+import com.stubee.reviewapplication.usecases.query.StoryQueryByCompanyResponse;
 import com.stubee.rollingdomains.domain.story.exception.StoryNotFoundException;
 import com.stubee.rollingdomains.domain.story.model.Story;
 

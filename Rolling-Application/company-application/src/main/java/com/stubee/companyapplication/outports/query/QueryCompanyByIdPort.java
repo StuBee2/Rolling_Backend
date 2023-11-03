@@ -1,6 +1,6 @@
 package com.stubee.companyapplication.outports.query;
 
-import com.stubee.companyapplication.usecases.query.response.CompanyQueryResponse;
+import com.stubee.companyapplication.usecases.query.CompanyQueryResponse;
 import com.stubee.rollingdomains.domain.company.exception.CompanyNotFoundException;
 import com.stubee.rollingdomains.domain.company.model.Company;
 

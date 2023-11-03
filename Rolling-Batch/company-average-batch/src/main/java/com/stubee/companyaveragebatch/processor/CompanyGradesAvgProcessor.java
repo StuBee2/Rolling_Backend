@@ -2,7 +2,7 @@ package com.stubee.companyaveragebatch.processor;
 
 import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.batchcommons.annotations.Processor;
-import com.stubee.reviewapplication.usecases.query.response.StoryQueryByCompanyResponse;
+import com.stubee.reviewapplication.usecases.query.StoryQueryByCompanyResponse;
 import com.stubee.reviewapplication.usecases.query.QueryStoryInfoListByCompanyUseCase;
 import com.stubee.rollingdomains.domain.company.model.CompanyGrades;
 import com.stubee.rollingdomains.domain.company.model.Company;

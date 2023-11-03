@@ -1,6 +1,6 @@
 package com.stubee.rollingapi.domain.company.request;
 
-import com.stubee.rollingdomains.domain.company.services.commands.RegisterCompanyCommand;
+import com.stubee.companyapplication.usecases.command.RegisterCompanyCommand;
 import jakarta.validation.constraints.NotBlank;
 
 public record RegisterCompanyRequest(

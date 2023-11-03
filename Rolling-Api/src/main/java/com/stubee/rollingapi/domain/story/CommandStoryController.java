@@ -2,7 +2,7 @@ package com.stubee.rollingapi.domain.story;
 
 import com.stubee.reviewapplication.usecases.command.ModifyStoryUseCase;
 import com.stubee.rollingapi.domain.story.request.ModifyStoryRequest;
-import com.stubee.rollingdomains.domain.story.services.commands.DeleteStoryCommand;
+import com.stubee.reviewapplication.usecases.command.DeleteStoryCommand;
 import com.stubee.reviewapplication.usecases.command.DeleteStoryUseCase;
 import com.stubee.reviewapplication.usecases.command.RegisterStoryUseCase;
 import com.stubee.rollingapi.domain.story.request.RegisterStoryRequest;

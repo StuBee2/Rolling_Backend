@@ -10,7 +10,6 @@ import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.applicationcommons.ports.GetCurrentMemberPort;
 import com.stubee.rollingdomains.domain.member.services.ModifyNicknameService;
 import com.stubee.rollingdomains.domain.member.services.ElevateMemberRoleService;
-import com.stubee.rollingdomains.domain.member.services.commands.ModifyNicknameCommand;
 import lombok.RequiredArgsConstructor;
 
 @DomainService
@@ -22,10 +21,10 @@ public class MemberDomainService implements ModifyNicknameService, ElevateMember
     private final GetCurrentMemberPort getCurrentMemberPort;
 
     @Override
-    public void modify(final ModifyNicknameCommand command) {
-        this.checkByNickname(command.nickname());
+    public void modify(final String nickname) {
+        this.checkByNickname(nickname);
 
-        commandMemberPort.saveWithId(this.getMember().updateNickname(command.nickname()));
+        commandMemberPort.saveWithId(this.getMember().updateNickname(nickname));
     }
 
     private void checkByNickname(final String nickname) {
