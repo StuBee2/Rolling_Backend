@@ -1,9 +1,9 @@
-package com.stubee.memberapplication.usecases.impl;
+package com.stubee.memberapplication.usecases.query.impl;
 
 import com.stubee.applicationcommons.annotations.QueryService;
 import com.stubee.memberapplication.outports.QueryMemberPort;
-import com.stubee.memberapplication.usecases.response.MemberResponse;
-import com.stubee.memberapplication.usecases.QueryMemberByIdUseCase;
+import com.stubee.memberapplication.usecases.query.MemberResponse;
+import com.stubee.memberapplication.usecases.query.QueryMemberByIdUseCase;
 import lombok.RequiredArgsConstructor;
 
 @QueryService

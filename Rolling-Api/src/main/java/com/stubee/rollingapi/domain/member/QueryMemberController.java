@@ -1,8 +1,8 @@
 package com.stubee.rollingapi.domain.member;
 
-import com.stubee.memberapplication.usecases.response.MemberResponse;
-import com.stubee.memberapplication.usecases.QueryMemberByIdUseCase;
-import com.stubee.memberapplication.usecases.QueryMyInfoUseCase;
+import com.stubee.memberapplication.usecases.query.MemberResponse;
+import com.stubee.memberapplication.usecases.query.QueryMemberByIdUseCase;
+import com.stubee.memberapplication.usecases.query.QueryMyInfoUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

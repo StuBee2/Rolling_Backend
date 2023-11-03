@@ -1,4 +1,4 @@
-package com.stubee.memberapplication.usecases.response;
+package com.stubee.memberapplication.usecases.query;
 
 import com.stubee.applicationcommons.dtos.response.TSID;
 import com.stubee.rollingdomains.domain.member.model.Member;
