@@ -9,6 +9,8 @@ dependencies {
     implementation project(':Rolling-Adapters:persistence:review-persistence')
     implementation project(':Rolling-Adapters:persistence:persistence-commons')
 
+    implementation project(':Rolling-Adapters:adapters-commons')
+
     implementation project(':Rolling-Batch:batch-commons')
 
     implementation 'org.springframework.boot:spring-boot-starter-batch'

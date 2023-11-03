@@ -1,9 +1,11 @@
 package com.stubee.companyaveragebatch.reader;
 
+import com.stubee.companyapplication.usecases.query.response.CompanyResponse;
 import com.stubee.rollingdomains.common.dtos.request.PageRequest;
 import com.stubee.batchcommons.annotations.Reader;
 import com.stubee.companyapplication.usecases.query.QueryAllCompanyListUseCase;
 import com.stubee.rollingdomains.domain.company.model.Company;
+import com.stubee.rollingdomains.domain.company.model.CompanyId;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemReader;
@@ -26,7 +28,9 @@ public class CompanyListReader implements ItemReader<List<Company>> {
         log.info("Reader Start");
         log.info("CurrentPage : {}", currentPage);
 
-        return determineItems(queryCompanyUseCase.get(PageRequest.of(currentPage, PAGE_SIZE)).data());
+        return determineItems(queryCompanyUseCase.get(PageRequest.of(currentPage, PAGE_SIZE)).data().stream()
+                .map(this::toDomain)
+                .toList());
     }
 
     private List<Company> determineItems(final List<Company> companyList) {
@@ -41,6 +45,14 @@ public class CompanyListReader implements ItemReader<List<Company>> {
         log.info("Reader End");
 
         return companyList;
+    }
+
+    private Company toDomain(CompanyResponse response) {
+        return Company.WithIdBuilder()
+                .companyId(CompanyId.of(Long.parseLong(response.companyId().id())))
+                .companyDetails(response.companyDetails())
+                .companyGrades(response.companyGrades())
+                .build();
     }
 
 }
