@@ -1,9 +1,9 @@
-package com.stubee.memberapplication.usecases.impl;
+package com.stubee.memberapplication.usecases.command.impl;
 
 import com.stubee.applicationcommons.annotations.CommandService;
 import com.stubee.rollingdomains.domain.member.services.ModifyNicknameService;
-import com.stubee.rollingdomains.domain.member.services.commands.ModifyNicknameCommand;
-import com.stubee.memberapplication.usecases.ModifyNicknameUseCase;
+import com.stubee.memberapplication.usecases.command.ModifyNicknameCommand;
+import com.stubee.memberapplication.usecases.command.ModifyNicknameUseCase;
 import lombok.RequiredArgsConstructor;
 
 @CommandService
@@ -14,7 +14,7 @@ public class ModifyNicknameApi implements ModifyNicknameUseCase {
 
     @Override
     public void modify(final ModifyNicknameCommand command) {
-        modifyNicknameService.modify(command);
+        modifyNicknameService.modify(command.nickname());
     }
 
 }
