@@ -13,7 +13,7 @@ public abstract class BaseId {
 
     private final Long id;
 
-    public void isEqual(BaseId baseId) {
+    public void isEqual(final BaseId baseId) {
         if(!this.equals(baseId)) {
             throw NotMatchedIdException.EXCEPTION;
         }
