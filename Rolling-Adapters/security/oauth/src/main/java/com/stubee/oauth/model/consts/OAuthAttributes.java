@@ -1,5 +1,7 @@
-package com.stubee.rollingdomains.domain.member.consts;
+package com.stubee.oauth.model.consts;
 
+import com.stubee.rollingdomains.domain.member.consts.LoginType;
+import com.stubee.rollingdomains.domain.member.consts.MemberRole;
 import com.stubee.rollingdomains.domain.member.exception.WrongLoginTypeException;
 import com.stubee.rollingdomains.domain.member.model.MemberProfile;
 import lombok.RequiredArgsConstructor;
