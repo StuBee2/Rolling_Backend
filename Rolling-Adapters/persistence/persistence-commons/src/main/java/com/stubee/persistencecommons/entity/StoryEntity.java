@@ -55,6 +55,9 @@ public class StoryEntity extends BaseEntity {
     @NotNull
     private String disAdvantages;
 
+    @Column(columnDefinition = "TEXT")
+    private String etc;
+
     @NotNull
     private Double totalGrade;
 

@@ -23,6 +23,7 @@ public class StoryMapper implements com.stubee.persistencecommons.mapper.DomainO
                 .meal(domain.storyDetails().corporationDetails().meal())
                 .advantages(domain.storyDetails().corporationDetails().pros())
                 .disAdvantages(domain.storyDetails().corporationDetails().cons())
+                .etc(domain.storyDetails().corporationDetails().etc())
 
                 .totalGrade(domain.reviewGrades().getTotal())
                 .salaryAndBenefits(domain.reviewGrades().getSalaryAndBenefits())
