@@ -17,9 +17,7 @@ public record ModifyStoryRequest(
         String mostImportantThing,
         @NotBlank
         String welfare,
-        @NotBlank
         String commuteTime,
-        @NotBlank
         String meal,
         @NotBlank
         String pros,
