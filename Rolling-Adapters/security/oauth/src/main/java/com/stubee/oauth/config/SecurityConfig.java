@@ -2,7 +2,7 @@ package com.stubee.oauth.config;
 
 import com.stubee.jwt.filter.ExceptionFilter;
 import com.stubee.jwt.filter.JwtExceptionFilter;
-import com.stubee.oauth.filter.JwtFilter;
+import com.stubee.oauth.filter.TokenFilter;
 import com.stubee.oauth.handler.CustomAccessDeniedHandler;
 import com.stubee.oauth.handler.OAuthFailureHandler;
 import com.stubee.oauth.handler.OAuthSuccessHandler;
@@ -33,7 +33,7 @@ public class SecurityConfig {
     private final CustomAccessDeniedHandler customAccessDeniedHandler;
     private final OAuthMemberService oAuthMemberService;
     private final ExceptionFilter exceptionFilter;
-    private final JwtFilter jwtFilter;
+    private final TokenFilter tokenFilter;
     private final JwtExceptionFilter jwtExceptionFilter;
 
     @Bean
@@ -44,8 +44,8 @@ public class SecurityConfig {
                 .and()
                 .csrf().disable()
                 .addFilterBefore(exceptionFilter, OAuth2LoginAuthenticationFilter.class)
-                .addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(jwtExceptionFilter, JwtFilter.class)
+                .addFilterAfter(tokenFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(jwtExceptionFilter, TokenFilter.class)
 
                 .authorizeHttpRequests()
                 .requestMatchers("/login/**").permitAll()
