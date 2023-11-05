@@ -1,4 +1,4 @@
-package com.stubee.applicationcommons.dtos.response;
+package com.stubee.applicationcommons.model.response;
 
 import com.stubee.rollingdomains.common.model.BaseId;
 

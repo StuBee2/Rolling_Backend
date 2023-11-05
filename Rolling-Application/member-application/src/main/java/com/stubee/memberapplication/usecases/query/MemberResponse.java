@@ -1,6 +1,6 @@
 package com.stubee.memberapplication.usecases.query;
 
-import com.stubee.applicationcommons.dtos.response.TSID;
+import com.stubee.applicationcommons.model.response.TSID;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.rollingdomains.domain.member.model.MemberDetails;
 import com.stubee.rollingdomains.domain.member.model.SocialDetails;

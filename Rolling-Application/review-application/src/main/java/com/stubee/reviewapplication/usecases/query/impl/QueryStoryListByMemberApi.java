@@ -5,7 +5,7 @@ import com.stubee.reviewapplication.outports.query.QueryStoryWithPaginationPort;
 import com.stubee.reviewapplication.usecases.query.QueryStoryListByMemberUseCase;
 import com.stubee.reviewapplication.usecases.query.StoryQueryByMemberResponse;
 import com.stubee.rollingdomains.common.dtos.request.PageRequest;
-import com.stubee.applicationcommons.dtos.response.PageDataResponse;
+import com.stubee.applicationcommons.model.response.PageDataResponse;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

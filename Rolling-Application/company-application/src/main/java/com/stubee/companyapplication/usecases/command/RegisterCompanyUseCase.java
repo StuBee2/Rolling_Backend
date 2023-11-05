@@ -1,6 +1,6 @@
 package com.stubee.companyapplication.usecases.command;
 
-import com.stubee.applicationcommons.dtos.response.TSID;
+import com.stubee.applicationcommons.model.response.TSID;
 
 public interface RegisterCompanyUseCase {
 

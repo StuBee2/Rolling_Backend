@@ -1,6 +1,6 @@
 package com.stubee.rollingapi.domain.story;
 
-import com.stubee.applicationcommons.dtos.response.PageDataResponse;
+import com.stubee.applicationcommons.model.response.PageDataResponse;
 import com.stubee.reviewapplication.usecases.query.*;
 import com.stubee.reviewapplication.usecases.query.StoryQueryByCompanyResponse;
 import com.stubee.reviewapplication.usecases.query.StoryQueryByMemberResponse;

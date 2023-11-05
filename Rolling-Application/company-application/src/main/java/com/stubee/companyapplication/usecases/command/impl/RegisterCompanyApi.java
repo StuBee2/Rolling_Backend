@@ -1,7 +1,7 @@
 package com.stubee.companyapplication.usecases.command.impl;
 
 import com.stubee.applicationcommons.annotations.CommandService;
-import com.stubee.applicationcommons.dtos.response.TSID;
+import com.stubee.applicationcommons.model.response.TSID;
 import com.stubee.applicationcommons.ports.GetCurrentMemberPort;
 import com.stubee.companyapplication.mapper.CompanyMapper;
 import com.stubee.rollingdomains.domain.company.model.Company;
