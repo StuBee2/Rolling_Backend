@@ -17,6 +17,7 @@ public record StoryQueryByMemberResponse(
         String meal,
         String pros,
         String cons,
+        String etc,
 
         Double total,
         Double salaryAndBenefits,

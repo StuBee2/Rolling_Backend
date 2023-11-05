@@ -110,6 +110,7 @@ public class QueryDSLStoryRepository implements QueryStoryRepository {
                 storyEntity.meal,
                 storyEntity.advantages,
                 storyEntity.disAdvantages,
+                storyEntity.etc,
 
                 storyEntity.totalGrade,
                 storyEntity.salaryAndBenefits,
@@ -142,6 +143,7 @@ public class QueryDSLStoryRepository implements QueryStoryRepository {
                 storyEntity.meal,
                 storyEntity.advantages,
                 storyEntity.disAdvantages,
+                storyEntity.etc,
 
                 storyEntity.totalGrade,
                 storyEntity.salaryAndBenefits,

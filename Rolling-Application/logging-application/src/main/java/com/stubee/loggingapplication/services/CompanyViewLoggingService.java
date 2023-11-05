@@ -7,6 +7,7 @@ import com.stubee.loggingapplication.outports.CommandLoggingPort;
 import com.stubee.rollingdomains.domain.company.events.CompanyViewedEvent;
 import com.stubee.rollingdomains.domain.company.model.CompanyId;
 import com.stubee.rollingdomains.domain.logging.model.CompanyViewLogging;
+import com.stubee.rollingdomains.domain.member.model.MemberId;
 import lombok.RequiredArgsConstructor;
 
 @Listener
@@ -18,8 +19,16 @@ public class CompanyViewLoggingService {
 
     @AsyncEventListener
     public void pileUp(final CompanyViewedEvent event) {
+        MemberId memberId;
+
+        try {
+            memberId = getCurrentMemberPort.getMemberId();
+        } catch (Exception e) {
+            memberId = MemberId.of(-1L);
+        }
+
         commandLoggingPort.save(CompanyViewLogging.ExceptIdBuilder()
-                .memberId(getCurrentMemberPort.getMemberId())
+                .memberId(memberId)
                 .companyId(CompanyId.of(event.companyId()))
                 .build());
     }

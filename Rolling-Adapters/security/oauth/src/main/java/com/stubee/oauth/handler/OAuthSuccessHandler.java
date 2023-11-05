@@ -54,12 +54,10 @@ public class OAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         final Long memberId = member.memberId().getId();
         final MemberRole memberRole = member.memberDetails().memberRole();
 
-        final String redirectUrl = oAuthProperties.getRedirectUrl();
-
         final String accessToken = provideJwtPort.generateAccessToken(memberId, memberRole);
         final String refreshToken = provideJwtPort.generateRefreshToken(memberId, memberRole);
 
-        return UriComponentsBuilder.fromUriString(redirectUrl)
+        return UriComponentsBuilder.fromUriString(oAuthProperties.getRedirectUrl())
                 .queryParam("accessToken", accessToken)
                 .queryParam("refreshToken", refreshToken)
                 .build().toUriString();

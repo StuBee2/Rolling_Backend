@@ -13,7 +13,7 @@ import java.io.IOException;
 
 @Component
 @RequiredArgsConstructor
-public class JwtFilter extends OncePerRequestFilter {
+public class TokenFilter extends OncePerRequestFilter {
 
     private final SecurityHelper securityHelper;
 
@@ -22,7 +22,7 @@ public class JwtFilter extends OncePerRequestFilter {
                                  FilterChain chain) throws IOException, ServletException {
         final String token = extractFromHeader(request);
 
-        securityHelper.setAuthentication(token);
+        securityHelper.setAuthentication(request.getMethod(), token);
 
         chain.doFilter(request, response);
     }

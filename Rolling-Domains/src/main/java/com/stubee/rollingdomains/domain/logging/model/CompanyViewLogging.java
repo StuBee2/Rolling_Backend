@@ -15,7 +15,7 @@ public record CompanyViewLogging(
         LocalDateTime createdAt) {
     @Builder(builderClassName = "ExceptIdBuilder", builderMethodName = "ExceptIdBuilder")
     public CompanyViewLogging(MemberId memberId, CompanyId companyId) {
-        this(null, memberId, companyId, false, null);
+        this(null, memberId, companyId, isAnonymous(memberId), null);
     }
 
     @Builder(builderClassName = "WithIdBuilder", builderMethodName = "WithIdBuilder")
@@ -23,5 +23,9 @@ public record CompanyViewLogging(
         Assert.notNull(memberId, "MemberId must not be null");
         Assert.notNull(companyId, "CompanyId must not be null");
         Assert.notNull(isAnonymous, "IsAnonymous must not be null");
+    }
+
+    private static boolean isAnonymous(MemberId memberId) {
+        return memberId.getId() == -1;
     }
 }
