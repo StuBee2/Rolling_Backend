@@ -3,7 +3,7 @@ package com.stubee.rollingapi.domain.company;
 import com.stubee.companyapplication.usecases.query.*;
 import com.stubee.companyapplication.usecases.query.CompanyQueryResponse;
 import com.stubee.companyapplication.usecases.query.CompanyResponse;
-import com.stubee.rollingdomains.common.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.model.dtos.request.PageRequest;
 import com.stubee.applicationcommons.model.response.PageDataResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

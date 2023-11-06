@@ -4,7 +4,7 @@ import com.stubee.applicationcommons.annotations.QueryService;
 import com.stubee.reviewapplication.outports.query.QueryStoryWithPaginationPort;
 import com.stubee.reviewapplication.usecases.query.QueryStoryInfoListByCompanyUseCase;
 import com.stubee.reviewapplication.usecases.query.StoryQueryByCompanyResponse;
-import com.stubee.rollingdomains.common.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.model.dtos.request.PageRequest;
 import com.stubee.applicationcommons.model.response.PageDataResponse;
 import lombok.RequiredArgsConstructor;
 
@@ -18,7 +18,7 @@ public class QueryReviewInfoListByCompanyApi implements QueryStoryInfoListByComp
 
     @Override
     public PageDataResponse<List<StoryQueryByCompanyResponse>> get(Long companyId, PageRequest pageRequest) {
-        return PageDataResponse.create(queryReviewWithPaginationPort.findByCompanyId(companyId, pageRequest));
+        return PageDataResponse.of(queryReviewWithPaginationPort.findByCompanyId(companyId, pageRequest));
     }
 
 }

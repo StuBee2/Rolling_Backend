@@ -1,7 +1,7 @@
 package com.stubee.companyaveragebatch.reader;
 
 import com.stubee.companyapplication.usecases.query.CompanyResponse;
-import com.stubee.rollingdomains.common.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.model.dtos.request.PageRequest;
 import com.stubee.batchcommons.annotations.Reader;
 import com.stubee.companyapplication.usecases.query.QueryAllCompanyListUseCase;
 import com.stubee.rollingdomains.domain.company.model.Company;

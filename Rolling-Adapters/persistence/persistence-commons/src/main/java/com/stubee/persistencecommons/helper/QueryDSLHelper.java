@@ -4,7 +4,7 @@ import com.querydsl.core.types.EntityPath;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.stubee.rollingdomains.common.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.model.dtos.request.PageRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -1,6 +1,6 @@
 package com.stubee.rollingapi.domain.company;
 
-import com.stubee.applicationcommons.model.response.TSID;
+import com.stubee.rollingdomains.common.model.dtos.response.TSID;
 import com.stubee.companyapplication.usecases.command.ModifyCompanyUseCase;
 import com.stubee.rollingapi.domain.company.request.ModifyCompanyRequest;
 import com.stubee.companyapplication.usecases.command.ModifyCompanyStatusCommand;

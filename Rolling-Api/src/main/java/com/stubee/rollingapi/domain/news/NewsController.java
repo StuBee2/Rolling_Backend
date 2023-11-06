@@ -1,7 +1,7 @@
 package com.stubee.rollingapi.domain.news;
 
 import com.stubee.newsapplication.usecases.NewsUseCase;
-import com.stubee.rollingdomains.common.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.model.dtos.request.PageRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

@@ -5,7 +5,7 @@ import com.stubee.applicationcommons.ports.GetCurrentMemberPort;
 import com.stubee.reviewapplication.outports.query.QueryStoryWithPaginationPort;
 import com.stubee.reviewapplication.usecases.query.QueryMyStoryListUseCase;
 import com.stubee.reviewapplication.usecases.query.StoryQueryByMemberResponse;
-import com.stubee.rollingdomains.common.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.model.dtos.request.PageRequest;
 import com.stubee.applicationcommons.model.response.PageDataResponse;
 import lombok.RequiredArgsConstructor;
 
@@ -22,7 +22,7 @@ public class QueryMyStoryListApi implements QueryMyStoryListUseCase {
     public PageDataResponse<List<StoryQueryByMemberResponse>> get(final PageRequest pageRequest) {
         final Long memberId = getCurrentMemberPort.getMemberId().getId();
 
-        return PageDataResponse.create(queryReviewWithPaginationPort.findByMemberId(memberId, pageRequest));
+        return PageDataResponse.of(queryReviewWithPaginationPort.findByMemberId(memberId, pageRequest));
     }
 
 }
