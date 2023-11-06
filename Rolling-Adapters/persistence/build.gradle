@@ -1,8 +1,5 @@
 subprojects {
 
-    bootJar { enabled = false }
-    jar { enabled = true }
-
     dependencies {
         compileOnly project(':Rolling-Domains')
 
@@ -37,6 +34,3 @@ clean.doLast {
 tasks.named('test') {
     useJUnitPlatform()
 }
-
-bootJar { enabled = false }
-jar { enabled = true }
