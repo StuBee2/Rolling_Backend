@@ -2,7 +2,7 @@ package com.stubee.companypersistence.repository;
 
 import com.stubee.persistencecommons.entity.CompanyEntity;
 import com.stubee.companyapplication.usecases.query.CompanyQueryResponse;
-import com.stubee.rollingdomains.common.model.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.model.PageRequest;
 
 import java.util.List;
 

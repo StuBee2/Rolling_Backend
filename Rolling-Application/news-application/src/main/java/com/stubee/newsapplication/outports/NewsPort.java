@@ -1,6 +1,6 @@
 package com.stubee.newsapplication.outports;
 
-import com.stubee.rollingdomains.common.model.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.model.PageRequest;
 import reactor.core.publisher.Mono;
 
 public interface NewsPort {

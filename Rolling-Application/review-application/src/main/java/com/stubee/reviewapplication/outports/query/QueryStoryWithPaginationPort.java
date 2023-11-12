@@ -1,6 +1,6 @@
 package com.stubee.reviewapplication.outports.query;
 
-import com.stubee.rollingdomains.common.model.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.model.PageRequest;
 import com.stubee.reviewapplication.usecases.query.StoryQueryByCompanyResponse;
 import com.stubee.reviewapplication.usecases.query.StoryQueryByMemberResponse;
 

@@ -1,7 +1,7 @@
 package com.stubee.reviewapplication.usecases.query;
 
 import com.stubee.applicationcommons.model.response.PageDataResponse;
-import com.stubee.rollingdomains.common.model.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.model.PageRequest;
 
 import java.util.List;
 

@@ -6,9 +6,9 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.stubee.persistencecommons.entity.StoryEntity;
 import com.stubee.persistencecommons.helper.QueryDSLHelper;
 import com.stubee.reviewapplication.usecases.query.StoryStatusResponse;
-import com.stubee.rollingdomains.common.model.dtos.request.PageRequest;
 import com.stubee.reviewapplication.usecases.query.StoryQueryByCompanyResponse;
 import com.stubee.reviewapplication.usecases.query.StoryQueryByMemberResponse;
+import com.stubee.rollingdomains.common.model.PageRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
