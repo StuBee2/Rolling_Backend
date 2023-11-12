@@ -1,19 +1,21 @@
 package com.stubee.memberpersistence;
 
 import com.stubee.memberpersistence.adapters.CommandMemberAdapter;
+import com.stubee.memberpersistence.mapper.MemberMapper;
 import com.stubee.memberpersistence.repository.MemberJpaRepository;
+import com.stubee.persistencecommons.PersistenceAdapterTest;
+import com.stubee.rollingdomains.domain.member.consts.LoginType;
+import com.stubee.rollingdomains.domain.member.model.Member;
+import com.stubee.rollingdomains.domain.member.model.MemberId;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.ContextConfiguration;
 
-@DataJpaTest
-@EnableJpaRepositories
-@EntityScan("com.stubee.persistencecommons")
-@ContextConfiguration(classes = {CommandMemberAdapter.class, MemberJpaRepository.class})
+import static org.junit.jupiter.api.Assertions.*;
+
+@PersistenceAdapterTest
+@ContextConfiguration(classes = {CommandMemberAdapter.class, MemberMapper.class, MemberJpaRepository.class})
 public class CommandMemberAdapterTest {
 
     @Autowired
@@ -23,13 +25,22 @@ public class CommandMemberAdapterTest {
     private MemberJpaRepository memberJpaRepository;
 
     @Test
-    @DisplayName("멤버 생성 성공 테스트")
-    void CREATE_MEMBER_SUCCESS() {
+    @DisplayName("Member 생성 성공")
+    void MEMBER_생성_성공() {
         //given
+        Member member = MemberTestUtils.createDomain(
+                "111111",
+                "suw0n",
+                LoginType.GITHUB,
+                "최수원",
+                "rolling@gmail.com",
+                null);
 
         //when
+        MemberId id = commandMemberAdapter.saveExceptId(member).memberId();
 
         //then
+        assertTrue(memberJpaRepository.existsById(id.getId()));
     }
 
 }
