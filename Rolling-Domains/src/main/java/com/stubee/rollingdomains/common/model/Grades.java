@@ -4,6 +4,8 @@ import com.stubee.rollingdomains.common.error.Assert;
 import com.stubee.rollingdomains.common.error.exception.WrongCalculationException;
 import lombok.Getter;
 
+import java.util.Objects;
+
 @Getter
 public abstract class Grades {
 
@@ -57,4 +59,20 @@ public abstract class Grades {
         return Math.round((salaryAndBenefits+workLifeBalance+organizationalCulture+careerAdvancement)/4.0*10)/10.0;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Grades grades = (Grades) o;
+        return Objects.equals(total, grades.total)
+                && Objects.equals(salaryAndBenefits, grades.salaryAndBenefits)
+                && Objects.equals(workLifeBalance, grades.workLifeBalance)
+                && Objects.equals(organizationalCulture, grades.organizationalCulture)
+                && Objects.equals(careerAdvancement, grades.careerAdvancement);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(total, salaryAndBenefits, workLifeBalance, organizationalCulture, careerAdvancement);
+    }
 }
