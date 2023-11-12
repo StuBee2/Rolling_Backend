@@ -43,7 +43,7 @@ public class GlobalExceptionHandler {
     protected ResponseEntity<ErrorResponse> handleIllegalArgumentException(IllegalArgumentException e) {
         log.error("IllegalArgumentException message : {}", e.getMessage());
 
-        return new ResponseEntity<>(ErrorResponse.of(ErrorCode.ILLEGAL_ARGUMENT), BAD_REQUEST);
+        return new ResponseEntity<>(ErrorResponse.of(400, e.getMessage()), BAD_REQUEST);
     }
 
     @ExceptionHandler(MissingServletRequestPartException.class)
