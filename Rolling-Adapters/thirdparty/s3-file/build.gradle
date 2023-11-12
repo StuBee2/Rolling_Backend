@@ -1,16 +1,13 @@
 dependencies {
-    compileOnly project(':Rolling-Domains')
+    implementation project(':Rolling-Domains')
 
-    compileOnly project(':Rolling-Application:file-application')
+    implementation project(':Rolling-Application:file-application')
 
-    compileOnly project(':Rolling-Adapters:adapters-commons')
+    implementation project(':Rolling-Adapters:adapters-commons')
 
-    //MultipartFile
-    compileOnly 'org.springframework:spring-web:6.0.6'
+    implementation 'org.springframework:spring-web:6.0.6'
 
-    //S3
     implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
 
-    //Properties
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 }

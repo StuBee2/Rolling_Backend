@@ -4,7 +4,7 @@ subprojects {
     jar { enabled = true }
 
     dependencies {
-        compileOnly project(':Rolling-Domains')
+        implementation project(':Rolling-Domains')
     }
 
 }

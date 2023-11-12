@@ -1,7 +1,7 @@
 dependencies {
-    compileOnly project(':Rolling-Application:company-application')
+    implementation project(':Rolling-Application:company-application')
 
-    compileOnly project(':Rolling-Adapters:persistence:persistence-commons')
+    implementation project(':Rolling-Adapters:persistence:persistence-commons')
 
-    compileOnly project(':Rolling-Adapters:adapters-commons')
+    implementation project(':Rolling-Adapters:adapters-commons')
 }

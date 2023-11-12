@@ -13,5 +13,7 @@ dependencies {
 
     implementation project(':Rolling-Batch:batch-commons')
 
+    implementation 'mysql:mysql-connector-java:8.0.33'
+
     implementation 'org.springframework.boot:spring-boot-starter-batch'
 }

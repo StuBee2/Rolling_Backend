@@ -1,6 +1,6 @@
 dependencies {
-    compileOnly project(':Rolling-Application:application-commons')
+    implementation project(':Rolling-Application:application-commons')
 
     //MultipartFile
-    compileOnly 'org.springframework:spring-web:6.0.6'
+    implementation 'org.springframework:spring-web:6.0.6'
 }

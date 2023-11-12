@@ -1,7 +1,7 @@
 dependencies {
-    compileOnly project(':Rolling-Application:notification-application')
+    implementation project(':Rolling-Application:notification-application')
 
-    compileOnly project(':Rolling-Adapters:adapters-commons')
+    implementation project(':Rolling-Adapters:adapters-commons')
 
     //JavaMailSender
     implementation 'org.springframework.boot:spring-boot-starter-mail'
