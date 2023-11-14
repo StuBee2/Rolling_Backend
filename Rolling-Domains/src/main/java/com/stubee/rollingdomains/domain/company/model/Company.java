@@ -1,8 +1,8 @@
 package com.stubee.rollingdomains.domain.company.model;
 
 import com.stubee.rollingdomains.common.error.Assert;
-import com.stubee.rollingdomains.common.model.BaseId;
 import com.stubee.rollingdomains.domain.company.consts.CompanyStatus;
+import com.stubee.rollingdomains.domain.member.model.MemberId;
 import lombok.Builder;
 
 public record Company (
@@ -20,7 +20,7 @@ public record Company (
         Assert.notNull(companyGrades, "CompanyGrades must not be null");
     }
 
-    public void isAuthor(final BaseId memberId) {
+    public void isAuthor(final MemberId memberId) {
         companyDetails.registrantId().isEqual(memberId);
     }
 

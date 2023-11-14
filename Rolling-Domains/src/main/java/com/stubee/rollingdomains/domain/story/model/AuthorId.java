@@ -1,24 +1,20 @@
 package com.stubee.rollingdomains.domain.story.model;
 
 import com.stubee.rollingdomains.common.model.BaseId;
+import com.stubee.rollingdomains.domain.member.model.MemberId;
 
-public class AuthorId extends BaseId {
+public final class AuthorId extends MemberId {
 
-    private AuthorId(Long id) {
+    private AuthorId(final Long id) {
         super(id);
     }
 
-    public static AuthorId of(BaseId id) {
+    public static AuthorId of(final BaseId id) {
         return new AuthorId(id.getId());
     }
 
-    public static AuthorId of(Long id) {
+    public static AuthorId of(final Long id) {
         return new AuthorId(id);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        return super.equals(o);
     }
 
 }
