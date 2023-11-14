@@ -46,7 +46,7 @@ public class CompanyTest {
     }
 
     @Test
-    @DisplayName(value = "Total 포함 Grades 생성 성공")
+    @DisplayName(value = "Total 포함 CompanyGrades 생성 성공")
     void 정확한_Total일_때_생성_성공() {
         assertDoesNotThrow(() -> CompanyGrades.WithTotalBuilder()
                 .total(2.5)
@@ -58,7 +58,7 @@ public class CompanyTest {
     }
 
     @Test
-    @DisplayName(value = "잘못 계산된 Total일 때 생성 실패")
+    @DisplayName(value = "잘못 계산된 Total일 때 CompanyGrades 생성 실패")
     void 잘못_계산된_Total일_때_생성_실패() {
         assertThrows(WrongCalculationException.class, () -> CompanyGrades.WithTotalBuilder()
                 .total(2.3)
@@ -73,8 +73,8 @@ public class CompanyTest {
     * Double 오차범위 : 0.000000000000001
     * */
     @Test
-    @DisplayName(value = "오차범위를 안쪽일때 생성 실패")
-    void DOUBLE_오차범위_안쪽일때_생성_실패() {
+    @DisplayName(value = "오차범위를 안쪽일때 CompanyGrades 생성 실패")
+    void DOUBLE_오차범위_안쪽일때_COMPANYGRADES_생성_실패() {
         assertThrows(WrongCalculationException.class, () -> CompanyGrades.WithTotalBuilder()
                 .total(2.499999999999999) //오차범위
                 .salaryAndBenefits(1.0)
@@ -85,8 +85,8 @@ public class CompanyTest {
     }
 
     @Test
-    @DisplayName(value = "오차범위를 벗어났을 때 생성 성공")
-    void DOUBLE_오차범위를_벗어났을_때_생성_성공() {
+    @DisplayName(value = "오차범위를 벗어났을 때 CompanyGrades 생성 성공")
+    void DOUBLE_오차범위를_벗어났을_때_COMPANYGRADES_생성_성공() {
         assertDoesNotThrow(() -> CompanyGrades.WithTotalBuilder()
                 .total(2.4999999999999999)
                 .salaryAndBenefits(1.0)
