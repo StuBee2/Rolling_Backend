@@ -1,6 +1,6 @@
 package com.stubee.companyapplication.outports.query;
 
-import com.stubee.rollingdomains.common.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.model.PageRequest;
 import com.stubee.rollingdomains.domain.company.model.Company;
 
 import java.util.List;

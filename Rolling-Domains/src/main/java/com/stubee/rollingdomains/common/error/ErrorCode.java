@@ -37,7 +37,6 @@ public enum ErrorCode {
     OAUTH_FAIL(401, "OAuth failed"),
 
     OBJECT_VALID_FAIL(400, "Object validation failed"),
-    METHOD_ARG_NOT_VALID(400, "Method argument is invalided"),
     EMPTY_FILE(400, "File is empty"),
     JWT_SIGNATURE_NOT_MATCHED(400, "JWT signature doesn't matched"),
     WRONG_TOKEN_TYPE(400, "Check your token type"),

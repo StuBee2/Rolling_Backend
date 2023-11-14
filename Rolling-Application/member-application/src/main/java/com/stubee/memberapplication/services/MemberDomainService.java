@@ -1,15 +1,13 @@
 package com.stubee.memberapplication.services;
 
-import com.stubee.applicationcommons.annotations.AsyncEventListener;
 import com.stubee.applicationcommons.annotations.DomainService;
 import com.stubee.memberapplication.outports.CheckNicknameDuplicationPort;
 import com.stubee.memberapplication.outports.CommandMemberPort;
-import com.stubee.rollingdomains.domain.member.events.MemberCertifiedEvent;
 import com.stubee.rollingdomains.domain.member.exception.DuplicatedNicknameException;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.applicationcommons.ports.GetCurrentMemberPort;
-import com.stubee.rollingdomains.domain.member.services.ModifyNicknameService;
 import com.stubee.rollingdomains.domain.member.services.ElevateMemberRoleService;
+import com.stubee.rollingdomains.domain.member.services.ModifyNicknameService;
 import lombok.RequiredArgsConstructor;
 
 @DomainService
@@ -34,8 +32,7 @@ public class MemberDomainService implements ModifyNicknameService, ElevateMember
     }
 
     @Override
-    @AsyncEventListener
-    public void elevate(final MemberCertifiedEvent event) {
+    public void elevate() {
         commandMemberPort.saveWithId(this.getMember().elevateToMember());
     }
 

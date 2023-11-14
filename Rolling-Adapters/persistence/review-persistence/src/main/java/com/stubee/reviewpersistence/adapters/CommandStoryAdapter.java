@@ -26,8 +26,8 @@ public class CommandStoryAdapter implements CommandStoryPort {
     }
 
     @Override
-    public void update(final Story story) {
-        commandStoryJpaRepository.save(storyMapper.toEntityWithId(story));
+    public Story update(final Story story) {
+        return storyMapper.toDomain(commandStoryJpaRepository.save(storyMapper.toEntityWithId(story)));
     }
 
 }

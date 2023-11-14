@@ -16,6 +16,7 @@ public class CompanyMapper implements com.stubee.persistencecommons.mapper.Domai
                 .registrantId(domain.companyDetails().registrantId().getId())
                 .name(domain.companyDetails().name())
                 .address(domain.companyDetails().companyAddress().address())
+                .addressEtc(domain.companyDetails().companyAddress().etc())
                 .description(domain.companyDetails().description())
                 .logoUrl(domain.companyDetails().companyLogo().url())
                 .logoRGB(domain.companyDetails().companyLogo().rgb())

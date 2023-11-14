@@ -1,6 +1,4 @@
-package com.stubee.applicationcommons.dtos.response;
-
-import com.stubee.rollingdomains.common.model.BaseId;
+package com.stubee.rollingdomains.common.model;
 
 public record TSID(
         String id

@@ -29,6 +29,8 @@ public class ExceptionFilter extends OncePerRequestFilter {
             setErrorResponse(response, e.getErrorCode());
         } catch (SignatureException e) {
             setErrorResponse(response, ErrorCode.JWT_SIGNATURE_NOT_MATCHED);
+        } catch (IllegalArgumentException e) {
+            setErrorResponse(response, ErrorCode.ILLEGAL_ARGUMENT);
         } catch (Exception e) {
             setErrorResponse(response, ErrorCode.INTERNAL_SERVER_ERROR);
         }

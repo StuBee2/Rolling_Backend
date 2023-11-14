@@ -1,7 +1,7 @@
 package com.stubee.rollingapi.domain.news;
 
 import com.stubee.newsapplication.usecases.NewsUseCase;
-import com.stubee.rollingdomains.common.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.model.PageRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +23,7 @@ public class NewsController {
     @ResponseStatus(OK)
     public Mono<?> getNewsByCompanyName(final @PathVariable String companyName,
                                         final @ModelAttribute PageRequest pageRequest) {
+        pageRequest.validate();
         return newsUseCase.getNewsByCompanyName(companyName, pageRequest);
     }
 

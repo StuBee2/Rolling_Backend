@@ -4,7 +4,7 @@ import com.stubee.rollingdomains.common.model.BaseId;
 
 public class MemberId extends BaseId {
 
-    private MemberId(Long id) {
+    protected MemberId(Long id) {
         super(id);
     }
 

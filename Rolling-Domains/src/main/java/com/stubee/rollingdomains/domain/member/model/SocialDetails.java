@@ -16,7 +16,6 @@ public record SocialDetails(
         Assert.notNull(socialId, "SocialId must not be null");
         Assert.notNull(socialLoginId, "SocialLoginId must not be null");
         Assert.notNull(loginType, "LoginType must not be null");
-        Assert.notNull(name, "Name must not be null");
     }
 
     SocialDetails updateLoginId(final String socialLoginId) {

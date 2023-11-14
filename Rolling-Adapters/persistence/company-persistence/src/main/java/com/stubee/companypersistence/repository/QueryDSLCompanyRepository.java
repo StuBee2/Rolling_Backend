@@ -9,7 +9,7 @@ import com.stubee.persistencecommons.entity.CompanyEntity;
 import com.stubee.companyapplication.usecases.query.CompanyQueryResponse;
 import com.stubee.persistencecommons.helper.OrderByNull;
 import com.stubee.persistencecommons.helper.QueryDSLHelper;
-import com.stubee.rollingdomains.common.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.model.PageRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

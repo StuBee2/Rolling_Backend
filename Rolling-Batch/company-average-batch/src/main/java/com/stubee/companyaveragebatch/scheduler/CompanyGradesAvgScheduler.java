@@ -12,8 +12,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 
 import java.time.LocalDateTime;
 
-@Slf4j
 @Configuration
+@Slf4j
 @EnableScheduling
 @RequiredArgsConstructor
 public class CompanyGradesAvgScheduler {

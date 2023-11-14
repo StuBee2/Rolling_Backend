@@ -1,9 +1,8 @@
 dependencies {
-    compileOnly project(':Rolling-Application:member-application')
-    compileOnly project(':Rolling-Application:application-commons')
+    implementation project(':Rolling-Application:member-application')
+    implementation project(':Rolling-Application:application-commons')
 
-    compileOnly 'org.springframework:spring-context:6.0.6'
+    implementation 'org.springframework:spring-context:6.0.6'
 
-    //HttpServletRequest
-    compileOnly 'org.apache.tomcat.embed:tomcat-embed-core:10.1.5'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-core:10.1.5'
 }

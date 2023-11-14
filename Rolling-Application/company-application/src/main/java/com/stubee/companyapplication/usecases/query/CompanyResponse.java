@@ -1,6 +1,6 @@
 package com.stubee.companyapplication.usecases.query;
 
-import com.stubee.applicationcommons.dtos.response.TSID;
+import com.stubee.rollingdomains.common.model.TSID;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import com.stubee.rollingdomains.domain.company.model.CompanyDetails;
 import com.stubee.rollingdomains.domain.company.model.CompanyGrades;

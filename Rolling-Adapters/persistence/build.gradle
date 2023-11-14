@@ -1,14 +1,9 @@
 subprojects {
 
-    bootJar { enabled = false }
-    jar { enabled = true }
-
     dependencies {
-        compileOnly project(':Rolling-Domains')
+        implementation project(':Rolling-Domains')
 
         implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-
-        implementation 'mysql:mysql-connector-java:8.0.33'
 
         implementation 'org.springframework.boot:spring-boot-starter-validation'
 
@@ -16,27 +11,27 @@ subprojects {
         annotationProcessor "com.querydsl:querydsl-apt:5.0.0:jakarta"
         annotationProcessor "jakarta.annotation:jakarta.annotation-api"
         annotationProcessor "jakarta.persistence:jakarta.persistence-api"
+
+        testImplementation 'mysql:mysql-connector-java:8.0.33'
+        testImplementation(testFixtures(project(':Rolling-Adapters:persistence:persistence-commons')))
+    }
+
+    def querydslDir = "$buildDir/generated/querydsl"
+
+    sourceSets {
+        main.java.srcDirs += [querydslDir]
+    }
+
+    tasks.withType(JavaCompile) {
+        options.annotationProcessorGeneratedSourcesDirectory = file(querydslDir)
+    }
+
+    clean.doLast {
+        file(querydslDir).deleteDir()
+    }
+
+    tasks.named('test') {
+        useJUnitPlatform()
     }
 
 }
-
-def querydslDir = "$buildDir/generated/querydsl"
-
-sourceSets {
-    main.java.srcDirs += [querydslDir]
-}
-
-tasks.withType(JavaCompile) {
-    options.annotationProcessorGeneratedSourcesDirectory = file(querydslDir)
-}
-
-clean.doLast {
-    file(querydslDir).deleteDir()
-}
-
-tasks.named('test') {
-    useJUnitPlatform()
-}
-
-bootJar { enabled = false }
-jar { enabled = true }

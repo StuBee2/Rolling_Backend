@@ -1,6 +1,6 @@
 package com.stubee.companyaveragebatch.processor;
 
-import com.stubee.rollingdomains.common.dtos.request.PageRequest;
+import com.stubee.rollingdomains.common.model.PageRequest;
 import com.stubee.batchcommons.annotations.Processor;
 import com.stubee.reviewapplication.usecases.query.StoryQueryByCompanyResponse;
 import com.stubee.reviewapplication.usecases.query.QueryStoryInfoListByCompanyUseCase;

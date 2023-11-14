@@ -1,13 +1,11 @@
 dependencies {
-    compileOnly project(':Rolling-Domains')
+    implementation project(':Rolling-Domains')
 
-    compileOnly project(':Rolling-Application:auth-application')
+    implementation project(':Rolling-Application:auth-application')
 
-    compileOnly project(':Rolling-Adapters:adapters-commons')
+    implementation project(':Rolling-Adapters:adapters-commons')
 
-    //@ConfigurationProperties, @Component
-    compileOnly 'org.springframework.boot:spring-boot:3.1.0'
+    implementation 'org.springframework.boot:spring-boot:3.1.0'
 
-    //Properties
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 }

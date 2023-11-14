@@ -17,7 +17,7 @@ dependencies {
     runtimeOnly project(':Rolling-Adapters:persistence:logging-persistence')
 
     implementation project(':Rolling-Application:application-commons')
-    implementation project(':Rolling-Adapters:persistence:persistence-commons')
+    runtimeOnly project(':Rolling-Adapters:persistence:persistence-commons')
 
 
     implementation project(':Rolling-Application:auth-application')
@@ -37,6 +37,8 @@ dependencies {
     implementation project(':Rolling-Adapters:thirdparty:email-notification')
 
     implementation project(':Rolling-Adapters:adapters-commons')
+
+    implementation 'mysql:mysql-connector-java:8.0.33'
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
 

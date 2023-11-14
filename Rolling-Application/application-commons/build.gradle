@@ -1,4 +1,4 @@
 dependencies {
-    compileOnly 'org.springframework:spring-tx:6.0.6'
-    compileOnly 'org.springframework:spring-context:6.0.6'
+    implementation 'org.springframework:spring-tx:6.0.6'
+    implementation 'org.springframework:spring-context:6.0.6'
 }

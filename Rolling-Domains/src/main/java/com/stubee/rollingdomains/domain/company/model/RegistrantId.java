@@ -1,10 +1,11 @@
 package com.stubee.rollingdomains.domain.company.model;
 
 import com.stubee.rollingdomains.common.model.BaseId;
+import com.stubee.rollingdomains.domain.member.model.MemberId;
 
-public class RegistrantId extends BaseId {
+public final class RegistrantId extends MemberId {
 
-    private RegistrantId(Long id) {
+    private RegistrantId(final Long id) {
         super(id);
     }
 
@@ -14,11 +15,6 @@ public class RegistrantId extends BaseId {
 
     public static RegistrantId of(final BaseId id) {
         return new RegistrantId(id.getId());
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        return super.equals(o);
     }
 
 }
