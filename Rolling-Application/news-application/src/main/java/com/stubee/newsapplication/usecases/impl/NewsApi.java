@@ -15,6 +15,8 @@ public class NewsApi implements NewsUseCase {
 
     @Override
     public Mono<?> getNewsByCompanyName(final String companyName, final PageRequest pageRequest) {
+        pageRequest.validate();
+
         return newsPort.getByCompanyName(companyName, pageRequest);
     }
 

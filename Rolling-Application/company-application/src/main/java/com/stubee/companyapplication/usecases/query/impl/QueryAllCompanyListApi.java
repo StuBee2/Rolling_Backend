@@ -18,6 +18,8 @@ public class QueryAllCompanyListApi implements QueryAllCompanyListUseCase {
 
     @Override
     public PageDataResponse<List<CompanyResponse>> get(PageRequest pageRequest) {
+        pageRequest.validate();
+
         return PageDataResponse.of(queryCompanyWithPaginationPort.findAll(pageRequest).stream()
                 .map(CompanyResponse::of)
                 .toList());

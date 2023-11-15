@@ -18,6 +18,8 @@ public class QueryReviewInfoListByCompanyApi implements QueryStoryInfoListByComp
 
     @Override
     public PageDataResponse<List<StoryQueryByCompanyResponse>> get(Long companyId, PageRequest pageRequest) {
+        pageRequest.validate();
+
         return PageDataResponse.of(queryReviewWithPaginationPort.findByCompanyId(companyId, pageRequest));
     }
 

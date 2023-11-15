@@ -18,6 +18,8 @@ public class QueryStoryListByMemberApi implements QueryStoryListByMemberUseCase 
 
     @Override
     public PageDataResponse<List<StoryQueryByMemberResponse>> get(final Long memberId, PageRequest pageRequest) {
+        pageRequest.validate();
+
         return PageDataResponse.of(queryReviewWithPaginationPort.findByMemberId(memberId, pageRequest));
     }
 
