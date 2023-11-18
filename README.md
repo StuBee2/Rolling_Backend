@@ -4,7 +4,6 @@
 
 ## Service Link
 https://rolling.stubee.kr
-PMF 검증 단계
 
 ## Project Structure
 ```markdown
@@ -17,7 +16,7 @@ Rolling-Api
 Rolling-Application
   : usecase를 정의 및 구현하는 모듈,
     domainservice를 구현하는 모듈
-    외부 api, db 등의 port를 정의한 모듈
+    외부 api, db 등의 외부 port를 정의한 모듈
 
 Rolling-Batch
   : batch작업을 수행하는 모듈
