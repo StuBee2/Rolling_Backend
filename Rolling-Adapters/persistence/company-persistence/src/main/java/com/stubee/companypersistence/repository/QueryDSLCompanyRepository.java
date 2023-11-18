@@ -74,31 +74,16 @@ public class QueryDSLCompanyRepository implements QueryCompanyRepository {
     }
 
     @Override
-    public List<CompanyEntity> findByTotalGrade() {
-        return queryTop10orderByGrades(companyEntity.totalGrade);
-    }
+    public List<CompanyEntity> findOrderBy(String gradeType) {
+        NumberPath<Double> order = switch (gradeType) {
+            case "total" -> companyEntity.totalGrade;
+            case "salary-benefits" -> companyEntity.salaryAndBenefits;
+            case "balance" -> companyEntity.workLifeBalance;
+            case "culture" -> companyEntity.organizationalCulture;
+            case "career" -> companyEntity.careerAdvancement;
+            default -> throw new IllegalArgumentException("Wrong grade type");
+        };
 
-    @Override
-    public List<CompanyEntity> findBySalaryAndBenefits() {
-        return queryTop10orderByGrades(companyEntity.salaryAndBenefits);
-    }
-
-    @Override
-    public List<CompanyEntity> findByWorkLifeBalance() {
-        return queryTop10orderByGrades(companyEntity.workLifeBalance);
-    }
-
-    @Override
-    public List<CompanyEntity> findByOrganizationalCulture() {
-        return queryTop10orderByGrades(companyEntity.organizationalCulture);
-    }
-
-    @Override
-    public List<CompanyEntity> findByCareerAdvancement() {
-        return queryTop10orderByGrades(companyEntity.careerAdvancement);
-    }
-
-    private List<CompanyEntity> queryTop10orderByGrades(NumberPath<Double> order) {
         return queryDSLHelper.findWithOrderAndLimit(companyEntity, order.desc(), RANK_LIMIT);
     }
 

@@ -23,14 +23,7 @@ public class QueryCompanyListByGradesApi implements QueryCompanyListByGradesUseC
     }
 
     private List<Company> fetchByGradeType(final String gradeType) {
-        return switch (gradeType) {
-            case "total" -> queryCompanyByGradesPort.getByTotalGrade();
-            case "salary-benefits" -> queryCompanyByGradesPort.getBySalaryAndBenefits();
-            case "balance" -> queryCompanyByGradesPort.getByWorkLifeBalance();
-            case "culture" -> queryCompanyByGradesPort.getByOrganizationalCulture();
-            case "career" -> queryCompanyByGradesPort.getByCareerAdvancement();
-            default -> throw new IllegalArgumentException("Wrong grade type");
-        };
+        return queryCompanyByGradesPort.getOrderBy(gradeType);
     }
 
 }

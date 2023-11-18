@@ -22,14 +22,6 @@ public interface QueryCompanyRepository {
 
     List<CompanyEntity> findAll(PageRequest pageRequest);
 
-    List<CompanyEntity> findByTotalGrade();
-
-    List<CompanyEntity> findBySalaryAndBenefits();
-
-    List<CompanyEntity> findByWorkLifeBalance();
-
-    List<CompanyEntity> findByOrganizationalCulture();
-
-    List<CompanyEntity> findByCareerAdvancement();
+    List<CompanyEntity> findOrderBy(String gradeType);
 
 }

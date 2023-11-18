@@ -51,28 +51,8 @@ public class QueryCompanyAdapter implements QueryCompanyPort, CheckCompanyPort {
     }
 
     @Override
-    public List<Company> getByTotalGrade() {
-        return companyMapper.toDomainList(queryCompanyRepository.findByTotalGrade());
-    }
-
-    @Override
-    public List<Company> getBySalaryAndBenefits() {
-        return companyMapper.toDomainList(queryCompanyRepository.findBySalaryAndBenefits());
-    }
-
-    @Override
-    public List<Company> getByWorkLifeBalance() {
-        return companyMapper.toDomainList(queryCompanyRepository.findByWorkLifeBalance());
-    }
-
-    @Override
-    public List<Company> getByOrganizationalCulture() {
-        return companyMapper.toDomainList(queryCompanyRepository.findByOrganizationalCulture());
-    }
-
-    @Override
-    public List<Company> getByCareerAdvancement() {
-        return companyMapper.toDomainList(queryCompanyRepository.findByCareerAdvancement());
+    public List<Company> getOrderBy(final String gradeType) {
+        return companyMapper.toDomainList(queryCompanyRepository.findOrderBy(gradeType));
     }
 
     @Override
