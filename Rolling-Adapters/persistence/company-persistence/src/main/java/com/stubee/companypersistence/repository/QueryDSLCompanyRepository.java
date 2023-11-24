@@ -7,8 +7,8 @@ import com.querydsl.core.types.dsl.NumberPath;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.stubee.persistencecommons.entity.CompanyEntity;
 import com.stubee.companyapplication.usecases.query.CompanyQueryResponse;
-import com.stubee.persistencecommons.helper.OrderByNull;
-import com.stubee.persistencecommons.helper.QueryDSLHelper;
+import com.stubee.persistencecommons.support.OrderByNull;
+import com.stubee.persistencecommons.support.QueryDSLHelperSupport;
 import com.stubee.rollingdomains.common.model.PageRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -17,7 +17,7 @@ import java.util.List;
 
 import static com.stubee.persistencecommons.entity.QCompanyEntity.companyEntity;
 import static com.stubee.persistencecommons.entity.QMemberEntity.memberEntity;
-import static com.stubee.persistencecommons.helper.ExpressionSupport.Company.*;
+import static com.stubee.persistencecommons.support.ExpressionSupport.Company.*;
 
 @Repository
 @RequiredArgsConstructor
@@ -25,7 +25,7 @@ public class QueryDSLCompanyRepository implements QueryCompanyRepository {
 
     private static final int RANK_LIMIT = 10;
 
-    private final QueryDSLHelper<CompanyEntity> queryDSLHelper;
+    private final QueryDSLHelperSupport<CompanyEntity> queryDSLHelper;
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override

@@ -1,4 +1,4 @@
-package com.stubee.persistencecommons.helper;
+package com.stubee.persistencecommons.support;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.stubee.rollingdomains.domain.company.consts.CompanyStatus;

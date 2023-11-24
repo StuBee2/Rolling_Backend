@@ -1,10 +1,10 @@
-package com.stubee.oauth.service;
+package com.stubee.oauth.security.service;
 
 import com.stubee.applicationcommons.annotations.CommandService;
 import com.stubee.memberapplication.outports.CommandMemberPort;
-import com.stubee.oauth.model.CustomMemberDetails;
+import com.stubee.oauth.security.model.CustomMemberDetails;
 import com.stubee.rollingdomains.domain.member.consts.LoginType;
-import com.stubee.oauth.model.consts.OAuthAttributes;
+import com.stubee.oauth.security.model.consts.OAuthAttributes;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;

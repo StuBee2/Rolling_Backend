@@ -1,4 +1,4 @@
-package com.stubee.oauth.model;
+package com.stubee.oauth.security.model;
 
 import com.stubee.rollingdomains.domain.member.model.Member;
 import com.stubee.rollingdomains.domain.member.model.MemberId;

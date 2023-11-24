@@ -1,8 +1,8 @@
-package com.stubee.oauth.helper;
+package com.stubee.oauth.security.helper;
 
 import com.stubee.authapplication.outports.ParseTokenPort;
 import com.stubee.memberapplication.outports.QueryMemberPort;
-import com.stubee.oauth.model.CustomMemberDetails;
+import com.stubee.oauth.security.model.CustomMemberDetails;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

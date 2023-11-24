@@ -1,4 +1,4 @@
-package com.stubee.loggingapplication.services;
+package com.stubee.loggingapplication.usecases;
 
 import com.stubee.applicationcommons.annotations.AsyncEventListener;
 import com.stubee.applicationcommons.annotations.Listener;
@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 @Listener
 @RequiredArgsConstructor
-public class CompanyViewLoggingService {
+public class CompanyViewLoggingListener {
 
     private final CommandLoggingPort<CompanyViewLogging> commandLoggingPort;
     private final GetCurrentMemberPort getCurrentMemberPort;

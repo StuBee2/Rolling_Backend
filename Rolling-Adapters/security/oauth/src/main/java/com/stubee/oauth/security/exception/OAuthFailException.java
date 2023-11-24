@@ -1,4 +1,4 @@
-package com.stubee.oauth.exception;
+package com.stubee.oauth.security.exception;
 
 import com.stubee.rollingdomains.common.error.CustomException;
 import com.stubee.rollingdomains.common.error.ErrorCode;

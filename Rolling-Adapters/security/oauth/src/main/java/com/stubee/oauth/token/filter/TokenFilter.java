@@ -1,6 +1,6 @@
-package com.stubee.oauth.filter;
+package com.stubee.oauth.token.filter;
 
-import com.stubee.oauth.helper.SecurityHelper;
+import com.stubee.oauth.security.helper.SecurityHelper;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

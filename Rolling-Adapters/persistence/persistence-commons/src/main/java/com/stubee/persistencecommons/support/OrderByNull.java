@@ -1,4 +1,4 @@
-package com.stubee.persistencecommons.helper;
+package com.stubee.persistencecommons.support;
 
 import com.querydsl.core.types.NullExpression;
 import com.querydsl.core.types.Order;

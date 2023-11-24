@@ -1,12 +1,12 @@
-package com.stubee.oauth.config;
+package com.stubee.oauth.security.config;
 
 import com.stubee.jwt.filter.ExceptionFilter;
 import com.stubee.jwt.filter.JwtExceptionFilter;
-import com.stubee.oauth.filter.TokenFilter;
-import com.stubee.oauth.handler.CustomAccessDeniedHandler;
-import com.stubee.oauth.handler.OAuthFailureHandler;
-import com.stubee.oauth.handler.OAuthSuccessHandler;
-import com.stubee.oauth.service.OAuthMemberService;
+import com.stubee.oauth.token.filter.TokenFilter;
+import com.stubee.oauth.security.handler.CustomAccessDeniedHandler;
+import com.stubee.oauth.security.handler.OAuthFailureHandler;
+import com.stubee.oauth.security.handler.OAuthSuccessHandler;
+import com.stubee.oauth.security.service.OAuthMemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

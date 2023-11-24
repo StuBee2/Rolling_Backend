@@ -5,7 +5,7 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.stubee.employmentapplication.usecases.query.EmploymentQueryResponse;
 import com.stubee.persistencecommons.entity.EmploymentEntity;
-import com.stubee.persistencecommons.helper.QueryDSLHelper;
+import com.stubee.persistencecommons.support.QueryDSLHelperSupport;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -13,13 +13,13 @@ import java.util.List;
 
 import static com.stubee.persistencecommons.entity.QCompanyEntity.companyEntity;
 import static com.stubee.persistencecommons.entity.QEmploymentEntity.employmentEntity;
-import static com.stubee.persistencecommons.helper.ExpressionSupport.Employment.*;
+import static com.stubee.persistencecommons.support.ExpressionSupport.Employment.*;
 
 @Repository
 @RequiredArgsConstructor
 public class QueryDSLEmploymentRepository implements QueryEmploymentRepository {
 
-    private final QueryDSLHelper<EmploymentEntity> queryDSLHelper;
+    private final QueryDSLHelperSupport<EmploymentEntity> queryDSLHelper;
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override

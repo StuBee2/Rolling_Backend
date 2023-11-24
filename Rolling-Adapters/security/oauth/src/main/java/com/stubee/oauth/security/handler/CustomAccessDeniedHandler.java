@@ -1,4 +1,4 @@
-package com.stubee.oauth.handler;
+package com.stubee.oauth.security.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stubee.rollingdomains.common.error.ErrorCode;

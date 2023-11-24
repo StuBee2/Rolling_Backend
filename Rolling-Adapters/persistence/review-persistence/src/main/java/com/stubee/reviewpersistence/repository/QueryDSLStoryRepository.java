@@ -4,7 +4,7 @@ import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.stubee.persistencecommons.entity.StoryEntity;
-import com.stubee.persistencecommons.helper.QueryDSLHelper;
+import com.stubee.persistencecommons.support.QueryDSLHelperSupport;
 import com.stubee.reviewapplication.usecases.query.StoryStatusResponse;
 import com.stubee.reviewapplication.usecases.query.StoryQueryByCompanyResponse;
 import com.stubee.reviewapplication.usecases.query.StoryQueryByMemberResponse;
@@ -17,13 +17,13 @@ import java.util.List;
 import static com.stubee.persistencecommons.entity.QCompanyEntity.companyEntity;
 import static com.stubee.persistencecommons.entity.QMemberEntity.memberEntity;
 import static com.stubee.persistencecommons.entity.QStoryEntity.storyEntity;
-import static com.stubee.persistencecommons.helper.ExpressionSupport.Story.*;
+import static com.stubee.persistencecommons.support.ExpressionSupport.Story.*;
 
 @Repository
 @RequiredArgsConstructor
 public class QueryDSLStoryRepository implements QueryStoryRepository {
 
-    private final QueryDSLHelper<StoryEntity> queryDSLHelper;
+    private final QueryDSLHelperSupport<StoryEntity> queryDSLHelper;
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override

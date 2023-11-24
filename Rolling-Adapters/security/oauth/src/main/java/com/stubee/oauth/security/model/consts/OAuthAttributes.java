@@ -1,4 +1,4 @@
-package com.stubee.oauth.model.consts;
+package com.stubee.oauth.security.model.consts;
 
 import com.stubee.rollingdomains.domain.member.consts.LoginType;
 import com.stubee.rollingdomains.domain.member.consts.MemberRole;

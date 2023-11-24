@@ -1,10 +1,10 @@
-package com.stubee.oauth.handler;
+package com.stubee.oauth.security.handler;
 
 import com.stubee.authapplication.outports.ProvideTokenPort;
 import com.stubee.oauth.cookie.CookieAuthorizationRequestRepository;
 import com.stubee.oauth.cookie.CookieManager;
-import com.stubee.oauth.model.CustomMemberDetails;
-import com.stubee.oauth.properties.OAuthProperties;
+import com.stubee.oauth.security.model.CustomMemberDetails;
+import com.stubee.oauth.security.properties.OAuthProperties;
 import com.stubee.rollingdomains.domain.member.consts.MemberRole;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import jakarta.servlet.http.Cookie;

@@ -1,4 +1,4 @@
-package com.stubee.persistencecommons.helper;
+package com.stubee.persistencecommons.support;
 
 import com.querydsl.core.types.EntityPath;
 import com.querydsl.core.types.OrderSpecifier;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class QueryDSLHelper <T> {
+public class QueryDSLHelperSupport<T> {
 
     private final JPAQueryFactory jpaQueryFactory;
 
