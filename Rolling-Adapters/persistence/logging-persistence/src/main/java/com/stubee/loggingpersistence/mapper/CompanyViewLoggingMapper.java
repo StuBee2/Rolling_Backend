@@ -3,7 +3,7 @@ package com.stubee.loggingpersistence.mapper;
 import com.stubee.persistencecommons.annotations.DomainObjectMapper;
 import com.stubee.persistencecommons.entity.CompanyViewLoggingEntity;
 import com.stubee.rollingdomains.domain.company.model.CompanyId;
-import com.stubee.rollingdomains.domain.logging.model.CompanyViewLogging;
+import com.stubee.rollingdomains.logging.model.CompanyViewLogging;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 
 @DomainObjectMapper

@@ -4,7 +4,7 @@ import com.stubee.loggingpersistence.adapters.CommandHistoryLoggingAdapter;
 import com.stubee.loggingpersistence.mapper.HistoryLoggingMapper;
 import com.stubee.loggingpersistence.repository.HistoryLoggingJpaRepository;
 import com.stubee.persistencecommons.PersistenceAdapterTest;
-import com.stubee.rollingdomains.domain.logging.model.HistoryLogging;
+import com.stubee.rollingdomains.logging.model.HistoryLogging;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

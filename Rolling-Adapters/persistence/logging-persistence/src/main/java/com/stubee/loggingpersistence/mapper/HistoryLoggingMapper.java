@@ -2,7 +2,7 @@ package com.stubee.loggingpersistence.mapper;
 
 import com.stubee.persistencecommons.annotations.DomainObjectMapper;
 import com.stubee.persistencecommons.entity.HistoryLoggingEntity;
-import com.stubee.rollingdomains.domain.logging.model.HistoryLogging;
+import com.stubee.rollingdomains.logging.model.HistoryLogging;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 
 @DomainObjectMapper

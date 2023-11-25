@@ -1,4 +1,4 @@
-package com.stubee.rollingdomains.domain.logging.model;
+package com.stubee.rollingdomains.logging.model;
 
 import com.stubee.rollingdomains.common.error.Assert;
 import com.stubee.rollingdomains.domain.member.model.MemberId;

@@ -5,7 +5,7 @@ import com.stubee.loggingpersistence.mapper.CompanyViewLoggingMapper;
 import com.stubee.loggingpersistence.repository.CompanyViewLoggingRepository;
 import com.stubee.persistencecommons.PersistenceAdapterTest;
 import com.stubee.rollingdomains.domain.company.model.CompanyId;
-import com.stubee.rollingdomains.domain.logging.model.CompanyViewLogging;
+import com.stubee.rollingdomains.logging.model.CompanyViewLogging;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
