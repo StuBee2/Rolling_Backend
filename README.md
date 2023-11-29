@@ -7,16 +7,33 @@
 Rolling-Adapters
   : 외부 api, db 기술을 사용하여 adapter를 구현하는 모듈
 
+    - security
+    - persistence
+      - member-persistence
+      - company-persistence
+      ...
+    - thirdparty
+      - s3-image
+      ...
+
+
 Rolling-Api
   : http 요청을 usecase를 호출해 처리하는 모듈
+
 
 Rolling-Application
   : usecase를 정의 및 구현하는 모듈,
     domainservice를 구현하는 모듈
     외부 api, db 등의 외부 port를 정의한 모듈
 
+      - member-application
+      - company-application
+      ...
+
+
 Rolling-Batch
   : batch작업을 수행하는 모듈
+
 
 Rolling-Domains
   : aggregate model, exception, event, domainservice를 정의한 모듈
