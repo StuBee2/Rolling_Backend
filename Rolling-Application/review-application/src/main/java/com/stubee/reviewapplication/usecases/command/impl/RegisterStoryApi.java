@@ -2,7 +2,6 @@ package com.stubee.reviewapplication.usecases.command.impl;
 
 import com.stubee.applicationcommons.annotations.CommandService;
 import com.stubee.applicationcommons.ports.GetCurrentMemberPort;
-import com.stubee.reviewapplication.mapper.StoryMapper;
 import com.stubee.rollingdomains.domain.company.services.CheckCompanyExistenceService;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 import com.stubee.rollingdomains.domain.story.services.RegisterStoryService;
@@ -13,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 @CommandService
 @RequiredArgsConstructor
-public class RegisterStoryApi implements RegisterStoryUseCase {
+class RegisterStoryApi implements RegisterStoryUseCase {
 
     private final CheckCompanyExistenceService checkCompanyExistenceService;
     private final GetCurrentMemberPort getCurrentMemberPort;

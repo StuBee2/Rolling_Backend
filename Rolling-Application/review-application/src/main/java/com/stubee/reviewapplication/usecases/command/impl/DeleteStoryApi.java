@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 
 @CommandService
 @RequiredArgsConstructor
-public class DeleteStoryApi implements DeleteStoryUseCase {
+class DeleteStoryApi implements DeleteStoryUseCase {
 
     private final GetCurrentMemberPort getCurrentMemberPort;
     private final DeleteStoryService deleteReviewService;

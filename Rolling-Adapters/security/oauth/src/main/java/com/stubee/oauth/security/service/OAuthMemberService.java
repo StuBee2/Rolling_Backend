@@ -4,7 +4,6 @@ import com.stubee.applicationcommons.annotations.CommandService;
 import com.stubee.memberapplication.outports.CommandMemberPort;
 import com.stubee.oauth.security.model.CustomMemberDetails;
 import com.stubee.rollingdomains.domain.member.consts.LoginType;
-import com.stubee.oauth.security.model.consts.OAuthAttributes;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -17,7 +16,7 @@ import java.util.Map;
 
 @CommandService
 @RequiredArgsConstructor
-public class OAuthMemberService extends DefaultOAuth2UserService {
+class OAuthMemberService extends DefaultOAuth2UserService {
 
     private final CommandMemberPort commandMemberPort;
 

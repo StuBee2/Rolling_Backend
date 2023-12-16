@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class RefreshTokenApi implements RefreshTokenUseCase {
+class RefreshTokenApi implements RefreshTokenUseCase {
 
     private final ProvideTokenPort provideJwtPort;
     private final ParseTokenPort parseJwtPort;

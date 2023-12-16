@@ -12,7 +12,7 @@ import java.util.List;
 
 @QueryService
 @RequiredArgsConstructor
-public class SearchCompanyListByNameApi implements SearchCompanyListByNameUseCase {
+class SearchCompanyListByNameApi implements SearchCompanyListByNameUseCase {
 
     private final QueryCompanyWithPaginationPort queryCompanyWithPaginationPort;
 

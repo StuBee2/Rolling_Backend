@@ -16,7 +16,7 @@ import java.util.Objects;
 
 @DomainService
 @RequiredArgsConstructor
-public class CompanyDomainService implements
+class CompanyDomainService implements
         RegisterCompanyService,
         ModifyCompanyService,
         DeleteCompanyService,

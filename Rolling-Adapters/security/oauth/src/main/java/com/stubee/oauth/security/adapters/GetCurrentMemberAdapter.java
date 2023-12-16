@@ -8,7 +8,7 @@ import com.stubee.rollingdomains.domain.member.model.MemberId;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 @Adapter
-public class GetCurrentMemberAdapter implements GetCurrentMemberPort {
+class GetCurrentMemberAdapter implements GetCurrentMemberPort {
 
     @Override
     public Member getMember() {

@@ -1,7 +1,5 @@
 package com.stubee.oauth.security.handler;
 
-import com.stubee.oauth.cookie.CookieAuthorizationRequestRepository;
-import com.stubee.oauth.security.exception.OAuthFailException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class OAuthFailureHandler extends SimpleUrlAuthenticationFailureHandler {
+class OAuthFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
     private final CookieAuthorizationRequestRepository cookieAuthorizationRequestRepository;
 

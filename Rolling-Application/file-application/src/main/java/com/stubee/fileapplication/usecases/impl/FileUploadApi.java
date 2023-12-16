@@ -3,7 +3,7 @@ package com.stubee.fileapplication.usecases.impl;
 import com.stubee.applicationcommons.annotations.ExternalService;
 import com.stubee.fileapplication.outports.UploadImagePort;
 import com.stubee.fileapplication.usecases.FileUploadUseCase;
-import com.stubee.fileapplication.usecases.response.FileResponse;
+import com.stubee.fileapplication.usecases.FileResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,7 +11,7 @@ import java.util.List;
 
 @ExternalService
 @RequiredArgsConstructor
-public class FileUploadApi implements FileUploadUseCase {
+class FileUploadApi implements FileUploadUseCase {
 
     private final UploadImagePort uploadImagePort;
 

@@ -2,7 +2,6 @@ package com.stubee.employmentapplication.usecases.command.impl;
 
 import com.stubee.applicationcommons.annotations.CommandService;
 import com.stubee.applicationcommons.ports.GetCurrentMemberPort;
-import com.stubee.employmentapplication.mapper.EmploymentMapper;
 import com.stubee.rollingdomains.domain.company.services.CheckCompanyExistenceService;
 import com.stubee.rollingdomains.domain.employment.services.RegisterEmploymentService;
 import com.stubee.employmentapplication.usecases.command.RegisterEmploymentCommand;
@@ -13,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 @CommandService
 @RequiredArgsConstructor
-public class RegisterEmploymentApi implements RegisterEmploymentUseCase {
+class RegisterEmploymentApi implements RegisterEmploymentUseCase {
 
     private final GetCurrentMemberPort getCurrentMemberPort;
     private final CheckCompanyExistenceService checkCompanyExistenceService;

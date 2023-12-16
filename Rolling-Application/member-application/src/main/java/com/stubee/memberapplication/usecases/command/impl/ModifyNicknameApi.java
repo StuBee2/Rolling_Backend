@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 @CommandService
 @RequiredArgsConstructor
-public class ModifyNicknameApi implements ModifyNicknameUseCase {
+class ModifyNicknameApi implements ModifyNicknameUseCase {
 
     private final ModifyNicknameService modifyNicknameService;
 

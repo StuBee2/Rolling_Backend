@@ -3,18 +3,18 @@ package com.stubee.oauth.security.config;
 import com.stubee.jwt.filter.ExceptionFilter;
 import com.stubee.jwt.filter.JwtExceptionFilter;
 import com.stubee.oauth.token.filter.TokenFilter;
-import com.stubee.oauth.security.handler.CustomAccessDeniedHandler;
-import com.stubee.oauth.security.handler.OAuthFailureHandler;
-import com.stubee.oauth.security.handler.OAuthSuccessHandler;
-import com.stubee.oauth.security.service.OAuthMemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -26,12 +26,12 @@ import static org.springframework.http.HttpMethod.*;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class SecurityConfig {
+class SecurityConfig {
 
-    private final OAuthSuccessHandler oAuthSuccessHandler;
-    private final OAuthFailureHandler oAuthFailureHandler;
-    private final CustomAccessDeniedHandler customAccessDeniedHandler;
-    private final OAuthMemberService oAuthMemberService;
+    private final AuthenticationSuccessHandler authenticationSuccessHandler;
+    private final AuthenticationFailureHandler authenticationFailureHandler;
+    private final AccessDeniedHandler accessDeniedHandler;
+    private final DefaultOAuth2UserService oAuthMemberService;
     private final ExceptionFilter exceptionFilter;
     private final TokenFilter tokenFilter;
     private final JwtExceptionFilter jwtExceptionFilter;
@@ -97,13 +97,13 @@ public class SecurityConfig {
                 .and()
                 .formLogin().disable()
                 .exceptionHandling()
-                .accessDeniedHandler(customAccessDeniedHandler)
+                .accessDeniedHandler(accessDeniedHandler)
                 .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
 
                 .and()
                 .oauth2Login()
-                .successHandler(oAuthSuccessHandler)
-                .failureHandler(oAuthFailureHandler)
+                .successHandler(authenticationSuccessHandler)
+                .failureHandler(authenticationFailureHandler)
                 .userInfoEndpoint()
                 .userService(oAuthMemberService);
 

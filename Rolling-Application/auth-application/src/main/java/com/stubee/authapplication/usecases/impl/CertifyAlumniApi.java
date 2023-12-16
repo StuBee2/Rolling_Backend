@@ -9,7 +9,7 @@ import org.springframework.context.ApplicationEventPublisher;
 
 @CommandService
 @RequiredArgsConstructor
-public class CertifyAlumniApi implements CertifyAlumniUseCase {
+class CertifyAlumniApi implements CertifyAlumniUseCase {
 
     private final CertifyAlumniPort certifyAlumniPort;
     private final ApplicationEventPublisher applicationEventPublisher;

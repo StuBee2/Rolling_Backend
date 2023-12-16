@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 
 @ExternalService
 @RequiredArgsConstructor
-public class NewsApi implements NewsUseCase {
+class NewsApi implements NewsUseCase {
 
     private final NewsPort newsPort;
 

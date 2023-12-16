@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 
 @Adapter
 @RequiredArgsConstructor
-public class ParseJwtAdapter implements ParseTokenPort {
+class ParseJwtAdapter implements ParseTokenPort {
 
     private final JwtProperties jwtProperties;
 

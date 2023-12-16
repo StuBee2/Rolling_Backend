@@ -3,7 +3,6 @@ package com.stubee.employmentpersistence.adapters;
 import com.stubee.adapterscommons.annotations.Adapter;
 import com.stubee.employmentapplication.outports.CheckEmploymentExistencePort;
 import com.stubee.employmentapplication.outports.QueryEmploymentByIdPort;
-import com.stubee.employmentpersistence.repository.QueryEmploymentRepository;
 import com.stubee.employmentapplication.usecases.query.EmploymentQueryResponse;
 import lombok.RequiredArgsConstructor;
 
@@ -11,7 +10,7 @@ import java.util.List;
 
 @Adapter
 @RequiredArgsConstructor
-public class QueryEmploymentAdapter implements QueryEmploymentByIdPort, CheckEmploymentExistencePort {
+class QueryEmploymentAdapter implements QueryEmploymentByIdPort, CheckEmploymentExistencePort {
 
     private final QueryEmploymentRepository queryEmploymentRepository;
 

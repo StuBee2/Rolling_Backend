@@ -2,12 +2,10 @@ package com.stubee.rollingapi.domain.company;
 
 import com.stubee.rollingdomains.common.model.TSID;
 import com.stubee.companyapplication.usecases.command.ModifyCompanyUseCase;
-import com.stubee.rollingapi.domain.company.request.ModifyCompanyRequest;
 import com.stubee.companyapplication.usecases.command.ModifyCompanyStatusCommand;
 import com.stubee.companyapplication.usecases.command.DeleteCompanyCommand;
 import com.stubee.companyapplication.usecases.command.DeleteCompanyUseCase;
 import com.stubee.companyapplication.usecases.command.RegisterCompanyUseCase;
-import com.stubee.rollingapi.domain.company.request.RegisterCompanyRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotNull;

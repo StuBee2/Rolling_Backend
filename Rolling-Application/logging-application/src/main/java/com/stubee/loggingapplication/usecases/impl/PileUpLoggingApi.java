@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 @CommandService
 @RequiredArgsConstructor
-public class PileUpLoggingApi implements PileUpLoggingUseCase {
+class PileUpLoggingApi implements PileUpLoggingUseCase {
 
     private final CommandLoggingPort<HistoryLogging> commandLoggingPort;
 

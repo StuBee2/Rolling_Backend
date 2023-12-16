@@ -1,9 +1,8 @@
 package com.stubee.navernews.adapters;
 
 import com.stubee.adapterscommons.annotations.Adapter;
-import com.stubee.navernews.exception.NewsClientException;
 import com.stubee.newsapplication.outports.NewsPort;
-import com.stubee.newsapplication.usecases.response.NaverNewsResponse;
+import com.stubee.newsapplication.usecases.NaverNewsResponse;
 import com.stubee.rollingdomains.common.error.CustomException;
 import com.stubee.rollingdomains.common.error.ErrorCode;
 import com.stubee.rollingdomains.common.model.PageRequest;
@@ -15,7 +14,7 @@ import reactor.core.scheduler.Schedulers;
 
 @Adapter
 @RequiredArgsConstructor
-public class NewsAdapter implements NewsPort {
+class NewsAdapter implements NewsPort {
 
     private final WebClient newsClient;
 

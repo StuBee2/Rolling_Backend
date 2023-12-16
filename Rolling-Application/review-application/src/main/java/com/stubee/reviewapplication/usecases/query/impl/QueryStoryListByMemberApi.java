@@ -12,7 +12,7 @@ import java.util.List;
 
 @QueryService
 @RequiredArgsConstructor
-public class QueryStoryListByMemberApi implements QueryStoryListByMemberUseCase {
+class QueryStoryListByMemberApi implements QueryStoryListByMemberUseCase {
 
     private final QueryStoryWithPaginationPort queryReviewWithPaginationPort;
 

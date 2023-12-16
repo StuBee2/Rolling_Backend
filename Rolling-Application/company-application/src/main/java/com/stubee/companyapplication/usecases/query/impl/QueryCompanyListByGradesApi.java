@@ -11,7 +11,7 @@ import java.util.List;
 
 @QueryService
 @RequiredArgsConstructor
-public class QueryCompanyListByGradesApi implements QueryCompanyListByGradesUseCase {
+class QueryCompanyListByGradesApi implements QueryCompanyListByGradesUseCase {
 
     private final QueryCompanyByGradesPort queryCompanyByGradesPort;
 

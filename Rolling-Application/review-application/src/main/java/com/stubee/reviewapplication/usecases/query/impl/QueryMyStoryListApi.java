@@ -13,7 +13,7 @@ import java.util.List;
 
 @QueryService
 @RequiredArgsConstructor
-public class QueryMyStoryListApi implements QueryMyStoryListUseCase {
+class QueryMyStoryListApi implements QueryMyStoryListUseCase {
 
     private final GetCurrentMemberPort getCurrentMemberPort;
     private final QueryStoryWithPaginationPort queryReviewWithPaginationPort;

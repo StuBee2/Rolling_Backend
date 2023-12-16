@@ -1,7 +1,6 @@
 package com.stubee.rollingapi.domain.employment;
 
 import com.stubee.employmentapplication.usecases.command.RegisterEmploymentUseCase;
-import com.stubee.rollingapi.domain.employment.request.RegisterEmploymentRequest;
 import com.stubee.rollingdomains.domain.employment.model.Employment;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

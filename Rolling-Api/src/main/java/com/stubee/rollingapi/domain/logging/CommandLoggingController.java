@@ -1,7 +1,6 @@
 package com.stubee.rollingapi.domain.logging;
 
 import com.stubee.loggingapplication.usecases.PileUpLoggingUseCase;
-import com.stubee.rollingapi.domain.logging.request.PileUpLoggingRequest;
 import com.stubee.rollingdomains.logging.model.HistoryLogging;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
