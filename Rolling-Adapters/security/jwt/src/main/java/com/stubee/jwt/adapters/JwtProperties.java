@@ -1,4 +1,4 @@
-package com.stubee.jwt.properties;
+package com.stubee.jwt.adapters;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Setter
 @Configuration
 @ConfigurationProperties(prefix = "app.jwt")
-public class JwtProperties {
+class JwtProperties {
 
     private String accessKey;
     private String secretKey;

@@ -2,9 +2,7 @@ package com.stubee.jwt.adapters;
 
 import com.stubee.adapterscommons.annotations.Adapter;
 import com.stubee.authapplication.outports.ParseTokenPort;
-import com.stubee.jwt.exception.WrongTokenTypeException;
-import com.stubee.jwt.properties.JwtProperties;
-import com.stubee.jwt.consts.JwtType;
+import com.stubee.jwt.adapters.consts.JwtType;
 import com.stubee.securitycommons.utils.StringUtils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Header;
