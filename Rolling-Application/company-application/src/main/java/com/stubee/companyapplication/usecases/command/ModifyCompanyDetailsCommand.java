@@ -1,6 +1,5 @@
 package com.stubee.companyapplication.usecases.command;
 
-
 public record ModifyCompanyDetailsCommand(
         Long id,
         String name,

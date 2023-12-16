@@ -3,8 +3,6 @@ package com.stubee.reviewpersistence.adapters;
 import com.stubee.adapterscommons.annotations.Adapter;
 import com.stubee.reviewapplication.usecases.query.StoryStatusResponse;
 import com.stubee.reviewapplication.outports.query.QueryStoryPort;
-import com.stubee.reviewpersistence.mapper.StoryMapper;
-import com.stubee.reviewpersistence.repository.QueryStoryRepository;
 import com.stubee.rollingdomains.common.model.PageRequest;
 import com.stubee.rollingdomains.domain.story.model.Story;
 import com.stubee.reviewapplication.usecases.query.StoryQueryByCompanyResponse;
@@ -16,7 +14,7 @@ import java.util.Optional;
 
 @Adapter
 @RequiredArgsConstructor
-public class QueryStoryAdapter implements QueryStoryPort {
+class QueryStoryAdapter implements QueryStoryPort {
 
     private final QueryStoryRepository queryStoryRepository;
     private final StoryMapper storyMapper;

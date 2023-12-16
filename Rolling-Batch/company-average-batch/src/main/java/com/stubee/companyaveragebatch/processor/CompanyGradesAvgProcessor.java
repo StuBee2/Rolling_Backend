@@ -31,7 +31,7 @@ public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, L
 
     @Override
     public List<Company> process(final List<Company> readCompanyList) {
-        log.info("Processor Start");
+        log.info("-----Processor Start-----");
 
         final List<Company> processedCompanyList = new ArrayList<>();
 
@@ -49,7 +49,7 @@ public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, L
             processedCompanyList.add(updatedCompany);
         });
 
-        log.info("Processor End");
+        log.info("-----Processor End-----");
 
         return processedCompanyList;
     }
@@ -95,6 +95,7 @@ public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, L
         log.info("workLifeBalanceAvg : {}", workLifeBalanceAvg);
         log.info("organizationalCultureAvg : {}", organizationalCultureAvg);
         log.info("careerAdvancementAvg : {}", careerAdvancementAvg);
+        log.info("-----");
 
         return updatedGrades;
     }

@@ -1,6 +1,6 @@
 package com.stubee.loggingapplication.outports.commands;
 
-import com.stubee.rollingdomains.domain.logging.model.HistoryLogging;
+import com.stubee.rollingdomains.logging.model.HistoryLogging;
 import com.stubee.rollingdomains.domain.member.model.MemberId;
 
 public record PileUpHistoryLoggingCommand(

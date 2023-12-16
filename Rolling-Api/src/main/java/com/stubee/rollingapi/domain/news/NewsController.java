@@ -23,7 +23,6 @@ public class NewsController {
     @ResponseStatus(OK)
     public Mono<?> getNewsByCompanyName(final @PathVariable String companyName,
                                         final @ModelAttribute PageRequest pageRequest) {
-        pageRequest.validate();
         return newsUseCase.getNewsByCompanyName(companyName, pageRequest);
     }
 

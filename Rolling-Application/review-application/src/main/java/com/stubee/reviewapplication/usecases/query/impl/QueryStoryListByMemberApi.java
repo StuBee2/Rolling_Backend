@@ -12,12 +12,14 @@ import java.util.List;
 
 @QueryService
 @RequiredArgsConstructor
-public class QueryStoryListByMemberApi implements QueryStoryListByMemberUseCase {
+class QueryStoryListByMemberApi implements QueryStoryListByMemberUseCase {
 
     private final QueryStoryWithPaginationPort queryReviewWithPaginationPort;
 
     @Override
     public PageDataResponse<List<StoryQueryByMemberResponse>> get(final Long memberId, PageRequest pageRequest) {
+        pageRequest.validate();
+
         return PageDataResponse.of(queryReviewWithPaginationPort.findByMemberId(memberId, pageRequest));
     }
 

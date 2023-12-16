@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 
 @DomainService
 @RequiredArgsConstructor
-public class EmploymentDomainService implements RegisterEmploymentService, CheckEmploymentExistenceService {
+class EmploymentDomainService implements RegisterEmploymentService, CheckEmploymentExistenceService {
 
     private final RegisterEmploymentPort registerEmploymentPort;
     private final CheckEmploymentExistencePort checkEmploymentExistencePort;

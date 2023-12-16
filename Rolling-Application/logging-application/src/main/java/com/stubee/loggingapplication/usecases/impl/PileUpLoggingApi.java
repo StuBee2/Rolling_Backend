@@ -4,12 +4,12 @@ import com.stubee.applicationcommons.annotations.CommandService;
 import com.stubee.loggingapplication.outports.CommandLoggingPort;
 import com.stubee.loggingapplication.outports.commands.PileUpHistoryLoggingCommand;
 import com.stubee.loggingapplication.usecases.PileUpLoggingUseCase;
-import com.stubee.rollingdomains.domain.logging.model.HistoryLogging;
+import com.stubee.rollingdomains.logging.model.HistoryLogging;
 import lombok.RequiredArgsConstructor;
 
 @CommandService
 @RequiredArgsConstructor
-public class PileUpLoggingApi implements PileUpLoggingUseCase {
+class PileUpLoggingApi implements PileUpLoggingUseCase {
 
     private final CommandLoggingPort<HistoryLogging> commandLoggingPort;
 

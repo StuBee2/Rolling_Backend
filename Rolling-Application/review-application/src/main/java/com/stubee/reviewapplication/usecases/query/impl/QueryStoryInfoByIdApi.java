@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 @QueryService
 @RequiredArgsConstructor
-public class QueryStoryInfoByIdApi implements QueryStoryInfoByIdUseCase {
+class QueryStoryInfoByIdApi implements QueryStoryInfoByIdUseCase {
 
     private final QueryStoryByIdPort queryReviewByIdPort;
 

@@ -1,6 +1,5 @@
 package com.stubee.fileapplication.usecases;
 
-import com.stubee.fileapplication.usecases.response.FileResponse;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;

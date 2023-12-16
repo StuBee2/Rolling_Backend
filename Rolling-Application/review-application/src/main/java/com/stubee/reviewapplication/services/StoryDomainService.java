@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 
 @DomainService
 @RequiredArgsConstructor
-public class StoryDomainService implements RegisterStoryService, DeleteStoryService, ModifyStoryService {
+class StoryDomainService implements RegisterStoryService, DeleteStoryService, ModifyStoryService {
 
     private final CommandStoryPort commandStoryPort;
     private final QueryStoryByIdPort queryStoryByIdPort;

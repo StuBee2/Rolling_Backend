@@ -14,7 +14,7 @@ import java.util.Date;
 
 @Adapter
 @RequiredArgsConstructor
-public class ProvideJwtAdapter implements ProvideTokenPort {
+class ProvideJwtAdapter implements ProvideTokenPort {
 
     private final JwtProperties jwtProperties;
 

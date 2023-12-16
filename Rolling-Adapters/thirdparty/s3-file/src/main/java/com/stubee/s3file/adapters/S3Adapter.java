@@ -6,9 +6,7 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.stubee.adapterscommons.annotations.Adapter;
 import com.stubee.fileapplication.outports.UploadImagePort;
-import com.stubee.fileapplication.usecases.response.FileResponse;
-import com.stubee.s3file.exception.FileUploadException;
-import com.stubee.s3file.properties.S3Properties;
+import com.stubee.fileapplication.usecases.FileResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,7 +20,7 @@ import java.util.UUID;
 @Adapter
 @Slf4j
 @RequiredArgsConstructor
-public class S3Adapter implements UploadImagePort {
+class S3Adapter implements UploadImagePort {
 
     private final AmazonS3 amazonS3;
     private final S3Properties s3Properties;

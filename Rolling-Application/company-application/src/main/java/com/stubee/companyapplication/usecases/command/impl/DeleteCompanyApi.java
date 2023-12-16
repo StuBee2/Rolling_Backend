@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 @CommandService
 @RequiredArgsConstructor
-public class DeleteCompanyApi implements DeleteCompanyUseCase {
+class DeleteCompanyApi implements DeleteCompanyUseCase {
 
     private final DeleteCompanyService deleteCompanyService;
 

@@ -2,7 +2,6 @@ package com.stubee.companyapplication.usecases.command.impl;
 
 import com.stubee.applicationcommons.annotations.CommandService;
 import com.stubee.applicationcommons.ports.GetCurrentMemberPort;
-import com.stubee.companyapplication.mapper.CompanyMapper;
 import com.stubee.companyapplication.usecases.command.ModifyCompanyUseCase;
 import com.stubee.rollingdomains.domain.company.model.CompanyDetails;
 import com.stubee.rollingdomains.domain.company.services.ModifyCompanyService;
@@ -13,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 @CommandService
 @RequiredArgsConstructor
-public class ModifyCompanyApi implements ModifyCompanyUseCase {
+class ModifyCompanyApi implements ModifyCompanyUseCase {
 
     private final ModifyCompanyService modifyCompanyService;
     private final GetCurrentMemberPort getCurrentMemberPort;

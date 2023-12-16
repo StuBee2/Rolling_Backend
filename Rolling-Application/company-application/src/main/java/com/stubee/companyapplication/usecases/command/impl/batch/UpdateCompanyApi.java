@@ -10,7 +10,7 @@ import java.util.List;
 
 @CommandService
 @RequiredArgsConstructor
-public class UpdateCompanyApi implements UpdateCompanyUseCase {
+class UpdateCompanyApi implements UpdateCompanyUseCase {
 
     private final UpdateCompanyListService updateCompanyListService;
 

@@ -1,7 +1,6 @@
 package com.stubee.emailnotification.adapters;
 
 import com.stubee.adapterscommons.annotations.Adapter;
-import com.stubee.emailnotification.properties.EmailProperties;
 import com.stubee.notificationapplication.outports.SendEmailPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 @Adapter
 @Slf4j
 @RequiredArgsConstructor
-public class SendEmailAdapter implements SendEmailPort {
+class SendEmailAdapter implements SendEmailPort {
 
     private final JavaMailSender javaMailSender;
     private final EmailProperties emailProperties;

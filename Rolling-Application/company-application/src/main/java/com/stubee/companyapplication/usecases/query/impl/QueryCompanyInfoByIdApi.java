@@ -10,7 +10,7 @@ import org.springframework.context.ApplicationEventPublisher;
 
 @QueryService
 @RequiredArgsConstructor
-public class QueryCompanyInfoByIdApi implements QueryCompanyInfoByIdUseCase {
+class QueryCompanyInfoByIdApi implements QueryCompanyInfoByIdUseCase {
 
     private final QueryCompanyByIdPort queryCompanyByIdPort;
     private final ApplicationEventPublisher applicationEventPublisher;

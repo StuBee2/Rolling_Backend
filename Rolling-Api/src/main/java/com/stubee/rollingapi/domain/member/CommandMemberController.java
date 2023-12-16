@@ -1,7 +1,6 @@
 package com.stubee.rollingapi.domain.member;
 
 import com.stubee.memberapplication.usecases.command.ModifyNicknameUseCase;
-import com.stubee.rollingapi.domain.member.request.ModifyNicknameRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

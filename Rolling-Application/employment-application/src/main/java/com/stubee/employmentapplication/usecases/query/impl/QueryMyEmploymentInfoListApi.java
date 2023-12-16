@@ -11,7 +11,7 @@ import java.util.List;
 
 @QueryService
 @RequiredArgsConstructor
-public class QueryMyEmploymentInfoListApi implements QueryMyEmploymentInfoListUseCase {
+class QueryMyEmploymentInfoListApi implements QueryMyEmploymentInfoListUseCase {
 
     private final GetCurrentMemberPort getCurrentMemberPort;
     private final QueryEmploymentByIdPort queryEmploymentByIdPort;

@@ -16,8 +16,12 @@ import java.util.Objects;
 
 @DomainService
 @RequiredArgsConstructor
-public class CompanyDomainService implements RegisterCompanyService, ModifyCompanyService, DeleteCompanyService,
-        UpdateCompanyListService, CheckCompanyExistenceService {
+class CompanyDomainService implements
+        RegisterCompanyService,
+        ModifyCompanyService,
+        DeleteCompanyService,
+        UpdateCompanyListService,
+        CheckCompanyExistenceService {
 
     private final CommandCompanyPort commandCompanyPort;
     private final CheckCompanyPort checkCompanyPort;
@@ -57,7 +61,7 @@ public class CompanyDomainService implements RegisterCompanyService, ModifyCompa
 
     @Override
     public void modify(final Long id, final CompanyDetails companyDetails) {
-        final Company company = getById(id);
+        final Company company = this.getById(id);
 
         company.isAuthor(companyDetails.registrantId());
 

@@ -12,12 +12,14 @@ import java.util.List;
 
 @QueryService
 @RequiredArgsConstructor
-public class QueryAllCompanyListApi implements QueryAllCompanyListUseCase {
+class QueryAllCompanyListApi implements QueryAllCompanyListUseCase {
 
     private final QueryCompanyWithPaginationPort queryCompanyWithPaginationPort;
 
     @Override
     public PageDataResponse<List<CompanyResponse>> get(PageRequest pageRequest) {
+        pageRequest.validate();
+
         return PageDataResponse.of(queryCompanyWithPaginationPort.findAll(pageRequest).stream()
                 .map(CompanyResponse::of)
                 .toList());

@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 @QueryService
 @RequiredArgsConstructor
-public class QueryMyInfoApi implements QueryMyInfoUseCase {
+class QueryMyInfoApi implements QueryMyInfoUseCase {
 
     private final GetCurrentMemberPort getCurrentMemberPort;
 

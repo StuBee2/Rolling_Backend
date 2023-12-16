@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 @QueryService
 @RequiredArgsConstructor
-public class QueryMyStoryStatusApi implements QueryMyStoryStatusUseCase {
+class QueryMyStoryStatusApi implements QueryMyStoryStatusUseCase {
 
     private final GetCurrentMemberPort getCurrentMemberPort;
     private final QueryStoryStatusPort queryReviewStatusPort;

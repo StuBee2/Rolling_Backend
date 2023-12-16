@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 @DomainService
 @RequiredArgsConstructor
-public class MemberDomainService implements ModifyNicknameService, ElevateMemberRoleService {
+class MemberDomainService implements ModifyNicknameService, ElevateMemberRoleService {
 
     private final CommandMemberPort commandMemberPort;
     private final CheckNicknameDuplicationPort checkNicknameDuplicationPort;

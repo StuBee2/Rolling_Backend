@@ -18,7 +18,7 @@ import java.util.TimeZone;
         "com.stubee.companyapplication.usecases.query.impl",
 
         "com.stubee.reviewapplication.services",
-        "com.stubee.reviewapplication.usecases.query.impl.shared",
+        "com.stubee.reviewapplication.usecases.query.impl.batch",
 
         "com.stubee.companypersistence",
         "com.stubee.reviewpersistence",

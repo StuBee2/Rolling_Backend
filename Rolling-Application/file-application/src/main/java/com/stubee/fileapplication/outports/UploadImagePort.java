@@ -1,6 +1,6 @@
 package com.stubee.fileapplication.outports;
 
-import com.stubee.fileapplication.usecases.response.FileResponse;
+import com.stubee.fileapplication.usecases.FileResponse;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;

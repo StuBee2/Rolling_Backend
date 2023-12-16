@@ -2,8 +2,6 @@ package com.stubee.memberpersistence.adapters;
 
 import com.stubee.adapterscommons.annotations.Adapter;
 import com.stubee.memberapplication.outports.QueryMemberPort;
-import com.stubee.memberpersistence.mapper.MemberMapper;
-import com.stubee.memberpersistence.repository.MemberJpaRepository;
 import com.stubee.rollingdomains.domain.member.model.Member;
 import lombok.RequiredArgsConstructor;
 
@@ -11,7 +9,7 @@ import java.util.Optional;
 
 @Adapter
 @RequiredArgsConstructor
-public class QueryMemberAdapter implements QueryMemberPort {
+class QueryMemberAdapter implements QueryMemberPort {
 
     private final MemberJpaRepository memberJpaRepository;
     private final MemberMapper memberMapper;

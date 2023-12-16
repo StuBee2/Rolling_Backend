@@ -2,8 +2,6 @@ package com.stubee.companypersistence.adapters;
 
 import com.stubee.adapterscommons.annotations.Adapter;
 import com.stubee.companyapplication.outports.command.CommandCompanyPort;
-import com.stubee.companypersistence.mapper.CompanyMapper;
-import com.stubee.companypersistence.repository.CommandCompanyJpaRepository;
 import com.stubee.persistencecommons.entity.CompanyEntity;
 import com.stubee.rollingdomains.domain.company.model.Company;
 import com.stubee.rollingdomains.domain.company.model.CompanyId;
@@ -13,7 +11,7 @@ import java.util.List;
 
 @Adapter
 @RequiredArgsConstructor
-public class CommandCompanyAdapter implements CommandCompanyPort {
+class CommandCompanyAdapter implements CommandCompanyPort {
 
     private final CommandCompanyJpaRepository commandCompanyJpaRepository;
     private final CompanyMapper companyMapper;

@@ -25,7 +25,7 @@ public class CompanyListReader implements ItemReader<List<Company>> {
 
     @Override
     public List<Company> read() {
-        log.info("Reader Start");
+        log.info("-----Reader Start-----");
         log.info("CurrentPage : {}", currentPage);
 
         return determineItems(queryCompanyUseCase.get(PageRequest.of(currentPage, PAGE_SIZE)).data().stream()
@@ -42,7 +42,7 @@ public class CompanyListReader implements ItemReader<List<Company>> {
 
         currentPage++;
 
-        log.info("Reader End");
+        log.info("-----Reader End-----");
 
         return companyList;
     }

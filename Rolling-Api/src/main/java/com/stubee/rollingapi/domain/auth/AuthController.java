@@ -3,8 +3,6 @@ package com.stubee.rollingapi.domain.auth;
 import com.stubee.authapplication.usecases.CertifyAlumniUseCase;
 import com.stubee.authapplication.usecases.RefreshTokenResponse;
 import com.stubee.authapplication.usecases.RefreshTokenUseCase;
-import com.stubee.rollingapi.domain.auth.request.CertifyAlumniRequest;
-import com.stubee.rollingapi.domain.auth.request.RefreshTokenRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

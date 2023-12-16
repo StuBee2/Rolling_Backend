@@ -6,14 +6,6 @@ import java.util.List;
 
 public interface QueryCompanyByGradesPort {
 
-    List<Company> getByTotalGrade();
-
-    List<Company> getBySalaryAndBenefits();
-
-    List<Company> getByWorkLifeBalance();
-
-    List<Company> getByOrganizationalCulture();
-
-    List<Company> getByCareerAdvancement();
+    List<Company> getOrderBy(String gradeType);
 
 }

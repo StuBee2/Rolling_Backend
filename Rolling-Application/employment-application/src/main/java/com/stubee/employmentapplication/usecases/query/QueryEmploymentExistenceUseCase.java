@@ -1,6 +1,6 @@
 package com.stubee.employmentapplication.usecases.query;
 
-import com.stubee.employmentapplication.usecases.query.impl.queries.GetEmploymentExistenceQuery;
+import com.stubee.employmentapplication.usecases.query.impl.GetEmploymentExistenceQuery;
 
 public interface QueryEmploymentExistenceUseCase {
 
