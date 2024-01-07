@@ -1,0 +1,7 @@
+dependencies {
+    implementation 'org.springframework:spring-webflux:6.0.6'
+
+    implementation 'org.springframework.boot:spring-boot:3.1.0'
+
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+}

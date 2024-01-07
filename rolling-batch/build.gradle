@@ -1,0 +1,14 @@
+dependencies {
+    implementation project(':rolling-core:domain')
+    implementation project(':rolling-core:application')
+
+    implementation project(':rolling-adapter:jpa-mysql')
+    implementation project(':rolling-adapter:s3')
+    implementation project(':rolling-adapter:security')
+    implementation project(':rolling-adapter:smtp')
+
+    implementation 'org.springframework.boot:spring-boot-starter-batch'
+    implementation 'org.springframework.boot:spring-boot-starter-tomcat'
+
+    runtimeOnly 'mysql:mysql-connector-java:8.0.33'
+}

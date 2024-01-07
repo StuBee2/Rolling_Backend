@@ -1,0 +1,11 @@
+allprojects {
+    bootJar { enabled = false }
+    jar { enabled = true }
+}
+
+subprojects {
+    dependencies {
+        implementation project(':rolling-core:domain')
+        implementation project(':rolling-core:application')
+    }
+}

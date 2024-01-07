@@ -1,0 +1,94 @@
+server:
+
+  port: 8080
+
+  tomcat:
+    use-relative-redirects: true
+    protocol-header: x-forwarded-proto
+    remoteip:
+      remote-ip-header: x-forwarded-for
+  forward-headers-strategy: native
+
+spring:
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: ${GITHUB_CLIENT_ID}
+            client-secret:  ${GITHUB_CLIENT_SECRET}
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope:
+              - profile
+              - email
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          connection-timeout: 5000
+          auth: false
+          starttls:
+            enable: true
+          ssl:
+            enable: false
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+app:
+  jwt:
+    access-key: ${JWT_ACCESS_KEY}
+    secret-key: ${JWT_SECRET_KEY}
+    access-expire: ${JWT_ACCESS_EXPIRE}
+    refresh-expire: ${JWT_REFRESH_EXPIRE}
+  s3:
+    bucket: ${S3_BUCKET}
+    region: ${S3_REGION}
+    access-key: ${S3_ACCESS_KEY}
+    secret-key: ${S3_SECRET_KEY}
+  certify:
+    housemasterList:
+      - ${HOUSE_MASTER_1}
+      - ${HOUSE_MASTER_2}
+      - ${HOUSE_MASTER_3}
+  naver:
+    base-url: https://openapi.naver.com/v1/search/news.json
+    client-id: ${NAVER_CLIENT_ID}
+    client-secret: ${NAVER_CLIENT_SECRET}
+  oauth:
+    redirect-url: ${OAUTH_REDIRECT_URL}
+
+cloud:
+  aws:
+    region:
+      static: ${S3_REGION}
+    stack:
+      auto: false
