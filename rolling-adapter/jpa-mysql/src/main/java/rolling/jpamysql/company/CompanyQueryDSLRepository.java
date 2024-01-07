@@ -75,7 +75,7 @@ class CompanyQueryDSLRepository {
                 .selectFrom(companyJPAEntity)
                 .where(option)
                 .orderBy(companyJPAEntity.createdAt.desc())
-                .offset(pageRequest.page())
+                .offset((pageRequest.page()-1)*pageRequest.size())
                 .limit(pageRequest.size())
                 .fetch();
     }
@@ -84,7 +84,7 @@ class CompanyQueryDSLRepository {
         return jpaQueryFactory
                 .selectFrom(companyJPAEntity)
                 .where(companyJPAEntity.companyStatus.eq(CompanyStatus.ACCEPTED))
-                .offset(pageRequest.page())
+                .offset((pageRequest.page()-1)*pageRequest.size())
                 .limit(pageRequest.size())
                 .fetch();
     }
