@@ -1,6 +1,0 @@
-dependencies {
-    implementation project(':Rolling-Application:application-commons')
-
-    //MultipartFile
-    implementation 'org.springframework:spring-web:6.0.6'
-}

@@ -1,7 +1,0 @@
-dependencies {
-    implementation project(':Rolling-Application:employment-application')
-
-    implementation project(':Rolling-Adapters:persistence:persistence-commons')
-
-    implementation project(':Rolling-Adapters:adapters-commons')
-}

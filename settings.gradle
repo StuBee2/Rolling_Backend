@@ -6,37 +6,16 @@ pluginManagement {
 
 rootProject.name = 'Rolling_BackEnd'
 
-include 'Rolling-Api'
-include 'Rolling-Batch:company-average-batch'
-include 'Rolling-Batch:batch-commons'
+include 'rolling-api'
+include 'rolling-batch'
 
-include 'Rolling-Domains'
+include 'rolling-core'
+include 'rolling-core:domain'
+include 'rolling-core:application'
 
-include 'Rolling-Application:member-application'
-include 'Rolling-Application:company-application'
-include 'Rolling-Application:employment-application'
-include 'Rolling-Application:review-application'
-include 'Rolling-Application:logging-application'
-include 'Rolling-Application:news-application'
-include 'Rolling-Application:file-application'
-include 'Rolling-Application:notification-application'
-include 'Rolling-Application:auth-application'
-include 'Rolling-Application:application-commons'
-
-include 'Rolling-Adapters:persistence:member-persistence'
-include 'Rolling-Adapters:persistence:company-persistence'
-include 'Rolling-Adapters:persistence:employment-persistence'
-include 'Rolling-Adapters:persistence:review-persistence'
-include 'Rolling-Adapters:persistence:logging-persistence'
-include 'Rolling-Adapters:persistence:persistence-commons'
-
-include 'Rolling-Adapters:thirdparty:naver-news'
-include 'Rolling-Adapters:thirdparty:s3-file'
-include 'Rolling-Adapters:thirdparty:email-notification'
-
-include 'Rolling-Adapters:security:auth'
-include 'Rolling-Adapters:security:jwt'
-include 'Rolling-Adapters:security:oauth'
-include 'Rolling-Adapters:security:security-commons'
-
-include 'Rolling-Adapters:adapters-commons'
+include 'rolling-adapter'
+include 'rolling-adapter:jpa-mysql'
+include 'rolling-adapter:naver-news-client'
+include 'rolling-adapter:s3'
+include 'rolling-adapter:security'
+include 'rolling-adapter:smtp'

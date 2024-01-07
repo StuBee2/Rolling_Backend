@@ -1,0 +1,9 @@
+dependencies {
+    implementation project(':rolling-core:domain')
+
+    implementation 'org.springframework:spring-tx:6.0.6'
+    implementation 'org.springframework:spring-web:6.0.6'
+    implementation 'org.springframework:spring-context:6.0.9'
+
+    implementation 'io.projectreactor:reactor-core:3.5.3'
+}
