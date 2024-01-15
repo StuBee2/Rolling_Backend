@@ -13,7 +13,7 @@ class JwtProperties {
 
     private String accessKey;
     private String secretKey;
-    private long accessExpire;
-    private long refreshExpire;
+    private String accessExpire;
+    private String refreshExpire;
 
 }

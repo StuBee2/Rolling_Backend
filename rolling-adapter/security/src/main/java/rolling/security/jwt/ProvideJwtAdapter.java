@@ -23,7 +23,7 @@ class ProvideJwtAdapter implements ProvideTokenPort {
                 .setSubject(id.toString())
                 .claim("authority", memberRole)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + jwtProperties.getAccessExpire()))
+                .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(jwtProperties.getAccessExpire())))
                 .signWith(SignatureAlgorithm.HS512, jwtProperties.getAccessKey())
                 .compact();
     }
@@ -35,7 +35,7 @@ class ProvideJwtAdapter implements ProvideTokenPort {
                 .setSubject(id.toString())
                 .claim("authority", memberRole)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + jwtProperties.getRefreshExpire()))
+                .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(jwtProperties.getRefreshExpire())))
                 .signWith(SignatureAlgorithm.HS512, jwtProperties.getSecretKey())
                 .compact();
     }

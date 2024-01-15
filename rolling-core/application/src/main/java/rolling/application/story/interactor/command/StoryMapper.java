@@ -60,7 +60,7 @@ abstract class StoryMapper {
     }
 
     static ReviewGrades toReviewGrades(final ModifyStoryCommand command) {
-        return ReviewGrades.builder()
+        return ReviewGrades.ExceptTotalBuilder()
                 .salaryAndBenefits(Double.valueOf(command.salaryAndBenefits()))
                 .workLifeBalance(Double.valueOf(command.workLifeBalance()))
                 .organizationalCulture(Double.valueOf(command.organizationalCulture()))

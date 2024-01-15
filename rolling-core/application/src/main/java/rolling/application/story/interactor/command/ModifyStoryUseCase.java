@@ -28,7 +28,7 @@ public class ModifyStoryUseCase {
 
         story.modify(employmentDetails, corporationDetails, reviewGrades, memberSessionPort.currentId());
 
-        commandStoryPort.save(story);
+        commandStoryPort.update(story);
     }
 
 }
