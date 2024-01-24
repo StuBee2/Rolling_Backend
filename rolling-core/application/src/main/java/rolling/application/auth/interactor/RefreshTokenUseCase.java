@@ -20,7 +20,7 @@ public class RefreshTokenUseCase {
 
         final Member member = queryMemberPort.getBy(memberId);
 
-        final String accessToken = provideJwtPort.generateAccessToken(member.memberId().getId(), member.memberDetails().memberRole());
+        final String accessToken = provideJwtPort.generateAccessToken(member.id().getId(), member.role());
 
         return RefreshTokenResponse.of(accessToken);
     }

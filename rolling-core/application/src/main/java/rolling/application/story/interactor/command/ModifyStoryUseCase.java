@@ -26,9 +26,14 @@ public class ModifyStoryUseCase {
         final ReviewGrades reviewGrades = StoryMapper.toReviewGrades(command);
         final Story story = queryStoryPort.getBy(command.id().getId());
 
-        story.modify(employmentDetails, corporationDetails, reviewGrades, memberSessionPort.currentId());
+        story.modify(
+                corporationDetails,
+                employmentDetails,
+                reviewGrades,
+                memberSessionPort.currentId()
+        );
 
-        commandStoryPort.update(story);
+        commandStoryPort.save(story);
     }
 
 }

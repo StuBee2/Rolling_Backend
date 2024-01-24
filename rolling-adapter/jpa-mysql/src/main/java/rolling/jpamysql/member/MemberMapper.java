@@ -9,30 +9,30 @@ abstract class MemberMapper {
 
     static MemberJPAEntity toEntity(final Member domain) {
         return MemberJPAEntity.builder()
-                .nickName(domain.memberDetails().nickName())
+                .memberRole(domain.role())
+                .nickName(domain.details().nickName())
+                .name(domain.details().name())
+                .email(domain.details().email())
+                .imageUrl(domain.details().imageUrl())
                 .socialId(domain.socialDetails().socialId())
                 .socialLoginId(domain.socialDetails().socialLoginId())
-                .name(domain.socialDetails().name())
-                .email(domain.socialDetails().email())
-                .imageUrl(domain.socialDetails().imageUrl())
-                .memberRole(domain.memberDetails().memberRole())
                 .loginType(domain.socialDetails().loginType())
                 .build();
     }
 
     static MemberJPAEntity toEntityWithId(final Member domain) {
         return MemberJPAEntity.builder()
-                .id(domain.memberId().getId())
-                .nickName(domain.memberDetails().nickName())
+                .id(domain.id().getId())
+                .nickName(domain.details().nickName())
                 .socialId(domain.socialDetails().socialId())
                 .socialLoginId(domain.socialDetails().socialLoginId())
-                .name(domain.socialDetails().name())
-                .email(domain.socialDetails().email())
-                .imageUrl(domain.socialDetails().imageUrl())
-                .memberRole(domain.memberDetails().memberRole())
+                .name(domain.details().name())
+                .email(domain.details().email())
+                .imageUrl(domain.details().imageUrl())
+                .memberRole(domain.role())
                 .loginType(domain.socialDetails().loginType())
-                .createdAt(domain.memberDetails().createdAt())
-                .modifiedAt(domain.memberDetails().modifiedAt())
+                .createdAt(domain.createdAt())
+                .modifiedAt(domain.modifiedAt())
                 .build();
     }
 
@@ -42,25 +42,13 @@ abstract class MemberMapper {
         }
 
         return Member.WithIdBuilder()
-                .memberId(MemberId.of(entity.getId()))
-                .socialDetails(socialDetails(entity))
-                .memberDetails(memberDetails(entity))
+                .id(MemberId.of(entity.getId()))
+                .role(entity.getMemberRole())
+                .socialDetails(new SocialDetails(entity.getSocialId(), entity.getSocialLoginId(), entity.getLoginType()))
+                .details(new MemberDetails(entity.getNickName(), entity.getName(), entity.getEmail(), entity.getImageUrl()))
+                .createdAt(entity.getCreatedAt())
+                .modifiedAt(entity.getModifiedAt())
                 .build();
-    }
-
-    private static SocialDetails socialDetails(final MemberJPAEntity entity) {
-        return SocialDetails.builder()
-                .socialId(entity.getSocialId())
-                .socialLoginId(entity.getSocialLoginId())
-                .loginType(entity.getLoginType())
-                .name(entity.getName())
-                .email(entity.getEmail())
-                .imageUrl(entity.getImageUrl())
-                .build();
-    }
-
-    private static MemberDetails memberDetails(final MemberJPAEntity entity) {
-        return new MemberDetails(entity.getNickName(), entity.getMemberRole(), entity.getCreatedAt(), entity.getModifiedAt());
     }
 
 }

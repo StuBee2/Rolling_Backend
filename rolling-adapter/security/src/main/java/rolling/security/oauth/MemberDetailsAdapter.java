@@ -35,12 +35,12 @@ public class MemberDetailsAdapter implements UserDetails, OAuth2User {
     }
 
     public MemberId getMemberId() {
-        return member.memberId();
+        return member.id();
     }
 
     @Override
     public String getName() {
-        return member.memberId().getId().toString();
+        return member.id().getId().toString();
     }
 
     @Override
@@ -50,7 +50,7 @@ public class MemberDetailsAdapter implements UserDetails, OAuth2User {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton((GrantedAuthority) member.memberDetails().memberRole()::getKey);
+        return Collections.singleton((GrantedAuthority) member.role()::getKey);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class MemberDetailsAdapter implements UserDetails, OAuth2User {
 
     @Override
     public String getUsername() {
-        return member.memberId().getId().toString();
+        return member.id().getId().toString();
     }
 
     @Override

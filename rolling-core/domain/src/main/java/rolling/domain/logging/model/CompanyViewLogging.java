@@ -1,7 +1,6 @@
 package rolling.domain.logging.model;
 
 import lombok.Builder;
-import rolling.domain.common.error.Assert;
 import rolling.domain.company.model.CompanyId;
 import rolling.domain.member.model.MemberId;
 
@@ -20,9 +19,6 @@ public record CompanyViewLogging(
 
     @Builder(builderClassName = "WithIdBuilder", builderMethodName = "WithIdBuilder")
     public CompanyViewLogging {
-        Assert.notNull(memberId, "MemberId must not be null");
-        Assert.notNull(companyId, "CompanyId must not be null");
-        Assert.notNull(isAnonymous, "IsAnonymous must not be null");
     }
 
     private static boolean isAnonymous(MemberId memberId) {

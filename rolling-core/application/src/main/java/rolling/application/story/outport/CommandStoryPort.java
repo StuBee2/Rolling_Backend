@@ -7,8 +7,6 @@ public interface CommandStoryPort {
 
     Story save(Story story);
 
-    Story update(Story story);
-
     void deleteById(StoryId storyId);
 
 }

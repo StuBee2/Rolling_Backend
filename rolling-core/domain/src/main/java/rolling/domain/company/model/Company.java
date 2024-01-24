@@ -1,69 +1,91 @@
 package rolling.domain.company.model;
 
 import lombok.Builder;
-import rolling.domain.common.error.Assert;
 import rolling.domain.company.consts.CompanyStatus;
 import rolling.domain.company.exception.DuplicatedCompanyNameException;
 import rolling.domain.company.service.CompanyService;
 import rolling.domain.member.model.MemberId;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public final class Company {
 
-    private final CompanyId companyId;
-    private CompanyDetails companyDetails;
-    private CompanyGrades companyGrades;
+    private final CompanyId id;
+    private final RegistrantId registrantId;
+    private CompanyStatus status;
+    private CompanyDetails details;
+    private CompanyGrades grades;
+    private LocalDateTime createdAt;
+    private LocalDateTime modifiedAt;
 
     @Builder(builderClassName = "ExceptIdBuilder", builderMethodName = "ExceptIdBuilder")
-    public Company(CompanyDetails companyDetails, CompanyGrades companyGrades) {
-        this(null, companyDetails, companyGrades);
+    public Company(final RegistrantId registrantId, final CompanyDetails details, final CompanyGrades grades) {
+        this(null, registrantId, CompanyStatus.ACCEPTED, details, grades, null, null);
     }
 
     @Builder(builderClassName = "WithIdBuilder", builderMethodName = "WithIdBuilder")
-    public Company(CompanyId companyId, CompanyDetails companyDetails, CompanyGrades companyGrades) {
-        Assert.notNull(companyDetails, "CompanyDetails must not be null");
-        Assert.notNull(companyGrades, "CompanyGrades must not be null");
-        this.companyId = companyId;
-        this.companyDetails = companyDetails;
-        this.companyGrades = companyGrades;
+    public Company(final CompanyId id, final RegistrantId registrantId, final CompanyStatus status, final CompanyDetails details,
+                   final CompanyGrades grades, final LocalDateTime createdAt, final LocalDateTime modifiedAt) {
+        this.id = id;
+        this.registrantId = registrantId;
+        this.status = status;
+        this.details = details;
+        this.grades = grades;
+        this.createdAt = createdAt;
+        this.modifiedAt = modifiedAt;
     }
 
-    public void modify(final CompanyDetails companyDetails, final CompanyService companyService) {
-        isAuthor(companyDetails.registrantId());
+    public void modify(final MemberId memberId, final String name, final CompanyService companyService) {
+        isRegistrant(memberId);
 
-        if(!Objects.equals(this.companyDetails.name(), companyDetails.name())) {
-            if(companyService.isNameDuplicate(companyDetails.name())) {
+        if(!Objects.equals(this.details.name(), name)) {
+            if(companyService.isNameDuplicate(name)) {
                 throw DuplicatedCompanyNameException.EXCEPTION;
             }
         }
 
-        this.companyDetails = this.companyDetails.cover(companyDetails);
+        this.details = new CompanyDetails(name, details.description(), details.address(), details.logo());
     }
 
     public void modify(final CompanyStatus status) {
-        this.companyDetails = new CompanyDetails(companyDetails.registrantId(), companyDetails.name(), companyDetails.description(),
-                companyDetails.companyAddress(), companyDetails.companyLogo(), status, companyDetails.createdAt(), companyDetails.modifiedAt());
+        this.status = status;
     }
 
     public void modify(final CompanyGrades companyGrades) {
-        this.companyGrades = companyGrades;
+        this.grades = companyGrades;
     }
 
-    public void isAuthor(final MemberId memberId) {
-        companyDetails.registrantId().isEqual(memberId);
+    private void isRegistrant(final MemberId memberId) {
+        registrantId.isEqual(memberId);
     }
 
-    public CompanyId companyId() {
-        return companyId;
+    public CompanyId id() {
+        return id;
     }
 
-    public CompanyDetails companyDetails() {
-        return companyDetails;
+    public RegistrantId registrantId() {
+        return registrantId;
     }
 
-    public CompanyGrades companyGrades() {
-        return companyGrades;
+    public CompanyStatus status() {
+        return status;
+    }
+
+    public CompanyDetails details() {
+        return details;
+    }
+
+    public CompanyGrades grades() {
+        return grades;
+    }
+
+    public LocalDateTime createdAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime modifiedAt() {
+        return modifiedAt;
     }
 
 }

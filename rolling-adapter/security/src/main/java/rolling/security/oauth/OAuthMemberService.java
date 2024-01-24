@@ -24,10 +24,8 @@ class OAuthMemberService extends DefaultOAuth2UserService {
     @Override
     public OAuth2User loadUser(final OAuth2UserRequest oAuth2UserRequest) throws OAuth2AuthenticationException {
         final Map<String, Object> attributes = super.loadUser(oAuth2UserRequest).getAttributes();
-
         final LoginType loginType = getLoginType(oAuth2UserRequest);
-
-        final Member member = commandMemberPort.saveOrUpdate(OAuthAttributes.toProfile(loginType, attributes));
+        final Member member = commandMemberPort.save(OAuthAttributes.toProfile(loginType, attributes));
 
         return MemberDetailsAdapter.of(member, attributes);
     }

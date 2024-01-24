@@ -1,7 +1,6 @@
 package rolling.domain.logging.model;
 
 import lombok.Builder;
-import rolling.domain.common.error.Assert;
 import rolling.domain.member.model.MemberId;
 
 import java.time.LocalDateTime;
@@ -20,8 +19,5 @@ public record HistoryLogging(
 
     @Builder(builderClassName = "WithIdBuilder", builderMethodName = "WithIdBuilder")
     public HistoryLogging {
-        Assert.notNull(description, "Description must not be null");
-        Assert.notNull(module, "Module must not be null");
-        Assert.notNull(isAnonymous, "IsAnonymous must not be null");
     }
 }

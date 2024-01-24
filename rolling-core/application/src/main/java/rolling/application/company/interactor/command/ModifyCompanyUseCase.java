@@ -9,7 +9,6 @@ import rolling.application.member.outport.MemberSessionPort;
 import rolling.domain.company.model.Company;
 import rolling.domain.company.model.CompanyDetails;
 import rolling.domain.company.service.CompanyService;
-import rolling.domain.member.model.MemberId;
 
 @Component
 @Transactional
@@ -22,11 +21,14 @@ public class ModifyCompanyUseCase {
     private final CompanyService companyService;
 
     public void modify(final ModifyCompanyDetailsCommand command) {
-        final MemberId memberId = memberSessionPort.currentId();
-        final CompanyDetails companyDetails = CompanyMapper.toDetails(command, memberId);
+        final CompanyDetails companyDetails = CompanyMapper.toDetails(command);
         final Company company = queryCompanyPort.getBy(command.id());
 
-        company.modify(companyDetails, companyService);
+        company.modify(
+                memberSessionPort.currentId(),
+                companyDetails.name(),
+                companyService
+        );
 
         commandCompanyPort.save(company);
     }

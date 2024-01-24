@@ -7,58 +7,59 @@ abstract class StoryMapper {
 
     static StoryJPAEntity toEntity(final Story domain) {
         return StoryJPAEntity.builder()
-                .position(domain.storyDetails().corporationDetails().position())
-                .schoolLife(domain.storyDetails().employmentDetails().schoolLife())
-                .preparationCourse(domain.storyDetails().employmentDetails().preparationCourse())
-                .employmentProcess(domain.storyDetails().employmentDetails().employmentProcess())
-                .interviewQuestion(domain.storyDetails().employmentDetails().interviewQuestion())
-                .mostImportantThing(domain.storyDetails().employmentDetails().mostImportantThing())
+                .memberId(domain.authorId().getId())
+                .companyId(domain.companyId().getId())
 
-                .welfare(domain.storyDetails().corporationDetails().welfare())
-                .commuteTime(domain.storyDetails().corporationDetails().commuteTime())
-                .meal(domain.storyDetails().corporationDetails().meal())
-                .advantages(domain.storyDetails().corporationDetails().pros())
-                .disAdvantages(domain.storyDetails().corporationDetails().cons())
-                .etc(domain.storyDetails().corporationDetails().etc())
+                .position(domain.corporationDetails().position())
+                .schoolLife(domain.employmentDetails().schoolLife())
+                .preparationCourse(domain.employmentDetails().preparationCourse())
+                .employmentProcess(domain.employmentDetails().employmentProcess())
+                .interviewQuestion(domain.employmentDetails().interviewQuestion())
+                .mostImportantThing(domain.employmentDetails().mostImportantThing())
 
-                .totalGrade(domain.reviewGrades().getTotal())
-                .salaryAndBenefits(domain.reviewGrades().getSalaryAndBenefits())
-                .workLifeBalance(domain.reviewGrades().getWorkLifeBalance())
-                .organizationalCulture(domain.reviewGrades().getOrganizationalCulture())
-                .careerAdvancement(domain.reviewGrades().getCareerAdvancement())
+                .welfare(domain.corporationDetails().welfare())
+                .commuteTime(domain.corporationDetails().commuteTime())
+                .meal(domain.corporationDetails().meal())
+                .advantages(domain.corporationDetails().pros())
+                .disAdvantages(domain.corporationDetails().cons())
+                .etc(domain.corporationDetails().etc())
 
-                .memberId(domain.storyDetails().authorId().getId())
-                .companyId(domain.storyDetails().companyId().getId())
+                .totalGrade(domain.grades().getTotal())
+                .salaryAndBenefits(domain.grades().getSalaryAndBenefits())
+                .workLifeBalance(domain.grades().getWorkLifeBalance())
+                .organizationalCulture(domain.grades().getOrganizationalCulture())
+                .careerAdvancement(domain.grades().getCareerAdvancement())
                 .build();
     }
 
     static StoryJPAEntity toEntityWithId(final Story domain) {
         return StoryJPAEntity.builder()
-                .id(domain.storyId().getId())
-                .position(domain.storyDetails().corporationDetails().position())
-                .schoolLife(domain.storyDetails().employmentDetails().schoolLife())
-                .preparationCourse(domain.storyDetails().employmentDetails().preparationCourse())
-                .employmentProcess(domain.storyDetails().employmentDetails().employmentProcess())
-                .interviewQuestion(domain.storyDetails().employmentDetails().interviewQuestion())
-                .mostImportantThing(domain.storyDetails().employmentDetails().mostImportantThing())
+                .id(domain.id().getId())
+                .memberId(domain.authorId().getId())
+                .companyId(domain.companyId().getId())
 
-                .welfare(domain.storyDetails().corporationDetails().welfare())
-                .commuteTime(domain.storyDetails().corporationDetails().commuteTime())
-                .meal(domain.storyDetails().corporationDetails().meal())
-                .advantages(domain.storyDetails().corporationDetails().pros())
-                .disAdvantages(domain.storyDetails().corporationDetails().cons())
-                .etc(domain.storyDetails().corporationDetails().etc())
+                .position(domain.corporationDetails().position())
+                .schoolLife(domain.employmentDetails().schoolLife())
+                .preparationCourse(domain.employmentDetails().preparationCourse())
+                .employmentProcess(domain.employmentDetails().employmentProcess())
+                .interviewQuestion(domain.employmentDetails().interviewQuestion())
+                .mostImportantThing(domain.employmentDetails().mostImportantThing())
 
-                .totalGrade(domain.reviewGrades().getTotal())
-                .salaryAndBenefits(domain.reviewGrades().getSalaryAndBenefits())
-                .workLifeBalance(domain.reviewGrades().getWorkLifeBalance())
-                .organizationalCulture(domain.reviewGrades().getOrganizationalCulture())
-                .careerAdvancement(domain.reviewGrades().getCareerAdvancement())
+                .welfare(domain.corporationDetails().welfare())
+                .commuteTime(domain.corporationDetails().commuteTime())
+                .meal(domain.corporationDetails().meal())
+                .advantages(domain.corporationDetails().pros())
+                .disAdvantages(domain.corporationDetails().cons())
+                .etc(domain.corporationDetails().etc())
 
-                .memberId(domain.storyDetails().authorId().getId())
-                .companyId(domain.storyDetails().companyId().getId())
-                .createdAt(domain.storyDetails().createdAt())
-                .modifiedAt(domain.storyDetails().modifiedAt())
+                .totalGrade(domain.grades().getTotal())
+                .salaryAndBenefits(domain.grades().getSalaryAndBenefits())
+                .workLifeBalance(domain.grades().getWorkLifeBalance())
+                .organizationalCulture(domain.grades().getOrganizationalCulture())
+                .careerAdvancement(domain.grades().getCareerAdvancement())
+
+                .createdAt(domain.createdAt())
+                .modifiedAt(domain.modifiedAt())
                 .build();
     }
 
@@ -68,51 +69,34 @@ abstract class StoryMapper {
         }
 
         return Story.WithIdBuilder()
-                .storyId(StoryId.of(entity.getId()))
-                .storyDetails(storyDetails(entity))
-                .reviewGrades(reviewGrades(entity))
-                .build();
-    }
-
-    private static StoryDetails storyDetails(final StoryJPAEntity entity) {
-        return StoryDetails.builder()
+                .id(StoryId.of(entity.getId()))
                 .authorId(AuthorId.of(entity.getMemberId()))
                 .companyId(CompanyId.of(entity.getCompanyId()))
-                .employmentDetails(employmentDetails(entity))
-                .corporationDetails(corporationDetails(entity))
+
+                .corporationDetails(CorporationDetails.builder()
+                        .position(entity.getPosition())
+                        .welfare(entity.getWelfare())
+                        .commuteTime(entity.getCommuteTime())
+                        .meal(entity.getMeal())
+                        .pros(entity.getAdvantages())
+                        .cons(entity.getDisAdvantages())
+                        .build())
+                .employmentDetails(EmploymentDetails.builder()
+                        .schoolLife(entity.getSchoolLife())
+                        .preparationCourse(entity.getPreparationCourse())
+                        .employmentProcess(entity.getEmploymentProcess())
+                        .interviewQuestion(entity.getInterviewQuestion())
+                        .mostImportantThing(entity.getMostImportantThing())
+                        .build())
+                .grades(ReviewGrades.builder()
+                        .total(entity.getTotalGrade())
+                        .salaryAndBenefits(entity.getSalaryAndBenefits())
+                        .workLifeBalance(entity.getWorkLifeBalance())
+                        .organizationalCulture(entity.getOrganizationalCulture())
+                        .careerAdvancement(entity.getCareerAdvancement())
+                        .build())
                 .createdAt(entity.getCreatedAt())
                 .modifiedAt(entity.getModifiedAt())
-                .build();
-    }
-
-    private static EmploymentDetails employmentDetails(final StoryJPAEntity entity) {
-        return EmploymentDetails.builder()
-                .schoolLife(entity.getSchoolLife())
-                .preparationCourse(entity.getPreparationCourse())
-                .employmentProcess(entity.getEmploymentProcess())
-                .interviewQuestion(entity.getInterviewQuestion())
-                .mostImportantThing(entity.getMostImportantThing())
-                .build();
-    }
-
-    private static CorporationDetails corporationDetails(final StoryJPAEntity entity) {
-        return CorporationDetails.builder()
-                .position(entity.getPosition())
-                .welfare(entity.getWelfare())
-                .commuteTime(entity.getCommuteTime())
-                .meal(entity.getMeal())
-                .pros(entity.getAdvantages())
-                .cons(entity.getDisAdvantages())
-                .build();
-    }
-
-    private static ReviewGrades reviewGrades(final StoryJPAEntity entity) {
-        return ReviewGrades.builder()
-                .total(entity.getTotalGrade())
-                .salaryAndBenefits(entity.getSalaryAndBenefits())
-                .workLifeBalance(entity.getWorkLifeBalance())
-                .organizationalCulture(entity.getOrganizationalCulture())
-                .careerAdvancement(entity.getCareerAdvancement())
                 .build();
     }
 

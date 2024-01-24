@@ -20,9 +20,9 @@ public class ModifyNicknameUseCase {
     public void modify(final ModifyNicknameCommand command) {
         final Member member = memberSessionPort.current();
 
-        member.modifyNickname(command.nickname(), memberService);
+        member.modify(command.nickname(), memberService);
 
-        commandMemberPort.saveWithId(member);
+        commandMemberPort.save(member);
     }
 
 }
