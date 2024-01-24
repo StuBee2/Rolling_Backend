@@ -7,25 +7,24 @@ abstract class CompanyMapper {
 
     static Company toDomain(final RegisterCompanyCommand command, final MemberId memberId) {
         return Company.ExceptIdBuilder()
-                .companyDetails(CompanyDetails.builder()
-                        .registrantId(RegistrantId.of(memberId))
-                        .name(command.name())
-                        .description(command.description())
-                        .companyAddress(Address.of(command.address(), command.addressEtc()))
-                        .companyLogo(CompanyLogo.of(command.imgUrl(), command.rgb()))
-                        .build())
-                .companyGrades(CompanyGrades.zero())
+                .registrantId((RegistrantId) memberId)
+                .details(new CompanyDetails(
+                        command.name(),
+                        command.description(),
+                        Address.of(command.address(), command.addressEtc()),
+                        CompanyLogo.of(command.imgUrl(), command.rgb())
+                ))
+                .grades(CompanyGrades.zero())
                 .build();
     }
 
-    static CompanyDetails toDetails(final ModifyCompanyDetailsCommand command, final MemberId memberId) {
-        return CompanyDetails.builder()
-                .registrantId(RegistrantId.of(memberId))
-                .name(command.name())
-                .description(command.description())
-                .companyAddress(Address.of(command.companyAddress(), command.companyAddressEtc()))
-                .companyLogo(CompanyLogo.of(command.url(), command.rgb()))
-                .build();
+    static CompanyDetails toDetails(final ModifyCompanyDetailsCommand command) {
+        return new CompanyDetails(
+                command.name(),
+                command.description(),
+                Address.of(command.companyAddress(), command.companyAddressEtc()),
+                CompanyLogo.of(command.url(), command.rgb())
+        );
     }
 
 }

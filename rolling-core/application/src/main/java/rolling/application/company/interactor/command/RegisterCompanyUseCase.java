@@ -8,8 +8,6 @@ import rolling.application.company.outport.QueryCompanyPort;
 import rolling.application.member.outport.MemberSessionPort;
 import rolling.domain.common.model.TSID;
 import rolling.domain.company.exception.DuplicatedCompanyNameException;
-import rolling.domain.company.model.Company;
-import rolling.domain.member.model.MemberId;
 
 @Component
 @Transactional
@@ -25,10 +23,14 @@ public class RegisterCompanyUseCase {
             throw DuplicatedCompanyNameException.EXCEPTION;
         }
 
-        final MemberId memberId = memberSessionPort.currentId();
-        final Company company = CompanyMapper.toDomain(command, memberId);
-
-        return TSID.of(commandCompanyPort.save(company).companyId());
+        return TSID.of(
+                commandCompanyPort.save(
+                        CompanyMapper.toDomain(
+                                command,
+                                memberSessionPort.currentId()
+                        )
+                ).id()
+        );
     }
 
 }
