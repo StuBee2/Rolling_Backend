@@ -1,7 +1,6 @@
 package rolling.domain.common.model;
 
 import lombok.Getter;
-import rolling.domain.common.error.Assert;
 import rolling.domain.common.error.exception.WrongCalculationException;
 
 import java.util.Objects;
@@ -17,8 +16,6 @@ public abstract class Grades {
 
     protected Grades(Double total, Double salaryAndBenefits, Double workLifeBalance,
                      Double organizationalCulture, Double careerAdvancement) {
-        assertIfObjectIsNull(salaryAndBenefits, workLifeBalance, organizationalCulture, careerAdvancement);
-
         this.salaryAndBenefits = salaryAndBenefits;
         this.workLifeBalance = workLifeBalance;
         this.organizationalCulture = organizationalCulture;
@@ -29,23 +26,12 @@ public abstract class Grades {
         this.total = total;
     }
 
-    protected Grades(Double salaryAndBenefits, Double workLifeBalance,
-                     Double organizationalCulture, Double careerAdvancement) {
-        assertIfObjectIsNull(salaryAndBenefits, workLifeBalance, organizationalCulture, careerAdvancement);
-
+    protected Grades(Double salaryAndBenefits, Double workLifeBalance, Double organizationalCulture, Double careerAdvancement) {
         this.salaryAndBenefits = salaryAndBenefits;
         this.workLifeBalance = workLifeBalance;
         this.organizationalCulture = organizationalCulture;
         this.careerAdvancement = careerAdvancement;
         this.total = calculateTotal();
-    }
-
-    private void assertIfObjectIsNull(Double salaryAndBenefits, Double workLifeBalance,
-                                      Double organizationalCulture, Double careerAdvancement) {
-        Assert.notNull(salaryAndBenefits, "SalaryAndBenefits must not be null");
-        Assert.notNull(workLifeBalance, "WorkLifeBalance must not be null");
-        Assert.notNull(organizationalCulture, "OrganizationalCulture must not be null");
-        Assert.notNull(careerAdvancement, "CareerAdvancement must not be null");
     }
 
     private void isRightCalculation(double total) {

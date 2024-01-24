@@ -2,10 +2,12 @@ package rolling.rollingbatch.processor;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.batch.core.annotation.AfterProcess;
+import org.springframework.batch.core.annotation.BeforeProcess;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.stereotype.Component;
-import rolling.application.story.interactor.query.QueryStoryByCompanyUseCase;
 import rolling.application.story.interactor.query.StoryQueryByCompanyResponse;
+import rolling.application.story.outport.QueryStoryPort;
 import rolling.domain.common.model.PageRequest;
 import rolling.domain.company.model.Company;
 import rolling.domain.company.model.CompanyGrades;
@@ -20,7 +22,7 @@ import static rolling.rollingbatch.job.consts.BatchConstants.PAGE_SIZE;
 @RequiredArgsConstructor
 public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, List<Company>> {
 
-    private final QueryStoryByCompanyUseCase queryStoryByCompanyUseCase;
+    private final QueryStoryPort queryStoryPort;
 
     private double salaryAndBenefitsSum;
     private double workLifeBalanceSum;
@@ -29,31 +31,37 @@ public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, L
     private long reviewPage;
     private long reviewCnt;
 
+    @BeforeProcess
+    public void beforeProcess() {
+        log.info("-----Processor Start----");
+    }
+
+    @AfterProcess
+    public void afterProcess() {
+        log.info("-----Processor End-----");
+    }
+
     @Override
     public List<Company> process(final List<Company> readCompanyList) {
-        log.info("-----Processor Start-----");
-
         final List<Company> processedCompanyList = new ArrayList<>();
+
         readCompanyList.forEach(company -> {
-            log.info("Company Name : {}", company.companyDetails().name());
+            log.info("Company Name : {}", company.details().name());
 
             this.init();
-            this.calculateSums(company.companyId().getId());
+            this.calculateSums(company.id().getId());
 
             company.modify(this.calculateAverages());
 
             processedCompanyList.add(company);
         });
 
-        log.info("-----Processor End-----");
-
         return processedCompanyList;
     }
 
     private void calculateSums(final Long companyId) {
         while (true) {
-            final List<StoryQueryByCompanyResponse> reviewList = queryStoryByCompanyUseCase.query(companyId,
-                    PageRequest.of(reviewPage, PAGE_SIZE)).data();
+            final List<StoryQueryByCompanyResponse> reviewList = queryStoryPort.findByCompany(companyId, PageRequest.of(reviewPage, PAGE_SIZE));
 
             log.info("ReviewList Size : {}", reviewList.size());
 
@@ -91,7 +99,7 @@ public class CompanyGradesAvgProcessor implements ItemProcessor<List<Company>, L
         log.info("workLifeBalanceAvg : {}", workLifeBalanceAvg);
         log.info("organizationalCultureAvg : {}", organizationalCultureAvg);
         log.info("careerAdvancementAvg : {}", careerAdvancementAvg);
-        log.info("----------");
+        log.info("-----");
 
         return updatedGrades;
     }
