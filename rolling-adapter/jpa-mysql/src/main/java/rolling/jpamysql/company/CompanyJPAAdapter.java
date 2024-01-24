@@ -19,7 +19,7 @@ class CompanyJPAAdapter implements CommandCompanyPort {
     @Override
     public Company save(final Company company) {
         try {
-            CompanyId id = company.companyId();
+            CompanyId id = company.id();
         } catch (NullPointerException e) {
             return toDomain(repository.save(toEntity(company)));
         }
@@ -29,7 +29,9 @@ class CompanyJPAAdapter implements CommandCompanyPort {
 
     @Override
     public void updateAll(final List<Company> companyList) {
-        companyList.forEach(company -> repository.save(toEntityWithId(company)));
+        repository.saveAll(
+                companyList.stream().map(CompanyMapper::toEntityWithId).toList()
+        );
     }
 
     @Override
