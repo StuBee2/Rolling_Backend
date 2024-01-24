@@ -24,7 +24,7 @@ public class DeleteStoryUseCase {
 
         story.isAuthor(memberId);
 
-        commandStoryPort.deleteById(story.storyId());
+        commandStoryPort.deleteById(story.id());
     }
 
 }

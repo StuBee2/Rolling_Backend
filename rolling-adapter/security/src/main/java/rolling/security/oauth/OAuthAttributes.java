@@ -35,12 +35,12 @@ enum OAuthAttributes {
                     LoginType.GOOGLE)
     );
 
-    private final LoginType registration;
+    private final LoginType loginType;
     private final Function<Map<String, Object>, MemberProfile> of;
 
     public static MemberProfile toProfile(LoginType registration, Map<String, Object> attributes) {
         return Arrays.stream(values())
-                .filter(provider -> registration.equals(provider.registration))
+                .filter(provider -> registration.equals(provider.loginType))
                 .findFirst()
                 .orElseThrow(() -> WrongLoginTypeException.EXCEPTION)
                 .of.apply(attributes);
