@@ -5,10 +5,8 @@ import rolling.domain.member.model.MemberProfile;
 
 public interface CommandMemberPort {
 
-    Member saveWithId(Member member);
+    Member save(Member member);
 
-    Member saveExceptId(Member member);
-
-    Member saveOrUpdate(MemberProfile memberProfile);
+    Member save(MemberProfile memberProfile);
 
 }

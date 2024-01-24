@@ -23,9 +23,9 @@ class MemberEventListener {
     public void listen(final MemberCertifiedEvent event) {
         final Member member = memberSessionPort.current();
 
-        member.elevateToMember();
+        member.modifyRoleToMember();
 
-        commandMemberPort.saveWithId(member);
+        commandMemberPort.save(member);
     }
 
 }

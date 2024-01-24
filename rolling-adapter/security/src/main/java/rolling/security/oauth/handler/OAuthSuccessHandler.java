@@ -47,9 +47,8 @@ class OAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
                 .map(Cookie::getValue));
 
         final Member member = ((MemberDetailsAdapter) authentication.getPrincipal()).getMember();
-
-        final Long memberId = member.memberId().getId();
-        final MemberRole memberRole = member.memberDetails().memberRole();
+        final Long memberId = member.id().getId();
+        final MemberRole memberRole = member.role();
 
         final String accessToken = provideJwtPort.generateAccessToken(memberId, memberRole);
         final String refreshToken = provideJwtPort.generateRefreshToken(memberId, memberRole);
