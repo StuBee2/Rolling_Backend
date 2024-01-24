@@ -13,15 +13,8 @@ public record MemberProfile (
         LoginType loginType) {
     public Member toMember() {
         return Member.ExceptIdBuilder()
-                .socialDetails(SocialDetails.builder()
-                        .socialId(socialId)
-                        .socialLoginId(socialLoginId)
-                        .loginType(loginType)
-                        .name(name)
-                        .email(email)
-                        .imageUrl(imageUrl)
-                        .build())
-                .memberDetails(new MemberDetails(null, memberRole, null, null))
+                .details(new MemberDetails(null, name, email, imageUrl))
+                .socialDetails(new SocialDetails(socialId, socialLoginId, loginType))
                 .build();
     }
 }
