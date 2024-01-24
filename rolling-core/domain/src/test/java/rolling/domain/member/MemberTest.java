@@ -18,31 +18,31 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MemberTest {
 
-    private Member member;
-    private MemberService memberService;
+    Member.WithIdBuilder memberBuilder;
+    MemberService memberService;
 
     @BeforeEach
     void init() {
-        member = Member.WithIdBuilder()
-                .memberId(MemberId.of(1L))
-                .memberDetails(new MemberDetails("suzzing", MemberRole.ADMIN, LocalDateTime.now(), LocalDateTime.now()))
-                .socialDetails(SocialDetails.builder()
-                        .socialId("123456789")
-                        .socialLoginId("suw0n")
-                        .loginType(LoginType.GITHUB)
-                        .email("test@gmail.com")
-                        .imageUrl("rolling.kr")
-                        .build())
-                .build();
-        memberService = new FakeMemberService();
+        memberBuilder = Member.WithIdBuilder()
+                .id(MemberId.of(1L))
+                .role(MemberRole.ADMIN)
+                .details(new MemberDetails("suzzing", "최수원", "test@gmail.com", null))
+                .socialDetails(new SocialDetails("1234567", "suw0n", LoginType.GITHUB))
+                .createdAt(LocalDateTime.now())
+                .modifiedAt(LocalDateTime.now());
+        memberService = new MemberServiceForException();
     }
 
     @Test
-    @DisplayName(value = "중복된 Nickname 일 경우 수정 실패")
-    void 중복된_NICKNAME_일_경우_수정_실패() {
-        final String newNickname = "suzzing9999";
+    @DisplayName(value = "중복된 Nickname일 경우 수정 실패")
+    void 중복된_NICKNAME_일_경우_예외_발생() {
+        String newNickname = "suzzing9999";
 
-        assertThrows(DuplicatedNicknameException.class, () -> member.modifyNickname(newNickname, memberService));
+        assertThrows(
+                DuplicatedNicknameException.class,
+                () -> memberBuilder.build()
+                        .modify(newNickname, memberService)
+        );
     }
 
 }
