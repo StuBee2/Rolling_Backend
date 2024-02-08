@@ -1,11 +1,13 @@
 package rolling.domain.story.model;
 
 import lombok.Builder;
+import lombok.Getter;
 import rolling.domain.company.model.CompanyId;
 import rolling.domain.member.model.MemberId;
 
 import java.time.LocalDateTime;
 
+@Getter
 public final class Story {
 
     private final StoryId id;

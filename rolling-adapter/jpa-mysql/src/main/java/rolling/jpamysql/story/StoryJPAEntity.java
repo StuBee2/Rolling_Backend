@@ -24,21 +24,6 @@ public class StoryJPAEntity extends BaseTSIDEntity {
     @Size(max = 30)
     private String position;
 
-    @Column(columnDefinition = "TEXT")
-    private String schoolLife;
-
-    @Column(columnDefinition = "TEXT")
-    private String preparationCourse;
-
-    @Size(max = 100)
-    private String employmentProcess;
-
-    @Column(columnDefinition = "TEXT")
-    private String interviewQuestion;
-
-    @Size(max = 100)
-    private String mostImportantThing;
-
     @NotNull
     @Size(max = 100)
     private String welfare;
@@ -78,5 +63,21 @@ public class StoryJPAEntity extends BaseTSIDEntity {
 
     @NotNull
     private Long companyId;
+
+    //
+    @Column(columnDefinition = "TEXT")
+    private String schoolLife;
+
+    @Column(columnDefinition = "TEXT")
+    private String preparationCourse;
+
+    @Size(max = 100)
+    private String employmentProcess;
+
+    @Column(columnDefinition = "TEXT")
+    private String interviewQuestion;
+
+    @Size(max = 100)
+    private String mostImportantThing;
 
 }

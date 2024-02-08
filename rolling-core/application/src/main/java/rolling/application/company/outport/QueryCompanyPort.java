@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface QueryCompanyPort {
 
     boolean existsBy(Long id);
+
     boolean existsBy(String name);
 
     Optional<Company> findBy(Long id);

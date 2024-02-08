@@ -16,13 +16,11 @@ class StoryJPAAdapter implements CommandStoryPort {
 
     @Override
     public Story save(final Story story) {
-        try {
-            StoryId id = story.id();
-
-            return toDomain(repository.save(toEntityWithId(story)));
-        } catch (NullPointerException e) {
+        if(story.id() == null) {
             return toDomain(repository.save(toEntity(story)));
         }
+
+        return toDomain(repository.save(toEntityWithId(story)));
     }
 
     @Override
