@@ -26,7 +26,7 @@ abstract class StoryMapper {
                         .interviewQuestion(command.interviewQuestion())
                         .mostImportantThing(command.mostImportantThing())
                         .build())
-                .reviewGrades(ReviewGrades.builder()
+                .reviewGrades(ReviewGrades.ExceptTotalBuilder()
                         .salaryAndBenefits(Double.valueOf(command.salaryAndBenefits()))
                         .workLifeBalance(Double.valueOf(command.workLifeBalance()))
                         .organizationalCulture(Double.valueOf(command.organizationalCulture()))

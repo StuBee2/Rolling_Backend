@@ -4,10 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import rolling.application.company.outport.CommandCompanyPort;
-import rolling.application.company.outport.QueryCompanyPort;
 import rolling.application.member.outport.MemberSessionPort;
 import rolling.domain.common.model.TSID;
 import rolling.domain.company.exception.DuplicatedCompanyNameException;
+import rolling.domain.company.service.CompanyService;
 
 @Component
 @Transactional
@@ -15,11 +15,11 @@ import rolling.domain.company.exception.DuplicatedCompanyNameException;
 public class RegisterCompanyUseCase {
 
     private final CommandCompanyPort commandCompanyPort;
-    private final QueryCompanyPort queryCompanyPort;
+    private final CompanyService companyService;
     private final MemberSessionPort memberSessionPort;
 
     public TSID register(final RegisterCompanyCommand command) {
-        if(queryCompanyPort.existsBy(command.name())) {
+        if(companyService.isNameDuplicate(command.name())) {
             throw DuplicatedCompanyNameException.EXCEPTION;
         }
 

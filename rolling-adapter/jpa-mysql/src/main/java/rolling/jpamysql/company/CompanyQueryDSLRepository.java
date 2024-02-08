@@ -47,7 +47,7 @@ class CompanyQueryDSLRepository {
                 .from(companyJPAEntity)
                 .where(companyJPAEntity.id.eq(id)
                         .and(companyJPAEntity.companyStatus.eq(CompanyStatus.ACCEPTED))
-                ) != null;
+                ).fetchOne() != null;
     }
 
     boolean existsByCompanyName(String name) {
@@ -56,7 +56,7 @@ class CompanyQueryDSLRepository {
                 .from(companyJPAEntity)
                 .where(companyJPAEntity.name.eq(name)
                         .and(companyJPAEntity.companyStatus.eq(CompanyStatus.ACCEPTED))
-                ) != null;
+                ).fetchOne() != null;
     }
 
     List<CompanyJPAEntity> findByNameContaining(String name, PageRequest pageRequest) {

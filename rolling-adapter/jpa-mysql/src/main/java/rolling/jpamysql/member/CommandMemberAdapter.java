@@ -20,13 +20,12 @@ class CommandMemberAdapter implements CommandMemberPort {
 
     @Override
     public Member save(final Member member) {
-        try {
-            MemberId id = member.id();
-        } catch (NullPointerException e) {
+        if(member.id() == null) {
             publishMemberRegisteredEvent(member.details().email());
 
             return toDomain(repository.save(toEntity(member)));
         }
+
         return toDomain(repository.save(toEntityWithId(member)));
     }
 

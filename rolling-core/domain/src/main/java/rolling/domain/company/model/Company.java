@@ -1,6 +1,7 @@
 package rolling.domain.company.model;
 
 import lombok.Builder;
+import lombok.Getter;
 import rolling.domain.company.consts.CompanyStatus;
 import rolling.domain.company.exception.DuplicatedCompanyNameException;
 import rolling.domain.company.service.CompanyService;
@@ -9,6 +10,7 @@ import rolling.domain.member.model.MemberId;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Getter
 public final class Company {
 
     private final CompanyId id;

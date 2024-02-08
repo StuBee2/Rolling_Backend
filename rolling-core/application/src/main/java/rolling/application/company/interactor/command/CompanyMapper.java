@@ -7,7 +7,7 @@ abstract class CompanyMapper {
 
     static Company toDomain(final RegisterCompanyCommand command, final MemberId memberId) {
         return Company.ExceptIdBuilder()
-                .registrantId((RegistrantId) memberId)
+                .registrantId(RegistrantId.of(memberId))
                 .details(new CompanyDetails(
                         command.name(),
                         command.description(),

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import rolling.domain.member.consts.LoginType;
 import rolling.domain.member.consts.MemberRole;
 import rolling.domain.member.exception.DuplicatedNicknameException;
+import rolling.domain.member.exception.WrongLoginTypeException;
 import rolling.domain.member.model.Member;
 import rolling.domain.member.model.MemberDetails;
 import rolling.domain.member.model.MemberId;
@@ -18,31 +19,67 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MemberTest {
 
-    private Member member;
-    private MemberService memberService;
+    Member.WithIdBuilder memberBuilder;
+    MemberService memberService;
 
-    @BeforeEach
-    void init() {
-        member = Member.WithIdBuilder()
-                .memberId(MemberId.of(1L))
-                .memberDetails(new MemberDetails("suzzing", MemberRole.ADMIN, LocalDateTime.now(), LocalDateTime.now()))
-                .socialDetails(SocialDetails.builder()
-                        .socialId("123456789")
-                        .socialLoginId("suw0n")
-                        .loginType(LoginType.GITHUB)
-                        .email("test@gmail.com")
-                        .imageUrl("rolling.kr")
-                        .build())
-                .build();
-        memberService = new FakeMemberService();
+    @Test
+    @DisplayName(value = "중복되지 않은 Nickname일 경우 수정 성공")
+    void 중복되지_않은_NICKNAME일_경우_수정_성공() {
+        String newNickname = "suzzing9999";
+        Member member = memberBuilder.build();
+
+        member.modify(newNickname, memberService);
+
+        assertEquals(newNickname, member.getDetails().nickName());
     }
 
     @Test
-    @DisplayName(value = "중복된 Nickname 일 경우 수정 실패")
+    @DisplayName(value = "중복된 Nickname일 경우 수정 실패")
     void 중복된_NICKNAME_일_경우_수정_실패() {
-        final String newNickname = "suzzing9999";
+        memberService = new MemberServiceForFailure();
 
-        assertThrows(DuplicatedNicknameException.class, () -> member.modifyNickname(newNickname, memberService));
+        String newNickname = "suzzing9999";
+
+        assertThrows(
+                DuplicatedNicknameException.class,
+                () -> memberBuilder.build()
+                        .modify(newNickname, memberService)
+        );
+    }
+
+    @Test
+    @DisplayName(value = "로그인 타입이 일치할 경우 수정 성공")
+    void 로그인_타입이_일치할_경우_수정_성공() {
+        String newSocialLoginId = "1s1u1z1z1i1n1g191";
+        Member member = memberBuilder.build();
+
+        member.modify(newSocialLoginId, LoginType.GITHUB);
+
+        assertEquals(newSocialLoginId, member.getSocialDetails().socialLoginId());
+    }
+
+    @Test
+    @DisplayName(value = "로그인 타입이 일치하지 않을 경우 수정 실패")
+    void 로그인_타입이_일치하지_않을_경우_수정_실패() {
+        String newSocialLoginId = "1s1u1z1z1i1n1g191";
+
+        assertThrows(
+                WrongLoginTypeException.class,
+                () -> memberBuilder.build()
+                        .modify(newSocialLoginId, LoginType.GOOGLE)
+        );
+    }
+
+    @BeforeEach
+    void beforeEach() {
+        memberBuilder = Member.WithIdBuilder()
+                .id(MemberId.of(1L))
+                .role(MemberRole.ADMIN)
+                .details(new MemberDetails("suzzing", "최수원", "test@gmail.com", null))
+                .socialDetails(new SocialDetails("1234567", "suw0n", LoginType.GITHUB))
+                .createdAt(LocalDateTime.now())
+                .modifiedAt(LocalDateTime.now());
+        memberService = new MemberServiceForSuccess();
     }
 
 }

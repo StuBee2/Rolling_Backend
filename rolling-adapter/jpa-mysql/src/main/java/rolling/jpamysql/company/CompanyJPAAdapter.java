@@ -18,9 +18,7 @@ class CompanyJPAAdapter implements CommandCompanyPort {
 
     @Override
     public Company save(final Company company) {
-        try {
-            CompanyId id = company.id();
-        } catch (NullPointerException e) {
+        if(company.id() == null) {
             return toDomain(repository.save(toEntity(company)));
         }
 

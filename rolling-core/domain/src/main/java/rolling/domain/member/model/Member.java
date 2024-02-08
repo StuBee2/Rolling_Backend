@@ -1,6 +1,7 @@
 package rolling.domain.member.model;
 
 import lombok.Builder;
+import lombok.Getter;
 import rolling.domain.member.consts.LoginType;
 import rolling.domain.member.consts.MemberRole;
 import rolling.domain.member.exception.DuplicatedNicknameException;
@@ -9,6 +10,7 @@ import rolling.domain.member.service.MemberService;
 
 import java.time.LocalDateTime;
 
+@Getter
 public final class Member {
 
     private final MemberId id;
