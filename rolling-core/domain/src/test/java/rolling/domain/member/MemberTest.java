@@ -23,8 +23,8 @@ public class MemberTest {
     MemberService memberService;
 
     @Test
-    @DisplayName(value = "중복되지 않은 Nickname일 경우 수정 성공")
-    void 중복되지_않은_NICKNAME일_경우_수정_성공() {
+    @DisplayName(value = "중복되지 않은 닉네임일 경우 수정 성공")
+    void 중복되지_않은_닉네임일_경우_수정_성공() {
         String newNickname = "suzzing9999";
         Member member = memberBuilder.build();
 
@@ -34,8 +34,8 @@ public class MemberTest {
     }
 
     @Test
-    @DisplayName(value = "중복된 Nickname일 경우 수정 실패")
-    void 중복된_NICKNAME_일_경우_수정_실패() {
+    @DisplayName(value = "중복된 닉네임일 경우 수정 실패")
+    void 중복된_닉네임일_경우_수정_실패() {
         memberService = new MemberServiceForFailure();
 
         String newNickname = "suzzing9999";
